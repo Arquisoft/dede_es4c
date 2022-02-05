@@ -55,5 +55,5 @@ Encontrarás más información sobre el repositorio en los otros archivos README
 - Daniel Ferreira Gómez - UO277603
 - Damir Abdrafikov - UO277306
 - Hugo Gutiérrez Tomás - UO277891
-- Sergio Castillo García - UO276436
+- Sergio Castillo García - UO276436 
 - Marcos Caraduje Martínez - UO270285
