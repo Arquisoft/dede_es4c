@@ -50,3 +50,10 @@ Encontrarás más información sobre el repositorio en los otros archivos README
 - Documentación: https://github.com/pglez82/asw2122_0/tree/master/docs
 - Webapp: https://github.com/pglez82/asw2122_0/tree/master/webapp
 - Restapi: https://github.com/pglez82/asw2122_0/tree/master/restapi
+
+## Miembros del equipo
+- Daniel Ferreira Gómez - UO277603
+- Damir Abdrafikov - UO277306
+- Hugo Gutiérrez Tomás - UO277891
+- Sergio Castillo García - UO276436
+- Marcos Caraduje Martínez - UO270285
