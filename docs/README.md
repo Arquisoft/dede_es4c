@@ -1,6 +1,6 @@
 ## Documentación
 La documentación de este proyecto se compila localmente y se despliega en GitHub pages.
-la url en la que se despliega es: [https://arquisoft.github.io/dede_0/](https://arquisoft.github.io/dede_0/).
+la url en la que se despliega es: [https://arquisoft.github.io/dede_es4c/](https://arquisoft.github.io/dede_es4c/).
 
 ### Build Documentación
 Para la documentación vamos a utilizar [AsciiDoc](https://asciidoc.org/) y [PlantUML](https://plantuml.com). Seguiremos la plantilla [Arc42](https://github.com/arc42/arc42-template). Si quieres general la documentación en tu ordenador, necesitas instalar Ruby, Java y algunas dependencias para traducir el asciidoc en código html. Si estás en una máquina Linux puedes instalar Java y Ruby simplemente ejecutando:
