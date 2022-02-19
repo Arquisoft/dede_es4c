@@ -6,9 +6,13 @@
 [role="arc42help"]
 ****
 Algunos de los requisitos se extrajeron del propio enunciado de la práctica:
+
 https://arquisoft.github.io/course2122/labEnunciadoPractica.html
+
 El sistema simulará una tienda de comida online, donde los clientes podrán realizar varias acciones: registros, log in, compras… y los administradores podrán modificar y eliminar productos existentes y añadir nuevos si lo necesitan. La seguridad de los clientes debe estar garantizada en todo momento, siguiendo para ello los principios SOLID.
+
 Los requisitos son, a grandes rasgos, los siguientes:
+
 * El sistema debe poder registrar nuevos usuarios y poder iniciar sesión para los ya existentes.
 * La interfaz de usuario deberá ser acogedora de cara a los clientes, para que ellos se sientan más cómodos a la hora de usar la aplicación.
 * El sistema debe poder ir calculando el coste total de los productos elegidos por el cliente.
@@ -26,6 +30,7 @@ Los requisitos son, a grandes rasgos, los siguientes:
 [role="arc42help"]
 ****
 Contenido, Motivación
+
 *	Sencillez, tanto para el cliente como para el administrador debe ser sencillo utilizar la aplicación y desenvolverse con ella.
 *	Testeable, el sistema debe poder probarse fácilmente en todas sus capas.
 *	Eficiente, los procedimientos de inicio de sesión, registro, compra, añadir o eliminar productos… deben poder realizarse en un periodo de tiempo razonable.
@@ -49,7 +54,7 @@ Contenido, Motivación
 
 [role="arc42help"]
 ****
-[options="header",cols="1,3,3"]
+[options="header",cols="1,2,2"]
 |===
 |Rol|Expectativas
 |Arquitectos del Software|Poder aplicar correctamente las diferentes herramientas que se nos proporcionan para crear una aplicación que contente a las demás partes interesadas. Es necesario que conozcan la arquitectura y sepan trabajar en ella.
