@@ -13,7 +13,7 @@ Alcance: El alcance del sistema es poder dotar a los clientes de una aplicación
 ****
 [options="header",cols="1,1"]
 |===
-|Restricción|Explicación|
+|Restricción|Explicación
 |Documentación|Los convenios de Arc42 son los elegidos para realizar la documentación.
 |Modelo Vista Controlador (MVC)|El convenio MVC será seguido de cara a tener una separación de capas clara.
 |Criterios interfaz de usuario|Se seguirán unos mínimos para que la aplicación pueda ser lo más accesible posible (por ejemplo el criterio de contraste en colores AAA).
@@ -28,7 +28,7 @@ Alcance: El alcance del sistema es poder dotar a los clientes de una aplicación
 ****
 [options="header",cols="1,1"]
 |===
-|Restricción|Explicación|
+|Restricción|Explicación
 |SOLID|Proporcionar a los usuarios un acceso de la aplicación a sus datos de manera consentida y así hacer que sea más seguro para ellos ya que los usuarios son propietarios de sus propios datos gracias al uso de PODs.
 |React|Es una manera sencilla de crear una interfaz de usuario y proporciona un mantenimiento más sencillo, un código más estable y un mayor rendimiento.
 |GitHub|Todo el proyecto quedará unificado en GitHub, donde crearemos varias ramas para encapsular las diferentes funcionales que implementemos.
@@ -45,7 +45,7 @@ Alcance: El alcance del sistema es poder dotar a los clientes de una aplicación
 ****
 [options="header",cols="1,1"]
 |===
-|Restricción|Explicación|
+|Restricción|Explicación
 |Rama Master y Develop|En la rama Master solo se harán commits de versiones funcionales probadas para evitar que el proyecto pueda ser modificado por una versión con fallos o sin terminar.
 |Ramas por procesos|Para dar más encapsulación al proyecto, se crearán ramas según los procesos o tareas que vayamos teniendo durante el proyecto.
 |Reuniones|Cada semana se realizará dos reuniones como mínimo donde se pondrá en común el trabajo realizado, que es lo que queda por hacer, que problemas tiene cada miembro… Todo esto quedará documentado en un acta.
