@@ -49,7 +49,7 @@ Contenido, Motivación
 
 [role="arc42help"]
 ****
-[options="header",cols="1,2,2"]
+[options="header",cols="1,3,3"]
 |===
 |Rol|Expectativas
 |Arquitectos del Software|Poder aplicar correctamente las diferentes herramientas que se nos proporcionan para crear una aplicación que contente a las demás partes interesadas. Es necesario que conozcan la arquitectura y sepan trabajar en ella.
