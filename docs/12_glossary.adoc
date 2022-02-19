@@ -26,4 +26,7 @@
 
 |Pods
 |Son las estructuras que utiliza Solid para almacenar datos
+
+|RESTAPI
+|Interfaz de programación de aplicaciones (API) que se ajusta a los límites de la arquitectura REST y permite la interacción con los servicios web de la misma.
 |===
