@@ -22,6 +22,6 @@ Trabajo continuo sobre el proyecto a lo largo de su duración.
 Revisión (a través de Pull Request) del trabajo entre los integrantes del equipo.
 
 .Decisiones organizacionales
-Se realizarán 2 reuniones semanales, utilizaremos Discord para la organización de reuniones no presenciales. Cada reunión tendrá un acata, la cual será subida a Github.
+Se realizarán 2 reuniones semanales, utilizaremos Discord para la organización de reuniones no presenciales. Cada reunión tendrá un acta, la cual será subida a Github.
 También hemos optado por el uso de Issues y Kanban (GitHub) para la organización de tareas.
 Respecto a tareas específicas, todos los miembros del equipo trabajaremos en todos los aspectos del proyecto.
