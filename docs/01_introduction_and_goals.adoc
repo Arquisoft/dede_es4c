@@ -37,7 +37,7 @@ Contenido, Motivación
 *	Usabilidad, las opciones dentro de la aplicación deben ser sencillas de aprender y de utilizar.
 *	Seguridad, los datos deben ser seguros y consistentes en todo momento.
 
-[options="header",cols="1,4,4"]
+[options="header",cols="1,1,1,1"]
 |===
 |Ref|Meta de Calidad|Escenario|Prioridad(Cliente/Arquitecto)
 |1.|Seguridad|La aplicación deberá ser segura para todos los datos de los clientes, tomando para ello las medidas pertinentes.|Alto / Alto
@@ -54,7 +54,7 @@ Contenido, Motivación
 
 [role="arc42help"]
 ****
-[options="header",cols="2,2,2"]
+[options="header",cols="1,1"]
 |===
 |Rol|Expectativas
 |Arquitectos del Software|Poder aplicar correctamente las diferentes herramientas que se nos proporcionan para crear una aplicación que contente a las demás partes interesadas. Es necesario que conozcan la arquitectura y sepan trabajar en ella.
