@@ -40,17 +40,11 @@ Contenido, Motivación
 [options="header",cols="1,2,2"]
 |===
 |Ref|Meta de Calidad|Escenario|Prioridad(Cliente/Arquitecto)
-
 |1.|Seguridad|La aplicación deberá ser segura para todos los datos de los clientes, tomando para ello las medidas pertinentes.|Alto / Alto
-
 |2.|Usabilidad|Muy importante, la aplicación tendrá una serie de opciones (registro, añadir nuevos productos, compras…) las cuales deben ser sencillas de utilizar para todos.|Alto / Alto
-
 |3.|Consistencia|Los datos de los productos y de los clientes deben estar siempre actualizados y ser correctos.| Medio / Alto
-
 |4.|Eficiencia|Los usuarios no querrán estar esperando mucho tiempo para poder realizar sus compras, inicios de sesión… y lo propio con el administrador. Por ello es importante que la aplicación no tarde demasiado en realizar dichas operaciones.| Alto / Medio
-
 |5.|Testeable|Es importante poder probar todas las capas de la aplicación para poder corregir los errores de una manera rápida y eficaz.| Bajo / Alto
-
 |6.|Atractivo|La interfaz debería ser atractiva de cara a los usuarios, ya que, por norma general, se sentirán más acogidos y cómodos en una aplicación que les resulte atractivo que en uno que no lo sea.| Medio / Medio
 |===
 
@@ -60,7 +54,7 @@ Contenido, Motivación
 
 [role="arc42help"]
 ****
-[options="header",cols="1,2,2"]
+[options="header",cols="2,2,2"]
 |===
 |Rol|Expectativas
 |Arquitectos del Software|Poder aplicar correctamente las diferentes herramientas que se nos proporcionan para crear una aplicación que contente a las demás partes interesadas. Es necesario que conozcan la arquitectura y sepan trabajar en ella.
