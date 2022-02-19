@@ -1,50 +1,7 @@
 [[section-system-scope-and-context]]
 == Alcance y Contexto del Sistema
 
-
-[role="arc42help"]
-****
-.Contenido
-El alcance y contexto del sistema - como lo sugiere el nombre - delimita al sistema (es decir, el alcance) de todos sus
-socios de comunicación (Usuarios y sistemas vecinos, es decir, el contexto del sistema). 
-System scope and context - as the name suggests - delimits your system (i.e. your scope) from all its communication partners
-(neighboring systems and users, i.e. the context of your system). Con ello se especifican las interfaces externas.
-
-Si es necesario, diferenciar el contexto de negocio (Entradas y salidas específicas del dominio) del contexto técnico
-(canales, protocolos, hardware).
-
-.Motivación
-Las interfases de dominio y las interfases técnicas a los socios de comunicación son de los aspectos más críticos del sistema.
-Se debe asegurar el entendimiento de ellos.
-
-.Forma
-Varias opciones:
-
-* Diagramas de contexto
-* Listas de socios de comunicación y sus interfases.
-****
-
-
 === Contexto de Negocio
-
-[role="arc42help"]
-****
-.Contenido
-La especificación de *todos* los socios de comunicación (usuarios, sistemas, ...) con explicaciones de las entradas y salidas
-específicas del dominio o interfases.
-Opcionalmente puede agregar formatos específicos de dominio o protocolos de comunicación
-
-.Motivación
-Todas las partes interesadas deben entender que datos son intercambiados con el ambiente del sistema.
-
-.Forma
-Cualquier forma de diagramas que muestren al sistema como una caja negra y especifiquen las interfases de dominio a los
-socios de comunicación.
-
-De manera alternativa (o adicional) se puede utilizar una tabla.
-El título de la tabla es el nombre del sistema, las tres columnas contienen el nombre del socio de comunicación, las
-entradas y las salidas
-****
 
 [plantuml,"Business Context Diagram",png]
 ----
@@ -76,22 +33,6 @@ El sistema permitirá al usuario hacer pedidos de los diferentes productos dispo
 * Base de datos: encargada de toda la persistencia de los datos que compondran la aplicación
 
 === Contexto Técnico
-
-[role="arc42help"]
-****
-.Contenido
-Las interfases técnicas (medios de transmisión y canales) enlanzando al sistema con su ambiente. De manera adicional
-el mapeo de las entradas/salidas específicas del dominio a los canales, es decir, una explicación acerca de que entrada/salida
-utiliza cual canal.
-
-.Motivación
-Muchas partes relacionadas realizan decisiones arquitectónicas basadas en las interfases técnicas entre el sistema y 
-su contexto. Especialmente los diseñadores de infraestructura o hardware deciden estas interfases técnicas.
-
-.Forma
-Por ejemplo, diagramas UML de despligue describiendo los canales a sistemas vecinos, junto con una tabla de 
-mapeo mostrando las relaciones entre los canales y las entradas/salidas.
-****
 
 Como se ha mencionado anteriormente, la aplicación hará uso de la tecnología SOLID dirigida por Tim Berners-Lee para realizar un proyecto descentralizado. Esta proporcionará un pod a cada usuario permitiendo almacenar toda la información de cada uno, y se la proveerá a la aplicación.
 Para la implementación del proyecto se utilizarán tecnologías como REACT, para el desarrollo Frontend, y la base de datos MongoDB, para todo lo relativo a la persistencia de datos.
