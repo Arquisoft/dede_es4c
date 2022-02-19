@@ -1,7 +1,8 @@
 [[section-deployment-view]]
 
-image:07_deployment_view.png["Vista Despliegue"]
 == Vista de Despliegue
+
+image:07_deployment_view.png["Vista Despliegue"]
 
 [role="arc42help"]
 ****
@@ -35,3 +36,4 @@ utilizando diagramas de despliegue adicionales:
 * Cuando las partes relacionadas de Hardware prefieran otro tipo de diagramas además de los diagramas de despliegue,
 permítales usar cualquier tipo que permita mostrar los nodos y canales de la infraestructura.
 ****
+
