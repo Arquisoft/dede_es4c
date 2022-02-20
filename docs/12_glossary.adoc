@@ -29,4 +29,32 @@
 
 |RESTAPI
 |Interfaz de programación de aplicaciones (API) que se ajusta a los límites de la arquitectura REST y permite la interacción con los servicios web de la misma.
+
+|Consistencia
+|Los datos que contenga la base de datos deberán ser siempre correctos y estar actualizados.
+
+|MVC
+|Patrón para separar la capa de lógica de la aplicación de la presentación de la misma.
+
+|TypeScript
+|Superconjunto de JavaScript que permite el uso de tipos estáticos y objetos basados en clases.
+
+|Testeable
+|Toda la aplicación deberá ser probada mediante pruebas en todas las capas que contenga la misma.
+
+|MongoBD
+|Base de Datos NoSQL orientado a documentos y de código abierto y cuya integración a aplicaciones que usen JavaScript es mucho más rápida y sencilla.
+
+|Seguridad
+|En el contexto de la aplicación, el sistema debe ser seguro siempre con los datos de los clientes con una serie de medidas para velar por la integridad de los mismos.
+
+|Issues
+|Unidad de trabajo utilizada para específicar una mejora en un sistema informático. En nuestro caso se usará para contabilizar las tareas que se van realizando, las que ya se han realizado, y quién debe hacer cada tarea.
+
+|Usabilidad
+|La aplicación será utilizada por todo tipo de personas sin que a estas les lleve mucho esfuerzo comprender cómo funciona la aplicación.
+
+|Eficiente
+|Las transacciones que se realicen en la aplicación deberán ser de un tiempo pequeño.
+
 |===
