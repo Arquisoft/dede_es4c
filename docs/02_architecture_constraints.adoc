@@ -1,19 +1,53 @@
 [[section-architecture-constraints]]
-== Architecture Constraints
+== 2. Restricciones de la Arquitectura
 
-
+=== 2.1 Alcance y contexto del sistema
 [role="arc42help"]
 ****
-.Contents
-Any requirement that constrains software architects in their freedom of design and implementation decisions or decision about the development process. These constraints sometimes go beyond individual systems and are valid for whole organizations and companies.
+Contexto: Es una aplicación para vender pinchos y bebida de forma online (o lo que es lo mismo, un bar).  Tomaremos como ejemplo aplicaciones parecidas, como pueden ser las de comida rápida o restaurantes.
 
-.Motivation
-Architects should know exactly where they are free in their design decisions and where they must adhere to constraints.
-Constraints must always be dealt with; they may be negotiable, though.
-
-.Form
-Simple tables of constraints with explanations.
-If needed you can subdivide them into
-technical constraints, organizational and political constraints and
-conventions (e.g. programming or versioning guidelines, documentation or naming conventions)
+Alcance: El alcance del sistema es poder dotar a los clientes de una aplicación funcional para poder hacer sus pedidos y procesarlos correctamente. Es decir tener un sistema lo más parecido posible a una tienda de comida online.
 ****
+=== 2.2 Contexto de Convenios
+[role="arc42help"]
+****
+[options="header",cols="1,1"]
+|===
+|Restricción|Explicación
+|Documentación|Los convenios de Arc42 son los elegidos para realizar la documentación.
+|Modelo Vista Controlador (MVC)|El convenio MVC será seguido de cara a tener una separación de capas clara.
+|Criterios interfaz de usuario|Se seguirán unos mínimos para que la aplicación pueda ser lo más accesible posible (por ejemplo el criterio de contraste en colores AAA).
+|SOLID|Seguiremos los convenios de SOLID para los datos de los usuarios.
+|TypeScript|En cuanto al nombrado de métodos, clases, variables, parámetros… Se seguirán los convenios de TypeScript.
+|Fácil de usar (UI)|Es una aplicación que debería poder usar todo el mundo. Debe ser sencilla de usar y parecida a otras aplicaciones similares (por ejemplo aplicaciones de comida a domicilio).
+|===
+****
+
+=== 2.3 Contexto técnico
+[role="arc42help"]
+****
+[options="header",cols="1,1"]
+|===
+|Restricción|Explicación
+|SOLID|Proporcionar a los usuarios un acceso de la aplicación a sus datos de manera consentida y así hacer que sea más seguro para ellos ya que los usuarios son propietarios de sus propios datos gracias al uso de PODs.
+|React|Es una manera sencilla de crear una interfaz de usuario y proporciona un mantenimiento más sencillo, un código más estable y un mayor rendimiento.
+|GitHub|Todo el proyecto quedará unificado en GitHub, donde crearemos varias ramas para encapsular las diferentes funcionales que implementemos.
+|Arc42|Es una de las mejores documentaciones de cara a hacer una documentación técnica, como es nuestro caso.
+|Node.js|Con ello obtenemos una aplicación más escalable y nos permite ejecutar nuestro código.
+|TypeScript|Nos dota de un lenguaje más sólido y limpio frente a JavaScript, con lo que el código tendrá menos errores y podremos detectarlos primero.
+|Docker|Ejecutaremos nuestra aplicación en un host de Docker.
+|MongoDB|Será nuestra base de datos donde almacenaremos todos los datos que necesitamos. MongoDB proporciona una base de datos con una gran documentación, perfecta para su uso junto a TypeScript e integrarla dentro de la aplicación es más sencillo y rápido. Esta decisión no es un requisito como en el caso de los demás, si no que hemos tomado esta decisión nosotros.
+|===
+****
+
+=== 2.4 Contexto Organizacional
+[role="arc42help"]
+****
+[options="header",cols="1,1"]
+|===
+|Restricción|Explicación
+|Rama Master y Develop|En la rama Master solo se harán commits de versiones funcionales probadas para evitar que el proyecto pueda ser modificado por una versión con fallos o sin terminar.
+|Ramas por procesos|Para dar más encapsulación al proyecto, se crearán ramas según los procesos o tareas que vayamos teniendo durante el proyecto.
+|Reuniones|Cada semana se realizará dos reuniones como mínimo donde se pondrá en común el trabajo realizado, que es lo que queda por hacer, que problemas tiene cada miembro… Todo esto quedará documentado en un acta.
+|Issues y Pull Requests|De cara a tener una buena organización, crearemos issues con las tareas que tenemos que hacer cada miembro del equipo. En cuanto a los Pull Requests, están diseñados para que un miembro (o varios) del equipo, puedan revisar el código de otro miembro del equipo antes de subirlos a una rama.
+|===
