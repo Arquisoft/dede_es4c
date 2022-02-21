@@ -1,20 +1,6 @@
 [[section-runtime-view]]
 == Runtime View
 
-
-[role="arc42help"]
-****
-.Contents
-Este apartado contendrá información detallada del funcionamiento de la aplicación y de como esta
-se comportara ante los distintos escenarios que se pueden dar.
-
-.Motivation
-La motivación de este apartado consiste en ilustrar a los stakeholders sobre el funcionamiento de la aplicación,
-de forma que los posibles usuarios que tenga la aplicación puedan aprender y familiarizarse con el funcionamiento de 
-ésta rapidamente para que sus experiencias sean satisfactorias.
-
-
-
 === Escenario 1. Registrarse como un nuevo usuario
 Para registrarse como nuevo usuario en la aplicación, tendrás que dar permiso al Pod con tus datos
 para permitir al servicio conocer tus nombre, apellidos y direccion. Esto nos servirá para poder

@@ -1,10 +1,8 @@
 [[section-introduction-and-goals]]
-== 1. Introducción y Metas
+== Introducción y Metas
 
-=== 1.1 Vista de Requerimientos
+=== Vista de Requerimientos
 
-[role="arc42help"]
-****
 Algunos de los requisitos se extrajeron del propio enunciado de la práctica:
 
 https://arquisoft.github.io/course2122/labEnunciadoPractica.html
@@ -23,12 +21,9 @@ Los requisitos son, a grandes rasgos, los siguientes:
 *	Se deben poder añadir nuevos productos.
 *	Solo los administradores del bar podrán crear o eliminar (entre más operaciones) los productos, mientras que los clientes podrán interactuar con la aplicación para comprar los productos.
 
-****
 
-=== 1.2 Metas de Calidad
+=== Metas de Calidad
 
-[role="arc42help"]
-****
 Contenido, Motivación
 
 *	Sencillez, tanto para el cliente como para el administrador debe ser sencillo utilizar la aplicación y desenvolverse con ella.
@@ -48,12 +43,9 @@ Contenido, Motivación
 |6.|Atractivo|La interfaz debería ser atractiva de cara a los usuarios, ya que, por norma general, se sentirán más acogidos y cómodos en una aplicación que les resulte atractivo que en uno que no lo sea.| Medio / Medio
 |===
 
-****
 
-=== 1.3 Partes interesadas (Stakeholders)
+=== Partes interesadas (Stakeholders)
 
-[role="arc42help"]
-****
 [options="header",cols="1,1"]
 |===
 |Rol|Expectativas
@@ -63,4 +55,4 @@ Contenido, Motivación
 |Usuarios|Poder entender y utilizar la aplicación correctamente de una manera sencilla y eficaz.
 |Administradores|Estar al tanto del bar y poder actualizarlo en caso de tener nuevos productos o algunos estén obsoletos.
 |===
-****
+

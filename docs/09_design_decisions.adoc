@@ -1,8 +1,6 @@
 [[section-design-decisions]]
 == Design Decisions
 
-
-[role="arc42help"]
 [options="header",cols="1,2,3,4"]
 |===
 |Decisión|Importancia|Consecuencias|Justificación

@@ -1,16 +1,14 @@
 [[section-architecture-constraints]]
-== 2. Restricciones de la Arquitectura
+== Restricciones de la Arquitectura
 
-=== 2.1 Alcance y contexto del sistema
-[role="arc42help"]
-****
+=== Alcance y contexto del sistema
+
 Contexto: Es una aplicación para vender pinchos y bebida de forma online (o lo que es lo mismo, un bar).  Tomaremos como ejemplo aplicaciones parecidas, como pueden ser las de comida rápida o restaurantes.
 
 Alcance: El alcance del sistema es poder dotar a los clientes de una aplicación funcional para poder hacer sus pedidos y procesarlos correctamente. Es decir tener un sistema lo más parecido posible a una tienda de comida online.
-****
-=== 2.2 Contexto de Convenios
-[role="arc42help"]
-****
+
+=== Contexto de Convenios
+
 [options="header",cols="1,1"]
 |===
 |Restricción|Explicación
@@ -21,11 +19,10 @@ Alcance: El alcance del sistema es poder dotar a los clientes de una aplicación
 |TypeScript|En cuanto al nombrado de métodos, clases, variables, parámetros… Se seguirán los convenios de TypeScript.
 |Fácil de usar (UI)|Es una aplicación que debería poder usar todo el mundo. Debe ser sencilla de usar y parecida a otras aplicaciones similares (por ejemplo aplicaciones de comida a domicilio).
 |===
-****
 
-=== 2.3 Contexto técnico
-[role="arc42help"]
-****
+
+=== Contexto técnico
+
 [options="header",cols="1,1"]
 |===
 |Restricción|Explicación
@@ -38,11 +35,10 @@ Alcance: El alcance del sistema es poder dotar a los clientes de una aplicación
 |Docker|Ejecutaremos nuestra aplicación en un host de Docker.
 |MongoDB|Será nuestra base de datos donde almacenaremos todos los datos que necesitamos. MongoDB proporciona una base de datos con una gran documentación, perfecta para su uso junto a TypeScript e integrarla dentro de la aplicación es más sencillo y rápido. Esta decisión no es un requisito como en el caso de los demás, si no que hemos tomado esta decisión nosotros.
 |===
-****
 
-=== 2.4 Contexto Organizacional
-[role="arc42help"]
-****
+
+=== Contexto Organizacional
+
 [options="header",cols="1,1"]
 |===
 |Restricción|Explicación

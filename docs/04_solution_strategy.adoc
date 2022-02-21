@@ -1,8 +1,6 @@
 [[section-solution-strategy]]
 == Solution Strategy
 
-
-[role="arc42help"]
 .Decisiones tecnológicas
 * MERN como stack del proyecto, lo cual nos dará una base sólida sobre la que trabajar, tanto con la base de datos, Frontend y Backend, esto implica:
 ** MongoDB como base de datos NoSQl.

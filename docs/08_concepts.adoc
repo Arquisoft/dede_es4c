@@ -11,7 +11,7 @@ protagonistas en la aplicación.
 .Motivation
 Definir un modelo de dominio de la aplicación para ilustrar las entidades que 
 formarán partede nuestra app y la interacción entre ellos.
-
+****
 
 === Domain model
 
