@@ -1,26 +1,11 @@
 [[section-design-decisions]]
 == Design Decisions
 
-
-[role="arc42help"]
-****
-.Contents
-Important, expensive, large scale or risky architecture decisions including rationals.
-With "decisions" we mean selecting one alternative based on given criteria.
-
-Please use your judgement to decide whether an architectural decision should be documented
-here in this central section or whether you better document it locally
-(e.g. within the white box template of one building block).
-
-Avoid redundancy. Refer to section 4, where you already captured the most important decisions of your architecture.
-
-.Motivation
-Stakeholders of your system should be able to comprehend and retrace your decisions.
-
-.Form
-Various options:
-
-* List or table, ordered by importance and consequences or:
-* more detailed in form of separate sections per decision
-* ADR (architecture decision record) for every important decision
-****
+[options="header",cols="1,2,3,4"]
+|===
+|Decisión|Importancia|Consecuencias|Justificación
+| Uso de MERN | Toda la aplicación se basa en esto | No hay marcha atrás, quitando la base de datos, toda la aplicación depende de esta decisión | Nos da una base sólida para el proyecto, su uso es muy cómodo y se ajusta a lo buscado
+| Uso de MongoDB | La parte importante la aplicación, los productos, dependen de esta decisión | Un mal uso de la base de datos temprano puede traer consigo cambios muy grandes en el futuro | Es más fácil de utilizar junto al resto de tecnologías seleccionadas que el resto de las bases de datos
+| Temática de la tienda | La aplicación ha de girar en torno a esta temática | Si hubiera que cambiar la temática, habría que tocar diseños, clases, base de datos… | Nos pareció una temática adecuada
+| Uso de SOLID | Los datos del usuario serán tratados a través de pods | Si quisiéramos quitar SOLID, tendríamos que rehacer todo lo relacionado con la obtención de los datos del usuario | Es una buena forma de preservar la privacidad del usuario y sus datos.
+|===

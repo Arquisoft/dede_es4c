@@ -1,24 +1,25 @@
 [[section-solution-strategy]]
 == Solution Strategy
 
+.Decisiones tecnológicas
+* MERN como stack del proyecto, lo cual nos dará una base sólida sobre la que trabajar, tanto con la base de datos, Frontend y Backend, esto implica:
+** MongoDB como base de datos NoSQl.
+** Expres JS como framework de Node JS.
+** Framework React para crear las interfaces de usuario.
+** Node JS como entorno de ejecución.
+** Typescript como lenguaje de programación: MERN exige trabajar con JavaScript, pero Typescript añade una capa extra de tipado estático, que vendrá bien para prevenir errores.
+* SOLID para preservar la privacidad de los datos del usuario.
+* Github para el control de versiones
 
-[role="arc42help"]
-****
-.Contents
-A short summary and explanation of the fundamental decisions and solution strategies, that shape the system's architecture. These include
+.Decisiones acerca de la descomposición a alto nivel
+Utilizaremos el Modelo-Vista-Controlador (MVC) como patrón principal, lo que nos permitirá separar la lógica de la presentación.
+Para asegurarnos de la accesibilidad, nos guiaremos a través de validadores WCAG 2.0 (Level AAA).
 
-* technology decisions
-* decisions about the top-level decomposition of the system, e.g. usage of an architectural pattern or design pattern
-* decisions on how to achieve key quality goals
-* relevant organizational decisions, e.g. selecting a development process or delegating certain tasks to third parties.
+.Decisiones en como alcanzar metas de calidad claves
+Trabajo continuo sobre el proyecto a lo largo de su duración.
+Revisión (a través de Pull Request) del trabajo entre los integrantes del equipo.
 
-.Motivation
-These decisions form the cornerstones for your architecture. They are the basis for many other detailed decisions or implementation rules.
-
-.Form
-Keep the explanation of these key decisions short.
-
-Motivate what you have decided and why you decided that way,
-based upon your problem statement, the quality goals and key constraints.
-Refer to details in the following sections.
-****
+.Decisiones organizacionales
+Se realizarán 2 reuniones semanales, utilizaremos Discord para la organización de reuniones no presenciales. Cada reunión tendrá un acta, la cual será subida a Github.
+También hemos optado por el uso de Issues y Kanban (GitHub) para la organización de tareas.
+Respecto a tareas específicas, todos los miembros del equipo trabajaremos en todos los aspectos del proyecto.

@@ -1,31 +1,56 @@
 [[section-glossary]]
 == Glossary
 
-
-
-[role="arc42help"]
-****
-.Contents
-The most important domain and technical terms that your stakeholders use when discussing the system.
-
-You can also see the glossary as source for translations if you work in multi-language teams.
-
-.Motivation
-You should clearly define your terms, so that all stakeholders
-
-* have an identical understanding of these terms
-* do not use synonyms and homonyms
-
-.Form
-A table with columns <Term> and <Definition>.
-
-Potentially more columns in case you need translations.
-
-****
-
-[options="header"]
+[cols="e,2e" options="header"]
 |===
-| Term         | Definition
-| <Term-1>     | <definition-1>
-| <Term-2>     | <definition-2>
+|Término |Definición
+
+|Stack
+|Lista de todos los servicios tecnológicos utilizados para construir y ejecutar una sola aplicación
+
+|NoSQl
+|Base de datos no relacional (No tiene estructura fija)
+
+|Framework
+|Esquema o marco de trabajo que ofrece una estructura base para elaborar un proyecto con objetivos específicos
+
+|Accesibilidad 
+|Práctica inclusiva de garantizar la accesibilidad a los sitios web, y que las herramientas y las tecnologías estén diseñados y desarrollados para que las personas con discapacidad puedan usarlas
+
+|Pull Request
+|Petición que el propietario de una rama de un repositorio hace al propietario del repositorio original para que este último incorpore los commits que están en la rama
+
+|Pods
+|Son las estructuras que utiliza Solid para almacenar datos
+
+|RESTAPI
+|Interfaz de programación de aplicaciones (API) que se ajusta a los límites de la arquitectura REST y permite la interacción con los servicios web de la misma.
+
+|Consistencia
+|Los datos que contenga la base de datos deberán ser siempre correctos y estar actualizados.
+
+|MVC
+|Patrón para separar la capa de lógica de la aplicación de la presentación de la misma.
+
+|TypeScript
+|Superconjunto de JavaScript que permite el uso de tipos estáticos y objetos basados en clases.
+
+|Testeable
+|Toda la aplicación deberá ser probada mediante pruebas en todas las capas que contenga la misma.
+
+|MongoBD
+|Base de Datos NoSQL orientada a documentos y de código abierto y cuya integración a aplicaciones que usan JavaScript es mucho más rápida y sencilla.
+
+|Seguridad
+|En el contexto de la aplicación, el sistema debe ser seguro siempre con los datos de los clientes con una serie de medidas para velar por la integridad de los mismos.
+
+|Issues
+|Unidad de trabajo utilizada para específicar una mejora en un sistema informático. En nuestro caso se usará para contabilizar las tareas que se van realizando, las que ya se han realizado, y quién debe hacer cada tarea.
+
+|Usabilidad
+|La aplicación será utilizada por todo tipo de personas y a estas no les debe llevar mucho esfuerzo ni tiempo comprender cómo funciona la aplicación.
+
+|Eficiente
+|Las transacciones que se realicen en la aplicación deberán ser de un tiempo pequeño.
+
 |===

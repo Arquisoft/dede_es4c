@@ -1,66 +1,46 @@
 [[section-system-scope-and-context]]
-== System Scope and Context
+== Alcance y Contexto del Sistema
 
+=== Contexto de Negocio
 
-[role="arc42help"]
-****
-.Contents
-System scope and context - as the name suggests - delimits your system (i.e. your scope) from all its communication partners
-(neighboring systems and users, i.e. the context of your system). It thereby specifies the external interfaces.
+[plantuml,"Business Context Diagram",png]
+----
+skinparam actorStyle awesome
+actor Usuario as g
+package DeDe {
+    usecase "Encargar productos" as UC1
+    usecase "Login" as UC2
+    usecase "Ver pedidos" as UC3
+}
+package Pod {
+    usecase "Gestión de usuarios" as UC4
+}
+package BBDD {
+    usecase "Gestión de productos" as UC5
+}
+g --> UC1
+g --> UC2
+g --> UC3
+DeDe --> Pod
+DeDe --> BBDD
+----
 
-If necessary, differentiate the business context (domain specific inputs and outputs) from the technical context (channels, protocols, hardware).
+El sistema permitirá al usuario hacer pedidos de los diferentes productos disponibles, pudiendo también, iniciar sesión con su propia cuenta mediante un proveedor de pods, que seguirá los principios SOLID. Dicho pod es quien se encarga de gestionar la información de los usuarios. Por otro lado, los datos de los productos serán almacenados por la base de datos.
 
-.Motivation
-The domain interfaces and technical interfaces to communication partners are among your system's most critical aspects. Make sure that you completely understand them.
+* Usuario: persona interesado en la tienda que quiera realizar una compra y poder gestionar su propia cuenta
+* DeDe: provee al usuario la interfz necesaria para llevar a cabo todas las operaciones
+* Pod: suministra a la aplicación la información descentralizada del usuario
+* Base de datos: encargada de toda la persistencia de los datos que compondran la aplicación
 
-.Form
-Various options:
+=== Contexto Técnico
 
-* Context diagrams
-* Lists of communication partners and their interfaces.
-****
+Como se ha mencionado anteriormente, la aplicación hará uso de la tecnología SOLID dirigida por Tim Berners-Lee para realizar un proyecto descentralizado. Esta proporcionará un pod a cada usuario permitiendo almacenar toda la información de cada uno, y se la proveerá a la aplicación.
+Para la implementación del proyecto se utilizarán tecnologías como REACT, para el desarrollo Frontend, y la base de datos MongoDB, para todo lo relativo a la persistencia de datos.
 
-
-=== Business Context
-
-[role="arc42help"]
-****
-.Contents
-Specification of *all* communication partners (users, IT-systems, ...) with explanations of domain specific inputs and outputs or interfaces.
-Optionally you can add domain specific formats or communication protocols.
-
-.Motivation
-All stakeholders should understand which data are exchanged with the environment of the system.
-
-.Form
-All kinds of diagrams that show the system as a black box and specify the domain interfaces to communication partners.
-
-Alternatively (or additionally) you can use a table.
-The title of the table is the name of your system, the three columns contain the name of the communication partner, the inputs, and the outputs.
-****
-
-**<Diagram or Table>**
-
-**<optionally: Explanation of external domain interfaces>**
-
-=== Technical Context
-
-[role="arc42help"]
-****
-.Contents
-Technical interfaces (channels and transmission media) linking your system to its environment. In addition a mapping of domain specific input/output to the channels, i.e. an explanation with I/O uses which channel.
-
-.Motivation
-Many stakeholders make architectural decision based on the technical interfaces between the system and its context. Especially infrastructure or hardware designers decide these technical interfaces.
-
-.Form
-E.g. UML deployment diagram describing channels to neighboring systems,
-together with a mapping table showing the relationships between channels and input/output.
-
-****
-
-**<Diagram or Table>**
-
-**<optionally: Explanation of technical interfaces>**
-
-**<Mapping Input/Output to Channels>**
+|===
+|Tecnología|Descripción
+| React | Biblioteca escrita en JavaScript desarrollada por Facebook para la creación de interfaces de usuario.
+| TypeScript | Lenguaje de programación libre y de código abierto desarrollado y mantenido por Microsoft. Es un superconjunto de JavaScript
+| SOLID | Proyecto descentralizado cuyo principal objetivo es que el usuario tenga el control de su privacidad.
+| MongoDB | Base de datos NoSQL open source que ofrece un modelo de datos flexible para organizar y almacenar todo tipo de datos
+|===
