@@ -1,0 +1,42 @@
+[[section-concepts]]
+== Cross-cutting Concepts
+
+
+[role="arc42help"]
+****
+.Content
+Este apartado contendrá la información principal de los elementos o conceptos 
+protagonistas en la aplicación.
+
+.Motivation
+Definir un modelo de dominio de la aplicación para ilustrar las entidades que 
+formarán partede nuestra app y la interacción entre ellos.
+
+
+=== Domain model
+
+image:domainModel.png["Example UML Diagram"]
+
+
+
+=== Concepto 1
+
+Producto: Es el principal actor de la aplicación y serán los productos que
+el usuario podrá añadir a su pedido, en el caso de nuestra aplicación, serán
+pinchos (bocatas) 
+
+=== Concepto 2
+
+Pedido: Contiene todos los productos que el cliente haya seleccionado y serán
+enviados al domicilio que figura en el Pod del usuario, calculando el precio del
+pedido en funcion del domicilio del cliente
+
+=== Concepto 3
+
+Cliente: Persona física que interactua con la aplicación
+
+=== Concepto 4
+ Pod: Estructura que utiliza nuestra arquitectura SOLID para guardar los datos del cliente
+ para que la aplicación pueda utilizar estos datos, el cliente tendráa que darle permisos al 
+ servicio
+
