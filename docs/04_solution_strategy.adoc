@@ -1,5 +1,5 @@
 [[section-solution-strategy]]
-== Solution Strategy
+== Estrategia de solución
 
 .Decisiones tecnológicas
 * MERN como stack del proyecto, lo cual nos dará una base sólida sobre la que trabajar, tanto con la base de datos, Frontend y Backend, esto implica:
@@ -20,6 +20,7 @@ Trabajo continuo sobre el proyecto a lo largo de su duración.
 Revisión (a través de Pull Request) del trabajo entre los integrantes del equipo.
 
 .Decisiones organizacionales
-Se realizarán 2 reuniones semanales, utilizaremos Discord para la organización de reuniones no presenciales. Cada reunión tendrá un acta, la cual será subida a Github.
+Se realizará una reunión semanal, utilizaremos Discord para la organización de reuniones no presenciales. Cada reunión tendrá un acta, la cual será subida a Github.
 También hemos optado por el uso de Issues y Kanban (GitHub) para la organización de tareas.
+Respecto al Kanban,tenemos 3 tableros diferentes (frontend, backend y otro general), cada uno de ellos con 4 columnas: "To do", "In progress", "Done" y "Merge".
 Respecto a tareas específicas, todos los miembros del equipo trabajaremos en todos los aspectos del proyecto.
