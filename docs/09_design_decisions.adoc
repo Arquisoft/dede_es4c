@@ -1,5 +1,5 @@
 [[section-design-decisions]]
-== Decisiones de Diseño
+== Design Decisions
 
 [options="header",cols="1,2,3,4"]
 |===
