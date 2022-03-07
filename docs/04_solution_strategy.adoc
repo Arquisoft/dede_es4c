@@ -1,7 +1,7 @@
 [[section-solution-strategy]]
-== Solution Strategy
+== Estrategia de solución
 
-.Decisiones tecnológicas
+=== Decisiones tecnológicas
 * MERN como stack del proyecto, lo cual nos dará una base sólida sobre la que trabajar, tanto con la base de datos, Frontend y Backend, esto implica:
 ** MongoDB como base de datos NoSQl.
 ** Expres JS como framework de Node JS.
@@ -11,15 +11,16 @@
 * SOLID para preservar la privacidad de los datos del usuario.
 * Github para el control de versiones
 
-.Decisiones acerca de la descomposición a alto nivel
+=== Decisiones acerca de la descomposición a alto nivel
 Utilizaremos el Modelo-Vista-Controlador (MVC) como patrón principal, lo que nos permitirá separar la lógica de la presentación.
 Para asegurarnos de la accesibilidad, nos guiaremos a través de validadores WCAG 2.0 (Level AAA).
 
-.Decisiones en como alcanzar metas de calidad claves
+=== Decisiones en como alcanzar metas de calidad claves
 Trabajo continuo sobre el proyecto a lo largo de su duración.
 Revisión (a través de Pull Request) del trabajo entre los integrantes del equipo.
 
-.Decisiones organizacionales
-Se realizarán 2 reuniones semanales, utilizaremos Discord para la organización de reuniones no presenciales. Cada reunión tendrá un acta, la cual será subida a Github.
+=== Decisiones organizacionales
+Se realizará una reunión semanal, utilizaremos Discord para la organización de reuniones no presenciales. Cada reunión tendrá un acta, la cual será subida a Github.
 También hemos optado por el uso de Issues y Kanban (GitHub) para la organización de tareas.
 Respecto a tareas específicas, todos los miembros del equipo trabajaremos en todos los aspectos del proyecto.
+Disponemos de 3 Kanbans, uno para cosas generales y los otros dos para tareas del Backend y Frontend. Cada uno dispone de 4 columnas: to do, in progress, done y merges
