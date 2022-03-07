@@ -30,6 +30,6 @@ npm run build
 La documentación se generará en el directorio `docs/build`. 
 
 ### Despliegue Documentación
-Si queremos desplegar la documentación en GitHub pages, estará accesible en [https://arquisoft.github.io/dede_0/](https://arquisoft.github.io/dede_0/) necesitamos ejecutar `npm run deploy`.
+Si queremos desplegar la documentación en GitHub pages, estará accesible en [https://arquisoft.github.io/dede_0/](https://arquisoft.github.io/dede_es4c/) necesitamos ejecutar `npm run deploy`.
 
 Si revisas el `package.json` de este directorio veras como desplegar es tan facil como ejecutar `gh-pages -d build`, que puede hacerse ejecutando directamente `npm run deploy` en el directorio de la doumentación. el paquete `gh-pages` se encarga de subir la documentación generada (basicamente archivo html) a una rama especial de github llamda gh-pages. Todo lo que se suba a esa rama es acesible en la página del repositorio. Ten en cuenta que solo queremos subir ahí la documentación. También es importante que el build de la documentación no se suba a otras ramas del proyecto.
