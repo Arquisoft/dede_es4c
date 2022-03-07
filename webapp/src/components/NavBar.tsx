@@ -40,9 +40,13 @@ const NavBar = () => {
 
   return (
     <AppBar position="static" style={{ background: '#596886' }}>
-      <Container maxWidth="xl">
+      <Container maxWidth={false}>
         <Toolbar disableGutters>
-            <Link href='/'>
+            <Link href='/'
+            variant="h6"
+            noWrap
+            component="div"
+            sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}>
           <img src={logo}></img>
           </Link>
 
@@ -57,16 +61,39 @@ const NavBar = () => {
             >
               <MenuIcon />
             </IconButton>
-           
+            <Menu
+              id="menu-appbar"
+              anchorEl={anchorElNav}
+              anchorOrigin={{
+                vertical: 'bottom',
+                horizontal: 'left',
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'left',
+              }}
+              open={Boolean(anchorElNav)}
+              onClose={handleCloseNavMenu}
+              sx={{
+                display: { xs: 'block', md: 'none' },
+              }}
+            >
+              {pages.map((page) => (
+                <MenuItem key={page} onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">{page}</Typography>
+                </MenuItem>
+              ))}
+            </Menu>
           </Box>
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}
-          >
-            DeDe
-          </Typography>
+          
+          <Link href='/'
+          variant="h6"
+          noWrap
+          component="div"
+          sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+          <img src={logo}></img>
+          </Link>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
               <Link href={"/" + page} sx={{ my: 2, color: '#fff', display: 'block', pr: 4, pl: 4 }}>{page}</Link>

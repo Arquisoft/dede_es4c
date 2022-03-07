@@ -1,6 +1,13 @@
 [[section-concepts]]
 == Cross-cutting Concepts
 
+=== Interfaz de usuario
+
+image:PrototipoInicio.png["Prototipo de la pantalla principal"]
+
+image:PrototipoProductos.png["Prototipo de la pantalla de vista de productos"]
+
+image:PrototipoPerfil.png["Prototipo de la pantalla del perfil"]
 
 [role="arc42help"]
 ****
