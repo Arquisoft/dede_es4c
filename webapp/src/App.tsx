@@ -8,7 +8,8 @@ import Home from './pages/Home';
 import Tienda from './pages/Tienda';
 import Historia from './pages/Historia';
 import Signup from './pages/Signup';
-
+import  {getPinchos} from './api/api';
+import {Pincho} from './shared/shareddtypes';
 import './App.css';
 
 

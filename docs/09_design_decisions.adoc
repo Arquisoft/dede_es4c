@@ -1,26 +1,11 @@
-[[section-solution-strategy]]
-== Estrategia de solución
+[[section-design-decisions]]
+== Decisiones de diseño
 
-=== Decisiones tecnológicas
-* MERN como stack del proyecto, lo cual nos dará una base sólida sobre la que trabajar, tanto con la base de datos, Frontend y Backend, esto implica:
-** MongoDB como base de datos NoSQl.
-** Expres JS como framework de Node JS.
-** Framework React para crear las interfaces de usuario.
-** Node JS como entorno de ejecución.
-** Typescript como lenguaje de programación: MERN exige trabajar con JavaScript, pero Typescript añade una capa extra de tipado estático, que vendrá bien para prevenir errores.
-* SOLID para preservar la privacidad de los datos del usuario.
-* Github para el control de versiones
-
-=== Decisiones acerca de la descomposición a alto nivel
-Utilizaremos el Modelo-Vista-Controlador (MVC) como patrón principal, lo que nos permitirá separar la lógica de la presentación.
-Para asegurarnos de la accesibilidad, nos guiaremos a través de validadores WCAG 2.0 (Level AAA).
-
-=== Decisiones en como alcanzar metas de calidad claves
-Trabajo continuo sobre el proyecto a lo largo de su duración.
-Revisión (a través de Pull Request) del trabajo entre los integrantes del equipo.
-
-=== Decisiones organizacionales
-Se realizará una reunión semanal, utilizaremos Discord para la organización de reuniones no presenciales. Cada reunión tendrá un acta, la cual será subida a Github.
-También hemos optado por el uso de Issues y Kanban (GitHub) para la organización de tareas.
-Respecto al Kanban,tenemos 3 tableros diferentes (frontend, backend y otro general), cada uno de ellos con 4 columnas: "To do", "In progress", "Done" y "Merge".
-Respecto a tareas específicas, todos los miembros del equipo trabajaremos en todos los aspectos del proyecto.
+[options="header",cols="1,2,3,4"]
+|===
+|Decisión|Importancia|Consecuencias|Justificación
+| Uso de MERN | Toda la aplicación se basa en esto | No hay marcha atrás, quitando la base de datos, toda la aplicación depende de esta decisión | Nos da una base sólida para el proyecto, su uso es muy cómodo y se ajusta a lo buscado
+| Uso de MongoDB | La parte importante la aplicación, los productos, dependen de esta decisión | Un mal uso de la base de datos temprano puede traer consigo cambios muy grandes en el futuro | Es más fácil de utilizar junto al resto de tecnologías seleccionadas que el resto de las bases de datos
+| Temática de la tienda | La aplicación ha de girar en torno a esta temática | Si hubiera que cambiar la temática, habría que tocar diseños, clases, base de datos… | Nos pareció una temática adecuada
+| Uso de SOLID | Los datos del usuario serán tratados a través de pods | Si quisiéramos quitar SOLID, tendríamos que rehacer todo lo relacionado con la obtención de los datos del usuario | Es una buena forma de preservar la privacidad del usuario y sus datos.
+|===
