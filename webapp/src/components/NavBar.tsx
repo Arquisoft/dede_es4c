@@ -15,6 +15,7 @@ import MenuItem from '@mui/material/MenuItem';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import logo from './icons/DeDe.png';
+import CartDrawer from './CartDrawer';
 
 const pages = ['Tienda', 'Historia'];
 const settings = ['Perfil', 'Signup', 'Logout'];
@@ -131,7 +132,7 @@ const NavBar = () => {
           <Box sx={{ flexGrow: 0, pr: 5 }}>
             <Tooltip title="Abrir carrito">
               <IconButton size="large">
-              <AddShoppingCartIcon fontSize="inherit" sx={{ color: "#fff" }} />
+              <CartDrawer />
 
               </IconButton>
               
