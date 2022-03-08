@@ -39,7 +39,7 @@ export default function TemporaryDrawer() {
 
   const list = (anchor: Anchor) => (
     <Box
-      sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
+      sx={{ width: 250 }}
       role="presentation"
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
@@ -47,11 +47,9 @@ export default function TemporaryDrawer() {
       <Typography textAlign="center">Actualmente el carrito está vacío</Typography>
       <Divider />
       <List>
-        {['Inicie sesión'].map((text, index) => (
+        {['Crea una cuenta', 'Inicie sesión'].map((text, index) => (
           <ListItem button key={text}>
-            <ListItemIcon>
-              {index % 2 === 0 ? <AccountCircleIcon /> : <MailIcon />}
-            </ListItemIcon>
+            <AccountCircleIcon />
             <ListItemText primary={text} />
           </ListItem>
         ))}

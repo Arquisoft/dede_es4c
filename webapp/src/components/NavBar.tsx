@@ -37,6 +37,7 @@ const NavBar = () => {
 
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
+    
   };
 
   return (
@@ -121,9 +122,12 @@ const NavBar = () => {
               onClose={handleCloseUserMenu}
             >
               {settings.map((setting) => (
+                <Link href={"/" + setting} sx={{ my: 2, color: '#000F', display: 'block'}} underline='none'>
                 <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                  
                   <Typography textAlign="center">{setting}</Typography>
                 </MenuItem>
+                </Link>
               ))}
             </Menu>
           </Box>

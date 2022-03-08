@@ -1,0 +1,38 @@
+
+
+#signupView{
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto;
+    gap: 5em;
+    height: 850px;
+    
+}
+
+#form{
+    width: 70%;
+    text-align: center;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 20%);
+    padding: 20px;
+    box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.4);
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+form .textfield{
+    max-width: 50%;
+    padding-bottom: 1em;
+    background-color: white;
+}
+
+h1{
+    padding: 5%;
+}
+
+
