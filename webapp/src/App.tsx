@@ -7,6 +7,8 @@ import Welcome from './components/Welcome';
 import UserList from './components/UserList';
 import  {getUsers} from './api/api';
 import {User} from './shared/shareddtypes';
+import  {getPinchos} from './api/api';
+import {Pincho} from './shared/shareddtypes';
 import './App.css';
 
 function App(): JSX.Element {
