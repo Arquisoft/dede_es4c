@@ -45,8 +45,7 @@ const NavBar = () => {
         <Toolbar disableGutters>
             <Link href='/'
             variant="h6"
-            noWrap
-            component="div"
+            noWrap    
             sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}>
           <img src={logo}></img>
           </Link>
@@ -91,7 +90,6 @@ const NavBar = () => {
           <Link href='/'
           variant="h6"
           noWrap
-          component="div"
           sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
           <img src={logo}></img>
           </Link>
@@ -100,9 +98,9 @@ const NavBar = () => {
               <Link href={"/" + page} sx={{ my: 2, color: '#fff', display: 'block', pr: 4, pl: 4 }}>{page}</Link>
             ))}
           </Box>
-          <Box sx={{ flexGrow: 0 }}>
+          <Box sx={{ flexGrow: 0, pr: 5 }}>
             <Tooltip title="Opciones de usuario">
-              <IconButton onClick={handleOpenUserMenu} sx={{ pr: 5, color: '#fff' }} size='large'>
+              <IconButton onClick={handleOpenUserMenu} size='large'>
                 <AccountCircleIcon fontSize="inherit" sx={{ color: "#fff" }}/>
               </IconButton>
             </Tooltip>
