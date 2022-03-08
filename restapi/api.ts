@@ -32,7 +32,7 @@ api.get("/pinchos", async (req: Request, res: Response): Promise<Response> => {
 });
 api.get("/pinchos/:id", async (req: Request, res: Response): Promise<Response> => {
   try {
-      var result = await pinchos.findById(req.params.id).exec();
+      var result = await pinchos.findById($regex: '.*' + req.params.id + '.*').exec();
       return res.status(200).json(result);
   } catch (error) {
     return res.status(500).send(error);
