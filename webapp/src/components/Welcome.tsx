@@ -1,6 +1,7 @@
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import logo from '../logo.svg';
+import React from 'react';
 
 type WelcomeProps = {
   message: string;
