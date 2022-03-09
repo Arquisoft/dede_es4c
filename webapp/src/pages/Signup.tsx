@@ -1,5 +1,4 @@
 import React from 'react';
-import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import "./styles/signup.css";
@@ -45,7 +44,7 @@ const Signup = () => {
       </form>
       <p>
         ¿Ya tienes una cuenta? <br />
-        <a href="/">Inicia sesión</a>
+        <a href="/Login">Inicia sesión</a>
       </p>
       </div>
       

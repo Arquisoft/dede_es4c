@@ -18,7 +18,7 @@ import logo from './icons/DeDe.png';
 import CartDrawer from './CartDrawer';
 
 const pages = ['Tienda', 'Historia'];
-const settings = ['Perfil', 'Signup', 'Logout'];
+const settings = ['Perfil', 'Signup', 'Login', 'Logout'];
 
 const NavBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
