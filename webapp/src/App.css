@@ -63,19 +63,14 @@ footer{
 /*Listado Productos */
 
 #listadoProducto{
-  display: grid;
-  grid-template-columns: repeat(1, auto);
-  grid-template-rows: repeat(4, auto);
   flex-direction: row;
   gap: 1em;
   align-items: center;
 }
 
 #listadoProducto main{
-  grid-row-start: 1;
-  grid-row-end: 2;
-  padding: 1em;
-  margin: 1em;
+  padding: 0.5em;
+  margin: 0.5em;
   font-size: 2em;
 }
 
@@ -85,12 +80,20 @@ footer{
   font-size: 2em;
 }
 
-#listadoProducto main p{
-  padding-top: 2em;
-  padding-bottom: 2em;
+#listadoProducto h2{
+  padding-top: 0.2em;
+  padding-bottom: 0.2em;
   font-size: 0.7em;
 }
 
-#listadoProducto aside{
-  margin-top: 5em;
+#listadoProducto p{
+  padding-top: 0.2em;
+  padding-bottom: 0.2em;
+  font-size: 0.4em;
+}
+
+#listadoProducto button{
+  padding: 0.5em;
+  margin: 0.5em;
+  font-size: 0.26em;
 }
