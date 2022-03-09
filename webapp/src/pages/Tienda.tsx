@@ -38,9 +38,7 @@ const Tienda = () => {
                 <SearchIcon fontSize="large" />
                 </IconButton>
                 </main>
-            <div id='productos'>
                 <Productos products = {productosLista}></Productos>                 
-            </div>
         </div>
     );
 }
