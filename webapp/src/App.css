@@ -59,3 +59,38 @@
 footer{
   text-align: center;
 }
+
+/*Listado Productos */
+
+#listadoProducto{
+  display: grid;
+  grid-template-columns: repeat(1, auto);
+  grid-template-rows: repeat(4, auto);
+  flex-direction: row;
+  gap: 1em;
+  align-items: center;
+}
+
+#listadoProducto main{
+  grid-row-start: 1;
+  grid-row-end: 2;
+  padding: 1em;
+  margin: 1em;
+  font-size: 2em;
+}
+
+#productos{
+  padding: 1em;
+  margin: 1em;
+  font-size: 2em;
+}
+
+#listadoProducto main p{
+  padding-top: 2em;
+  padding-bottom: 2em;
+  font-size: 0.7em;
+}
+
+#listadoProducto aside{
+  margin-top: 5em;
+}
