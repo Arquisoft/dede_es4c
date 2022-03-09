@@ -1,8 +1,10 @@
 import React from 'react';
+import Producto from '../components/Producto';
+import Grid from '@mui/material/Grid';
 
 const Tienda = () => {
     return (
-        <h1>Artículos disponibles</h1>
+      <div></div>
     );
 }
 

@@ -8,6 +8,7 @@ import Home from './pages/Home';
 import Tienda from './pages/Tienda';
 import Historia from './pages/Historia';
 import Signup from './pages/Signup';
+import Login from './pages/Login';
 import  {getPinchos} from './api/api';
 import {Pincho} from './shared/shareddtypes';
 import './App.css';
@@ -38,6 +39,7 @@ function App(): JSX.Element {
         <Route path="/Tienda" element={<Tienda />} />
         <Route path="/Signup" element={<Signup />} />
         <Route path="/Historia" element={<Historia />} />
+        <Route path="/Login" element={<Login />} />
       </Routes>
     </Router>
     <Footer/>
