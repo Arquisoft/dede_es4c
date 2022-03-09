@@ -10,7 +10,7 @@
 }
 
 #form{
-    width: 70%;
+    width: 60%;
     text-align: center;
     position: relative;
     left: 50%;
@@ -23,12 +23,7 @@ form{
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-form .textfield{
-    max-width: 50%;
-    padding-bottom: 1em;
-    background-color: white;
+    gap: 1em;
 }
 
 h1{
