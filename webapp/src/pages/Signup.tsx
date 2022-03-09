@@ -41,7 +41,7 @@ const Signup = () => {
           variant="outlined"
         />
         <br />
-        <Button/>
+        <Button variant='contained'>Enviar</Button>
       </form>
       <p>
         ¿Ya tienes una cuenta? <br />
