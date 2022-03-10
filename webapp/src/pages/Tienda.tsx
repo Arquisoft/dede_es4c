@@ -2,21 +2,8 @@ import React from 'react';
 import TextField from '@mui/material/TextField';
 import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
-import { styled } from '@mui/material/styles';
-import Grid from '@mui/material/Grid';
-import Paper from '@mui/material/Paper';
-import Box from '@mui/material/Box';
 import Productos from "./Productos";
-import Producto from "./Product";
 import Prueba from "./Producto";
-
-const Item = styled(Paper)(({ theme }) => ({
-    backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-    ...theme.typography.body2,
-    padding: theme.spacing(1),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-  }));
 
 const prod1 = new Prueba("Tortilla", 3);
 const prod2 = new Prueba("Vegetal", 3.5);
@@ -38,7 +25,7 @@ const Tienda = () => {
                 <SearchIcon fontSize="large" />
                 </IconButton>
                 </main>
-                <Productos products = {productosLista}></Productos>                 
+                <Productos products = {productosLista}></Productos>               
         </div>
     );
 }

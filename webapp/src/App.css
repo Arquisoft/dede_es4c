@@ -65,7 +65,9 @@ footer{
 #listadoProducto{
   flex-direction: row;
   gap: 1em;
-  align-items: center;
+  background-image: url("images/pincho.png");
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 #listadoProducto main{
@@ -80,20 +82,29 @@ footer{
   font-size: 2em;
 }
 
+#paginacion{
+  font-size: 2.3em;
+  margin-left: 25%;
+}
+
+#paginacion button{
+  font-size: 0.26em;
+}
+
 #listadoProducto h2{
   padding-top: 0.2em;
   padding-bottom: 0.2em;
-  font-size: 0.7em;
+  font-size: 1em;
 }
 
 #listadoProducto p{
   padding-top: 0.2em;
   padding-bottom: 0.2em;
-  font-size: 0.4em;
+  font-size: 0.6em;
 }
 
 #listadoProducto button{
   padding: 0.5em;
   margin: 0.5em;
-  font-size: 0.26em;
+  font-size: 0.5em;
 }
