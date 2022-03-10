@@ -9,6 +9,8 @@ import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import RestaurantIcon from '@mui/icons-material/Restaurant';
 import LocalDrinkSharpIcon from '@mui/icons-material/LocalDrinkSharp';
+import Producto from '../components/Producto';
+import Grid from '@mui/material/Grid';
 
 const prod1 = new Prueba("Tortilla", 3);
 const prod2 = new Prueba("Vegetal", 3.5);
@@ -27,8 +29,7 @@ const prod14 = new Prueba("Cerveza", 2);
 const prod15 = new Prueba("Acuarius", 2.5);
 const productosLista = [prod1, prod2, prod3, prod4, prod5, prod6, prod7, prod8, prod9, prod10, prod11, prod12, prod13, prod14, prod15];
 
-import Producto from '../components/Producto';
-import Grid from '@mui/material/Grid';
+
 
 
 const Tienda = () => {
