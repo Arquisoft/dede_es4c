@@ -7,16 +7,16 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Home from "./pages/Home";
 import Tienda from "./pages/Tienda";
 import Historia from "./pages/Historia";
-import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import { getPinchos } from "./api/api";
 import { Pincho } from "./shared/shareddtypes";
 import "./App.css";
 import { SessionProvider } from "@inrupt/solid-ui-react";
+import { useSession, LogoutButton } from "@inrupt/solid-ui-react";
 
 function App(): JSX.Element {
 	const [users, setUsers] = useState<User[]>([]);
-
+	const { session, sessionRequestInProgress } = useSession();
 	const refreshUserList = async () => {
 		setUsers(await getUsers());
 	};
@@ -25,7 +25,7 @@ function App(): JSX.Element {
 		refreshUserList();
 	}, []);
 
-	return (
+	var app = (
 		<SessionProvider>
 			<div className="App">
 				<NavBar />
@@ -33,7 +33,6 @@ function App(): JSX.Element {
 					<Routes>
 						<Route path="/" element={<Home />} />
 						<Route path="/Tienda" element={<Tienda />} />
-						<Route path="/Signup" element={<Signup />} />
 						<Route path="/Historia" element={<Historia />} />
 						<Route path="/Login" element={<Login />} />
 					</Routes>
@@ -42,6 +41,8 @@ function App(): JSX.Element {
 			</div>
 		</SessionProvider>
 	);
+
+	return app;
 }
 
 export default App;

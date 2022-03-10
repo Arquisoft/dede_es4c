@@ -60,17 +60,4 @@ api.get("/pinchos/:id", async (req: Request, res: Response): Promise<Response> =
     return res.status(500).send(error);
   }
 });
-
-api.get("/login", async (req: Request, res: Response): Promise<Response> => {
-  try {
-    var result = login({
-      oidcIssuer: "https://broker.pod.inrupt.com",
-      redirectUrl: "/",
-      clientName: "dede_es4c",
-    });
-    return res.status(200).json(result);
-  } catch (error) {
-    return res.status(500).send(error);
-  }
-});
 export default api;
