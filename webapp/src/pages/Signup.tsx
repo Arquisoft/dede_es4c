@@ -6,11 +6,7 @@ import fondo from '../images/fondoComida.jpg';
 
 const Signup = () => {
     return (
-        <div id="signupView" style={{ 
-          backgroundImage:`url(${fondo})`,
-           backgroundRepeat:"no-repeat",
-            backgroundSize: 'cover', 
-             backgroundPosition: 'center' }}>
+        <div id="signupView">
       
         <div id='form'>
         <h1>Sign Up</h1>

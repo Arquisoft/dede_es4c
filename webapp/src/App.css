@@ -53,16 +53,95 @@
   margin-top: 5em;
 }
 
+#signupView{
+  background-image: url("images/fondoComida.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/*Listado Productos */
+
+#listadoProducto{
+  flex-direction: row;
+  gap: 1em;
+  background-image: url("images/pincho.png");
+  background-repeat: no-repeat;
+  background-position: center;
+}
 
 
+#listadoProducto main{
+  padding: 0.5em;
+  margin: 0.5em;
+  font-size: 2em;
+}
 
+#listadoProducto #basic-button{
+  font-size: 1em;
+  margin-left: 33%;
+  margin-top: -10%;
+}
+
+#listadoProducto #comida{
+  padding: 0.5em;
+  margin: 0.5em;
+  font-size: 10em;
+  margin-left: 33%;
+  margin-top: -10%;
+}
+
+#listadoProducto p#comida{
+  font-size: 2em;
+}
+
+#listadoProducto p#bebida{
+  font-size: 10em;
+}
+
+#productos{
+  grid-row-start: 2;
+  padding: 1em;
+  margin: 1em;
+  font-size: 2em;
+}
+
+#paginacion{
+  font-size: 2.3em;
+  margin-left: 25%;
+}
+
+#filtros{
+  font-size: 1.5em;
+}
+
+#paginacion button{
+  font-size: 0.26em;
+}
+
+#listadoProducto h2{
+  padding-top: 0.2em;
+  padding-bottom: 0.2em;
+  font-size: 1em;
+}
+
+#listadoProducto p{
+  padding-top: 0.2em;
+  padding-bottom: 0.2em;
+  font-size: 0.6em;
+}
+
+#listadoProducto button{
+  padding: 0.5em;
+  margin: 0.5em;
+  font-size: 0.5em;
+}
+  
 footer{
   text-align: center;
-  position:absolute;
+  
   bottom:0;
   width:100%;
   height:60px;   /* Height of the footer */
-  background:#596886;
 }
 
 .product{
