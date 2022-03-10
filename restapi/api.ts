@@ -1,39 +1,74 @@
 import express, { Request, Response, Router } from 'express';
-import {check} from 'express-validator';
+import { check } from 'express-validator';
+
+import {
+  createSolidDataset,
+  createThing,
+  setThing,
+  addUrl,
+  addStringNoLocale,
+  saveSolidDatasetAt,
+  getSolidDataset,
+  getThingAll,
+  getStringNoLocale,
+  removeThing,
+  FetchError,
+} from "@inrupt/solid-client";
+
+import {
+  login,
+  handleIncomingRedirect,
+  getDefaultSession,
+  fetch,
+} from "@inrupt/solid-client-authn-browser";
 
 const mongoose = require('mongoose');
 mongoose.connect('mongodb+srv://es4c:es4c@cluster0.hcz1f.mongodb.net/bar_pinchos?retryWrites=true&w=majority')
-    .then(() => {
-        console.log("Database connected")
-    }).catch(()=>{
-        console.error("error")
-    })
-    const { Schema } = mongoose;
-const pinchoSchema  = new Schema({
-    _id: {
-        type: String,
-        required: true
-    },
-     _precio: {
-        type: String,
-        required: true
-    }
+  .then(() => {
+    console.log("Database connected")
+  }).catch(() => {
+    console.error("error")
+  })
+const { Schema } = mongoose;
+const pinchoSchema = new Schema({
+  _id: {
+    type: String,
+    required: true
+  },
+  _precio: {
+    type: String,
+    required: true
+  }
 });
-const pinchos = mongoose.model('pinchos',pinchoSchema)
-const api:Router = express.Router()
+const pinchos = mongoose.model('pinchos', pinchoSchema)
+const api: Router = express.Router()
 
 api.get("/pinchos", async (req: Request, res: Response): Promise<Response> => {
   try {
-      var result = await pinchos.find().exec();
-      return res.status(200).json(result);
+    var result = await pinchos.find().exec();
+    return res.status(200).json(result);
   } catch (error) {
     return res.status(500).send(error);
   }
 });
+
 api.get("/pinchos/:id", async (req: Request, res: Response): Promise<Response> => {
   try {
-      var result = await pinchos.findById(req.params.id).exec();
-      return res.status(200).json(result);
+    var result = await pinchos.findById(req.params.id).exec();
+    return res.status(200).json(result);
+  } catch (error) {
+    return res.status(500).send(error);
+  }
+});
+
+api.get("/login", async (req: Request, res: Response): Promise<Response> => {
+  try {
+    var result = login({
+      oidcIssuer: "https://broker.pod.inrupt.com",
+      redirectUrl: "/",
+      clientName: "dede_es4c",
+    });
+    return res.status(200).json(result);
   } catch (error) {
     return res.status(500).send(error);
   }

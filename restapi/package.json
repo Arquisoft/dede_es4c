@@ -15,7 +15,10 @@
     "express-prom-bundle": "^6.4.1",
     "express-validator": "^6.14.0",
     "mongoose": "^6.2.4",
-    "prom-client": "^14.0.1"
+    "prom-client": "^14.0.1",
+		"@inrupt/solid-client": "^1.20.0",
+		"@inrupt/solid-client-authn-browser": "^1.11.6",
+		"@inrupt/vocab-common-rdf": "^1.0.3"
   },
   "devDependencies": {
     "@types/cors": "^2.8.12",
@@ -27,6 +30,8 @@
     "supertest": "^6.1.6",
     "ts-jest": "^27.1.2",
     "ts-node-dev": "^1.1.8",
-    "typescript": "^4.5.4"
+    "typescript": "^4.5.4",
+		"css-loader": "^6.7.1",
+		"style-loader": "^3.3.1"
   }
 }
