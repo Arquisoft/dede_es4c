@@ -12,10 +12,16 @@ import MailIcon from '@mui/icons-material/Mail';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import Typography from '@mui/material/Typography';
+import CartItem from './CartItem';
+import Producto from "./Producto";
+import { Console } from 'console';
+
 
 type Anchor = 'top' | 'left' | 'bottom' | 'right';
 
-export default function TemporaryDrawer() {
+export default function TemporaryDrawer(props: any) {
+  console.log(props);
+
   const [state, setState] = React.useState({
     top: false,
     left: false,
@@ -38,24 +44,22 @@ export default function TemporaryDrawer() {
     };
 
   const list = (anchor: Anchor) => (
+    
     <Box
-      sx={{ width: 250 }}
+      sx={{ width: 400 }}
       role="presentation"
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
-      <Typography textAlign="center">Actualmente el carrito está vacío</Typography>
-      <Divider />
-      <List>
-        {['Crea una cuenta', 'Inicie sesión'].map((text, index) => (
-          <ListItem button key={text}>
-            <AccountCircleIcon />
-            <ListItemText primary={text} />
-          </ListItem>
+      <Typography textAlign="center">Carrito</Typography>
+      <Divider/>
+     {props.products.map((product: Producto) =>(
+           <CartItem />
         ))}
-      </List>
     </Box>
   );
+
+
 
   return (
     <div>

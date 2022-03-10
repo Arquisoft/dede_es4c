@@ -16,6 +16,7 @@ import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import logo from './icons/DeDe.png';
 import CartDrawer from './CartDrawer';
+import Producto from "./Producto";
 
 const pages = ['Tienda', 'Historia'];
 const settings = ['Perfil', 'Signup', 'Login', 'Logout'];
@@ -39,6 +40,11 @@ const NavBar = () => {
     setAnchorElUser(null);
     
   };
+
+  const prod6 = new Producto("Especial", 5);
+const prod7 = new Producto("Pollo", 3);
+const prod8 = new Producto("Pollo con lechuga", 4);
+const productosLista = [prod6, prod7,prod8];
 
   return (
     <AppBar position="static" style={{ background: '#596886' }}>
@@ -132,13 +138,12 @@ const NavBar = () => {
             </Menu>
           </Box>
           <Box sx={{ flexGrow: 0, pr: 5 }}>
-            <Tooltip title="Abrir carrito">
+
               <IconButton size="large">
-              <CartDrawer />
+              <CartDrawer products={productosLista} />
 
               </IconButton>
-              
-            </Tooltip>
+   
           </Box>
         </Toolbar>
       </Container>
