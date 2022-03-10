@@ -67,6 +67,7 @@ footer{
   background-position: center;
 }
 
+
 #listadoProducto main{
   padding: 0.5em;
   margin: 0.5em;
@@ -131,4 +132,17 @@ footer{
   padding: 0.5em;
   margin: 0.5em;
   font-size: 0.5em;
+}
+  
+footer{
+  text-align: center;
+  position:absolute;
+  bottom:0;
+  width:100%;
+  height:60px;   /* Height of the footer */
+  background:#596886;
+}
+
+.product{
+  box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.4);
 }

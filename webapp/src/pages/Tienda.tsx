@@ -1,4 +1,5 @@
 import React from 'react';
+
 import TextField from '@mui/material/TextField';
 import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
@@ -26,6 +27,10 @@ const prod14 = new Prueba("Cerveza", 2);
 const prod15 = new Prueba("Acuarius", 2.5);
 const productosLista = [prod1, prod2, prod3, prod4, prod5, prod6, prod7, prod8, prod9, prod10, prod11, prod12, prod13, prod14, prod15];
 
+import Producto from '../components/Producto';
+import Grid from '@mui/material/Grid';
+
+
 const Tienda = () => {
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
     const open = Boolean(anchorEl);
@@ -37,6 +42,7 @@ const Tienda = () => {
     };
 
     return (
+
         <div id='listadoProducto'>
             <main>
                 <h1>Artículos disponibles</h1>
