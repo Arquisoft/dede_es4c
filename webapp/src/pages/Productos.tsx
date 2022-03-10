@@ -14,7 +14,6 @@ const numElements = 9;
 
 function Productos(props:any){
     const [page, setPage] = React.useState(1);
-
     return(
         <div id='productos'>
           {<Box sx={{ flexGrow: 1 }}>
@@ -29,7 +28,7 @@ function Productos(props:any){
               </Grid>
           </Box>}
           <div id = "paginacion">
-                <Pagination count={10} variant="outlined" color="primary" size="large" page = {page}
+                <Pagination count={5} variant="outlined" color="primary" size="large" page = {page}
                 onChange={(_, page) => {
                   setPage(page);
                 }}></Pagination>

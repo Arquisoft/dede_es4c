@@ -53,9 +53,6 @@
   margin-top: 5em;
 }
 
-
-
-
 footer{
   text-align: center;
 }
@@ -76,7 +73,30 @@ footer{
   font-size: 2em;
 }
 
+#listadoProducto #basic-button{
+  font-size: 1em;
+  margin-left: 33%;
+  margin-top: -10%;
+}
+
+#listadoProducto #comida{
+  padding: 0.5em;
+  margin: 0.5em;
+  font-size: 10em;
+  margin-left: 33%;
+  margin-top: -10%;
+}
+
+#listadoProducto p#comida{
+  font-size: 2em;
+}
+
+#listadoProducto p#bebida{
+  font-size: 10em;
+}
+
 #productos{
+  grid-row-start: 2;
   padding: 1em;
   margin: 1em;
   font-size: 2em;
@@ -85,6 +105,10 @@ footer{
 #paginacion{
   font-size: 2.3em;
   margin-left: 25%;
+}
+
+#filtros{
+  font-size: 1.5em;
 }
 
 #paginacion button{
