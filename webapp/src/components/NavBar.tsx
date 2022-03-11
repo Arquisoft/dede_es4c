@@ -17,7 +17,6 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import logo from './icons/DeDe.png';
 import CartDrawer from './CartDrawer';
 import Producto from "./Producto";
-import {CarritoContext} from '../pages/CartContext';
 
 const pages = ['Tienda', 'Historia'];
 const settings = ['Perfil', 'Signup', 'Login', 'Logout'];
@@ -42,10 +41,8 @@ const NavBar = () => {
     
   };
 
-const listacontext = React.useContext(CarritoContext);
-
   return (
-    <AppBar position="static" style={{ background: '#596886' }}>
+    <AppBar position="fixed" style={{ background: '#596886' }}>
       <Container maxWidth={false}>
         <Toolbar disableGutters>
             <Link href='/'
@@ -138,7 +135,7 @@ const listacontext = React.useContext(CarritoContext);
           <Box sx={{ flexGrow: 0, pr: 5 }}>
 
               <IconButton size="large">
-              <CartDrawer products={listacontext} />
+              <CartDrawer products={{}} />
 
               </IconButton>
    
@@ -149,6 +146,5 @@ const listacontext = React.useContext(CarritoContext);
   );
 };
 
-NavBar.contexType = CarritoContext;
 
 export default NavBar;

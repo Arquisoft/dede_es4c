@@ -1,11 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import './styles/producto.css';
+import { CartContext } from '../context/cartContext';
 
 function Producto(props: any) {
 
-console.log(props.producto.cantidad);
+  const {removeToCart} = useContext(CartContext);
+
+  const handleRemoveToCart = (id: string) => {
+    removeToCart(id);
+  }
 
   return (
     <Box className='product'
@@ -21,7 +26,7 @@ console.log(props.producto.cantidad);
       <h3>{props.producto.nombre}</h3>
       <p><b>Cantidad:</b>{props.producto.cantidad}</p>
       <p>Total: {props.producto.cantidad * props.producto.precio} €</p>
-      <Button variant="contained"  sx={{color: '#fff', m:1}}>Eliminar</Button>
+      <Button variant="contained"  sx={{color: '#fff', m:1}} onClick={() => handleRemoveToCart(props.producto.id)}>Eliminar</Button>
       </Box>
   );
 }

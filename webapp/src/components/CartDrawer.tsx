@@ -14,13 +14,18 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import Typography from '@mui/material/Typography';
 import CartItem from './CartItem';
 import Producto from "./Producto";
-import { Console } from 'console';
+import { useCart } from '../hooks/useCart';
+import { CartContext } from '../context/cartContext';
+import { useContext } from 'react';
 
 
 
 type Anchor = 'top' | 'left' | 'bottom' | 'right';
 
 export default function TemporaryDrawer(props: any) {
+
+  const {cartState} = useContext(CartContext);
+  const {productos} = useCart();
 
   const [state, setState] = React.useState({
     top: false,
@@ -53,9 +58,12 @@ export default function TemporaryDrawer(props: any) {
     >
       <Typography textAlign="center">Carrito</Typography>
       <Divider/>
-     {props.products.map((product: Producto) =>(
+      <Typography textAlign="center">{productos.length === 0 ? "La cesta está vacía" : ''}</Typography>
+     {productos.map((product) =>(
            <CartItem producto={product}/>
         ))}
+        <Typography textAlign="center">{'Total del importe: ' + cartState.total + " €"}</Typography>
+     
     </Box>
   );
 
@@ -69,6 +77,7 @@ export default function TemporaryDrawer(props: any) {
             anchor={'right'}
             open={state['right']}
             onClose={toggleDrawer('right', false)}
+            variant='temporary'
           >
             {list('right')}
           </Drawer>

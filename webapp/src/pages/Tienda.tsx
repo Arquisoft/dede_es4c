@@ -12,22 +12,24 @@ import LocalDrinkSharpIcon from '@mui/icons-material/LocalDrinkSharp';
 import Producto from './Producto';
 
 
-const prod1 = new Prueba("Tortilla", 3, 1);
-const prod2 = new Prueba("Vegetal", 3.5, 1);
-const prod3 = new Prueba("Jamón", 3, 1);
-const prod4 = new Prueba("Lomo con queso", 3, 1);
-const prod5 = new Prueba("Bacon con queso", 3.5, 1);
-const prod6 = new Prueba("Especial", 5, 1);
-const prod7 = new Prueba("Pollo", 3, 1);
-const prod8 = new Prueba("Pollo con lechuga", 4, 1);
-const prod9 = new Prueba("Calamares", 4, 1);
-const prod10 = new Prueba("Cachopo de lomo", 3.5, 1);
-const prod11 = new Prueba("Agua", 1.5, 1);
-const prod12 = new Prueba("Coca-Cola", 2.5, 1);
-const prod13 = new Prueba("Nestea", 2.5, 1);
-const prod14 = new Prueba("Cerveza", 2, 1);
-const prod15 = new Prueba("Acuarius", 2.5, 1);
+const prod1 = new Prueba('1',"Tortilla", 3, 1);
+const prod2 = new Prueba('2',"Vegetal", 3.5, 1);
+const prod3 = new Prueba('3',"Jamón", 3, 1);
+const prod4 = new Prueba('4',"Lomo con queso", 3, 1);
+const prod5 = new Prueba('5',"Bacon con queso", 3.5, 1);
+const prod6 = new Prueba('6',"Especial", 5, 1);
+const prod7 = new Prueba('7',"Pollo", 3, 1);
+const prod8 = new Prueba('8',"Pollo con lechuga", 4, 1);
+const prod9 = new Prueba('9',"Calamares", 4, 1);
+const prod10 = new Prueba('10',"Cachopo de lomo", 3.5, 1);
+const prod11 = new Prueba('11',"Agua", 1.5, 1);
+const prod12 = new Prueba('12',"Coca-Cola", 2.5, 1);
+const prod13 = new Prueba('13',"Nestea", 2.5, 1);
+const prod14 = new Prueba('14',"Cerveza", 2, 1);
+const prod15 = new Prueba("15","Acuarius", 2.5, 1);
 const productosLista = [prod1, prod2, prod3, prod4, prod5, prod6, prod7, prod8, prod9, prod10, prod11, prod12, prod13, prod14, prod15];
+
+
 
 export const listaPorDefecto: Producto[] = [];
   
@@ -36,7 +38,7 @@ export const listaPorDefecto: Producto[] = [];
   );
 
 
-const Tienda = () => {
+const Tienda = (props:any) => {
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
     const open = Boolean(anchorEl);
     const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -45,6 +47,8 @@ const Tienda = () => {
     const handleClose = () => {
     setAnchorEl(null);
     };
+
+    console.log(props.items);
 
     return (
 
@@ -82,5 +86,6 @@ const Tienda = () => {
         </div>
     );
 }
+
 
 export default Tienda;

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import  {getUsers} from './api/api';
 import {User} from './shared/shareddtypes';
 import NavBar from './components/NavBar';
@@ -13,12 +13,16 @@ import Producto from "./pages/Producto";
 import  {getPinchos} from './api/api';
 import {Pincho} from './shared/shareddtypes';
 import './App.css';
+import { CartContext } from './context/cartContext';
 
 
 const listaPorDefecto: Producto[] = [];
 const CarritoContext = React.createContext(listaPorDefecto);
 
 function App(): JSX.Element {
+
+  //Contexto del carrito
+  const {cartState} = useContext(CartContext);
 
   const [users,setUsers] = useState<User[]>([]);
 
@@ -34,9 +38,8 @@ function App(): JSX.Element {
 
   return (
     <div className='App'>
-      <CarritoContext.Provider value={listaPorDefecto}>
       <NavBar />
-      </CarritoContext.Provider>
+      
      <Router>
       
       <Routes>
