@@ -17,6 +17,7 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import logo from './icons/DeDe.png';
 import CartDrawer from './CartDrawer';
 import Producto from "./Producto";
+import {CarritoContext} from '../pages/CartContext';
 
 const pages = ['Tienda', 'Historia'];
 const settings = ['Perfil', 'Signup', 'Login', 'Logout'];
@@ -41,10 +42,7 @@ const NavBar = () => {
     
   };
 
-  const prod6 = new Producto("Especial", 5);
-const prod7 = new Producto("Pollo", 3);
-const prod8 = new Producto("Pollo con lechuga", 4);
-const productosLista = [prod6, prod7,prod8];
+const listacontext = React.useContext(CarritoContext);
 
   return (
     <AppBar position="static" style={{ background: '#596886' }}>
@@ -140,7 +138,7 @@ const productosLista = [prod6, prod7,prod8];
           <Box sx={{ flexGrow: 0, pr: 5 }}>
 
               <IconButton size="large">
-              <CartDrawer products={productosLista} />
+              <CartDrawer products={listacontext} />
 
               </IconButton>
    
@@ -150,4 +148,7 @@ const productosLista = [prod6, prod7,prod8];
     </AppBar>
   );
 };
+
+NavBar.contexType = CarritoContext;
+
 export default NavBar;

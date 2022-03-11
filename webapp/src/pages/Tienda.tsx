@@ -9,27 +9,31 @@ import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import RestaurantIcon from '@mui/icons-material/Restaurant';
 import LocalDrinkSharpIcon from '@mui/icons-material/LocalDrinkSharp';
-import Producto from '../components/Producto';
-import Grid from '@mui/material/Grid';
+import Producto from './Producto';
 
-const prod1 = new Prueba("Tortilla", 3);
-const prod2 = new Prueba("Vegetal", 3.5);
-const prod3 = new Prueba("Jamón", 3);
-const prod4 = new Prueba("Lomo con queso", 3);
-const prod5 = new Prueba("Bacon con queso", 3.5);
-const prod6 = new Prueba("Especial", 5);
-const prod7 = new Prueba("Pollo", 3);
-const prod8 = new Prueba("Pollo con lechuga", 4);
-const prod9 = new Prueba("Calamares", 4);
-const prod10 = new Prueba("Cachopo de lomo", 3.5);
-const prod11 = new Prueba("Agua", 1.5);
-const prod12 = new Prueba("Coca-Cola", 2.5);
-const prod13 = new Prueba("Nestea", 2.5);
-const prod14 = new Prueba("Cerveza", 2);
-const prod15 = new Prueba("Acuarius", 2.5);
+
+const prod1 = new Prueba("Tortilla", 3, 1);
+const prod2 = new Prueba("Vegetal", 3.5, 1);
+const prod3 = new Prueba("Jamón", 3, 1);
+const prod4 = new Prueba("Lomo con queso", 3, 1);
+const prod5 = new Prueba("Bacon con queso", 3.5, 1);
+const prod6 = new Prueba("Especial", 5, 1);
+const prod7 = new Prueba("Pollo", 3, 1);
+const prod8 = new Prueba("Pollo con lechuga", 4, 1);
+const prod9 = new Prueba("Calamares", 4, 1);
+const prod10 = new Prueba("Cachopo de lomo", 3.5, 1);
+const prod11 = new Prueba("Agua", 1.5, 1);
+const prod12 = new Prueba("Coca-Cola", 2.5, 1);
+const prod13 = new Prueba("Nestea", 2.5, 1);
+const prod14 = new Prueba("Cerveza", 2, 1);
+const prod15 = new Prueba("Acuarius", 2.5, 1);
 const productosLista = [prod1, prod2, prod3, prod4, prod5, prod6, prod7, prod8, prod9, prod10, prod11, prod12, prod13, prod14, prod15];
 
-
+export const listaPorDefecto: Producto[] = [];
+  
+  export const CarritoContext = React.createContext(
+    listaPorDefecto
+  );
 
 
 const Tienda = () => {

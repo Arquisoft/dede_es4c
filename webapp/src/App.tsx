@@ -3,17 +3,20 @@ import  {getUsers} from './api/api';
 import {User} from './shared/shareddtypes';
 import NavBar from './components/NavBar';
 import Footer from './components/Footer';
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from './pages/Home';
 import Tienda from './pages/Tienda';
 import Historia from './pages/Historia';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
+import Producto from "./pages/Producto";
 import  {getPinchos} from './api/api';
 import {Pincho} from './shared/shareddtypes';
 import './App.css';
 
 
+const listaPorDefecto: Producto[] = [];
+const CarritoContext = React.createContext(listaPorDefecto);
 
 function App(): JSX.Element {
 
@@ -31,7 +34,9 @@ function App(): JSX.Element {
 
   return (
     <div className='App'>
+      <CarritoContext.Provider value={listaPorDefecto}>
       <NavBar />
+      </CarritoContext.Provider>
      <Router>
       
       <Routes>

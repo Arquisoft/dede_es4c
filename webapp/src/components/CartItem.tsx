@@ -3,7 +3,9 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import './styles/producto.css';
 
-function Producto() {
+function Producto(props: any) {
+
+console.log(props.producto.cantidad);
 
   return (
     <Box className='product'
@@ -16,9 +18,9 @@ function Producto() {
 
     }}
   >
-      <h3>Producto ejemplo</h3>
-      <p><b>Cantidad:</b> 5</p>
-      <p>5 euros</p>
+      <h3>{props.producto.nombre}</h3>
+      <p><b>Cantidad:</b>{props.producto.cantidad}</p>
+      <p>Total: {props.producto.cantidad * props.producto.precio} €</p>
       <Button variant="contained"  sx={{color: '#fff', m:1}}>Eliminar</Button>
       </Box>
   );

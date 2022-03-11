@@ -17,10 +17,10 @@ import Producto from "./Producto";
 import { Console } from 'console';
 
 
+
 type Anchor = 'top' | 'left' | 'bottom' | 'right';
 
 export default function TemporaryDrawer(props: any) {
-  console.log(props);
 
   const [state, setState] = React.useState({
     top: false,
@@ -54,7 +54,7 @@ export default function TemporaryDrawer(props: any) {
       <Typography textAlign="center">Carrito</Typography>
       <Divider/>
      {props.products.map((product: Producto) =>(
-           <CartItem />
+           <CartItem producto={product}/>
         ))}
     </Box>
   );
