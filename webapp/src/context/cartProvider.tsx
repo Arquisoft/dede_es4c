@@ -16,10 +16,7 @@ interface CartProviderProps{
 
 export const CartProvider = ({children}: CartProviderProps) => {
 
-    const [cartState, dispatch] = useReducer(cartReducer, INITIAL_STATE, () => {
-        const localData = localStorage.getItem('cart')
-        return localData ? JSON.parse(localData) : []
-    });
+    const [cartState, dispatch] = useReducer(cartReducer, INITIAL_STATE);
 
     const addToCart = (producto: Producto) => {
         dispatch({type: 'addToCart', payload: {
@@ -43,7 +40,7 @@ export const CartProvider = ({children}: CartProviderProps) => {
     }, [cartState]);
 
     return(
-        <CartContext.Provider value={{cartState,addToCart, removeToCart, increase}}>
+        <CartContext.Provider value={{cartState,addToCart, removeToCart, increase }}>
             {children}
         </CartContext.Provider>
     );
