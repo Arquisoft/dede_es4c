@@ -11,6 +11,10 @@ const productSchema = new Schema({
      _precio: {
         type: String,
         required: true
+    },
+    _bebida: {
+        type: Boolean,
+        required: true
     }
 });
 

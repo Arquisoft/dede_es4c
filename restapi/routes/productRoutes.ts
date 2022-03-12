@@ -4,7 +4,9 @@ const api:Router = express.Router()
 
 const {
     getProducts,
-    getProductById
+    getProductById,
+    getComidas,
+    getBebidas
 } = require('../controllers/productController')
 
   api.get(
@@ -13,8 +15,18 @@ const {
   );
 
   api.get(
-      "/list/:id",
+      "/list/search/:id",
       getProductById
+  );
+
+  api.get(
+      "/list/comidas",
+      getComidas
+  );
+
+  api.get(
+      "/list/bebidas",
+      getBebidas
   );
 
   module.exports = api;
