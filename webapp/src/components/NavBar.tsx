@@ -16,6 +16,7 @@ import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import logo from './icons/DeDe.png';
 import CartDrawer from './CartDrawer';
+import Producto from "./Producto";
 
 const pages = ['Tienda', 'Historia'];
 const settings = ['Perfil', 'Signup', 'Login', 'Logout'];
@@ -41,7 +42,7 @@ const NavBar = () => {
   };
 
   return (
-    <AppBar position="static" style={{ background: '#596886' }}>
+    <AppBar position="fixed" style={{ background: '#596886' }}>
       <Container maxWidth={false}>
         <Toolbar disableGutters>
             <Link href='/'
@@ -132,17 +133,18 @@ const NavBar = () => {
             </Menu>
           </Box>
           <Box sx={{ flexGrow: 0, pr: 5 }}>
-            <Tooltip title="Abrir carrito">
+
               <IconButton size="large">
-              <CartDrawer />
+              <CartDrawer products={{}} />
 
               </IconButton>
-              
-            </Tooltip>
+   
           </Box>
         </Toolbar>
       </Container>
     </AppBar>
   );
 };
+
+
 export default NavBar;
