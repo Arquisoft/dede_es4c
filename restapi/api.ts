@@ -1,28 +1,7 @@
 import express, { Request, Response, Router } from 'express';
 import { check } from 'express-validator';
+import mongoose from 'mongoose';
 
-import {
-  createSolidDataset,
-  createThing,
-  setThing,
-  addUrl,
-  addStringNoLocale,
-  saveSolidDatasetAt,
-  getSolidDataset,
-  getThingAll,
-  getStringNoLocale,
-  removeThing,
-  FetchError,
-} from "@inrupt/solid-client";
-
-import {
-  login,
-  handleIncomingRedirect,
-  getDefaultSession,
-  fetch,
-} from "@inrupt/solid-client-authn-browser";
-
-const mongoose = require('mongoose');
 mongoose.connect('mongodb+srv://es4c:es4c@cluster0.hcz1f.mongodb.net/bar_pinchos?retryWrites=true&w=majority')
   .then(() => {
     console.log("Database connected")
@@ -60,4 +39,5 @@ api.get("/pinchos/:id", async (req: Request, res: Response): Promise<Response> =
     return res.status(500).send(error);
   }
 });
+
 export default api;

@@ -11,35 +11,35 @@ import Login from "./pages/Login";
 import { getPinchos } from "./api/api";
 import { Pincho } from "./shared/shareddtypes";
 import "./App.css";
-import { SessionProvider } from "@inrupt/solid-ui-react";
-import { useSession, LogoutButton } from "@inrupt/solid-ui-react";
+import { useSession } from "@inrupt/solid-ui-react";
 
 function App(): JSX.Element {
 	const [users, setUsers] = useState<User[]>([]);
-	const { session, sessionRequestInProgress } = useSession();
-	const refreshUserList = async () => {
-		setUsers(await getUsers());
-	};
+	const { session } = useSession();
+	// const refreshUserList = async () => {
+	// 	setUsers(await getUsers());
+	// };
 
-	useEffect(() => {
-		refreshUserList();
-	}, []);
+	// useEffect(() => {
+	// 	refreshUserList();
+	// }, []);
 
 	var app = (
-		<SessionProvider>
-			<div className="App">
-				<NavBar />
-				<Router>
-					<Routes>
-						<Route path="/" element={<Home />} />
-						<Route path="/Tienda" element={<Tienda />} />
-						<Route path="/Historia" element={<Historia />} />
-						<Route path="/Login" element={<Login />} />
-					</Routes>
-				</Router>
-				<Footer />
+		<div className="App">
+			<NavBar />
+			<Router>
+				<Routes>
+					<Route path="/" element={<Home />} />
+					<Route path="/Tienda" element={<Tienda />} />
+					<Route path="/Historia" element={<Historia />} />
+					<Route path="/Login" element={<Login />} />
+				</Routes>
+			</Router>
+			<div className="infosession">
+				{session.info.isLoggedIn ? <h1>Logged in</h1> : <h1>Not Logged in</h1>}
 			</div>
-		</SessionProvider>
+			<Footer />
+		</div>
 	);
 
 	return app;
