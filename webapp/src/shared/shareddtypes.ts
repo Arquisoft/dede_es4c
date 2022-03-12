@@ -5,4 +5,5 @@ export type User = {
 export type Pincho ={
     _id: string;
     _precio: string;
+    _bebida: boolean;
 };
