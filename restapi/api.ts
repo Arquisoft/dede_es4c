@@ -23,7 +23,7 @@ const pinchoSchema  = new Schema({
        required: true
    }
 });
-const pinchos = mongoose.model('pinchos',pinchoSchema)
+const pinchos = mongoose.model('pinchos2',pinchoSchema)
 const api:Router = express.Router()
 
 api.get("/pinchos", async (req: Request, res: Response): Promise<Response> => {
