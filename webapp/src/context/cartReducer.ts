@@ -6,6 +6,7 @@ type CartAction =
     | {type: 'removeToCart', payload: {id: string}}
     | {type: 'increase', payload: Producto}
 
+
 export const cartReducer = (state:CartState, action:CartAction): CartState => {
     switch (action.type){
         case 'addToCart':

@@ -14,9 +14,13 @@ interface CartProviderProps{
     children: JSX.Element | JSX.Element[];
 }
 
+
 export const CartProvider = ({children}: CartProviderProps) => {
 
-    const [cartState, dispatch] = useReducer(cartReducer, INITIAL_STATE);
+    const [cartState, dispatch] = useReducer(cartReducer, INITIAL_STATE, () => {
+        const localData = localStorage.getItem('cart')
+        return localData ? JSON.parse(localData) : INITIAL_STATE
+    });
 
     const addToCart = (producto: Producto) => {
         dispatch({type: 'addToCart', payload: {
