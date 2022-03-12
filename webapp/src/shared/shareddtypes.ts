@@ -7,3 +7,11 @@ export type Pincho ={
     _precio: string;
     _bebida: boolean;
 };
+
+
+export type CartItem = {
+  id:string;
+  name:string;
+  price:string;
+}
+

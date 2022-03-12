@@ -16,9 +16,10 @@ import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import logo from './icons/DeDe.png';
 import CartDrawer from './CartDrawer';
+import Producto from "./Producto";
 
 const pages = ['Tienda', 'Historia'];
-const settings = ['Perfil', 'Signup', 'Logout'];
+const settings = ['Perfil', 'Signup', 'Login', 'Logout'];
 
 const NavBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
@@ -37,16 +38,16 @@ const NavBar = () => {
 
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
+    
   };
 
   return (
-    <AppBar position="static" style={{ background: '#596886' }}>
+    <AppBar position="fixed" style={{ background: '#596886' }}>
       <Container maxWidth={false}>
         <Toolbar disableGutters>
             <Link href='/'
             variant="h6"
-            noWrap
-            component="div"
+            noWrap    
             sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}>
           <img src={logo}></img>
           </Link>
@@ -91,7 +92,6 @@ const NavBar = () => {
           <Link href='/'
           variant="h6"
           noWrap
-          component="div"
           sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
           <img src={logo}></img>
           </Link>
@@ -100,9 +100,9 @@ const NavBar = () => {
               <Link href={"/" + page} sx={{ my: 2, color: '#fff', display: 'block', pr: 4, pl: 4 }}>{page}</Link>
             ))}
           </Box>
-          <Box sx={{ flexGrow: 0 }}>
+          <Box sx={{ flexGrow: 0, pr: 5 }}>
             <Tooltip title="Opciones de usuario">
-              <IconButton onClick={handleOpenUserMenu} sx={{ pr: 5, color: '#fff' }} size='large'>
+              <IconButton onClick={handleOpenUserMenu} size='large'>
                 <AccountCircleIcon fontSize="inherit" sx={{ color: "#fff" }}/>
               </IconButton>
             </Tooltip>
@@ -123,24 +123,28 @@ const NavBar = () => {
               onClose={handleCloseUserMenu}
             >
               {settings.map((setting) => (
+                <Link href={"/" + setting} sx={{ my: 2, color: '#000F', display: 'block'}} underline='none'>
                 <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                  
                   <Typography textAlign="center">{setting}</Typography>
                 </MenuItem>
+                </Link>
               ))}
             </Menu>
           </Box>
           <Box sx={{ flexGrow: 0, pr: 5 }}>
-            <Tooltip title="Abrir carrito">
+
               <IconButton size="large">
-              <CartDrawer />
+              <CartDrawer products={{}} />
 
               </IconButton>
-              
-            </Tooltip>
+   
           </Box>
         </Toolbar>
       </Container>
     </AppBar>
   );
 };
+
+
 export default NavBar;

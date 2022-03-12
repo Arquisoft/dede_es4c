@@ -1,0 +1,55 @@
+
+#formLogin{
+    width: 50%;
+    text-align: center;
+    position: relative;
+    transform: translate(-50%, 20%);
+    left: 50%;
+    box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.4);
+    padding: 5em;
+    margin-top: 10px;
+    display: grid;
+    grid-template-areas:
+    "imagen h1"
+    "imagen form"
+    "imagen p"
+    ;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+    grid-area: form;
+}
+
+p{
+    margin-top: 10px;
+    grid-area: p;
+}
+
+h1{
+    grid-area: h1;
+}
+
+img{
+    grid-area: imagen;
+    max-width: 100%;
+    height: auto;
+}
+
+@media (max-width: 900px) { 
+    #formLogin{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    img{
+        width: 50%;
+        height: 50%;
+    }
+}
+
+
