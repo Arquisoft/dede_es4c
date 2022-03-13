@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 
 import TextField from '@mui/material/TextField';
 import IconButton from '@mui/material/IconButton';
@@ -10,6 +10,11 @@ import Menu from '@mui/material/Menu';
 import RestaurantIcon from '@mui/icons-material/Restaurant';
 import LocalDrinkSharpIcon from '@mui/icons-material/LocalDrinkSharp';
 import Producto from './Producto';
+import { getPinchos } from '../api/api';
+import { getPinchoComida } from '../api/api';
+import { getPinchoById } from '../api/api';
+import {Pincho} from '../shared/shareddtypes';
+import actualizaPinchos from '../components/CargaPinchos'
 
 
 const prod1 = new Prueba('1',"Tortilla", 3, 1);
@@ -28,8 +33,9 @@ const prod13 = new Prueba('13',"Nestea", 2.5, 1);
 const prod14 = new Prueba('14',"Cerveza", 2, 1);
 const prod15 = new Prueba("15","Acuarius", 2.5, 1);
 const productosLista = [prod1, prod2, prod3, prod4, prod5, prod6, prod7, prod8, prod9, prod10, prod11, prod12, prod13, prod14, prod15];
-
-
+var productosReales: Producto[] = [];
+var filtrado: string = "";
+var soloComida: boolean = false;
 
 export const listaPorDefecto: Producto[] = [];
   
@@ -38,7 +44,12 @@ export const listaPorDefecto: Producto[] = [];
   );
 
 
-const Tienda = (props:any) => {
+function Tienda (props:any) {
+
+    //const [filtrado, setFiltrado] = React.useState();
+
+    productosReales = actualizaPinchos("todos");
+
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
     const open = Boolean(anchorEl);
     const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -49,14 +60,13 @@ const Tienda = (props:any) => {
     };
 
     console.log(props.items);
-
     return (
 
         <div id='listadoProducto'>
             <main>
                 <h1>Artículos disponibles</h1>
-                <TextField id="standard-basic" label="Buscar" variant="standard" size = "medium" sx={{ m: 1, width: '33ch' }}/> 
-                <IconButton aria-label="Buscar" size="large">
+                <TextField id="filtrado" label="Buscar" variant="standard" size = "medium" sx={{ m: 1, width: '33ch' }} /> 
+                <IconButton aria-label="Buscar" size="large" onClick = {() => {soloComida = true;}}>
                 <SearchIcon fontSize="large" />
                 </IconButton>
                     <Button
@@ -78,14 +88,17 @@ const Tienda = (props:any) => {
                         'aria-labelledby': 'basic-button',
                         }}
                     >
-                        <Button variant="contained" sx={{color: '#fff', m:1}} endIcon={<RestaurantIcon />} >Comida</Button>
+                        <Button variant="contained" sx={{color: '#fff', m:1}} endIcon={<RestaurantIcon />} onChangeCapture = {(_) => <p>Hola</p>}>Comida</Button>
                         <Button variant="contained" sx={{color: '#fff', m:1}} endIcon={<LocalDrinkSharpIcon />} >Bebida</Button>
                     </Menu>
             </main>
-                <Productos products = {productosLista}></Productos>               
+                <Productos products = {productosReales}></Productos>               
         </div>
     );
 }
 
+function hola(tipo: string){
+    productosReales = actualizaPinchos("comida");
+}
 
 export default Tienda;
