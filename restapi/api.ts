@@ -17,9 +17,13 @@ const pinchoSchema  = new Schema({
      _precio: {
         type: String,
         required: true
-    }
+    },
+    _bebida: {
+       type: Boolean,
+       required: true
+   }
 });
-const pinchos = mongoose.model('pinchos',pinchoSchema)
+const pinchos = mongoose.model('pinchos2',pinchoSchema)
 const api:Router = express.Router()
 
 api.get("/pinchos", async (req: Request, res: Response): Promise<Response> => {
@@ -30,9 +34,25 @@ api.get("/pinchos", async (req: Request, res: Response): Promise<Response> => {
     return res.status(500).send(error);
   }
 });
-api.get("/pinchos/:id", async (req: Request, res: Response): Promise<Response> => {
+api.get("/pinchos/search/:id", async (req: Request, res: Response): Promise<Response> => {
   try {
-      var result = await pinchos.findById(req.params.id).exec();
+      var result = await pinchos.find({_id:{ $regex: '.*' + req.params.id + '.*' }}).exec();
+      return res.status(200).json(result);
+  } catch (error) {
+    return res.status(500).send(error);
+  }
+});
+api.get("/pinchos/comida", async (req: Request, res: Response): Promise<Response> => {
+  try {
+      var result = await pinchos.find({_bebida:false}).exec();
+      return res.status(200).json(result);
+  } catch (error) {
+    return res.status(500).send(error);
+  }
+});
+api.get("/pinchos/bebida", async (req: Request, res: Response): Promise<Response> => {
+  try {
+      var result = await pinchos.find({_bebida:true}).exec();
       return res.status(200).json(result);
   } catch (error) {
     return res.status(500).send(error);

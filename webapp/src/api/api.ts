@@ -28,6 +28,16 @@ export async function getPinchos():Promise<Pincho[]>{
 }
 export async function getPinchoById(id:string):Promise<Pincho[]>{
   const apiEndPoint= process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
-  let response = await fetch(apiEndPoint+'/pinchos/string');
+  let response = await fetch(apiEndPoint+'/pinchos/search/string');
+  return response.json()
+}
+export async function getPinchoComida(id:string):Promise<Pincho[]>{
+  const apiEndPoint= process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
+  let response = await fetch(apiEndPoint+'/pinchos/pinchos/comida');
+  return response.json()
+}
+export async function getPinchoBebida(id:string):Promise<Pincho[]>{
+  const apiEndPoint= process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
+  let response = await fetch(apiEndPoint+'/pinchos/pinchos/bebida');
   return response.json()
 }
