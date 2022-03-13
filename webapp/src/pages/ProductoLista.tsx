@@ -43,11 +43,11 @@ function ProductoLista(props:any){
         <p>Precio: {props.product.precio} €</p>
         {
           !isInCart(props.product) &&
-        <Button variant="contained" sx={{color: '#fff', m:1}} endIcon={<AddCircleIcon />} onClick= {() => handleAddToCart(props.product)} >Añadir al carrito</Button>
+        <Button variant="contained" sx={{color: '#fff', m:1, backgroundColor: '#596886'}} endIcon={<AddCircleIcon />} onClick= {() => handleAddToCart(props.product)} >Añadir al carrito</Button>
         }
         {
           isInCart(props.product) &&
-        <Button variant="contained" sx={{color: '#fff', m:1}} endIcon={<AddCircleIcon />} onClick= {() => handleIncrease(props.product)} >Añadir más</Button>
+        <Button variant="contained" sx={{color: '#fff', m:1, backgroundColor: '#596886'}} endIcon={<AddCircleIcon />} onClick= {() => handleIncrease(props.product)} >Añadir más</Button>
         }
       </Grid>
     )

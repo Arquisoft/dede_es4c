@@ -10,22 +10,22 @@ const {
 } = require('../controllers/productController')
 
   api.get(
-    "/list",
+    "/pinchos",
     getProducts
   );
 
   api.get(
-      "/list/search/:id",
+      "/pinchos/search/:id",
       getProductById
   );
 
   api.get(
-      "/list/comidas",
+      "/pinchos/comida",
       getComidas
   );
 
   api.get(
-      "/list/bebidas",
+      "/pinchos/bebida",
       getBebidas
   );
 
