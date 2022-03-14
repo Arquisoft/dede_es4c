@@ -1,18 +1,15 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import {CartProvider} from './context/cartProvider';
-
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import { CartProvider } from "./context/cartProvider";
 
 ReactDOM.render(
-
-    <CartProvider>
-    <App />
-    </CartProvider>
- ,
-  document.getElementById('root')
+	<CartProvider>
+		<App />
+	</CartProvider>,
+	document.getElementById("root"),
 );
 
 // If you want to start measuring performance in your app, pass a function
