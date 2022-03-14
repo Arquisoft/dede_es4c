@@ -7,7 +7,7 @@ import { useState, useEffect } from "react";
 
 const Login = () => {
 	const idp = "https://broker.pod.inrupt.com";
-	const redirUrl = "http://localhost:3000/tienda";
+	const redirUrl = "http://localhost:3000/Tienda";
 	return (
 		<div>
 			<div id="formLogin">
