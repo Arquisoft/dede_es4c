@@ -5,30 +5,25 @@
 
 [plantuml,"Business Context Diagram",png]
 ----
+left to right direction
 skinparam actorStyle awesome
 actor Usuario as g
 package DeDe {
-    usecase "Encargar productos" as UC1
-    usecase "Login" as UC2
-    usecase "Ver pedidos" as UC3
+
 }
-package Pod {
-    usecase "Gestión de usuarios" as UC4
-}
-package BBDD {
-    usecase "Gestión de productos" as UC5
-}
-g --> UC1
-g --> UC2
-g --> UC3
-DeDe --> Pod
-DeDe --> BBDD
+database BBDD
+hexagon POD
+cloud API
+g --> DeDe
+DeDe <--> POD
+DeDe <--> BBDD
+DeDe <--> API
 ----
 
 El sistema permitirá al usuario hacer pedidos de los diferentes productos disponibles, pudiendo también, iniciar sesión con su propia cuenta mediante un proveedor de pods, que seguirá los principios SOLID. Dicho pod es quien se encarga de gestionar la información de los usuarios. Por otro lado, los datos de los productos serán almacenados por la base de datos.
 
 * Usuario: persona interesado en la tienda que quiera realizar una compra y poder gestionar su propia cuenta
-* DeDe: provee al usuario la interfz necesaria para llevar a cabo todas las operaciones
+* DeDe: provee al usuario la interfaz necesaria para llevar a cabo todas las operaciones
 * Pod: suministra a la aplicación la información descentralizada del usuario
 * Base de datos: encargada de toda la persistencia de los datos que compondran la aplicación
 

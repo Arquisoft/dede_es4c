@@ -1,17 +1,32 @@
-import React, { useState, useEffect } from 'react';
-import Box from '@mui/material/Box';
-import Link from '@mui/material/Link';
-import Container from '@mui/material/Container';
-import EmailForm from './components/EmailForm';
-import Welcome from './components/Welcome';
-import UserList from './components/UserList';
+import React, { useState, useEffect, useContext } from 'react';
 import  {getUsers} from './api/api';
 import {User} from './shared/shareddtypes';
+import NavBar from './components/NavBar';
+import Footer from './components/Footer';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from './pages/Home';
+import Tienda from './pages/Tienda';
+import Historia from './pages/Historia';
+import Signup from './pages/Signup';
+import Login from './pages/Login';
+import Producto from "./pages/Producto";
+import  {getPinchos} from './api/api';
+import {Pincho} from './shared/shareddtypes';
 import './App.css';
+import { CartContext } from './context/cartContext';
+
+
+const listaPorDefecto: Producto[] = [];
+const CarritoContext = React.createContext(listaPorDefecto);
 
 function App(): JSX.Element {
 
+  //Contexto del carrito
+  const {cartState} = useContext(CartContext);
+
   const [users,setUsers] = useState<User[]>([]);
+
+  
 
   const refreshUserList = async () => {
     setUsers(await getUsers());
@@ -22,15 +37,21 @@ function App(): JSX.Element {
   },[]);
 
   return (
-    <>
-      <Container maxWidth="sm">
-        <Welcome message="ASW students"/>
-        <Box component="div" sx={{ py: 2}}>This is a basic example of a React application using Typescript. You can add your email to the list filling the form below.</Box>
-        <EmailForm OnUserListChange={refreshUserList}/>        
-        <UserList users={users}/>
-        <Link href="https://github.com/pglez82/asw2122_0">Source code</Link>
-      </Container>
-    </>
+    <div className='App'>
+      <NavBar />
+      
+     <Router>
+      
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/Tienda" element={<Tienda />} />
+        <Route path="/Signup" element={<Signup />} />
+        <Route path="/Historia" element={<Historia />} />
+        <Route path="/Login" element={<Login />} />
+      </Routes>
+    </Router>
+    <Footer/>
+    </div>
   );
 }
 

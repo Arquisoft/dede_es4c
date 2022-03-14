@@ -1,15 +1,15 @@
 [[section-introduction-and-goals]]
 == Introducción y Metas
 
+El sistema se basa en una tienda de comida online, donde los clientes podrán realizar varias acciones: registros, log in, compras… y los administradores podrán modificar y eliminar productos existentes y añadir nuevos si lo necesitan. La seguridad de los clientes debe estar garantizada en todo momento, siguiendo para ello los principios SOLID.
+
 === Vista de Requerimientos
 
 Algunos de los requisitos se extrajeron del propio enunciado de la práctica:
 
 https://arquisoft.github.io/course2122/labEnunciadoPractica.html
 
-El sistema simulará una tienda de comida online, donde los clientes podrán realizar varias acciones: registros, log in, compras… y los administradores podrán modificar y eliminar productos existentes y añadir nuevos si lo necesitan. La seguridad de los clientes debe estar garantizada en todo momento, siguiendo para ello los principios SOLID.
-
-Los requisitos son, a grandes rasgos, los siguientes:
+Los requisitos son los siguientes:
 
 * El sistema debe poder registrar nuevos usuarios y poder iniciar sesión para los ya existentes.
 * La interfaz de usuario deberá ser acogedora de cara a los clientes, para que ellos se sientan más cómodos a la hora de usar la aplicación.
@@ -24,23 +24,20 @@ Los requisitos son, a grandes rasgos, los siguientes:
 
 === Metas de Calidad
 
-Contenido, Motivación
-
 *	Sencillez, tanto para el cliente como para el administrador debe ser sencillo utilizar la aplicación y desenvolverse con ella.
 *	Testeable, el sistema debe poder probarse fácilmente en todas sus capas.
-*	Eficiente, los procedimientos de inicio de sesión, registro, compra, añadir o eliminar productos… deben poder realizarse en un periodo de tiempo razonable.
+*	Eficiencia, los procedimientos de inicio de sesión, registro, compra, añadir o eliminar productos… deben poder realizarse en un periodo de tiempo razonable.
 *	Usabilidad, las opciones dentro de la aplicación deben ser sencillas de aprender y de utilizar.
 *	Seguridad, los datos deben ser seguros y consistentes en todo momento.
 
 [options="header",cols="1,1,1,1"]
 |===
-|Ref|Meta de Calidad|Escenario|Prioridad(Cliente/Arquitecto)
+|Prioridad|Meta de Calidad|Escenario|Prioridad(Cliente/Arquitecto)
 |1.|Seguridad|La aplicación deberá ser segura para todos los datos de los clientes, tomando para ello las medidas pertinentes.|Alto / Alto
 |2.|Usabilidad|Muy importante, la aplicación tendrá una serie de opciones (registro, añadir nuevos productos, compras…) las cuales deben ser sencillas de utilizar para todos.|Alto / Alto
 |3.|Consistencia|Los datos de los productos y de los clientes deben estar siempre actualizados y ser correctos.| Medio / Alto
 |4.|Eficiencia|Los usuarios no querrán estar esperando mucho tiempo para poder realizar sus compras, inicios de sesión… y lo propio con el administrador. Por ello es importante que la aplicación no tarde demasiado en realizar dichas operaciones.| Alto / Medio
 |5.|Testeable|Es importante poder probar todas las capas de la aplicación para poder corregir los errores de una manera rápida y eficaz.| Bajo / Alto
-|6.|Atractivo|La interfaz debería ser atractiva de cara a los usuarios, ya que, por norma general, se sentirán más acogidos y cómodos en una aplicación que les resulte atractivo que en uno que no lo sea.| Medio / Medio
 |===
 
 
@@ -52,7 +49,7 @@ Contenido, Motivación
 |Arquitectos del Software|Poder aplicar correctamente las diferentes herramientas que se nos proporcionan para crear una aplicación que contente a las demás partes interesadas. Es necesario que conozcan la arquitectura y sepan trabajar en ella.
 |Desarrolladores|Tener una documentación bien desarrollada y entender la arquitectura de manera correcta para poder aplicarla correctamente en la práctica.
 |Profesores|Sentirse orgullosos de que sabemos aplicar todo lo proporcionado en las clases de practicas y teoría y crear con ello una buena arquitectura.
-|Usuarios|Poder entender y utilizar la aplicación correctamente de una manera sencilla y eficaz.
+|Clientes|Poder entender y utilizar la aplicación correctamente de una manera sencilla y eficaz.
 |Administradores|Estar al tanto del bar y poder actualizarlo en caso de tener nuevos productos o algunos estén obsoletos.
 |===
 
