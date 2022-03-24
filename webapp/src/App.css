@@ -38,19 +38,29 @@
 
 #historia main{
   max-width: 50%;
-  padding: 2em;
-  margin: 2em;
+  padding-left: 1em;
+  margin: 1em;
   font-size: 2em;
 }
 
 #historia main p{
-  padding-top: 2em;
-  padding-bottom: 2em;
+  padding-top: 1em;
+  padding: 1em;
   font-size: 0.7em;
 }
 
 #historia aside{
   margin-top: 5em;
+}
+
+#desarrolladores{
+  margin-left: 3.5em;
+  font-size: 1.5em;
+}
+
+#desarrolladores h2{
+  color: rgb(40, 69, 122);
+  font-size: 1.6em;
 }
 
 #signupView{
