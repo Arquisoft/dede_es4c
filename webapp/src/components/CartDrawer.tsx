@@ -10,6 +10,7 @@ import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import IconButton from '@mui/material/IconButton';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import Typography from '@mui/material/Typography';
 import CartItem from './CartItem';
@@ -72,7 +73,9 @@ export default function TemporaryDrawer(props: any) {
   return (
     <div>
         <React.Fragment key={'right'}>
-          <AddShoppingCartIcon fontSize="inherit" sx={{ color: "#fff" }} onClick={toggleDrawer('right', true)}/>
+        <IconButton size="large" onClick={toggleDrawer('right', true)}>
+          <AddShoppingCartIcon fontSize="inherit" sx={{ color: "#fff" }} />
+          </IconButton>
           <Drawer
             anchor={'right'}
             open={state['right']}
