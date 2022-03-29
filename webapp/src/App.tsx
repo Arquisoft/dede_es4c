@@ -11,8 +11,6 @@ import Tienda from "./pages/Tienda";
 import Historia from "./pages/Historia";
 import Login from "./pages/Login";
 
-import Tracer from "./components/Tracer";
-
 import "./App.css";
 import { SessionContext, useSession } from "@inrupt/solid-ui-react";
 import {
@@ -36,7 +34,7 @@ function App(): JSX.Element {
 	}, []);
 
 	session.onSessionRestore((url) => {
-		navigate(url, { replace: true });
+		navigate(url.replace("http://localhost:3000/", ""), { replace: true });
 	});
 
 	var app = (
@@ -56,7 +54,6 @@ function App(): JSX.Element {
 					<h1>Not Logged in</h1>
 				)}
 			</div>
-			<Tracer/>
 		</div>
 	);
 
