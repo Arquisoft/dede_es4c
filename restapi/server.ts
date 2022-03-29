@@ -4,8 +4,6 @@ import bp from 'body-parser';
 import promBundle from 'express-prom-bundle';
 import api from "./api";
 
-const session = require('express-session');
-
 const app: Application = express();
 const port: number = 5000;
 
@@ -18,11 +16,6 @@ app.use(metricsMiddleware);
 
 app.use(cors(options));
 app.use(bp.json());
-app.use(session({
-  secret: 'palabras-aleatorias-porque-yolo-y-tu-no',
-  resave: true,
-  saveUninitialized: true
-}));
 
 app.use("/api", api)
 

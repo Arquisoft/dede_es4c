@@ -4,10 +4,17 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { SessionProvider } from "@inrupt/solid-ui-react";
+import NavBar from "./components/NavBar";
+import Footer from "./components/Footer";
+import { BrowserRouter as Router } from "react-router-dom";
 
 ReactDOM.render(
 	<SessionProvider>
-		<App />
+		<NavBar />
+		<Router>
+			<App />
+		</Router>
+		<Footer />
 	</SessionProvider>,
 	document.getElementById("root"),
 );
