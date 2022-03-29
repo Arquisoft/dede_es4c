@@ -9,9 +9,8 @@ import Tienda from './pages/Tienda';
 import Historia from './pages/Historia';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
+import InfoPods from './pages/InfoPods'
 import Producto from "./pages/Producto";
-import  {getPinchos} from './api/api';
-import {Pincho} from './shared/shareddtypes';
 import './App.css';
 import { CartContext } from './context/cartContext';
 
@@ -48,6 +47,7 @@ function App(): JSX.Element {
         <Route path="/Signup" element={<Signup />} />
         <Route path="/Historia" element={<Historia />} />
         <Route path="/Login" element={<Login />} />
+        <Route path="/InfoPods" element={<InfoPods />} />
       </Routes>
     </Router>
     <Footer/>

@@ -2,7 +2,8 @@ import React from 'react';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import "./styles/signup.css";
-import fondo from '../images/fondoComida.jpg';
+import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
+import { Link } from "react-router-dom";
 
 const Signup = () => {
     return (
@@ -42,6 +43,10 @@ const Signup = () => {
         ¿Ya tienes una cuenta? <br />
         <a href="/Login">Inicia sesión</a>
       </p>
+      <br></br>
+      <Link to = "/InfoPods">
+        <Button variant='contained' sx={{color: '#fff', m:1, backgroundColor: '#3e6969'}} endIcon={<InfoOutlinedIcon />}>Pods</Button>
+      </Link>
       </div>
       
     </div>
