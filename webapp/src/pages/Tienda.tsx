@@ -1,24 +1,21 @@
 import React, { useState, useEffect, useContext } from 'react';
 
 import TextField from '@mui/material/TextField';
+import Input from '@mui/material/Input';
 import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
 import Productos from "./Productos";
-import Prueba from "./Producto";
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import RestaurantIcon from '@mui/icons-material/Restaurant';
 import LocalDrinkSharpIcon from '@mui/icons-material/LocalDrinkSharp';
 import Producto from './Producto';
-import { getPinchos } from '../api/api';
-import { getPinchoComida } from '../api/api';
-import { getPinchoById } from '../api/api';
-import {Pincho} from '../shared/shareddtypes';
 import actualizaPinchos from '../components/CargaPinchos'
 
 var listaTodos: Producto[] = [];
 var listaComida: Producto[] = [];
 var listaBebida: Producto[] = [];
+var listaFiltrada: Producto[] = [];
 var filtrado: string = "";
 var soloComida: boolean = false;
 
@@ -33,9 +30,12 @@ function Tienda (props:any) {
 
     const [filtro, setFiltro] = React.useState("todos");
 
+    const [nombre, setNombre] = React.useState('');
+
     listaTodos = actualizaPinchos(filtro);
     listaComida = actualizaPinchos("comida");
     listaBebida = actualizaPinchos("bebida");
+    listaFiltrada = actualizaPinchos(nombre);
 
    
 
@@ -60,6 +60,12 @@ function Tienda (props:any) {
         return filtro.localeCompare("bebida") == 0;
     }
 
+    const isNombre = () =>{
+        return filtro.localeCompare("bebida") != 0 &&
+        filtro.localeCompare("comida") != 0 &&
+        filtro.localeCompare("todos") != 0;
+    }
+
     const handleFilterComida = () => {
         setFiltro("comida");
     }
@@ -68,15 +74,25 @@ function Tienda (props:any) {
         setFiltro("bebida");
     }
 
-    console.log(props.items);
+    const handleFilterNombre = () => {
+        listaFiltrada = actualizaPinchos(nombre);
+        setFiltro(nombre);
+    }
+
+    const handleInputChange = (e: any) => {
+        console.log(e.target.value);
+        setNombre(e.target.value);
+        console.log("nombre: " + nombre);
+    }
+
     return (
 
         <div id='listadoProducto'>
             <main>
                 <h1>Artículos disponibles</h1>
-                <TextField id="filtrado" label="Buscar" variant="standard" size = "medium" sx={{ m: 1, width: '33ch' }} /> 
-                <IconButton aria-label="Buscar" size="large" onClick = {() => {soloComida = true;}}>
-                <SearchIcon fontSize="large" />
+                <Input placeholder="Buscar" value = {nombre} onChange={handleInputChange}/>
+                <IconButton aria-label="Buscar" size="large" onClick={handleFilterNombre}>
+                    <SearchIcon fontSize="large" />
                 </IconButton>
                     <Button
                         id="basic-button"
@@ -110,7 +126,10 @@ function Tienda (props:any) {
                 }    
                 {isBebida() &&
                 <Productos products = {listaBebida}></Productos>     
-                }   
+                }
+                {isNombre() &&
+                <Productos products = {actualizaPinchos("pollo")}></Productos>     
+                }      
         </div>
     );
 }
