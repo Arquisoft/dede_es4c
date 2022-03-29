@@ -10,3 +10,13 @@ export interface CartState {
     total: number;
     productos: Producto[];
 }
+
+export interface UserState{
+    isAuthenticated: boolean;
+    user: User;
+}
+
+export interface User {
+    username: string;
+    email: string;
+}
