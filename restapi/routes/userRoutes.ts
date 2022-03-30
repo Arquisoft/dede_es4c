@@ -1,7 +1,9 @@
 import express, {Router} from 'express';
 const api:Router = express.Router()
 
-import {signup, login} from "../controllers/userController";
+import {verify, signup, login} from "../controllers/userController";
+
+api.post("/verify", verify);
 
 api.post("/signup", signup);
 

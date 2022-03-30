@@ -2,6 +2,7 @@ import { UserState, User} from "../interface/interfaces";
 
 type UserAction = 
     | {type: 'setCurrentUser', payload: User}
+    | {type: 'logout', payload: User}
 
 export const userReducer = (state:UserState, action: UserAction): UserState => {
     switch(action.type){
@@ -9,6 +10,12 @@ export const userReducer = (state:UserState, action: UserAction): UserState => {
             return {
                 ...state,
                 isAuthenticated: !isEmpty(action.payload),
+                user: action.payload
+            }
+        case 'logout':
+            localStorage.removeItem("jwt");
+            return{...state,
+                isAuthenticated: false,
                 user: action.payload
             }
         default:

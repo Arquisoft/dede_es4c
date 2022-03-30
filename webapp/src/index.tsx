@@ -4,11 +4,14 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { CartProvider } from "./context/cartProvider";
+import { UserProvider} from "./context/userProvider";
 
 ReactDOM.render(
+	<UserProvider>
 	<CartProvider>
 		<App />
-	</CartProvider>,
+	</CartProvider>
+	</UserProvider>,
 	document.getElementById("root"),
 );
 
