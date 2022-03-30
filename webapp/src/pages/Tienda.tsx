@@ -49,7 +49,7 @@ function Tienda (props:any) {
     };
 
     const isTodos = () => {
-        return filtro.localeCompare("todos") == 0;
+        return !isComida() && !isBebida() && !isNombre();
     }
 
     const isComida = () => {
@@ -61,9 +61,7 @@ function Tienda (props:any) {
     }
 
     const isNombre = () =>{
-        return filtro.localeCompare("bebida") != 0 &&
-        filtro.localeCompare("comida") != 0 &&
-        filtro.localeCompare("todos") != 0;
+        return filtro.localeCompare(nombre) == 0;
     }
 
     const handleFilterComida = () => {
@@ -75,14 +73,12 @@ function Tienda (props:any) {
     }
 
     const handleFilterNombre = () => {
-        listaFiltrada = actualizaPinchos(nombre);
         setFiltro(nombre);
     }
 
     const handleInputChange = (e: any) => {
         console.log(e.target.value);
         setNombre(e.target.value);
-        console.log("nombre: " + nombre);
     }
 
     return (
@@ -128,7 +124,7 @@ function Tienda (props:any) {
                 <Productos products = {listaBebida}></Productos>     
                 }
                 {isNombre() &&
-                <Productos products = {actualizaPinchos("pollo")}></Productos>     
+                <Productos filtro = {nombre + ""}></Productos>     
                 }      
         </div>
     );
