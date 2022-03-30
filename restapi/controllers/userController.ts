@@ -18,7 +18,7 @@ export const verify = async (req: Request, res: Response): Promise<Response> => 
 export const signup = async (req: Request, res: Response): Promise<Response> => {
     try {
         const { username, email, password } = req.body;
-        const existingUser = await User.findOne({ _email: email });
+        const existingUser = await User.findOne({ _email: email.toString() });
 
         if (existingUser)
             return res.status(500).send("Ya existe un usuario con ese email");
