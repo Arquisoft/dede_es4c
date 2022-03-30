@@ -47,7 +47,7 @@ export const signup = async (req: Request, res: Response): Promise<Response> => 
 export const login = async (req: Request, res: Response): Promise<Response> => {
     try {
         const { email, password } = req.body;
-        const user = await User.findOne({ _email: email });
+        const user = await User.findOne({ _email: email.toString() });
         
         if (!user)
             return res.status(400).send("No existe una cuenta con ese email");
