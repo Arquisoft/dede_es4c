@@ -87,8 +87,8 @@
 
 #listadoProducto #basic-button{
   font-size: 1em;
-  margin-left: 33%;
-  margin-top: -10%;
+  margin-left: 80%;
+  margin-top: -20%;
 }
 
 #listadoProducto #comida{
@@ -156,4 +156,8 @@ footer{
 
 .product{
   box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.4);
+}
+
+img #detalles{
+  float: center;
 }

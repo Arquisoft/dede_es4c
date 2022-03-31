@@ -2,12 +2,14 @@ import React, { useContext, useState } from "react";
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import "./styles/signup.css";
+import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import { UserContext } from '../context/userContext';
 import axios from 'axios'
 import jwt_decode from "jwt-decode";
 import { useNavigate } from "react-router-dom";
 import Alert from '@mui/material/Alert';
 import { User } from "../interface/interfaces";
+import { Link } from "react-router-dom";
 
 const Signup = () => {
 
@@ -99,6 +101,10 @@ const Signup = () => {
         ¿Ya tienes una cuenta? <br />
         <a href="/Login">Inicia sesión</a>
       </p>
+      <br></br>
+      <Link to = "/InfoPods">
+        <Button variant='contained' sx={{color: '#fff', m:1, backgroundColor: '#3e6969'}} endIcon={<InfoOutlinedIcon />}>Pods</Button>
+      </Link>
       </div>
       
     </div>
