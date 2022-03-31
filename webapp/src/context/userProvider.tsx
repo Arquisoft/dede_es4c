@@ -7,8 +7,8 @@ import { UserContext } from "./userContext";
 let initialState: UserState = {
     isAuthenticated: false,
     user: {
-        username: "",
-        email: ""
+        _username: "",
+        _email: ""
     }
 };
 
@@ -24,13 +24,14 @@ export const UserProvider = ({ children }: UserProviderProps) => {
     const [stateUser, dispatch] = useReducer(userReducer, initialState);
 
     const setCurrentUser = (user: User) => {
-        dispatch({ type: 'setCurrentUser', payload: user })
+        let userToSet = {_username: user._username, _email: user._email};
+        dispatch({ type: 'setCurrentUser', payload: userToSet })
     };
 
     const logout = () => {
         dispatch({type: 'logout', payload: {
-            username: "",
-            email: ""
+            _username: "",
+            _email: ""
         }})
     }
 

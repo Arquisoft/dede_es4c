@@ -17,6 +17,6 @@ export interface UserState{
 }
 
 export interface User {
-    username: string;
-    email: string;
+    _username: string;
+    _email: string;
 }

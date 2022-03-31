@@ -40,6 +40,7 @@ const Login = () => {
       localStorage.setItem("jwt", token);
       var token_decoded : User = jwt_decode(token);
       setError("");
+      console.log(token_decoded)
       setCurrentUser(token_decoded);
     }
 

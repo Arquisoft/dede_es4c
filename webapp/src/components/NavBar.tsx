@@ -23,7 +23,6 @@ import Producto from "./Producto";
 import { UserContext } from '../context/userContext';
 import { useContext, useState } from 'react';
 import { useNavigate } from "react-router-dom";
-import { updateStatement } from 'typescript';
 
 const pages = ['Tienda', 'Historia'];
 const settings = ['Signup', 'Login'];
@@ -35,6 +34,8 @@ const NavBar = () => {
   const { stateUser, logout } = useContext(UserContext);
 
   const [open, setOpen] = React.useState(false);
+
+  const navigate = useNavigate();
 
   const handleClose = (event: React.SyntheticEvent | Event, reason?: string) => {
     if (reason === 'clickaway') {
@@ -76,6 +77,10 @@ const NavBar = () => {
   const handleLogout = () => {
     logout();
     setOpen(true);
+  }
+
+  const handlePerfil = () => {
+    navigate("/Perfil");
   }
 
   return (
@@ -125,7 +130,6 @@ const NavBar = () => {
               ))}
             </Menu>
           </Box>
-
           <Link href='/'
             variant="h6"
             noWrap
@@ -137,6 +141,15 @@ const NavBar = () => {
               <Link href={"/" + page} sx={{ my: 2, color: '#fff', display: 'block', pr: 4, pl: 4 }}>{page}</Link>
             ))}
           </Box>
+          { stateUser.isAuthenticated &&
+          <Box sx={{ flexGrow: 0, pr: 5 }}>
+          <Tooltip title="Accede al perfil">
+          <Button onClick={handlePerfil} >
+            <AccountCircleIcon sx={{ color: "#fff" }} />
+            </Button>
+          </Tooltip>
+          </Box>
+        }
           {!stateUser.isAuthenticated &&
             <Box sx={{ flexGrow: 0, pr: 5 }}>
               <Tooltip title="Opciones de usuario">

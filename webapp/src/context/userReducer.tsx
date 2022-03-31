@@ -7,6 +7,7 @@ type UserAction =
 export const userReducer = (state:UserState, action: UserAction): UserState => {
     switch(action.type){
         case 'setCurrentUser':
+            console.log(action.payload);
             return {
                 ...state,
                 isAuthenticated: !isEmpty(action.payload),
