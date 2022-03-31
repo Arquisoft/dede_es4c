@@ -12,7 +12,6 @@ import Login from './pages/Login';
 import InfoPods from './pages/InfoPods'
 import Producto from "./pages/Producto";
 import './App.css';
-import { CartContext } from './context/cartContext';
 
 
 const listaPorDefecto: Producto[] = [];
@@ -20,27 +19,12 @@ const CarritoContext = React.createContext(listaPorDefecto);
 
 function App(): JSX.Element {
 
-  //Contexto del carrito
-  const {cartState} = useContext(CartContext);
-
-  const [users,setUsers] = useState<User[]>([]);
-
-  
-
-  const refreshUserList = async () => {
-    setUsers(await getUsers());
-  }
-
-  useEffect(()=>{
-    refreshUserList();
-  },[]);
-
   return (
     <div className='App'>
-      <NavBar />
+      
       
      <Router>
-      
+     <NavBar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/Tienda" element={<Tienda />} />
