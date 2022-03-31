@@ -16,14 +16,21 @@ import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import logo from './icons/DeDe.png';
 import CartDrawer from './CartDrawer';
+import LogoutIcon from '@mui/icons-material/Logout';
 import Producto from "./Producto";
+import { UserContext } from '../context/userContext';
+import { useContext, useState } from 'react';
+import { useNavigate } from "react-router-dom";
+import { updateStatement } from 'typescript';
 
 const pages = ['Tienda', 'Historia'];
-const settings = ['Perfil', 'Signup', 'Login', 'Logout'];
+const settings = ['Signup', 'Login'];
 
 const NavBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
+
+  const {stateUser, logout} = useContext(UserContext);
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
@@ -40,6 +47,10 @@ const NavBar = () => {
     setAnchorElUser(null);
     
   };
+
+  const handleLogout = () => {
+    logout();
+  }
 
   return (
     <AppBar position="fixed" style={{ background: '#596886' }}>
@@ -100,6 +111,7 @@ const NavBar = () => {
               <Link href={"/" + page} sx={{ my: 2, color: '#fff', display: 'block', pr: 4, pl: 4 }}>{page}</Link>
             ))}
           </Box>
+          { !stateUser.isAuthenticated &&
           <Box sx={{ flexGrow: 0, pr: 5 }}>
             <Tooltip title="Opciones de usuario">
               <IconButton onClick={handleOpenUserMenu} size='large'>
@@ -132,14 +144,19 @@ const NavBar = () => {
               ))}
             </Menu>
           </Box>
-          <Box sx={{ flexGrow: 0, pr: 5 }}>
-
-              
+          }
+          <Box sx={{ flexGrow: 0, pr: 5 }}>                 
               <CartDrawer products={{}} />
-
-            
-   
           </Box>
+          { stateUser.isAuthenticated &&
+          <Box sx={{ flexGrow: 0, pr: 5 }}>      
+          <Tooltip title="Cerrar sesión">
+          <Button onClick={handleLogout}>
+              <LogoutIcon sx={{ color: "#fff" }}/>
+          </Button>
+          </Tooltip>  
+          </Box>
+        }
         </Toolbar>
       </Container>
     </AppBar>

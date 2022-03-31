@@ -18,6 +18,7 @@ import Producto from "./Producto";
 import { useCart } from '../hooks/useCart';
 import { CartContext } from '../context/cartContext';
 import { useContext } from 'react';
+import { Button } from '@mui/material';
 
 
 
@@ -63,7 +64,10 @@ export default function TemporaryDrawer(props: any) {
      {productos.map((product) =>(
            <CartItem producto={product}/>
         ))}
-        <Typography textAlign="center">{'Total del importe: ' + cartState.total + " €"}</Typography>
+        <Box textAlign="center">
+        <Typography >{'Total del importe: ' + cartState.total.toFixed(2) + " €"}</Typography>
+        <Button variant="contained" >Realizar compra</Button>
+        </Box>
      
     </Box>
   );
