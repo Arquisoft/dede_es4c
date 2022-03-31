@@ -1,7 +1,7 @@
 import React from 'react';
 import image from '../images/Equipo_02.png';
 import hugo from '../images/avatares/Hugo.jpeg';
-//import dani from '../images/avatares/Dani.jpeg';
+import dani from '../images/avatares/Dani.jpg';
 //import sergio from '../images/avatares/Sergio.jpeg';
 //import damir from '../images/avatares/Damir.jpeg';
 //import marcos from '../images/avatares/Marcos.jpeg';
@@ -22,7 +22,7 @@ const Historia = () => {
         <section id = 'desarrolladores'>
             <h2>Desarrolladores de la tienda:</h2>
                 <p id="dani">Daniel Ferreira Gómez - UO277603</p>
-                <Avatar alt="Foto de Daniel Ferreira Gómez" src = "ponerFoto" sx={{ width: 56, height: 56 }}/>
+                <Avatar alt="Foto de Daniel Ferreira Gómez" src = {dani} sx={{ width: 56, height: 56 }}/>
                 <p>Damir Abdrafikov - UO277306</p>
                 <Avatar alt="Foto de Damir Abdrafikov" src = "ponerFoto" sx={{ width: 56, height: 56 }}/>
                 <p>Sergio Castillo - UO276436</p>
