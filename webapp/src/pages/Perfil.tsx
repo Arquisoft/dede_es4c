@@ -1,26 +1,54 @@
-import React, { useContext } from 'react';
+import React, { useContext } from "react";
 import Avatar from '@mui/material/Avatar';
-import { UserContext } from '../context/userContext';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
+import CardMedia from '@mui/material/CardMedia';
+import Divider from '@mui/material/Divider';
+import { UserContext } from "../context/userContext";
+import './styles/profile.css';
 import Button from '@mui/material/Button';
 
 const Perfil = () => {
 
     const {stateUser} = useContext(UserContext);
 
-    const prueba = () => {
-        console.log(stateUser)
-    }
-
-    return (
-        <div id='perfil'>
-            <div id="mainPerfil">
-                <h1>Perfil del usuario</h1>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Accusamus consectetur tempore recusandae ullam praesentium quae ducimus eum! Voluptas, quidem quae, distinctio maiores tempora architecto molestiae eaque et ducimus atque quisquam!</p>
-            </div>
-        <Button onClick={prueba}>Pulsa aqui</Button>
-        </div>
-        
-    );
+  return (
+    <div id="profile">
+      <Card className="card" >
+       
+        <CardContent className="content">
+          <Typography
+            className={"username"}
+            variant={"h2"}
+            gutterBottom     
+          >
+            {stateUser.user._username}
+          </Typography>
+          <Avatar className="avatar" sx={{width:250, height:250}}/>
+          <Divider className="divider"  />
+          <Typography
+            className={"email"}
+            variant={"h6"}
+          >
+              Email: {stateUser.user._email}
+          </Typography>
+          <Typography
+            className={"email"}
+            variant={"h6"}
+          >
+              Dirección:
+          </Typography>
+          <Typography
+            className={"email"}
+            variant={"h6"}
+          >
+              Teléfono:
+          </Typography>
+        </CardContent>
+      </Card>
+    </div>
+  );
 }
 
 export default Perfil;

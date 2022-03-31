@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import NavBar from './components/NavBar';
 import Footer from './components/Footer';
-import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate, useNavigate} from "react-router-dom";
 import Home from './pages/Home';
 import Tienda from './pages/Tienda';
 import Historia from './pages/Historia';
@@ -28,13 +28,11 @@ function App(): JSX.Element {
         <Route path="/Signup" element={<Signup />} />
         <Route path="/Historia" element={<Historia />} />
         <Route path="/Login" element={<Login />} />
-        { 
         <Route
-         path='/Perfil' element={<Perfil />} />
-        }
+         path='/Perfil' element={stateUser.isAuthenticated ? <Perfil/> : <Login/>} /> 
       </Routes>
+      <Footer/>
     </Router>
-    <Footer/>
     </div>
   );
 }

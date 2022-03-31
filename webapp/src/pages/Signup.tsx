@@ -7,11 +7,11 @@ import axios from 'axios'
 import jwt_decode from "jwt-decode";
 import { useNavigate } from "react-router-dom";
 import Alert from '@mui/material/Alert';
-import { User } from "../interface/interfaces";
+import {  Token } from "../interface/interfaces";
 
 const Signup = () => {
 
-  const {setCurrentUser, logout} = useContext(UserContext);
+  const {setCurrentUser, logout, stateUser} = useContext(UserContext);
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -21,22 +21,27 @@ const Signup = () => {
   const navigate = useNavigate();
 
   const userSignup = (user:any) => {
-    const {username, email, password, repeatPassword} = user;
     axios.post('http://localhost:5000/api/signup', {
       username, email, password
     }).then( res => {
-      setToken(res.data.token);
-      navigate("/");
-    }).catch(error => {
+      if(res.status === 200){
+        setToken(res.data.token);   
+        navigate("/Perfil"); 
+      } else {
+        setError(res.data.err.message);
+        logout();
+      }
+    }).catch(_e => {
         setError("Se ha producido un error");
+        logout();
     });
   }
 
   const setToken = (token: string) => {
     localStorage.setItem("jwt", token);
-    var token_decoded : User = jwt_decode(token);
+    var token_decoded = jwt_decode<Token>(token);
     setError("");
-    setCurrentUser(token_decoded);
+    setCurrentUser(token_decoded.user);
   }
 
   const submit = (e: { preventDefault: () => void; }) => {
@@ -46,6 +51,8 @@ const Signup = () => {
       setError("Rellene los datos solicitados correctamente")
     }else if(password !== repeatPassword){
       setError("Las contraseñas no coinciden")
+    }else if(password.length < 6){
+      setError("La contraseña debe tener al menos 6 caracteres");
     }else{
       userSignup(user);
     }

@@ -84,7 +84,7 @@ const NavBar = () => {
   }
 
   return (
-    <AppBar position="fixed" style={{ background: '#596886' }}>
+    <AppBar position="relative" style={{ background: '#596886' }}>
       <Container maxWidth={false}>
         <Toolbar disableGutters>
           <Link href='/'
