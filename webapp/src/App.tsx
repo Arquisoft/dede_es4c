@@ -8,6 +8,8 @@ import Historia from './pages/Historia';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Perfil from "./pages/Perfil";
+import InfoPods from './pages/InfoPods'
+import Producto from "./pages/Producto";
 import './App.css';
 import {UserContext} from "./context/userContext";
 
@@ -28,8 +30,8 @@ function App(): JSX.Element {
         <Route path="/Signup" element={<Signup />} />
         <Route path="/Historia" element={<Historia />} />
         <Route path="/Login" element={<Login />} />
-        <Route
-         path='/Perfil' element={stateUser.isAuthenticated ? <Perfil/> : <Login/>} /> 
+        <Route path='/Perfil' element={stateUser.isAuthenticated ? <Perfil/> : <Login/>} /> 
+        <Route path="/InfoPods" element={<InfoPods />} />
       </Routes>
       <Footer/>
     </Router>
