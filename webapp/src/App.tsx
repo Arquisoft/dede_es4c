@@ -1,23 +1,22 @@
-import React, { useState, useEffect, useContext } from 'react';
-import  {getUsers} from './api/api';
-import {User} from './shared/shareddtypes';
+import React, { useContext } from 'react';
 import NavBar from './components/NavBar';
 import Footer from './components/Footer';
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate, useNavigate} from "react-router-dom";
 import Home from './pages/Home';
 import Tienda from './pages/Tienda';
 import Historia from './pages/Historia';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
+import Perfil from "./pages/Perfil";
 import InfoPods from './pages/InfoPods'
 import Producto from "./pages/Producto";
 import './App.css';
+import {UserContext} from "./context/userContext";
 
-
-const listaPorDefecto: Producto[] = [];
-const CarritoContext = React.createContext(listaPorDefecto);
 
 function App(): JSX.Element {
+
+  const {stateUser} = useContext(UserContext);
 
   return (
     <div className='App'>
@@ -31,10 +30,11 @@ function App(): JSX.Element {
         <Route path="/Signup" element={<Signup />} />
         <Route path="/Historia" element={<Historia />} />
         <Route path="/Login" element={<Login />} />
+        <Route path='/Perfil' element={stateUser.isAuthenticated ? <Perfil/> : <Login/>} /> 
         <Route path="/InfoPods" element={<InfoPods />} />
       </Routes>
+      <Footer/>
     </Router>
-    <Footer/>
     </div>
   );
 }

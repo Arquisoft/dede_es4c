@@ -38,6 +38,7 @@ function Productos(props:any){
                   setPage(page);
                 }}></Pagination>
           </div>
+          
         </div>
     )
   }

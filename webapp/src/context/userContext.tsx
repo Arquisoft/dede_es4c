@@ -1,9 +1,9 @@
-import {createContext, Dispatch} from 'react';
-import { User, UserState } from '../interface/interfaces';
+import {createContext} from 'react';
+import { BDUser, UserState } from '../interface/interfaces';
 
 export type UserContextProps = {
     stateUser: UserState;
-    setCurrentUser: (user: User) => void;
+    setCurrentUser: (user: BDUser) => void;
     logout: () => void;
 }
 

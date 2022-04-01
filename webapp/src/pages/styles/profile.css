@@ -1,0 +1,25 @@
+#profile {
+    font-family: sans-serif;
+    text-align: center;
+    padding: 3em;
+    align-items: center;
+    
+  }
+  
+
+.card{
+    max-width: 600px;
+    margin: auto;
+    transition: 0.3s;
+    box-shadow: 0 8px 40px -12px rgba(0,0,0,0.3);
+}
+
+.card:hover{
+    box-shadow: 0 16px 70px -12.125px rgba(0,0,0,0.3);
+}
+
+.avatar{
+    border: 2px solid white;
+    margin:auto;
+}
+

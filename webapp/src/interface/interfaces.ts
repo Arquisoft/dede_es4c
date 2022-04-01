@@ -13,10 +13,18 @@ export interface CartState {
 
 export interface UserState{
     isAuthenticated: boolean;
-    user: User;
+    user: BDUser;
 }
 
-export interface User {
-    username: string;
-    email: string;
+export interface BDUser {
+    __v: number,
+    _email: string,
+    _id: string,
+    _password: string,
+    _username: string
+}
+
+export interface Token {
+    iat: number,
+    user: BDUser
 }

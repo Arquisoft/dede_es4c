@@ -6,12 +6,12 @@ import { UserContext } from '../context/userContext';
 import foto from '../images/user.png';
 import jwt_decode from "jwt-decode";
 import axios from 'axios'
-import { User } from "../interface/interfaces";
+import { Token } from "../interface/interfaces";
 import Alert from '@mui/material/Alert';
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-    const {setCurrentUser, logout} = useContext(UserContext);
+    const {setCurrentUser, logout, stateUser} = useContext(UserContext);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
@@ -19,18 +19,18 @@ const Login = () => {
     const navigate = useNavigate();
 
     const userLogin = (user: any) => {
-        const {email, password} = user;
+       
         axios.post('http://localhost:5000/api/login', {
             email, password
         }).then( res => {
           if(res.status === 200){
             setToken(res.data.token);
-            navigate("/"); // Cambiar cuando tengamos pantalla de perfil
+            navigate("/Perfil"); 
           } else {
             setError(res.data.err.message);
             logout();
           }
-        }).catch (error => {
+        }).catch ((_e) => {
           setError("Las credenciales no son correctas");
           logout();
         });
@@ -38,9 +38,9 @@ const Login = () => {
 
     const setToken = (token: string) => {
       localStorage.setItem("jwt", token);
-      var token_decoded : User = jwt_decode(token);
+      var token_decoded = jwt_decode<Token>(token);
       setError("");
-      setCurrentUser(token_decoded);
+      setCurrentUser(token_decoded.user);
     }
 
     const submit = (e: { preventDefault: () => void; }) => {

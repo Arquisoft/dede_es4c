@@ -1,8 +1,8 @@
-import { UserState, User} from "../interface/interfaces";
+import { UserState, BDUser} from "../interface/interfaces";
 
 type UserAction = 
-    | {type: 'setCurrentUser', payload: User}
-    | {type: 'logout', payload: User}
+    | {type: 'setCurrentUser', payload: BDUser}
+    | {type: 'logout', payload: BDUser}
 
 export const userReducer = (state:UserState, action: UserAction): UserState => {
     switch(action.type){
