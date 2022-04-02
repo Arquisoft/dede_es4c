@@ -23,7 +23,7 @@ const getProductById = async (req: Request, res: Response): Promise<Response> =>
 
 const getBebidas = async (req: Request, res: Response): Promise<Response> => {
     try {
-        var result = await Product.find({_bebida:true}).exec();  
+      var result = await Product.find({_tipo:"bebida"}).exec();
         return res.status(200).json(result);
     } catch (error) {
       return res.status(500).send(error);
@@ -32,16 +32,42 @@ const getBebidas = async (req: Request, res: Response): Promise<Response> => {
 
 const getComidas = async (req: Request, res: Response): Promise<Response> => {
     try {
-        var result = await Product.find({_bebida:false}).exec();
+        var result = await Product.find({_tipo:"pincho"}).exec();
         return res.status(200).json(result);
     } catch (error) {
       return res.status(500).send(error);
     }
   }
-
+  const getPostres = async (req: Request, res: Response): Promise<Response> => {
+    try {
+        var result = await Product.find({_tipo:"postre"}).exec();
+        return res.status(200).json(result);
+    } catch (error) {
+      return res.status(500).send(error);
+    }
+  }
+  const getVegetariano = async (req: Request, res: Response): Promise<Response> => {
+    try {
+        var result = await Product.find({_vegetariano:true}).exec();
+        return res.status(200).json(result);
+    } catch (error) {
+      return res.status(500).send(error);
+    }
+  }
+  const getNoVegetariano = async (req: Request, res: Response): Promise<Response> => {
+    try {
+        var result = await Product.find({_vegetariano:false}).exec();
+        return res.status(200).json(result);
+    } catch (error) {
+      return res.status(500).send(error);
+    }
+  }
 module.exports = {
     getProducts,
     getProductById,
     getBebidas,
-    getComidas
+    getComidas,
+    getPostres,
+    getVegetariano,
+    getNoVegetariano
 }
