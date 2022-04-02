@@ -60,7 +60,7 @@ function ProductoLista(props:any){
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-          {props.product.nombre}
+          {props.product.nombre.charAt(0).toUpperCase()+props.product.nombre.slice(1)}
         </Typography>
         <Typography>
           <Tooltip title="Picante">
