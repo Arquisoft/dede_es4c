@@ -18,9 +18,6 @@ Webapp <-- Restapi: Devuelve token
 Usuario <- Webapp: Notifica al usuario
 ----
 
-
-
-
 Para registrarse, el usuario deberá rellenar el formulario correspondiente. Una vez hecho, se guardarán en la base de datos solo los datos necesarios. El resto de datos personales serán almacenados en el POD.
 
 
@@ -42,3 +39,5 @@ MongoDB --> Restapi: Devuelve los datos correspondientes
 Restapi --> Webapp: Devuelve token 
 Webapp -> Usuario: Notifica al usuario
 ----
+
+El usuario deberá rellenar el formulario correspondiente para iniciar sesión. Los datos serán enviados y validados y finalmente se le notificará al usuario si ha introducido los datos correctamente.
