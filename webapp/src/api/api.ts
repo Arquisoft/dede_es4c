@@ -42,6 +42,11 @@ export async function getPinchoBebida():Promise<Pincho[]>{
   let response = await fetch(apiEndPoint+'/pinchos/bebida');
   return response.json()
 }
+export async function getPostre():Promise<Pincho[]>{
+  const apiEndPoint= process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
+  let response = await fetch(apiEndPoint+'/pinchos/postre');
+  return response.json()
+}
 export async function getPinchoVegetariano():Promise<Pincho[]>{
   const apiEndPoint= process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
   let response = await fetch(apiEndPoint+'/pinchos/vegetariano');
