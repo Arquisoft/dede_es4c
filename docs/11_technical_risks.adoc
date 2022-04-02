@@ -1,7 +1,11 @@
 [[section-technical-risks]]
-== Riesgos y deuda técnica
+== Riesgos
 * Desconocimiento de la tecnología a usar en el desarrollo del proyecto.
-* La posibilidad de que un miembro abandonce el grupo.
-* Posible mala implementacion de la estructura de del proyecto y tener que refactorizar la mayor parte de esta.
+* La posibilidad de que un miembro abandone el grupo.
+* Posible mala implementacion de la estructura del proyecto y tener que refactorizar la mayor parte de esta.
 * Posibles fallos incontrolados o situaciones no conocidas en la aplicación.
 
+== Deuda Técnica
+* El código actual que actualiza la lista de productos según filtros no está bien planificado y, con la llegada de más filtros,
+quedará un código demasiado extenso.
+* Tenemos clases con mucha información, lo que provoca que, en una modificación que les afecte, tendremos dificultades para codificarlos.
