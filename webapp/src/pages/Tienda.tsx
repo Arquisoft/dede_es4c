@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
 
-import TextField from '@mui/material/TextField';
 import Input from '@mui/material/Input';
 import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
@@ -10,12 +9,16 @@ import Menu from '@mui/material/Menu';
 import RestaurantIcon from '@mui/icons-material/Restaurant';
 import LocalDrinkSharpIcon from '@mui/icons-material/LocalDrinkSharp';
 import Producto from './Producto';
-import actualizaPinchos from '../components/CargaPinchos'
+import actualizaPinchos from '../components/CargaPinchos';
+import CakeIcon from '@mui/icons-material/Cake';
+import GrassIcon from '@mui/icons-material/Grass';
+import FlutterDashIcon from '@mui/icons-material/FlutterDash';
 
 var listaTodos: Producto[] = [];
 var listaComida: Producto[] = [];
 var listaBebida: Producto[] = [];
-var listaFiltrada: Producto[] = [];
+var listaVeg: Producto[] = [];
+var listaNoVeg: Producto[] = [];
 var filtrado: string = "";
 var soloComida: boolean = false;
 
@@ -35,8 +38,8 @@ function Tienda (props:any) {
     listaTodos = actualizaPinchos(filtro);
     listaComida = actualizaPinchos("comida");
     listaBebida = actualizaPinchos("bebida");
-    listaFiltrada = actualizaPinchos(nombre);
-
+    listaVeg = actualizaPinchos("veg");
+    listaNoVeg = actualizaPinchos("noveg");
    
 
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -49,7 +52,7 @@ function Tienda (props:any) {
     };
 
     const isTodos = () => {
-        return !isComida() && !isBebida() && !isNombre();
+        return !isComida() && !isBebida() && !isNombre() && !isVeg() && !isNoVeg();
     }
 
     const isComida = () => {
@@ -58,6 +61,14 @@ function Tienda (props:any) {
 
     const isBebida = () => {
         return filtro.localeCompare("bebida") == 0;
+    }
+
+    const isVeg = () => {
+        return filtro.localeCompare("veg") == 0;
+    }
+
+    const isNoVeg = () => {
+        return filtro.localeCompare("noveg") == 0;
     }
 
     const isNombre = () =>{
@@ -72,12 +83,24 @@ function Tienda (props:any) {
         setFiltro("bebida");
     }
 
+    const handleFilterPostre = () => {
+        setNombre("postre");
+        setFiltro("postre");
+    }
+
+    const handleFilterVegetariano = () => {
+        setFiltro("veg");
+    }
+
+    const handleFilterNoVegetariano = () => {
+        setFiltro("noveg");
+    }
+
     const handleFilterNombre = () => {
         setFiltro(nombre);
     }
 
     const handleInputChange = (e: any) => {
-        console.log(e.target.value);
         setNombre(e.target.value);
     }
 
@@ -112,6 +135,9 @@ function Tienda (props:any) {
                     >
                         <Button variant="contained" sx={{color: '#fff', m:1, background: '#596886'}} endIcon={<RestaurantIcon />} onClick = {handleFilterComida}>Comida</Button>
                         <Button variant="contained" sx={{color: '#fff', m:1, background:'#596886'}} endIcon={<LocalDrinkSharpIcon />} onClick = {handleFilterBebida} >Bebida</Button>
+                        <Button variant="contained" sx={{color: '#fff', m:1, background:'#596886'}} endIcon={<CakeIcon />} onClick = {handleFilterPostre} >Postres</Button>
+                        <Button variant="contained" sx={{color: '#fff', m:1, background:'#596886'}} endIcon={<GrassIcon />} onClick = {handleFilterVegetariano} >Vegetarianos</Button>
+                        <Button variant="contained" sx={{color: '#fff', m:1, background:'#596886'}} endIcon={<FlutterDashIcon />} onClick = {handleFilterNoVegetariano} >No Vegetarianos</Button>
                     </Menu>
             </main>
                 {isTodos() &&
@@ -122,6 +148,12 @@ function Tienda (props:any) {
                 }    
                 {isBebida() &&
                 <Productos products = {listaBebida}></Productos>     
+                }
+                {isVeg() &&
+                <Productos products = {listaVeg}></Productos>     
+                }
+                {isNoVeg() &&
+                <Productos products = {listaNoVeg}></Productos>     
                 }
                 {isNombre() &&
                 <Productos filtro = {nombre + ""}></Productos>     

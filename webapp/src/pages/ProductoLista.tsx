@@ -48,6 +48,14 @@ function ProductoLista(props:any){
         return false;
     }
 
+    const esVegetariano = (producto: Producto) => {
+      return producto.vegetariano;
+    }
+
+    const esPicante = (producto: Producto) => {
+      return false;
+    }
+
     return(
       <Grid item xs={4}>
       <Card sx={{ maxWidth: 345 }}>
@@ -62,12 +70,16 @@ function ProductoLista(props:any){
           {props.product.nombre}
         </Typography>
         <Typography>
-          <Tooltip title="Picante">
-            <Avatar alt="Este pincho pica" src = {picante} sx={{ width: 25, height: 25 }}/>
-          </Tooltip>
+          { esPicante(props.product) &&
+            <Tooltip title="Picante">
+              <Avatar alt="Este pincho pica" src = {picante} sx={{ width: 25, height: 25 }}/>
+            </Tooltip>
+          }
+          { esVegetariano(props.product) &&
           <Tooltip title="Vegetariano">
             <Avatar alt="Este pincho es válido para vegetarianos" src = {vegetariano} sx={{ width: 25, height: 25 }}/>
           </Tooltip>
+          }
         </Typography>
         <Typography variant="body2" color="text.secondary">
           Precio: {props.product.precio} €
