@@ -54,7 +54,8 @@ function ProductoLista(props:any){
       <CardMedia
         component="img"
         height="20"
-        image={pinchoEstatico}
+        width="20"
+        image={"pinchos/"+props.product.nombre+".jpg"}
         alt="producto"
       />
       <CardContent>

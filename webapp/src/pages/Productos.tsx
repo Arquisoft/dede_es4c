@@ -9,7 +9,6 @@ import {
   Pagination
 } from "@mui/material";
 
-
 const numElements = 9;
 
 
