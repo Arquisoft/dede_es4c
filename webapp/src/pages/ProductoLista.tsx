@@ -62,12 +62,13 @@ function ProductoLista(props:any){
       <CardMedia
         component="img"
         height="20"
-        image={pinchoEstatico}
+        width="20"
+        image={"pinchos/"+props.product.nombre+".jpg"}
         alt="producto"
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-          {props.product.nombre}
+          {props.product.nombre.charAt(0).toUpperCase()+props.product.nombre.slice(1)}
         </Typography>
         <Typography>
           { esPicante(props.product) &&
