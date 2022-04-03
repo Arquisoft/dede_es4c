@@ -12,6 +12,9 @@ import LocalDrinkSharpIcon from '@mui/icons-material/LocalDrinkSharp';
 import Producto from './Producto';
 import actualizaPinchos from '../components/CargaPinchos'
 
+import { UserContext } from '../context/userContext';
+import { InfoPod } from '../interface/interfaces';
+
 var listaTodos: Producto[] = [];
 var listaComida: Producto[] = [];
 var listaBebida: Producto[] = [];
@@ -36,6 +39,8 @@ function Tienda (props:any) {
     listaComida = actualizaPinchos("comida");
     listaBebida = actualizaPinchos("bebida");
     listaFiltrada = actualizaPinchos(nombre);
+
+    const { stateUser, setInfo } = useContext(UserContext);
 
    
 
@@ -81,12 +86,15 @@ function Tienda (props:any) {
         setNombre(e.target.value);
     }
 
+		
+
+
     return (
 
         <div id='listadoProducto'>
             <main>
                 <h1>Artículos disponibles</h1>
-                <Input placeholder="Buscar" value = {nombre} onChange={handleInputChange}/>
+                <Input placeholder="Buscar" value = {nombre} />
                 <IconButton aria-label="Buscar" size="large" onClick={handleFilterNombre}>
                     <SearchIcon fontSize="large" />
                 </IconButton>

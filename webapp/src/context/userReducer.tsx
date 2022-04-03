@@ -1,10 +1,13 @@
-import { UserState, BDUser} from "../interface/interfaces";
+import { UserState, BDUser, InfoPod} from "../interface/interfaces";
+
 
 type UserAction = 
     | {type: 'setCurrentUser', payload: BDUser}
-    | {type: 'logout', payload: BDUser}
+    | {type: 'logoutUser', payload: BDUser}
+    | {type: 'setInfo', payload: InfoPod}
 
 export const userReducer = (state:UserState, action: UserAction): UserState => {
+
     switch(action.type){
         case 'setCurrentUser':
             return {
@@ -12,11 +15,18 @@ export const userReducer = (state:UserState, action: UserAction): UserState => {
                 isAuthenticated: !isEmpty(action.payload),
                 user: action.payload
             }
-        case 'logout':
+        case 'logoutUser':
             localStorage.removeItem("jwt");
+            localStorage.removeItem('user');
             return{...state,
                 isAuthenticated: false,
                 user: action.payload
+            }
+        case 'setInfo':
+            return{
+                ...state,
+                isAuthenticated: true,
+                info: action.payload
             }
         default:
             return state;

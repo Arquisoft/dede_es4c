@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { useContext, useEffect } from "react";
 import image from '../images/food.png';
 import Button from '@mui/material/Button';
 import Link from '@mui/material/Link';
+import { handleIncomingRedirect } from '@inrupt/solid-client-authn-browser';
+import { InfoPod } from "../interface/interfaces";
+import { UserContext } from "../context/userContext";
 
 const Home = () => {
+    const { setInfo } = useContext(UserContext);
+
+        
+
     return (
         <div id='home'>
         <main>
