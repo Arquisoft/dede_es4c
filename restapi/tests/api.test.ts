@@ -34,17 +34,56 @@ describe('user ', () => {
      * Test that we can list users without any error.
      */
     it('can be listed',async () => {
-        const response:Response = await request(app).get("/api/users/list");
+        const response:Response = await request(app).get("/api/pinchos");
         expect(response.statusCode).toBe(200);
     });
-
+    it('can be listed',async () => {
+        const response:Response = await request(app).get("/api/pinchos/search/a");
+        expect(response.statusCode).toBe(200);
+    });
+    it('can be listed',async () => {
+        const response:Response = await request(app).get("/api/pinchos/comida");
+        expect(response.statusCode).toBe(200);
+    });
+    it('can be listed',async () => {
+        const response:Response = await request(app).get("/api/pinchos/bebida");
+        expect(response.statusCode).toBe(200);
+    });
+    it('can be listed',async () => {
+        const response:Response = await request(app).get("/api/pinchos/postre");
+        expect(response.statusCode).toBe(200);
+    });
+    it('can be listed',async () => {
+        const response:Response = await request(app).get("/api/pinchos/vegetariano");
+        expect(response.statusCode).toBe(200);
+    });
+    it('can be listed',async () => {
+        const response:Response = await request(app).get("/api/pinchos/no_vegetariano");
+        expect(response.statusCode).toBe(200);
+    });
+    it('can be listed',async () => {
+        const response:Response = await request(app).get("/api/orders");
+        expect(response.statusCode).toBe(200);
+    });
+    it('can be listed',async () => {
+        const response:Response = await request(app).get("/api/orders/search/a");
+        expect(response.statusCode).toBe(200);
+    });
+    it('can be listed',async () => {
+        const response:Response = await request(app).get("/api/client/a");
+        expect(response.statusCode).toBe(200);
+    });
+    it('can be listed',async () => {
+        const response:Response = await request(app).get("/api/client/a");
+        expect(response.statusCode).toBe(200);
+    });
     /**
      * Tests that a user can be created through the productService without throwing any errors.
-     */
+     
     it('can be created correctly', async () => {
         let username:string = 'Pablo'
         let email:string = 'gonzalezgpablo@uniovi.es'
         const response:Response = await request(app).post('/api/users/add').send({name: username,email: email}).set('Accept', 'application/json')
         expect(response.statusCode).toBe(200);
-    });
+    });*/
 });
