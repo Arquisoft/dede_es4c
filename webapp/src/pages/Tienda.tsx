@@ -41,7 +41,6 @@ function Tienda (props:any) {
     listaTodos = actualizaPinchos(filtro);
     listaComida = actualizaPinchos("comida");
     listaBebida = actualizaPinchos("bebida");
-    listaFiltrada = actualizaPinchos(nombre);
 
     const { stateUser, setInfo } = useContext(UserContext);
 
