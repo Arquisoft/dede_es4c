@@ -192,7 +192,7 @@ const NavBar = () => {
             </Box>
           }
           <Box sx={{ flexGrow: 0, pr: 5 }}>
-            <CartDrawer products={{}} />
+            <CartDrawer products={[]} />
           </Box>
           {stateUser.isAuthenticated &&
             <Box sx={{ flexGrow: 0, pr: 5 }}>
