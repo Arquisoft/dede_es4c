@@ -2,7 +2,7 @@
 
 == Riesgos y deuda técnica
 
-[cols="1,1,4,1"]
+[cols="1,4"]
 .Riesgos
 |==============
 | Riesgo | Descripción
@@ -15,7 +15,7 @@
 | Seguridad | Es imprescindible almacenar la información sensible de los usuarios en los PODS asegurando la seguridad de los mismos.
 |==============
 
-[cols="1,1,4,1"]
+[cols="1,4"]
 .Deudas técnicas
 |==============
 | Deuda Técnica | Descripción

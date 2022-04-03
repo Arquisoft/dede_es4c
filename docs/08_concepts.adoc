@@ -3,7 +3,8 @@
 
 === Modelo de dominio de la aplicación
 
-image:domainModel.png["Example UML Diagram"]
+image:ModeloDominio.png["Modelo de dominio"]
+
 
 .Table
 [options="header", cols="1,2"]
