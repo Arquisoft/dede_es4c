@@ -1,9 +1,5 @@
 [[section-concepts]]
-== Conceptos transversales
-
-=== Modelo de dominio
-
-image:domainModel.png["Example UML Diagram"]
+== Cross-cutting Concepts
 
 === Interfaz de usuario
 
@@ -13,17 +9,41 @@ image:PrototipoProductos.png["Prototipo de la pantalla de vista de productos"]
 
 image:PrototipoPerfil.png["Prototipo de la pantalla del perfil"]
 
+[role="arc42help"]
+****
+.Content
+Este apartado contendrá la información principal de los elementos o conceptos 
+protagonistas en la aplicación.
 
-=== Seguridad
+.Motivation
+Definir un modelo de dominio de la aplicación para ilustrar las entidades que 
+formarán partede nuestra app y la interacción entre ellos.
+****
 
-Es parte fundamental de la aplicación el intercambio de datos y el procesamiento de estos de forma segura. Parte de esta seguridad viene dada por el uso de SOLID, que almacena los datos asgurando su seguridad.
+=== Domain model
 
-=== Pruebas funcionales
+image:domainModel.png["Example UML Diagram"]
 
-La apliación deberá ser probada mediante el uso de tests creados para comporobar el funcionamiento, ayudándonos a determinar la correcta implementación de la esta.
 
-=== Privacidad
 
-Se deverá mantener en todo momento la privacidad de los datos personales del usuario. Esto se hará gracias al uso de los PODs de SOLID, que nos permite almacenar datos de manera descentralizada. Nuestro equipo se compromete a no almacenar ninguno de estos datos sensibles en nuestra base de datos.
+=== Concepto 1
 
+Producto: Es el principal actor de la aplicación y serán los productos que
+el usuario podrá añadir a su pedido, en el caso de nuestra aplicación, serán
+pinchos (bocatas) 
+
+=== Concepto 2
+
+Pedido: Contiene todos los productos que el cliente haya seleccionado y serán
+enviados al domicilio que figura en el Pod del usuario, calculando el precio del
+pedido en funcion del domicilio del cliente
+
+=== Concepto 3
+
+Cliente: Persona física que interactua con la aplicación
+
+=== Concepto 4
+ Pod: Estructura que utiliza nuestra arquitectura SOLID para guardar los datos del cliente
+ para que la aplicación pueda utilizar estos datos, el cliente tendráa que darle permisos al 
+ servicio
 
