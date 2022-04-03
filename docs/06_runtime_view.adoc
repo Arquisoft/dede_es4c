@@ -39,6 +39,8 @@ Restapi --> Webapp: Devuelve token
 Webapp -> Usuario: Notifica al usuario
 ----
 
+El usuario deberá rellenar el formulario correspondiente para iniciar sesión. Los datos serán enviados y validados y finalmente se le notificará al usuario si ha introducido los datos correctamente.
+
 === Escenario 3. Realizar un pedido
 Se empezarán a añadir los productos deseados al pedido y una vez se hayan añadido todos 
 los productos necesarios, podrás finalizar el pedido y se enviará a la direccion proporcionada
@@ -74,3 +76,4 @@ Sing_Up -> Info_Pods: redirige
 Usuario -> Info_Pods: volver a sing up
 Info_Pods -> Sing_Up: redirige
 ----
+
