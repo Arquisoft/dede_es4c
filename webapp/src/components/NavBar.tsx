@@ -23,6 +23,8 @@ import Producto from "./Producto";
 import { UserContext } from '../context/userContext';
 import { useContext, useState } from 'react';
 import { useNavigate } from "react-router-dom";
+import {useSession } from "@inrupt/solid-ui-react";
+import { InfoPod } from '../interface/interfaces';
 
 const pages = ['Tienda', 'Historia'];
 const settings = ['Signup', 'Login'];
@@ -31,11 +33,13 @@ const NavBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
 
-  const { stateUser, logout } = useContext(UserContext);
+  const { stateUser, setInfo, logoutUser } = useContext(UserContext);
 
   const [open, setOpen] = React.useState(false);
 
   const navigate = useNavigate();
+
+  const { logout } = useSession();
 
   const handleClose = (event: React.SyntheticEvent | Event, reason?: string) => {
     if (reason === 'clickaway') {
@@ -75,7 +79,10 @@ const NavBar = () => {
   };
 
   const handleLogout = () => {
+    console.log(stateUser)
     logout();
+    logoutUser();
+    navigate("/");
     setOpen(true);
   }
 

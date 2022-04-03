@@ -1,7 +1,7 @@
-import React, { useReducer } from "react";
+import React, { useReducer, useEffect } from "react";
 import { userReducer } from "./userReducer";
 import jwt_decode from "jwt-decode";
-import { BDUser, Token, UserState } from "../interface/interfaces";
+import { BDUser, InfoPod, Token, UserState } from "../interface/interfaces";
 import { UserContext } from "./userContext";
 
 const defaultUser : BDUser =  {
@@ -12,9 +12,17 @@ const defaultUser : BDUser =  {
     _email: ""
 };
 
+const defaultInfo : InfoPod = {
+    expirationDate: 0,
+    isLoggedIn: false,
+    sessionId: '',
+    webId: ''
+}
+
 let initialState: UserState = {
     isAuthenticated: false,
-    user: defaultUser
+    user: defaultUser,
+    info: defaultInfo
 };
 
 interface UserProviderProps {
@@ -23,30 +31,39 @@ interface UserProviderProps {
 
 export const UserProvider = ({ children }: UserProviderProps) => {
     if (localStorage.jwt) {
-        console.log("Provider1")
         initialState.isAuthenticated = true;
         let user = jwt_decode<Token>(localStorage.jwt).user;
         initialState.user = user;
     }
-    const [stateUser, dispatch] = useReducer(userReducer, initialState);
+    const [stateUser, dispatch] = useReducer(userReducer, initialState, () => {
+        const localData = localStorage.getItem('user');
+        return localData ? JSON.parse(localData) : initialState
+    });
 
     const setCurrentUser = (user: BDUser) => {
         dispatch({ type: 'setCurrentUser', payload: user })
     };
 
-    const logout = () => {
-        dispatch({type: 'logout', payload: defaultUser})
+    const logoutUser = () => {
+        dispatch({type: 'logoutUser', payload: defaultUser})
+    }
+
+    const setInfo = (info: InfoPod) => {
+        dispatch({type: 'setInfo', payload: info})
     }
 
     if (localStorage.jwt && !stateUser.isAuthenticated) {
-        console.log("Provider2")
         const userToken = localStorage.jwt ? localStorage.jwt : "";
         var token_decoded = jwt_decode<Token>(userToken);
         setCurrentUser(token_decoded.user);
     }
 
+    useEffect(() => {
+        localStorage.setItem('user', JSON.stringify(stateUser))
+    }, [stateUser])
+
     return (
-        <UserContext.Provider value={{ stateUser, setCurrentUser, logout }}>
+        <UserContext.Provider value={{ stateUser, setCurrentUser, logoutUser, setInfo }}>
             {children}
         </UserContext.Provider>
     );

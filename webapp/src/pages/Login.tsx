@@ -1,6 +1,5 @@
 import React, { useContext, useState } from "react";
 import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
 import './styles/login.css';
 import { UserContext } from '../context/userContext';
 import foto from '../images/user.png';
@@ -9,14 +8,20 @@ import axios from 'axios'
 import { Token } from "../interface/interfaces";
 import Alert from '@mui/material/Alert';
 import { useNavigate } from "react-router-dom";
+import { LoginButton } from "@inrupt/solid-ui-react";
+import Button from '@mui/material/Button';
+
 
 const Login = () => {
-    const {setCurrentUser, logout, stateUser} = useContext(UserContext);
+    const {setCurrentUser, logoutUser} = useContext(UserContext);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
 
     const navigate = useNavigate();
+
+    const idp = "https://broker.pod.inrupt.com";
+	 const redirUrl = "http://localhost:3000/Perfil";
 
     const userLogin = (user: any) => {
        
@@ -28,11 +33,11 @@ const Login = () => {
             navigate("/Perfil"); 
           } else {
             setError(res.data.err.message);
-            logout();
+            logoutUser();
           }
         }).catch ((_e) => {
           setError("Las credenciales no son correctas");
-          logout();
+          logoutUser();
         });
     };
 
@@ -59,7 +64,7 @@ const Login = () => {
       <div id='formLogin'>
       <img src={foto}></img>
       <h1>Login</h1>
-    <form onSubmit={submit}>
+      <form onSubmit={submit}>
       <TextField
           className='textfield'
         name="email"
@@ -81,9 +86,16 @@ const Login = () => {
       <Button onClick={submit} variant='contained'>Enviar</Button>
       {error ? <Alert severity="error">{error}</Alert> : null }
     </form>
+    <LoginButton
+					authOptions={{ clientName: "dede_es4c" }}
+					oidcIssuer={idp}
+					redirectUrl={redirUrl}
+          onError={console.error} >
+            <Button variant="contained" sx={{bgcolor: '#596886'}}>Entra con tu POD</Button> 
+            </LoginButton> 
     <p>
-      ¿No tienes cuenta? <br />
-      <a href="/Signup">Crea una ahora</a>
+      ¿No tienes uno todavía? <br />
+      <a href="/Signup">Crea uno ahora</a>
     </p>
     </div>
     </div>
