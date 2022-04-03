@@ -1,4 +1,5 @@
 [[section-technical-risks]]
+
 == Riesgos y deuda técnica
 
 [cols="1,1,4,1"]
@@ -19,5 +20,7 @@
 |==============
 | Deuda Técnica | Descripción
 | Test | Actualmente el proyecto no cuenta con test necesarios para cubrir toda la funcionalidad de la aplicación.
+| Filtros | El código actual que actualiza la lista de productos según filtros no está bien planificado y, con la llegada de más filtros,
+quedará un código demasiado extenso
+| Clases grandes | Tenemos clases con mucha información, lo que provoca que, en una modificación que les afecte, tendremos dificultades para codificarlos
 |==============
-

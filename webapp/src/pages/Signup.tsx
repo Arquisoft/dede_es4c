@@ -13,7 +13,7 @@ import { Link } from "react-router-dom";
 
 const Signup = () => {
 
-  const {setCurrentUser, logout, stateUser} = useContext(UserContext);
+  const {setCurrentUser, logoutUser, stateUser} = useContext(UserContext);
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -31,11 +31,11 @@ const Signup = () => {
         navigate("/Perfil"); 
       } else {
         setError(res.data.err.message);
-        logout();
+        logoutUser();
       }
     }).catch(_e => {
         setError("Se ha producido un error");
-        logout();
+        logoutUser();
     });
   }
 
@@ -112,6 +112,7 @@ const Signup = () => {
       <Link to = "/InfoPods">
         <Button variant='contained' sx={{color: '#fff', m:1, backgroundColor: '#3e6969'}} endIcon={<InfoOutlinedIcon />}>Pods</Button>
       </Link>
+      <Link to="https://inrupt.net/register">Crea tu pod</Link>
       </div>
       
     </div>

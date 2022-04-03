@@ -9,19 +9,19 @@ import {
   Pagination
 } from "@mui/material";
 
-
 const numElements = 9;
-
-
-
 
 function Productos(props:any){
     const [page, setPage] = React.useState(1);
     var lista: Producto[] = [];
+    var numPages: number;
     lista = props.products;
     if(lista == undefined)
       lista = actualizaPinchos(props.filtro);
-    const numPages = Math.round(lista.length / numElements);
+    if(lista.length < numElements)
+      numPages = 1;
+    else
+      numPages = Math.round(lista.length / numElements) + 1;
 
     return(
         <div id='productos'>

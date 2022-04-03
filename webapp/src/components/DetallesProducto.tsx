@@ -48,20 +48,17 @@ const toggleDrawer =
               Descripción:
           </Typography>
           <Typography textAlign="center" gutterBottom variant="h5" component="div">
-            Pincho de pollo de corral, acompañado de lechuga fresca y pan.
+              {props.product.description}
           </Typography>
           <Typography textAlign="center" gutterBottom variant="h4" color = "#000034" component="div">
               Ingredientes:
           </Typography>
-          <Typography textAlign="center" gutterBottom variant="h5" component="div">
-              - Pan
-          </Typography>
-          <Typography textAlign="center" gutterBottom variant="h5" component="div">
-              - Pollo
-          </Typography>
-          <Typography textAlign="center" gutterBottom variant="h5" component="div">
-              - Lechuga
-          </Typography>
+          {props.product.ingredientes.map((ingrediente: string) =>(
+            <Typography textAlign="center" gutterBottom variant="h5" component="div">
+              - {ingrediente}
+            </Typography>
+          ))}
+          
           <Divider></Divider>
           <Typography textAlign="center" variant="body2" color="text.secondary">
             Precio: {props.product.precio} €

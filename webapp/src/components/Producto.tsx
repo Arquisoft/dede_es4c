@@ -8,6 +8,10 @@ class Producto{
         this.precio = precio;
         this.cantidad = cantidad;
     }
+
+    getPrecioSinIva(){
+        return this.cantidad*(this.precio*100/121);
+    }
 }
 
 export default Producto;

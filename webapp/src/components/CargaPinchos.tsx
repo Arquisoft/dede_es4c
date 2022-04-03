@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import Producto from '../pages/Producto';
-import { getPinchos } from '../api/api';
+import { getPinchoNoVegetariano, getPinchos, getPinchoVegetariano, getPostre } from '../api/api';
 import { getPinchoComida } from '../api/api';
 import { getPinchoBebida } from '../api/api';
 import { getPinchoById } from '../api/api';
@@ -17,6 +17,12 @@ function CargaPinchos(tipo: string): Producto[]{
             setPinchos(await getPinchoBebida());
         else if(tipo === "todos")
             setPinchos(await getPinchos());
+        else if(tipo === "postre")
+            setPinchos(await getPostre());
+        else if(tipo === "veg")
+            setPinchos(await getPinchoVegetariano());
+        else if(tipo === "noveg")
+            setPinchos(await getPinchoNoVegetariano());
         else
             setPinchos(await getPinchoById(tipo));
       }
@@ -28,7 +34,7 @@ function CargaPinchos(tipo: string): Producto[]{
       var productosReales: Producto[] = [];
 
       pinchos.map((pincho: Pincho) =>(
-         productosReales.push(new Producto(pincho._id, pincho._id, +pincho._precio, 1))
+         productosReales.push(new Producto(pincho._id, pincho._id, +pincho._precio, 1, pincho._descripcion, pincho._vegetariano, pincho._ingredientes))
     ));
 
     return productosReales;
