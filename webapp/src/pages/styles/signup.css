@@ -1,20 +1,20 @@
 
 
 #signupView{
-    display: grid;
-    grid-template-columns: auto auto;
-    grid-template-rows: auto auto;
+    display: flex;
+    flex-direction: row;
     gap: 5em;
     height: 850px;
     
 }
 
 #form{
-    width: 80%;
+    width: 50%;
+    height: 90%;
     text-align: center;
     position: relative;
-    left: 50%;
-    transform: translate(-50%, 20%);
+    left: 30%;
+    transform: translate(-50%, 5%);
     box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.4);
 }
 
