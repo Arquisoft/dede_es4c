@@ -2,43 +2,18 @@
 == Runtime View
 
 === Escenario 1. Registrarse como un nuevo usuario
+Para registrarse como nuevo usuario en la aplicación, tendrás que dar permiso al Pod con tus datos
+para permitir al servicio conocer tus nombre, apellidos y direccion. Esto nos servirá para poder
+calcular los gastos de envío propios de enviar un producto al domicilio del usuario
 
-[plantuml,"escenario1",png]
-----
-actor Usuario
-entity Webapp
-entity Restapi
-database POD
-database MongoDB
-Usuario -> Webapp: Rellenar formulario signup
-Webapp -> Restapi: Envía los datos
-Restapi -> POD: Envía datos personales
-Restapi -> MongoDB: Envía datos necesarios
-Webapp <-- Restapi: Devuelve token
-Usuario <- Webapp: Notifica al usuario
-----
+
+=== Escenario 2. Comenzar un nuevo pedido
+Para comenzar un nuevo pedido, has de loggearte en la web, con los datos requeridos que previamente 
+has proporcionado mediante el Pod, y comenzar a añadir productos a tu pedido
 
 
 
-
-Para registrarse, el usuario deberá rellenar el formulario correspondiente. Una vez hecho, se guardarán en la base de datos solo los datos necesarios. El resto de datos personales serán almacenados en el POD.
-
-
-=== Escenario 2. Iniciar sesión
-
-[plantuml,"escenario2",png]
-----
-actor Usuario
-entity Webapp
-entity Restapi
-database POD
-database MongoDB
-Usuario -> Webapp: Rellenar formulario login
-Webapp -> Restapi: Envía los datos
-Restapi -> POD: Valida los datos
-POD --> Restapi: Devuelve los datos privados
-Restapi -> MongoDB: Valida los datos
-MongoDB --> Restapi: Devuelve los datos correspondientes
-Restapi --> Webapp: Devuelve token 
-Webapp -> Usuario: Notifica al usuario
-----
+=== Escenario 3. Realizar un pedido
+Se empezarán a añadir los productos deseados al pedido y una vez se hayan añadido todos 
+los productos necesarios, podrás finalizar el pedido y se enviará a la direccion proporcionada
+por el pod

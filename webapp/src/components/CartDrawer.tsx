@@ -10,7 +10,6 @@ import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
-import IconButton from '@mui/material/IconButton';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import Typography from '@mui/material/Typography';
 import CartItem from './CartItem';
@@ -18,7 +17,6 @@ import Producto from "./Producto";
 import { useCart } from '../hooks/useCart';
 import { CartContext } from '../context/cartContext';
 import { useContext } from 'react';
-import { Button } from '@mui/material';
 
 
 
@@ -64,10 +62,7 @@ export default function TemporaryDrawer(props: any) {
      {productos.map((product) =>(
            <CartItem producto={product}/>
         ))}
-        <Box textAlign="center">
-        <Typography >{'Total del importe: ' + cartState.total.toFixed(2) + " €"}</Typography>
-        <Button variant="contained" >Realizar compra</Button>
-        </Box>
+        <Typography textAlign="center">{'Total del importe: ' + cartState.total + " €"}</Typography>
      
     </Box>
   );
@@ -77,9 +72,7 @@ export default function TemporaryDrawer(props: any) {
   return (
     <div>
         <React.Fragment key={'right'}>
-        <IconButton size="large" onClick={toggleDrawer('right', true)}>
-          <AddShoppingCartIcon fontSize="inherit" sx={{ color: "#fff" }} />
-          </IconButton>
+          <AddShoppingCartIcon fontSize="inherit" sx={{ color: "#fff" }} onClick={toggleDrawer('right', true)}/>
           <Drawer
             anchor={'right'}
             open={state['right']}

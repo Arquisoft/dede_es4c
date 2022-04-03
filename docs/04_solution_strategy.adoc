@@ -6,7 +6,6 @@
 ** MongoDB como base de datos NoSQl.
 ** Expres JS como framework de Node JS.
 ** Framework React para crear las interfaces de usuario.
-*** Material UI (MUI) como librería de React para la creación de componentes.
 ** Node JS como entorno de ejecución.
 ** Typescript como lenguaje de programación: MERN exige trabajar con JavaScript, pero Typescript añade una capa extra de tipado estático, que vendrá bien para prevenir errores.
 * SOLID para preservar la privacidad de los datos del usuario.
