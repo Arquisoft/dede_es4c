@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useContext} from 'react';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 
@@ -12,8 +12,11 @@ import CartItem from './CartItem';
 import {Producto} from "../interface/interfaces";
 import { useCart } from '../hooks/useCart';
 import { CartContext } from '../context/cartContext';
-import { useContext } from 'react';
 import { Button } from '@mui/material';
+import { UserContext } from "../context/userContext";
+import axios from 'axios'
+import Snackbar from '@mui/material/Snackbar';
+import CloseIcon from '@mui/icons-material/Close';
 
 
 
@@ -24,6 +27,8 @@ export default function TemporaryDrawer(props: any) {
   const {cartState, addToCart} = useContext(CartContext);
   const {productos} = useCart();
 
+  const {stateUser} = useContext(UserContext);
+  const [open, setOpen] = React.useState(false);
   
 
 useEffect(() => {
@@ -46,6 +51,31 @@ useEffect(() => {
     bottom: false,
     right: false,
   });
+
+  const handlePedido = () => {
+    var cliente = stateUser.user._id;
+    if(cliente === ''){
+      cliente = '55';
+    }
+    var direccion = "Avda. Galicia 62";
+    var precio = cartState.total;
+
+    var productosCarrito: Record<string, string> = {};
+    for(let i = 0; i < cartState.productos.length; i++){
+      productosCarrito[cartState.productos[i].id] = cartState.productos[i].cantidad + "";
+    }
+
+    axios.post('http://localhost:5000/api/orders/add',{
+      cliente, direccion, precio, productosCarrito
+    }).then( res => {
+      if(res.status === 200){
+        console.log("Pedido realizado")
+        setOpen(true);
+      }
+    }).catch(error => {
+      console.log(error);
+    })
+  };
 
   const toggleDrawer =
     (anchor: Anchor, open: boolean) =>
@@ -77,13 +107,32 @@ useEffect(() => {
         ))}
         <Box textAlign="center">
         <Typography >{'Total del importe: ' + cartState.total.toFixed(2) + " €"}</Typography>
-        <Button variant="contained" >Realizar compra</Button>
+        <Button onClick={handlePedido} variant="contained" >Realizar compra</Button>
         </Box>
      
     </Box>
   );
 
+  const handleClose = (event: React.SyntheticEvent | Event, reason?: string) => {
+    if (reason === 'clickaway') {
+      return;
+    }
 
+    setOpen(false);
+  };
+
+  const action = (
+    <React.Fragment>
+      <IconButton
+        size="small"
+        aria-label="close"
+        color="inherit"
+        onClick={handleClose}
+      >
+        <CloseIcon fontSize="small" />
+      </IconButton>
+    </React.Fragment>
+  );
 
   return (
     <div>
@@ -99,6 +148,13 @@ useEffect(() => {
           >
             {list('right')}
           </Drawer>
+          <Snackbar
+                    open={open}
+                    autoHideDuration={6000}
+                    onClose={handleClose}
+                    message="Se ha realizado el pedido"
+                    action={action}
+                  />
         </React.Fragment>
     </div>
   );
