@@ -3,3 +3,7 @@ build:
   docker:
     webapp: webapp/Dockerfile
     restapi: restapi/Dockerfile
+run:
+  webapp: npm start
+  restapi: npm start
+  
