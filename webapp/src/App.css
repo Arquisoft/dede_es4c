@@ -154,8 +154,11 @@ footer{
   height:60px;   /* Height of the footer */
 }
 
-.product{
+.cartItem{
   box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.4);
+  padding: 1em;
+  margin: 1em;
+  font-size: 2em;
 }
 
 img #detalles{

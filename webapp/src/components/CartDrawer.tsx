@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, {useEffect} from 'react';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 
@@ -9,7 +9,7 @@ import IconButton from '@mui/material/IconButton';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import Typography from '@mui/material/Typography';
 import CartItem from './CartItem';
-import Producto from "./Producto";
+import {Producto} from "../interface/interfaces";
 import { useCart } from '../hooks/useCart';
 import { CartContext } from '../context/cartContext';
 import { useContext } from 'react';
@@ -21,8 +21,24 @@ type Anchor = 'top' | 'left' | 'bottom' | 'right';
 
 export default function TemporaryDrawer(props: any) {
 
-  const {cartState} = useContext(CartContext);
+  const {cartState, addToCart} = useContext(CartContext);
   const {productos} = useCart();
+
+  
+
+useEffect(() => {
+  if(props.products.length > 0){
+    props.products.map((producto: Producto) => {
+      console.log(producto)
+      addToCart({
+        id: producto.id,
+        nombre: producto.nombre,
+        precio: producto.precio,
+        cantidad: 1
+      });
+    });
+  }
+}, []);
 
   const [state, setState] = React.useState({
     top: false,
@@ -72,7 +88,7 @@ export default function TemporaryDrawer(props: any) {
   return (
     <div>
         <React.Fragment key={'right'}>
-        <IconButton size="large" onClick={toggleDrawer('right', true)}>
+        <IconButton size="large" onClick={toggleDrawer('right', true)} className='buttonCart'>
           <AddShoppingCartIcon fontSize="inherit" sx={{ color: "#fff" }} />
           </IconButton>
           <Drawer
