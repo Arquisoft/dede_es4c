@@ -3,7 +3,7 @@ const asyncHandler = require('express-async-handler')
 const Order = require('../model/orderModel');
 
 
-const getOrders = async (req: Request, res: Response): Promise<Response> => {
+export const  getOrders = async (req: Request, res: Response): Promise<Response> => {
     try {
         var result = await Order.find().exec();
         return res.status(200).json(result);
@@ -12,7 +12,7 @@ const getOrders = async (req: Request, res: Response): Promise<Response> => {
     }
   }
 
-const getOrderById = async (req: Request, res: Response): Promise<Response> => {
+  export const  getOrderById = async (req: Request, res: Response): Promise<Response> => {
     try {
         var result = await Order.find({_id:req.params.id}).exec();
         return res.status(200).json(result);
@@ -20,7 +20,7 @@ const getOrderById = async (req: Request, res: Response): Promise<Response> => {
       return res.status(500).send(error);
     }
   }
-  const getOrdersByClientId = async (req: Request, res: Response): Promise<Response> => {
+  export const  getOrdersByClientId = async (req: Request, res: Response): Promise<Response> => {
     try {
         var result = await Order.find({_cliente_id:req.params.id}).exec();
         return res.status(200).json(result);
@@ -28,7 +28,7 @@ const getOrderById = async (req: Request, res: Response): Promise<Response> => {
       return res.status(500).send(error);
     }
   }
-  const addOrder = async (req: Request, res: Response): Promise<Response> => {
+  export const  addOrder = async (req: Request, res: Response): Promise<Response> => {
     try {
       const { cliente, direccion, precio, productos } = req.body;
       const newOrder = new Order({
@@ -43,9 +43,3 @@ const getOrderById = async (req: Request, res: Response): Promise<Response> => {
       return res.status(500).send(error);
     }
   }
-module.exports = {
-  getOrders,
-  getOrderById,
-  getOrdersByClientId,
-  addOrder
-}

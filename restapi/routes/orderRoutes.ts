@@ -2,12 +2,7 @@
 import express, {Router} from 'express';
 const api:Router = express.Router()
 
-const {
-  getOrders,
-  getOrderById,
-  getOrdersByClientId,
-  addOrder
-} = require('../controllers/orderController')
+import {getOrders, getOrderById, getOrdersByClientId, addOrder} from "../controllers/orderController";
 
   api.get(
     "/orders",
@@ -24,8 +19,8 @@ const {
     getOrdersByClientId
 );
 
-  api.get(
-    "/orders/add/:client/:direccion/:precio/:productos",
+  api.post(
+    "/orders/add",
     addOrder
   );
 
