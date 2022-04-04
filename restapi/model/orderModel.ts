@@ -14,10 +14,11 @@ const orderSchema = new Schema({
         type: String,
         required: true
     },
-    _productos: [{
-        _id: String,
-        _number: String
-    }]
+    _productos: {
+        type: Map,
+        of: String,
+        default: {}
+    }
 });
 
 module.exports = model('pedidos', orderSchema);

@@ -1,4 +1,5 @@
 import { Request, Response } from 'express';
+import { type } from 'os';
 const asyncHandler = require('express-async-handler')
 const Order = require('../model/orderModel');
 
@@ -30,13 +31,15 @@ export const  getOrders = async (req: Request, res: Response): Promise<Response>
   }
   export const  addOrder = async (req: Request, res: Response): Promise<Response> => {
     try {
-      const { cliente, direccion, precio, productos } = req.body;
+      const { cliente, direccion, precio, productosCarrito } = req.body;
+      console.log(req.body);
       const newOrder = new Order({
         _cliente_id: cliente,
         _direccion: direccion,
         _precio: precio,
-        _productos: productos
+        _productos: productosCarrito
      });
+     console.log(newOrder)
         newOrder.save();
         return res.status(200).json(newOrder);
     } catch (error) {
