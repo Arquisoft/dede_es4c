@@ -29,6 +29,7 @@ export default function TemporaryDrawer(props: any) {
 
   const {stateUser} = useContext(UserContext);
   const [open, setOpen] = React.useState(false);
+  const [message, setMessage] = React.useState("Se ha realizado el pedido")
   
 
 useEffect(() => {
@@ -55,10 +56,17 @@ useEffect(() => {
   const handlePedido = () => {
     var cliente = stateUser.user._id;
     if(cliente === ''){
-      cliente = '55';
+      setMessage("Debes iniciar sesión para realizar el pedido");
+      setOpen(true);
+      return;
     }
     var direccion = "Avda. Galicia 62";
     var precio = cartState.total;
+    if(precio === 0){
+      setMessage("No se ha podido realizar el pedido");
+      setOpen(true);
+      return;
+    }
 
     var productosCarrito: Record<string, string> = {};
     for(let i = 0; i < cartState.productos.length; i++){
@@ -152,7 +160,7 @@ useEffect(() => {
                     open={open}
                     autoHideDuration={6000}
                     onClose={handleClose}
-                    message="Se ha realizado el pedido"
+                    message={message}
                     action={action}
                   />
         </React.Fragment>
