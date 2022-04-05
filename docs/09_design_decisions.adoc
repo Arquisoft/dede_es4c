@@ -4,8 +4,8 @@
 [options="header",cols="1,2,3,4"]
 |===
 |Decisión|Importancia|Consecuencias|Justificación
-| Uso de MERN Stack | Muy alta dado que esta decisión marca las tecnologías y la forma en la que vamos a utilizarlas | A pesar de que toda la aplicación dependa de esto, el uso de MERN nos proporciona una buena versatilidad a la hora de programar y una estructura de diseño completa | Hemos decidido usarla debido a que nos proporciona una base sólido para la realización del proyecto y se ajusta a las necesidades del proyecto.
-| MongoDB | Todos lo relativo a los datos y a su gestión depende de esta decisión | Un mal uso de la base de datos temprano puede traer consigo cambios muy grandes en el futuro | Es más fácil de utilizar junto al resto de tecnologías seleccionadas que el resto de las bases de datos
-| Temática de la tienda | La aplicación ha de girar en torno a esta temática | Si hubiera que cambiar la temática, habría que tocar diseños, clases, base de datos… | Nos pareció una temática adecuada.
-| Uso de SOLID | Los datos del usuario serán tratados a través de pods, donde se guardará información del usuario, manteniendo así su privacidad. | Si quisiéramos quitar SOLID, tendríamos que rehacer todo lo relacionado con la obtención de los datos del usuario | Es una buena forma de preservar la privacidad del usuario y sus datos.
+| Uso de MERN | Toda la aplicación se basa en esto | No hay marcha atrás, quitando la base de datos, toda la aplicación depende de esta decisión | Nos da una base sólida para el proyecto, su uso es muy cómodo y se ajusta a lo buscado
+| Uso de MongoDB | La parte importante la aplicación, los productos, dependen de esta decisión | Un mal uso de la base de datos temprano puede traer consigo cambios muy grandes en el futuro | Es más fácil de utilizar junto al resto de tecnologías seleccionadas que el resto de las bases de datos
+| Temática de la tienda | La aplicación ha de girar en torno a esta temática | Si hubiera que cambiar la temática, habría que tocar diseños, clases, base de datos… | Nos pareció una temática adecuada
+| Uso de SOLID | Los datos del usuario serán tratados a través de pods | Si quisiéramos quitar SOLID, tendríamos que rehacer todo lo relacionado con la obtención de los datos del usuario | Es una buena forma de preservar la privacidad del usuario y sus datos.
 |===

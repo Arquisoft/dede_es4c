@@ -1,4 +1,4 @@
-import {createContext} from 'react';
+import React, {useState, useEffect, createContext} from 'react';
 import { CartState, Producto } from '../interface/interfaces';
 
 export type CartContextProps = {

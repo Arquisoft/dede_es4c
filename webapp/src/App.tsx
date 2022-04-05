@@ -1,49 +1,56 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import  {getUsers} from './api/api';
+import {User} from './shared/shareddtypes';
 import NavBar from './components/NavBar';
 import Footer from './components/Footer';
-import { BrowserRouter as Router, Routes, Route, Navigate, useNavigate} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from './pages/Home';
 import Tienda from './pages/Tienda';
 import Historia from './pages/Historia';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
-import Perfil from "./pages/Perfil";
-import InfoPods from './pages/InfoPods'
-import { SessionContext, useSession } from "@inrupt/solid-ui-react";
-
-
-import { handleIncomingRedirect, login, fetch, getDefaultSession } from '@inrupt/solid-client-authn-browser'
-import { getSolidDataset, saveSolidDatasetAt } from "@inrupt/solid-client";
+import Producto from "./pages/Producto";
+import  {getPinchos} from './api/api';
+import {Pincho} from './shared/shareddtypes';
 import './App.css';
-import {UserContext} from "./context/userContext";
-import { InfoPod } from './interface/interfaces';
+import { CartContext } from './context/cartContext';
 
+
+const listaPorDefecto: Producto[] = [];
+const CarritoContext = React.createContext(listaPorDefecto);
 
 function App(): JSX.Element {
 
-  const {stateUser, setInfo} = useContext(UserContext);
+  //Contexto del carrito
+  const {cartState} = useContext(CartContext);
 
-  const { session } = useSession();
+  const [users,setUsers] = useState<User[]>([]);
 
+  
 
+  const refreshUserList = async () => {
+    setUsers(await getUsers());
+  }
+
+  useEffect(()=>{
+    refreshUserList();
+  },[]);
 
   return (
     <div className='App'>
-      
+      <NavBar />
       
      <Router>
-     <NavBar />
+      
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/Tienda" element={<Tienda />} />
         <Route path="/Signup" element={<Signup />} />
         <Route path="/Historia" element={<Historia />} />
         <Route path="/Login" element={<Login />} />
-        <Route path='/Perfil' element={<Perfil/>} /> 
-        <Route path="/InfoPods" element={<InfoPods />} />
       </Routes>
-      <Footer/>
     </Router>
+    <Footer/>
     </div>
   );
 }
