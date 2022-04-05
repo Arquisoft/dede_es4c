@@ -2,9 +2,13 @@
   "dependencies": {
     "@emotion/react": "^11.8.2",
     "@emotion/styled": "^11.8.1",
+    "@inrupt/solid-client": "^1.21.0",
+    "@inrupt/solid-client-authn-browser": "^1.11.7",
+    "@inrupt/vocab-common-rdf": "^1.0.3",
     "@mui/icons-material": "^5.5.0",
     "@mui/material": "^5.5.0",
     "express": "^4.17.3",
+    "jwt-decode": "^3.1.2",
     "react-redux": "^7.2.6",
     "redux": "^4.1.2"
   }

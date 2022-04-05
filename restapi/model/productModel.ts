@@ -1,7 +1,4 @@
-
-const Schema = require('mongoose').Schema;
-const model = require('mongoose').model;
-
+import { model, Schema} from 'mongoose'
 
 const productSchema = new Schema({
     _id: {
@@ -12,9 +9,21 @@ const productSchema = new Schema({
         type: String,
         required: true
     },
-    _bebida: {
+    _tipo: {
+        type: String,
+        required: true
+    },
+    _vegetariano: {
         type: Boolean,
         required: true
+    },
+    _descripcion: {
+        type: String,
+        required: true
+    },
+    _ingredientes:{
+        type: Array,
+        required: false
     }
 });
 

@@ -4,11 +4,17 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { CartProvider } from "./context/cartProvider";
+import { UserProvider} from "./context/userProvider";
+import { SessionProvider } from "@inrupt/solid-ui-react";
 
 ReactDOM.render(
+	<SessionProvider>
+	<UserProvider>
 	<CartProvider>
 		<App />
-	</CartProvider>,
+	</CartProvider>
+	</UserProvider>
+	</SessionProvider>,
 	document.getElementById("root"),
 );
 

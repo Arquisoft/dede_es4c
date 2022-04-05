@@ -2,8 +2,9 @@ import express, { Application, RequestHandler } from "express";
 import cors from 'cors';
 import bp from 'body-parser';
 import promBundle from 'express-prom-bundle';
-//import api from "./api"; 
 const productRoutes = require('./routes/productRoutes');
+const userRoutes = require('./routes/userRoutes');
+const orderRoutes = require('./routes/orderRoutes');
 
 const connectBd = require('./config/bd');
 connectBd();
@@ -20,9 +21,13 @@ app.use(metricsMiddleware);
 
 app.use(cors(options));
 app.use(bp.json());
+app.use(bp.urlencoded({extended:true}));
+
 
 
 app.use('/api', productRoutes);
+app.use('/api', userRoutes);
+app.use('/api', orderRoutes);
 //app.use("/api", api)
 
 app.listen(port, ():void => {

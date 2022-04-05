@@ -6,7 +6,10 @@ const {
     getProducts,
     getProductById,
     getComidas,
-    getBebidas
+    getBebidas,
+    getPostres,
+    getVegetariano,
+    getNoVegetariano
 } = require('../controllers/productController')
 
   api.get(
@@ -28,6 +31,18 @@ const {
       "/pinchos/bebida",
       getBebidas
   );
+  api.get(
+    "/pinchos/postre",
+    getPostres
+);
+  api.get(
+    "/pinchos/vegetariano",
+    getVegetariano
+  );
 
+  api.get(
+    "/pinchos/no_vegetariano",
+    getNoVegetariano
+  );
   module.exports = api;
 
