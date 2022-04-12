@@ -11,7 +11,7 @@
 <body>
 	<header>
 		<h2>Getting Started</h2>
-		<h3>with Inrupt JavaScript Client Libraries: Write Operation</h3>
+		<h3>with Inrupt JavaScript Client Libraries: Read Operation</h3>
 	</header>
 	<section id="login" class="panel">
 		<div class="row">
@@ -22,31 +22,20 @@
 	</section>
 
 	<div id="write" class="panel">
-		<div class="row">
-			<label id="writelabel">2. Que hace el puto nombre en el your Pod.</label>
-		</div>
-		<div class="row">
-			<label id="podlabel" for="PodURL">a. Enter your Pod URL: </label>
-			<input type="url" id="PodURL" name="PodURL" size="50" pattern="https://.*"
-				placeholder="e.g., https://pod.inrupt.com/<username>">/dede_es04/user/name
-		</div>
-		<div class="row">
+		<!-- <div class="row">
 			<label id="listLabel" for="nombreQueVamosAGuardar">b. Enter items to read: </label>
 			<input type="text" id="nombreQueVamosAGuardar" name="nombreQueVamosAGuardar">
-			<!-- <textarea id="titles" name="titles" rows="5" cols="42">
-Leaves of Grass
-RDF 1.1 Primer
-			</textarea> -->
-			<button name="btnCreate" id="btnCreate">Create</button> <span id="labelCreateStatus"></span>
-		</div>
+		</div> -->
+		<!-- <button name="btnCreate" id="btnCreate">Create</button> <span id="labelCreateStatus"></span> -->
+		<p>Pruebas de lectura y escritura de datos en el POD</p>
+		<button name="readButton" id="readButton">Read Test</button>
+		<button name="writeButton" id="writeButton">Write Test</button>
+		<br><br>
 		<div class="row">
-			<label id="labelRetrieved" for="savednombre">Retrieved:</label>
-			<input type="text" id="savednombre" name="savednombre" readonly>
+			<label id="receivedDataLabel" for="receivedData">Datos recibidos:</label>
+			<input type="text" id="receivedData" name="receivedData" readonly style="width: 500px">
 		</div>
-
-		<!-- <textarea id="savedtitles" name="savedtitles" rows="5" cols="42" readonly></textarea> -->
 	</div>
 	</div>
 </body>
-
 </html>

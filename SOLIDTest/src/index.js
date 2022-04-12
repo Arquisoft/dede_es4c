@@ -1,15 +1,10 @@
 import {
-	createSolidDataset,
-	createThing,
-	setThing,
-	addUrl,
-	addStringNoLocale,
-	saveSolidDatasetAt,
-	getSolidDataset,
-	getThingAll,
-	getStringNoLocale,
-	removeThing,
-	FetchError,
+	getFile,
+	isRawData,
+	getContentType,
+	getSourceUrl,
+	overwriteFile,
+	getcon,
 } from "@inrupt/solid-client";
 
 import {
@@ -21,12 +16,18 @@ import {
 
 import { SCHEMA_INRUPT, RDF, AS } from "@inrupt/vocab-common-rdf";
 
+const podUrl = "https://pod.inrupt.com/uo277306";
 const buttonLogin = document.querySelector("#btnLogin");
-const buttonCreate = document.querySelector("#btnCreate");
-buttonCreate.disabled = true;
-const labelCreateStatus = document.querySelector("#labelCreateStatus");
+const readButton = document.querySelector("#readButton");
+const writeButton = document.querySelector("#writeButton");
+const receivedData = document.querySelector("#receivedData");
 
-// 1a. Start Login Process. Call login() function.
+readButton.disabled = true;
+writeButton.disabled = true;
+
+const session = getDefaultSession();
+
+// Inicia el proceso de login al pulsar el boton de login
 function startLogin() {
 	return login({
 		oidcIssuer: "https://broker.pod.inrupt.com",
@@ -41,7 +42,6 @@ function startLogin() {
 // finish the login process by retrieving session information.
 async function finishLogin() {
 	await handleIncomingRedirect();
-	const session = getDefaultSession();
 	if (session.info.isLoggedIn) {
 		// Update the page with the status.
 		document.getElementById(
@@ -49,7 +49,8 @@ async function finishLogin() {
 		).textContent = `Logged in with WebID ${session.info.webId}`;
 		document.getElementById("labelStatus").setAttribute("role", "alert");
 		// Enable Create button
-		buttonCreate.disabled = false;
+		readButton.disabled = false;
+		writeButton.disabled = false;
 	}
 }
 
@@ -58,97 +59,64 @@ async function finishLogin() {
 // If the function is called when not part of the login redirect, the function is a no-op.
 finishLogin();
 
-// 2. Create the Reading List
-async function createList() {
-	labelCreateStatus.textContent = "";
-	const podUrl = document.getElementById("PodURL").value;
+// En SOLID se puede leer y escribir datos estructurados en SolidDataset's y/o leer y escribir ficheros como jpg, json, txt...
+// En este ejemplo usaremos ficheros txt por sencillez, ya que los datasets de solid aunque sean en teoría mas seguros,
+// son algo mas complejos de operar con. En el producto final puede que sea mas comodo usar json para sincronizar con nuestra BBDD
 
-	// For simplicity and brevity, this tutorial hardcodes the SolidDataset URL.
-	// In practice, you should add a link to this resource in your profile that applications can follow.
-	const whereToSaveNameUrl = `${podUrl}/dede_es04/user/name`;
-	console.log("Esto es donde lo vamos a guardar " + whereToSaveNameUrl);
-
-	let nombreQueVamosAGuardar = document.getElementById("nombreQueVamosAGuardar").value;
-	console.log("Esto es lo que vamos a guardar " + nombreQueVamosAGuardar);
-	// Fetch or create a new reading list.
-	let myNameSet;
-
-	//Intenta leer los textos
-	try {
-		// Attempt to fetch the reading list in case it already exists.
-		myNameSet = await getSolidDataset(whereToSaveNameUrl, { fetch: fetch });
-
-		// Vacia los textos (leemos luego)
-		// Para todas las cosas en el dataset, quitalas
-		let cosasQueHayEnElSet = getThingAll(myNameSet);
-
-		cosasQueHayEnElSet.forEach((cosaDelSet) => {
-			//remove del myNameSet la cosaDelSet
-			console.log(
-				"Esto es el item del set que vamos a borrar ahora " + cosaDelSet.url,
-			);
-			myNameSet = removeThing(myNameSet, cosaDelSet);
-		});
-	} catch (error) {
-		if (typeof error.statusCode === "number" && error.statusCode === 404) {
-			// if not found, create a new SolidDataset
-			myNameSet = createSolidDataset();
-			console.log("Creado dataset")
-		} else {
-			console.error(error.message);
-		}
+//Al darle al boton de leer llamamos a esta funcion que en el caso de que tengamos la sesion iniciada inicia la lectura del fichero en la url
+async function startReading() {
+	if (session.info.isLoggedIn) {
+		readFileFromPod(`${podUrl}/dede_es04/read_test.txt`);
 	}
+}
 
-	// Añadir los nombre al Dataset
-	// Creamos el coso
-	let esteNombre = createThing({ name: "nombre" });
-	// Le añadimos la url de acesso con mas cosas
-	esteNombre = addUrl(esteNombre, RDF.type, AS.Article);
-	// Le añadimos nuestro texto
-	esteNombre = addStringNoLocale(
-		esteNombre,
-		SCHEMA_INRUPT.name,
-		nombreQueVamosAGuardar,
-	);
-	// Guardamos esteNombre en el set
-	myNameSet = setThing(myNameSet, esteNombre);
-
-		console.log("Thing que guardamos ", esteNombre.type, esteNombre.url)
-
+// Lee un archivo del POD y lo convierte en un Blob (Binary large object, basicamente un monton de bytes, hay librerias de js para
+// procesarlos como ficheros de cualquier tipo, imagen, texto... Tambien se pueden descargar y guardar estos. En este ejemplo solo lo leeremos)
+async function readFileFromPod(fileURL) {
 	try {
-		// Save the SolidDataset
-		let savedReadingList = await saveSolidDatasetAt(
-			whereToSaveNameUrl,
-			myNameSet,
-			{
-				fetch: fetch,
-			},
+		// file is a Blob (see https://developer.mozilla.org/docs/Web/API/Blob)
+		// Sacamos el archivo de la url
+		const file = await getFile(
+			fileURL, // File in Pod to Read
+			{ fetch: fetch }, // fetch from authenticated session
 		);
+		// Imprimimos el tipo, hay muchas mas funciones, info aqui en el final del apartado de Retrive a File
+		// https://docs.inrupt.com/developer-tools/javascript/client-libraries/tutorial/read-write-files/
+		console.log(
+			`Fetched a ${getContentType(file)} file from ${getSourceUrl(file)}.`,
+		);
+		console.log(`The file is ${isRawData(file) ? "not " : ""}a dataset.`);
 
-		console.log("saved list ", savedReadingList);
-		labelCreateStatus.textContent = "Saved";
+		// Asignamos el texto del fichero a nuestro objeto para mostrarlo en el HTML, como sabemos que es texto no hay problema, si no supieramos que
+		// tipo de fichero es habria que comprobarlo y trabajar en acorde
+		receivedData.value = await file.text();
+	} catch (err) {
+		console.log(err);
+	}
+}
 
-		// Refetch the Reading List
-		savedReadingList = await getSolidDataset(whereToSaveNameUrl, {
-			fetch: fetch,
-		});
+// Al darle al boton de escribir llamamos a esta funcion que en el caso de que tengamos la sesion iniciada inicia la escritura del texto
+// en nuestro input a el fichero en la url. Se podría hacer que tengamos que inputear los archivos y subirlos al POD con la file API de js
+async function startWritting() {
+	if (session.info.isLoggedIn) {
+		let file = createFileFromText("Texto que contenerá el fichero de pruebas de escritura por Damir Abdrafikov UO277306");
+		writeFileToPod(file, `${podUrl}/dede_es04/write_test.txt`, fetch);
+	}
+}
 
-		let cosasQueHayEnElSet = getThingAll(savedReadingList);
-
-		let listcontent = "";
-		cosasQueHayEnElSet.forEach((cosaDelSet) => {
-			let item = getStringNoLocale(cosaDelSet, SCHEMA_INRUPT.name);
-			if (item != null) {
-				listcontent += item + "\t";
-				console.log(item.text);
-			}
-		});
-
-		document.getElementById("savednombre").value = listcontent;
+// Upload File to the targetFileURL.
+// If the targetFileURL exists, overwrite the file.
+// If the targetFileURL does not exist, create the file at the location.
+async function writeFileToPod(file, targetFileURL, fetch) {
+	try {
+		const savedFile = await overwriteFile(
+			targetFileURL, // URL for the file.
+			file, // File
+			{ contentType: file.type, fetch: fetch }, // mimetype if known, fetch from the authenticated session
+		);
+		console.log(`File saved at ${getSourceUrl(savedFile)}`);
 	} catch (error) {
-		console.log(error);
-		labelCreateStatus.textContent = "Error" + error;
-		labelCreateStatus.setAttribute("role", "alert");
+		console.error(error);
 	}
 }
 
@@ -156,6 +124,10 @@ buttonLogin.onclick = function () {
 	startLogin();
 };
 
-buttonCreate.onclick = function () {
-	createList();
+readButton.onclick = function () {
+	startReading();
+};
+
+writeButton.onclick = function () {
+	startWritting();
 };
