@@ -5,6 +5,9 @@ node_modules
 /.pnp
 .pnp.js
 
+webapp/node_modules
+restapi/node_modules
+
 # testing
 webapp/coverage
 restapi/coverage
