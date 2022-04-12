@@ -104,6 +104,11 @@ async function startWritting() {
 	}
 }
 
+function createFileFromText(createText){
+	let fileAkaBlob = new Blob([createText], {type: 'text/plain'});
+	return fileAkaBlob;
+}
+
 // Upload File to the targetFileURL.
 // If the targetFileURL exists, overwrite the file.
 // If the targetFileURL does not exist, create the file at the location.
