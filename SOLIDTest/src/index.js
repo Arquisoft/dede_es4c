@@ -104,6 +104,8 @@ async function startWritting() {
 	}
 }
 
+// Crea un fichero tipo Blob de texto con el texto que recibe
+// Info: https://developer.mozilla.org/en-US/docs/Web/API/Blob
 function createFileFromText(createText){
 	let fileAkaBlob = new Blob([createText], {type: 'text/plain'});
 	return fileAkaBlob;
