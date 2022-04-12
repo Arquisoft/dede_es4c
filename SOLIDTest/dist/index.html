@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Getting Started: Inrupt JavaScript Client Libraries</title>
+	<script defer src="./index.js"></script>
+	<link rel="stylesheet" href="my-demo.css" />
+</head>
+
+<body>
+	<header>
+		<h2>Getting Started</h2>
+		<h3>with Inrupt JavaScript Client Libraries: Write Operation</h3>
+	</header>
+	<section id="login" class="panel">
+		<div class="row">
+			<label id="labelLogin" for="btnLogin">1. Click the button to log in: </label>
+			<button name="btnLogin" id="btnLogin">Login</button>
+			<p id="labelStatus"></p>
+		</div>
+	</section>
+
+	<div id="write" class="panel">
+		<div class="row">
+			<label id="writelabel">2. Que hace el puto nombre en el your Pod.</label>
+		</div>
+		<div class="row">
+			<label id="podlabel" for="PodURL">a. Enter your Pod URL: </label>
+			<input type="url" id="PodURL" name="PodURL" size="50" pattern="https://.*"
+				placeholder="e.g., https://pod.inrupt.com/<username>">/dede_es04/user/name
+		</div>
+		<div class="row">
+			<label id="listLabel" for="nombreQueVamosAGuardar">b. Enter items to read: </label>
+			<input type="text" id="nombreQueVamosAGuardar" name="nombreQueVamosAGuardar">
+			<!-- <textarea id="titles" name="titles" rows="5" cols="42">
+Leaves of Grass
+RDF 1.1 Primer
+			</textarea> -->
+			<button name="btnCreate" id="btnCreate">Create</button> <span id="labelCreateStatus"></span>
+		</div>
+		<div class="row">
+			<label id="labelRetrieved" for="savednombre">Retrieved:</label>
+			<input type="text" id="savednombre" name="savednombre" readonly>
+		</div>
+
+		<!-- <textarea id="savedtitles" name="savedtitles" rows="5" cols="42" readonly></textarea> -->
+	</div>
+	</div>
+</body>
+
+</html>
