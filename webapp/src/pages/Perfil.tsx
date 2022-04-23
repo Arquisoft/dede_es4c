@@ -82,7 +82,6 @@ const Perfil = () => {
           </Typography>
         </CardContent>
       </Card>
-
     </div>
   );
 }
