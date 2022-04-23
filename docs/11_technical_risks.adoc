@@ -1,7 +1,26 @@
 [[section-technical-risks]]
-== Riesgos y deuda técnica
-* Desconocimiento de la tecnología a usar en el desarrollo del proyecto.
-* La posibilidad de que un miembro abandonce el grupo.
-* Posible mala implementacion de la estructura de del proyecto y tener que refactorizar la mayor parte de esta.
-* Posibles fallos incontrolados o situaciones no conocidas en la aplicación.
 
+== Riesgos y deuda técnica
+
+[cols="1,4"]
+.Riesgos
+|==============
+| Riesgo | Descripción
+| Uso de React | Ningún miembro del equipo ha utilizado antes este framwork, por lo que tendremos que estar constantemente informándonos
+| Uso de Typescrip | En general tenemos algún conocimiento de Javascript, pero no creemos que sea el adecuado para este proyecto.
+| Uso de MongoDB | No estamos acostumbrados a integrar en una aplicación una base de datos no relacional, por lo que necesitamos documentarnos correctamente
+| Uso de SOLID | Actualmente es la tecnología que más desconocemos, por lo que tenemos que emplear parte de nuestro tiempo en investigar cómo funciona SOLID
+| Tiempo | Hay que entregar el proyecto en una fecha determinada, por lo que la organización del equipo ha de ser crucial para llegar a tiempo
+| Trabajo en equipo | El equipo cuenta con 5 personas, por lo que se ha de mantener una buena comunicación y organización en todo momento
+| Seguridad | Es imprescindible almacenar la información sensible de los usuarios en los PODS asegurando la seguridad de los mismos.
+|==============
+
+[cols="1,4"]
+.Deudas técnicas
+|==============
+| Deuda Técnica | Descripción
+| Test | Actualmente el proyecto no cuenta con test necesarios para cubrir toda la funcionalidad de la aplicación.
+| Filtros | El código actual que actualiza la lista de productos según filtros no está bien planificado y, con la llegada de más filtros,
+quedará un código demasiado extenso
+| Clases grandes | Tenemos clases con mucha información, lo que provoca que, en una modificación que les afecte, tendremos dificultades para codificarlos
+|==============
