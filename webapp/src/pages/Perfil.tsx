@@ -9,25 +9,14 @@ import { UserContext } from "../context/userContext";
 import './styles/profile.css';
 import Button from '@mui/material/Button';
 import { handleIncomingRedirect } from '@inrupt/solid-client-authn-browser'
-import { getUsername } from "../utils/solid";
-
-
-import { FOAF, VCARD } from "@inrupt/lit-generated-vocab-common";
+import { getUsername, getUserInfo } from "../utils/solid";
 
 import {
   useSession,
-  CombinedDataProvider,
-  Image,
-  Text,
 } from "@inrupt/solid-ui-react";
 
-import {
-  getUrlAll,
-  getSolidDataset,
-  getThing,
-  getFile
-} from "@inrupt/solid-client";
 import { InfoPod } from "../interface/interfaces";
+
 
 const Perfil = () => {
 
@@ -36,6 +25,7 @@ const Perfil = () => {
   const { session } = useSession();
   const { webId } = session.info;
   const [name, setName] = useState("");
+  const [userData, setUserData] = useState({email:"", address:"", phone:""});
 
   useEffect(() => {
   handleIncomingRedirect({
@@ -51,8 +41,12 @@ const Perfil = () => {
     setName(value!);
   }
 
+  async function getUserData(){
+    setUserData(await getUserInfo(session, webId!));
+  }
+
   getName();
-  
+  getUserData();
 
   return (
     <div id="profile">
@@ -72,22 +66,23 @@ const Perfil = () => {
             className={"email"}
             variant={"h6"}
           >
-            Email: {stateUser.user._email}
+            Email: {userData.email}
           </Typography>
           <Typography
             className={"email"}
             variant={"h6"}
           >
-            Dirección:
+            Dirección: {userData.address}
           </Typography>
           <Typography
             className={"email"}
             variant={"h6"}
           >
-            Teléfono:
+            Teléfono: {userData.phone}
           </Typography>
         </CardContent>
       </Card>
+
     </div>
   );
 }

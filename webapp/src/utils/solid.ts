@@ -6,14 +6,15 @@ import {
     getThingAll,
     getUrlAll,
     Url,
+    getFile,
 } from "@inrupt/solid-client";
 
 import {
-    useSession,
-    CombinedDataProvider,
-    Image,
-    Text,
-  } from "@inrupt/solid-ui-react";
+	login,
+	handleIncomingRedirect,
+	getDefaultSession,
+	fetch,
+} from "@inrupt/solid-client-authn-browser";
 
   
 import { FOAF, VCARD } from "@inrupt/lit-generated-vocab-common";
@@ -33,19 +34,19 @@ export async function getUsername(session: { fetch: any; }, webId: string | Url)
 }
 
 export async function getUserInfo(session: { fetch: any; }, webId: string | Url){
+
     const dataset = await getSolidDataset(webId, {
         fetch: session.fetch,
     })
 
     const profile = getThing(dataset, webId);
-    const UrlsPods = getUrlAll(profile!, STORAGE_PREDICATE);
 
-    const userPod = UrlsPods[0];
+     const username = getStringNoLocale(profile!, FOAF.name)
 
-    //Cogemos el contenedor, carpeta donde se guardan los datos
-    const container = `${userPod}public/data/`; 
-
-    const prueba = `${container}Prueba.txt`;
-    const fichero = await getSolidDataset(prueba, {fetch: session.fetch,})
-    console.log(fichero);
+    const file = await getFile(
+        "https://pod.inrupt.com/" + username + "/dede/Datos.json",
+        { fetch: fetch},
+    );
+    const json = JSON.parse(await file.text());
+    return json;
 }

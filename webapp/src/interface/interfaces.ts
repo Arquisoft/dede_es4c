@@ -36,3 +36,17 @@ export interface InfoPod {
     sessionId: string,
     expirationDate: number,
 }
+
+export interface UserData {
+    _id: string,
+    email: string,
+    name: string,
+    surname: string,
+    phone: number,
+    county: string,
+    prvince: string,
+    city: string,
+    zip_code: number,
+    address: string,
+    _v: number
+}
