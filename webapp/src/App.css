@@ -156,9 +156,26 @@ footer{
 
 .cartItem{
   box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.4);
-  padding: 1em;
-  margin: 1em;
-  font-size: 2em;
+}
+
+#pedidos main{
+  max-width: 50%;
+  padding: 2em;
+  margin: 1.5em;
+  font-size: 1.5em;
+}
+
+#pedidos main p{
+  font-size: 0.7em;
+}
+
+#pedidos main span{
+  font-size: 1em;
+}
+
+#pedidos aside{
+  margin-top: 3em;
+  margin-left: 7em;
 }
 
 img #detalles{

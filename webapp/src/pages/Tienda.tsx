@@ -13,7 +13,6 @@ import actualizaPinchos from '../components/CargaPinchos';
 import CakeIcon from '@mui/icons-material/Cake';
 import GrassIcon from '@mui/icons-material/Grass';
 import FlutterDashIcon from '@mui/icons-material/FlutterDash';
-
 import { UserContext } from '../context/userContext';
 import { InfoPod } from '../interface/interfaces';
 
