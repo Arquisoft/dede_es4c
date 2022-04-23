@@ -22,6 +22,7 @@ import { useContext, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import {useSession } from "@inrupt/solid-ui-react";
 import { InfoPod } from '../interface/interfaces';
+import Button from '@mui/material/Button';
 
 const pages = ['Tienda', 'Historia'];
 const settings = ['Signup', 'Login', 'Pedidos'];

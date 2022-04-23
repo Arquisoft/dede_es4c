@@ -158,6 +158,16 @@ footer{
   box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.4);
 }
 
+img #detalles{
+  float: center;
+}
+
+#pedidos{
+  background-image: url("images/pedido.jpg");
+  background-repeat: no-repeat;
+  background-position: right;
+}
+
 #pedidos main{
   max-width: 50%;
   padding: 2em;
@@ -171,13 +181,4 @@ footer{
 
 #pedidos main span{
   font-size: 1em;
-}
-
-#pedidos aside{
-  margin-top: 3em;
-  margin-left: 7em;
-}
-
-img #detalles{
-  float: center;
 }
