@@ -8,18 +8,14 @@ import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import logo from './icons/DeDe.png';
 import CartDrawer from './CartDrawer';
-import Producto from "./Producto";
 
 const pages = ['Tienda', 'Historia'];
-const settings = ['Perfil', 'Signup', 'Login', 'Logout'];
+const settings = ['Perfil', 'Signup', 'Login', 'Logout', 'Pedidos'];
 
 const NavBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);

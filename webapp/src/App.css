@@ -147,3 +147,30 @@ footer{
 .product{
   box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.4);
 }
+
+#pedidos{
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+  align-items: center;
+}
+
+#pedidos main{
+  max-width: 50%;
+  padding: 2em;
+  margin: 1.5em;
+  font-size: 1.5em;
+}
+
+#pedidos main p{
+  font-size: 0.7em;
+}
+
+#pedidos main span{
+  font-size: 1em;
+}
+
+#pedidos aside{
+  margin-top: 3em;
+  margin-left: 7em;
+}

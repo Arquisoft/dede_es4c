@@ -4,16 +4,11 @@ import TextField from '@mui/material/TextField';
 import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
 import Productos from "./Productos";
-import Prueba from "./Producto";
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import RestaurantIcon from '@mui/icons-material/Restaurant';
 import LocalDrinkSharpIcon from '@mui/icons-material/LocalDrinkSharp';
 import Producto from './Producto';
-import { getPinchos } from '../api/api';
-import { getPinchoComida } from '../api/api';
-import { getPinchoById } from '../api/api';
-import {Pincho} from '../shared/shareddtypes';
 import actualizaPinchos from '../components/CargaPinchos'
 
 var listaTodos: Producto[] = [];
