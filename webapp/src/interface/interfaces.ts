@@ -14,7 +14,8 @@ export interface CartState {
 export interface UserState{
     isAuthenticated: boolean;
     user: BDUser;
-    info: InfoPod
+    info: InfoPod;
+    userData: UserData
 }
 
 export interface BDUser {
@@ -38,15 +39,7 @@ export interface InfoPod {
 }
 
 export interface UserData {
-    _id: string,
     email: string,
-    name: string,
-    surname: string,
-    phone: number,
-    county: string,
-    prvince: string,
-    city: string,
-    zip_code: number,
     address: string,
-    _v: number
+    phone: string
 }
