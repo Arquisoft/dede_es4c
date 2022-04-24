@@ -182,3 +182,43 @@ img #detalles{
 #pedidos main span{
   font-size: 1em;
 }
+
+#pedFin{
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+  align-items: center;
+}
+
+#pedFin main{
+  max-width: 100%;
+  padding: 2em;
+  margin: 2em;
+  font-size: 1.7em;
+}
+
+#pedFin main h1{
+  margin: -1em;
+}
+
+#pedFin main h2{
+  font-size: 1.1em;
+  color: #023b7e;
+}
+
+#pedFin main #prods{
+  margin: 2em;
+}
+
+#pedFin span{
+  font-size: 1em;
+}
+
+#pedFin p{
+  font-size: 0.8em;
+}
+
+#pedFin aside{
+  margin-top: 5em;
+  margin-left: 10em;
+}

@@ -17,6 +17,7 @@ import { UserContext } from "../context/userContext";
 import axios from 'axios'
 import Snackbar from '@mui/material/Snackbar';
 import CloseIcon from '@mui/icons-material/Close';
+import Link from '@mui/material/Link';
 
 
 
@@ -115,7 +116,7 @@ useEffect(() => {
         ))}
         <Box textAlign="center">
         <Typography >{'Total del importe: ' + cartState.total.toFixed(2) + " €"}</Typography>
-        <Button onClick={handlePedido} variant="contained" >Realizar compra</Button>
+        <Link href={"/RealizaPedido"} sx={{ my: 2, color: '#fff', display: 'block'}} underline='none'><Button variant="contained" sx={{bgcolor: '#596886'}}>Pasar por caja</Button></Link>
         </Box>
      
     </Box>

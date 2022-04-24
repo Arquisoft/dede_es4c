@@ -15,6 +15,7 @@ import './App.css';
 import { CartContext } from './context/cartContext';
 import Perfil from "./pages/Perfil";
 import InfoPods from './pages/InfoPods'
+import RealizaPedido from './pages/RealizaPedido'
 import { SessionContext, useSession } from "@inrupt/solid-ui-react";
 
 
@@ -48,6 +49,7 @@ function App(): JSX.Element {
         <Route path="/Pedidos" element={<Pedido />} />
         <Route path='/Perfil' element={<Perfil/>} /> 
         <Route path="/InfoPods" element={<InfoPods />} />
+        <Route path="/RealizaPedido" element={<RealizaPedido />} />
       </Routes>
       <Footer/>
     </Router>
