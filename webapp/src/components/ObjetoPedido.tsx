@@ -3,6 +3,7 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import Producto from "./Producto";
+import Divider from '@mui/material/Divider';
 
 function ObjetoPedido(props:any){
     var productosDelPedido = "";
@@ -18,6 +19,7 @@ function ObjetoPedido(props:any){
           <ListItem>
             <ListItemText primary={titulo}  secondary= {productosDelPedido} />
           </ListItem>
+          <Divider />
         </List>
       );
 }
