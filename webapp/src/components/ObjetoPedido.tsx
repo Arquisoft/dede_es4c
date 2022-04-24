@@ -4,23 +4,34 @@ import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import Producto from "./Producto";
 import Divider from '@mui/material/Divider';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
+import { Order } from '../shared/shareddtypes';
 
 function ObjetoPedido(props:any){
     var productosDelPedido = "";
     var precioFinal = 0;
-    {props.productos.map((producto: Producto) =>{
-            productosDelPedido += producto.nombre + " - cant: " + producto.cantidad + ", ";
-            precioFinal += producto.precio;
-        }
-    )}
-    var titulo = "Pedido número " + props.numero + " (" + precioFinal + "€)"
+
+
     return (
-        <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
-          <ListItem>
-            <ListItemText primary={titulo}  secondary= {productosDelPedido} />
-          </ListItem>
-          <Divider />
-        </List>
+       
+          <Card className='cartItem' sx={{ maxHeight: 430 }}>    
+   <CardContent>
+      <Typography variant='h4'>
+        ID: {props.pedido._id}
+      </Typography>     
+      <Typography variant='body1'>
+        Dirección: {props.pedido._direccion}
+      </Typography>
+      <Typography>{JSON.stringify(props.pedido._productos)}</Typography>
+      <Typography variant='body1'>
+        Total: {props.pedido._precio}
+      </Typography>
+    </CardContent>
+    </Card>
+ 
+        
       );
 }
 
