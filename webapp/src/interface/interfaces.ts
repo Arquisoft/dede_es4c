@@ -14,7 +14,8 @@ export interface CartState {
 export interface UserState{
     isAuthenticated: boolean;
     user: BDUser;
-    info: InfoPod
+    info: InfoPod;
+    userData: UserData
 }
 
 export interface BDUser {
@@ -35,4 +36,10 @@ export interface InfoPod {
     webId: string,
     sessionId: string,
     expirationDate: number,
+}
+
+export interface UserData {
+    email: string,
+    address: string,
+    phone: string
 }

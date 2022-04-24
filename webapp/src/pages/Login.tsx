@@ -86,13 +86,6 @@ const Login = () => {
       <Button onClick={submit} variant='contained'>Enviar</Button>
       {error ? <Alert severity="error">{error}</Alert> : null }
     </form>
-    <LoginButton
-					authOptions={{ clientName: "dede_es4c" }}
-					oidcIssuer={idp}
-					redirectUrl={redirUrl}
-          onError={console.error} >
-            <Button variant="contained" sx={{bgcolor: '#596886'}}>Entra con tu POD</Button> 
-            </LoginButton> 
     <p>
       ¿No tienes uno todavía? <br />
       <a href="/Signup">Crea uno ahora</a>
