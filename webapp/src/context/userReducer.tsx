@@ -19,7 +19,6 @@ export const userReducer = (state:UserState, action: UserAction): UserState => {
         case 'logoutUser':
             localStorage.removeItem("jwt");
             localStorage.removeItem("user");
-            console.log("remove user")
             return{...state,
                 isAuthenticated: false,
                 user: action.payload

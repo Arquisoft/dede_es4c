@@ -51,7 +51,6 @@ export async function getUserInfo(session: { fetch: any; }, webId: string | Url)
 }
 
 export async function setUserInfo(userData: any, session: { fetch: any; }, webId: string | Url){
-    console.log(userData);
     const dataset = await getSolidDataset(webId, {
         fetch: session.fetch,
     })

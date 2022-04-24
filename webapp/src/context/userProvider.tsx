@@ -64,7 +64,6 @@ export const UserProvider = ({ children }: UserProviderProps) => {
     }
 
     useEffect(() => {
-        console.log("guardado user")
         localStorage.setItem('user', JSON.stringify(stateUser))
     }, [stateUser])
 

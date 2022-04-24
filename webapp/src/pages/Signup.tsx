@@ -112,7 +112,7 @@ const Signup = () => {
       <Link to = "/InfoPods">
         <Button variant='contained' sx={{color: '#fff', m:1, backgroundColor: '#3e6969'}} endIcon={<InfoOutlinedIcon />}>Pods</Button>
       </Link>
-      <a href="https://signup.pod.inrupt.com/">Crea tu pod</a>
+      <p>¿No tienes un POD? Crea uno <a href="https://signup.pod.inrupt.com/">aquí</a></p>
       </div>
       
     </div>

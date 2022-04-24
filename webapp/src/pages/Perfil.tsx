@@ -52,7 +52,7 @@ const Perfil = () => {
     getUserData();
   });
  
-}, []);
+}, [isEditing]);
 
   async function getName(){
     const value = await getUsername(session, webId!);
@@ -69,6 +69,7 @@ const Perfil = () => {
       address: address == "" ? stateUser.userData.address : address
     };
     await setUserInfo(data, session, webId!);
+    setEditing(false);
   }
 
   
@@ -84,10 +85,11 @@ const Perfil = () => {
   return (
     <div id="profile">
       { !session.info.isLoggedIn &&
-        <Tooltip title="No podemos coger su información hasta que no vincules tu POD"><Alert className="alert" severity="error">No conectado con el POD</Alert></Tooltip>
+        <Tooltip title="No podemos coger su información hasta que no vincules tu POD">
+          <Alert className="alert" severity="error">POD no vinculado</Alert></Tooltip>
       }
       { session.info.isLoggedIn &&
-        <Alert className="alert" severity="success">POD conectado</Alert>
+        <Alert className="alert" severity="success">POD vinculado</Alert>
       }
       <Card className="card" >
         <CardContent className="content">
@@ -100,7 +102,10 @@ const Perfil = () => {
           </Typography>
           <Avatar className="avatar" sx={{ width: 250, height: 250 }} />
           <Divider className="divider" />
-          { !isEditing &&
+          { !session.info.isLoggedIn &&
+          <Alert className="infoPod" severity="info" variant="outlined" sx={{m:5}} icon={false}>Por favor, conéctate con tu POD para que podamos utilizar tus datos</Alert>
+          }
+          { !isEditing && session.info.isLoggedIn &&
           <Typography
             className={"email"}
             variant={"h6"}
@@ -119,7 +124,7 @@ const Perfil = () => {
             defaultValue={stateUser.userData.email}
           />
           }
-          { !isEditing &&
+          { !isEditing && session.info.isLoggedIn &&
           <Typography
             className={"address"}
             variant={"h6"}
@@ -138,7 +143,7 @@ const Perfil = () => {
             defaultValue={stateUser.userData.address}
           />
           }
-{ !isEditing &&
+{ !isEditing && session.info.isLoggedIn &&
           <Typography
             className={"phone"}
             variant={"h6"}
@@ -159,7 +164,11 @@ const Perfil = () => {
           }
         </CardContent>
       </Card>
-      <Button onClick={alternEditing} variant="contained" sx={{m:4}}>{isEditing ? "Dejar de editar" : "Editar perfil"}</Button>
+      { session.info.isLoggedIn &&
+      <Button onClick={alternEditing} variant="contained" sx={{m:4}}>
+        {isEditing ? "Dejar de editar" : "Editar perfil"}
+        </Button>
+      }
       {isEditing &&
         <Button onClick={saveUserInfo} variant="contained" sx={{m:4}}>Guardar cambios</Button>
       }
@@ -169,7 +178,7 @@ const Perfil = () => {
         oidcIssuer={idp}
         redirectUrl={redirUrl}
         onError={console.error} >
-          <Button variant="contained" sx={{bgcolor: '#596886'}}>Entra con tu POD</Button> 
+          <Button variant="contained" sx={{bgcolor: '#596886', m:3}}>Entra con tu POD</Button> 
           </LoginButton> 
       }
     </div>
