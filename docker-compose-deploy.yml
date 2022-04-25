@@ -5,7 +5,7 @@ services:
     ports:
       - "5000:5000"
   webapp:
-    image: ghcr.io/Arquisoft/dede_es4c/restapi:latest
+    image: ghcr.io/Arquisoft/dede_es4c/webapp:latest
     ports:
       - "3000:3000"
     depends_on: 
