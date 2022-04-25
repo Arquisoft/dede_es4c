@@ -58,7 +58,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Publish to Registry
-        uses: docker/build-push-action@v2.10
+        uses: docker/build-push-action@v2
         with:
           name: arquisoft/dede_es4c/webapp
           username: ${{ github.actor }}
@@ -73,7 +73,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Publish to Registry
-        uses: docker/build-push-action@v2.10
+        uses: docker/build-push-action@v2
         with:
           name: arquisoft/dede_es4c/restapi
           username: ${{ github.actor }}
