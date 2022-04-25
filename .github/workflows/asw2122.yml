@@ -90,7 +90,7 @@ jobs:
         with:
           host: ${{ secrets.DEPLOY_HOST }}
           user: ${{ secrets.DEPLOY_USER }}
-          password: ${{ secrets.DEPLOY_PASSWORD }}
+          pass: ${{ secrets.DEPLOY_PASSWORD }}
           command: |
             wget https://raw.githubusercontent.com/Arquisoft/dede_es4c/master/docker-compose-deploy.yml -O docker-compose.yml
             docker-compose stop
