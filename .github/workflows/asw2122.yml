@@ -90,7 +90,7 @@ jobs:
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+          password: ${{ secrets.DOCKER_PUSH_TOKEN }}
       - name: Deploy over SSH
         uses: fifsky/ssh-action@master
         with:
