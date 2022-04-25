@@ -23,7 +23,7 @@ let initialState: UserState = {
     isAuthenticated: false,
     user: defaultUser,
     info: defaultInfo,
-    userData: {email: "", address: "", phone: ""}
+    userData: {email: "", address: "", phone: "", street1: "", city: "", state: "", zip: "", country: ""}
 };
 
 interface UserProviderProps {
