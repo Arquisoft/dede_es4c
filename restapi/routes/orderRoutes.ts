@@ -1,5 +1,6 @@
-
+const { check } = require('express-validator')
 import express, {Router} from 'express';
+const { validateFields } = require('../middlewares/validateFields')
 const api:Router = express.Router()
 
 import {getOrders, getOrderById, getOrdersByClientId, addOrder} from "../controllers/orderController";
@@ -20,8 +21,13 @@ import {getOrders, getOrderById, getOrdersByClientId, addOrder} from "../control
 );
 
   api.post(
-    "/orders/add",
-    addOrder
+    "/orders/add",[
+      check('productosCarrito', 'an order must contains products').not().isEmpty(),
+      check('cliente').not().isEmpty(),
+      check('direccion').not().isEmpty(),
+      check('precio').not().isEmpty(),
+      validateFields
+    ],addOrder
   );
 
   module.exports = api;
