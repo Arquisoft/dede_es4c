@@ -21,6 +21,8 @@ SOLIDTest
 .env.development.local
 .env.test.local
 .env.production.local
+restapi/.env
+.env
 
 npm-debug.log*
 yarn-debug.log*
