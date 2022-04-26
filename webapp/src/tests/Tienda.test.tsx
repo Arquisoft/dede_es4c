@@ -9,22 +9,18 @@ test('check that we are in the shop view', async () => {
 })
 
 test('check filters works fine', async () => {
-    // const { container, getByText, queryByText } = await render(<Tienda/>);
-    // const buttonFilter = container.querySelector('.filterButton')!;
-    // expect(getByText('Artículos disponibles')).toBeInTheDocument();
-    // expect(container).toHaveTextContent('Tortilla');
-    // expect(queryByText('Jamon')).toBeInTheDocument();
-    // expect(queryByText('Lomo con queso')).toBeInTheDocument();
-    // fireEvent.click(buttonFilter, {});
-    // expect(getByText('Comida')).toBeInTheDocument();
-    // expect(getByText('Bebida')).toBeInTheDocument();
-    // expect(getByText('Postres')).toBeInTheDocument();
-    // expect(getByText('Vegetarianos')).toBeInTheDocument();
-    // expect(getByText('No Vegetarianos')).toBeInTheDocument();
-    // fireEvent.click(getByText("Comida")); 
-    // expect(queryByText('Tortilla')).toBeInTheDocument();
-    // expect(queryByText('Jamon')).toBeInTheDocument();
-    // expect(queryByText('Lomo con queso')).toBeInTheDocument();
-    // expect(queryByText('Bacon con queso')).toBeInTheDocument();
-    // expect(queryByText('Agua')).not.toBeInTheDocument();
+    const { container, getByText, queryByText } = await render(<Tienda/>);
+    const buttonFilter = container.querySelector('.filterButton')!;
+    expect(getByText('Artículos disponibles')).toBeInTheDocument();
+    fireEvent.click(buttonFilter, {});
+    expect(getByText('Comida')).toBeInTheDocument();
+    expect(getByText('Bebida')).toBeInTheDocument();
+    expect(getByText('Postres')).toBeInTheDocument();
+    expect(getByText('Vegetarianos')).toBeInTheDocument();
+    expect(getByText('No Vegetarianos')).toBeInTheDocument();
+    fireEvent.click(getByText("Comida")); 
+    fireEvent.click(getByText("Bebida")); 
+    fireEvent.click(getByText("Postres")); 
+    fireEvent.click(getByText("Vegetarianos")); 
+    fireEvent.click(getByText("No Vegetarianos")); 
 })

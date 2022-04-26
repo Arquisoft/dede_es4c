@@ -6,16 +6,28 @@ import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 
 function Producto(props: any) {
-
-    var image = "pinchos/" + props.producto.nombre + ".jpg"
-    var titulo = props.producto.nombre + "(" + props.producto.cantidad + " uds.)"
-    var precioFinal = "Total: " + props.producto.cantidad * props.producto.precio + "€"
+    var image = "";
+    var titulo = "";
+    var precioFinal = "";
+    var imgAlt = ""
+    if(props.producto === undefined){
+      image = "pinchos/nada.jpg";
+      titulo = "Sin producto";
+      precioFinal = "No hay precio";
+      imgAlt = "Sin imagen";
+    }
+    else{
+      image = "pinchos/" + props.producto.nombre + ".jpg"
+      titulo = props.producto.nombre + "(" + props.producto.cantidad + " uds.)"
+      precioFinal = "Total: " + props.producto.cantidad * props.producto.precio + "€"
+      imgAlt = props.producto.nombre;
+    }
 
   return (
     <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
     <ListItem>
         <ListItemAvatar>
-            <Avatar alt = {props.producto.nombre} src = {image} sx={{ width: 50, height: 50 }}/>
+            <Avatar src = {imgAlt} sx={{ width: 50, height: 50 }}/>
         </ListItemAvatar>
         <ListItemText primary={titulo} secondary={precioFinal} />
     </ListItem>
