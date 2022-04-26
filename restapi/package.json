@@ -19,7 +19,8 @@
     "express-validator": "^6.14.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.2.4",
-    "prom-client": "^14.0.1"
+    "prom-client": "^14.0.1",
+    "shippo": "^1.7.1"
   },
   "devDependencies": {
     "@types/cors": "^2.8.12",

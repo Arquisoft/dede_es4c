@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import { type } from 'os';
 const asyncHandler = require('express-async-handler')
+const shippo = require('../shippo/shippo')
 const Order = require('../model/orderModel');
 
 
@@ -39,7 +40,8 @@ export const addOrder = async (req: Request, res: Response): Promise<Response> =
       _precio: precio,
       _productos: productosCarrito
     });
-    console.log(newOrder)
+    newOrder._precio=(parseFloat(newOrder._precio) +await shippo.calculaCostes(newOrder._direccion)).toString()
+    //console.log(newOrder)
     newOrder.save();
     return res.status(200).json(newOrder);
   } catch (error) {

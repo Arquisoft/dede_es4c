@@ -7,7 +7,8 @@ const orderSchema = new Schema({
         required: true
     },
     _direccion: {
-        type: String,
+        type: Map,
+        of: String,
         required: true
     },
     _precio: {
