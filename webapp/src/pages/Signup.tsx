@@ -51,7 +51,7 @@ const Signup = () => {
     const user = {username, email, password, repeatPassword};
     if(username === "" || email === "" || password === "" || repeatPassword === ""){
       setError("Rellene los datos solicitados correctamente")
-    }else if(!validateEmail(email)){
+    }else if(!email.includes('@') || (!email.endsWith('.com') && !email.endsWith('.es'))){
       setError("Introduzca un email válido")
     }else if(password !== repeatPassword){
       setError("Las contraseñas no coinciden")
@@ -60,15 +60,6 @@ const Signup = () => {
     }else{
       userSignup(user);
     }
-  }
-
-  // https://stackoverflow.com/questions/46155/whats-the-best-way-to-validate-an-email-address-in-javascript
-  const validateEmail = (e:string) => {
-    return String(e)
-      .toLowerCase()
-      .match(
-        /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-      );
   }
 
     return (
