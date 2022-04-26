@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import Producto from "./Producto";
 import Grid from '@mui/material/Grid';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
@@ -9,7 +9,6 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import pinchoEstatico from '../images/pincho2.jpg';
 import Avatar from '@mui/material/Avatar';
 import picante from '../images/picante.png';
 import vegetariano from '../images/vegetariano.jpg';
