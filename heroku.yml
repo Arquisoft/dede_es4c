@@ -1,9 +1,0 @@
-# Reference the Dockerfiles to build into Docker images 
-build:
-  docker:
-    webapp: webapp/Dockerfile
-    restapi: restapi/Dockerfile
-run:
-  webapp: npm start
-  restapi: npm start
-  
