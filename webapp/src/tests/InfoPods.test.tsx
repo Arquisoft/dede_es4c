@@ -3,7 +3,7 @@ import React from "react";
 import InfoPods from '../pages/InfoPods';
 
 test('check page loading', async () => {
-    const { getByText, queryByText} = render(<InfoPods/>);
+    const { getByText} = render(<InfoPods/>);
     expect(getByText('Información sobre los PODS:')).toBeInTheDocument();
     expect(getByText('Con SOLID tus datos estarán seguros gracias a contenedores descentralizados, los PODS. Para poder realizar compras en nuestra página web, simplemente tendrás que estar registrado en el proveedor de PODS que nos da servicio. Una vez registrado, inicia sesión con esa cuenta en nuestra aplicación.')).toBeInTheDocument();
     expect(getByText('¿Qué datos almacenamos sobre usted?')).toBeInTheDocument();

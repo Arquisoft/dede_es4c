@@ -7,14 +7,21 @@ import Avatar from '@mui/material/Avatar';
 import Divider from '@mui/material/Divider';
 
 function MiembroAvatar(props:any){
-    
+    var nombre = "Sin nombre";
+    var foto = "";
+    var uo = "UOxxxxxx";
+    if(props.miembro !== undefined){
+        nombre = props.miembro.nombre;
+        foto = props.miembro.imagen;
+        uo = props.miembro.uo;
+    }
     return (
         <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
         <ListItem>
             <ListItemAvatar>
-                <Avatar alt = {props.miembro.nombre} src = {props.miembro.imagen} sx={{ width: 50, height: 50 }}/>
+                <Avatar alt = {nombre} src = {foto} sx={{ width: 50, height: 50 }}/>
             </ListItemAvatar>
-            <ListItemText primary={props.miembro.nombre} secondary={props.miembro.uo} />
+            <ListItemText primary={nombre} secondary={uo} />
         </ListItem>
         <Divider />
         </List>
