@@ -4,6 +4,7 @@ const { validateFields } = require('../middlewares/validateFields')
 const api:Router = express.Router()
 
 import {getOrders, getOrderById, getOrdersByClientId, addOrder} from "../controllers/orderController";
+const {isNotEmpty} = require("../middlewares/validateOrders");
 
   api.get(
     "/orders",
@@ -22,11 +23,11 @@ import {getOrders, getOrderById, getOrdersByClientId, addOrder} from "../control
 
   api.post(
     "/orders/add",[
-      check('productosCarrito', 'an order must contains products').not().isEmpty(),
       check('cliente').not().isEmpty(),
       check('direccion').not().isEmpty(),
       check('precio').not().isEmpty(),
-      validateFields
+      validateFields,
+      isNotEmpty
     ],addOrder
   );
 
