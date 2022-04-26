@@ -10,7 +10,6 @@ import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
-import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
@@ -22,9 +21,10 @@ import { useContext, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import {useSession } from "@inrupt/solid-ui-react";
 import { InfoPod } from '../interface/interfaces';
+import Button from '@mui/material/Button';
 
 const pages = ['Tienda', 'Historia'];
-const settings = ['Signup', 'Login'];
+const settings = ['Signup', 'Login', 'Pedidos'];
 
 const NavBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
