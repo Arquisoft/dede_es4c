@@ -12,6 +12,9 @@ restapi/coverage
 # production
 webapp/build
 
+# tests
+SOLIDTest
+
 # misc
 .DS_Store
 .env.local
