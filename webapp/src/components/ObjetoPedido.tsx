@@ -8,11 +8,13 @@ import Divider from '@mui/material/Divider';
 function ObjetoPedido(props:any){
     var productosDelPedido = "";
     var precioFinal = 0;
-    {props.productos.map((producto: Producto) =>{
-            productosDelPedido += producto.nombre + " - cant: " + producto.cantidad + ", ";
-            precioFinal += producto.precio;
+    if(props.productos !== undefined){
+      {props.productos.map((producto: Producto) =>{
+        productosDelPedido += producto.nombre + " - cant: " + producto.cantidad + ", ";
+        precioFinal += producto.precio * producto.cantidad;
         }
-    )}
+      )}
+    }
     var titulo = "Pedido número " + props.numero + " (" + precioFinal + "€)"
     return (
         <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>

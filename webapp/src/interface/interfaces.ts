@@ -5,6 +5,12 @@ export interface Producto {
     cantidad: number;
 }
 
+export interface Miembro{
+    nombre: string;
+    imagen: Object;
+    uo: string;
+}
+
 export interface CartState {
     numeroElems: number;
     total: number;

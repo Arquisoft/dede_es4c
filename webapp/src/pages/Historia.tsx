@@ -6,25 +6,13 @@ import marcos from '../images/avatares/Marcos.jpg';
 import sergio from '../images/avatares/Sergio.jpeg';
 //import damir from '../images/avatares/Damir.jpeg';
 import MiembroAvatar from '../components/MiembroAvatar';
-
-class Miembro {
-    nombre: string;
-    imagen: Object;
-    uo: string
-
-    constructor(nombre:string, imagen:Object, uo:string){
-        this.nombre = nombre;
-        this.imagen = imagen;
-        this.uo = uo;
-    }
-}
+import { Miembro } from "../interface/interfaces";
 
 const Historia = () => {
-    var miembros: Miembro[] = [];
-    miembros[0] = new Miembro("Daniel Ferreira Gómez", dani, "UO277603");
-    miembros[1] = new Miembro("Damir Abdrafikov", marcos, "UO277306");
-    miembros[2] = new Miembro("Sergio Castillo", sergio, "UO276436");
-    miembros[3] = new Miembro("Hugo Gutiérrez Tomás", hugo, "UO277891");
+    var miembros: Miembro[] = [ {nombre:"Daniel Ferreira Gómez", imagen: dani, uo:"UO277603"},
+                                {nombre:"Damir Abdrafikov", imagen: new Object(), uo:"UO277306"},
+                                {nombre:"Sergio Castillo", imagen: sergio, uo:"UO276436"},
+                                {nombre:"Hugo Gutiérrez Tomás", imagen: hugo, uo:"UO277891"}];
     return (
         <div>
         <div id='historia'>

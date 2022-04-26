@@ -88,6 +88,12 @@ const NavBar = () => {
     navigate("/Perfil");
   }
 
+  const usuarioAutenticado = () => {
+    if(stateUser !== undefined)
+      return stateUser.isAuthenticated;
+    return false;
+  }
+
   return (
     <AppBar position="relative" style={{ background: '#596886' }}>
       <Container maxWidth={false}>
@@ -146,7 +152,7 @@ const NavBar = () => {
               <Link href={"/" + page} sx={{ my: 2, color: '#fff', display: 'block', pr: 4, pl: 4 }}>{page}</Link>
             ))}
           </Box>
-          { stateUser.isAuthenticated &&
+          { usuarioAutenticado() &&
           <Box sx={{ flexGrow: 0, pr: 5 }}>
           <Tooltip title="Accede al perfil">
           <Button onClick={handlePerfil} >
@@ -155,10 +161,10 @@ const NavBar = () => {
           </Tooltip>
           </Box>
         }
-          {!stateUser.isAuthenticated &&
+          {!usuarioAutenticado() &&
             <Box sx={{ flexGrow: 0, pr: 5 }}>
               <Tooltip title="Opciones de usuario">
-                <IconButton onClick={handleOpenUserMenu} size='large'>
+                <IconButton onClick={handleOpenUserMenu} size='large' className='userOptions'>
                   <AccountCircleIcon fontSize="inherit" sx={{ color: "#fff" }} />
                 </IconButton>
               </Tooltip>
@@ -180,7 +186,7 @@ const NavBar = () => {
               >
                 {settings.map((setting) => (
                   <Link href={"/" + setting} sx={{ my: 2, color: '#000F', display: 'block' }} underline='none'>
-                    <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                    <MenuItem className = {setting} key={setting} onClick={handleCloseUserMenu}>
 
                       <Typography textAlign="center">{setting}</Typography>
                     </MenuItem>
@@ -192,7 +198,7 @@ const NavBar = () => {
           <Box sx={{ flexGrow: 0, pr: 5 }}>
             <CartDrawer products={[]} />
           </Box>
-          {stateUser.isAuthenticated &&
+          {usuarioAutenticado() &&
             <Box sx={{ flexGrow: 0, pr: 5 }}>
               <Tooltip title="Cerrar sesión">
                 <Button onClick={handleLogout}>
