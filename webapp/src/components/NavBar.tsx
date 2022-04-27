@@ -16,7 +16,6 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import logo from './icons/DeDe.png';
 import CartDrawer from './CartDrawer';
 import LogoutIcon from '@mui/icons-material/Logout';
-import Producto from "./Producto";
 import { UserContext } from '../context/userContext';
 import { useContext, useState } from 'react';
 import { useNavigate } from "react-router-dom";
@@ -96,6 +95,12 @@ const NavBar = () => {
     navigate("/Perfil");
   }
 
+  const usuarioAutenticado = () => {
+    if(stateUser !== undefined)
+      return stateUser.isAuthenticated;
+    return false;
+  }
+
   return (
     <AppBar position="relative" style={{ background: '#596886' }}>
       <Container maxWidth={false}>
@@ -138,7 +143,7 @@ const NavBar = () => {
             >
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                   <Link href={"/" + page} sx={{ my: 2, color: '#000', display: 'block', pr: 4, pl: 4 }}>{page}</Link>
                 </MenuItem>
               ))}
             </Menu>
@@ -154,7 +159,8 @@ const NavBar = () => {
               <Link href={"/" + page} sx={{ my: 2, color: '#fff', display: 'block', pr: 4, pl: 4 }}>{page}</Link>
             ))}
           </Box>
-          { (stateUser.isAuthenticated || stateUser.isAuthenticated) &&
+
+          { usuarioAutenticado() &&
           <Box sx={{ flexGrow: 0, pr: 5 }}>
           <Tooltip title="Accede a las opciones de usuario">
           <IconButton onClick={handleOpenUserSettings} size='large'>
@@ -188,10 +194,10 @@ const NavBar = () => {
               </Menu>
           </Box>
         }
-          {!stateUser.isAuthenticated &&
+          {!usuarioAutenticado() &&
             <Box sx={{ flexGrow: 0, pr: 5 }}>
               <Tooltip title="Opciones de usuario">
-                <IconButton onClick={handleOpenUserMenu} size='large'>
+                <IconButton onClick={handleOpenUserMenu} size='large' className='userOptions'>
                   <AccountCircleIcon fontSize="inherit" sx={{ color: "#fff" }} />
                 </IconButton>
               </Tooltip>
@@ -213,7 +219,7 @@ const NavBar = () => {
               >
                 {settings.map((setting) => (
                   <Link href={"/" + setting} sx={{ my: 2, color: '#000F', display: 'block' }} underline='none'>
-                    <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                    <MenuItem className = {setting} key={setting} onClick={handleCloseUserMenu}>
 
                       <Typography textAlign="center">{setting}</Typography>
                     </MenuItem>
@@ -225,7 +231,7 @@ const NavBar = () => {
           <Box sx={{ flexGrow: 0, pr: 5 }}>
             <CartDrawer products={[]} />
           </Box>
-          {stateUser.isAuthenticated &&
+          {usuarioAutenticado() &&
             <Box sx={{ flexGrow: 0, pr: 5 }}>
               <Tooltip title="Cerrar sesión">
                 <Button onClick={handleLogout}>

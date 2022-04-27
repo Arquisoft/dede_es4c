@@ -21,16 +21,22 @@ export default function RealizaPedido(props: any) {
     var precio = cartState.total;
 
     const handlePedido = () => {
-        var cliente = stateUser.user._id;
-        if(cliente === ''){
-          setMessage("Debes iniciar sesión para realizar el pedido");
-          setOpen(true);
-          return;
-        }
         var direccion = "Avda. Galicia 62";
         var precio = cartState.total;
         if(precio === 0){
           setMessage("La cesta está vacía, añade los productos y vuelve para finalizar");
+          setOpen(true);
+          return;
+        }
+
+        if(stateUser === undefined){
+          setMessage("Debes iniciar sesión para realizar el pedido");
+          setOpen(true);
+          return;
+        }
+        var cliente = stateUser.user._id;
+        if(cliente === ''){
+          setMessage("Debes iniciar sesión para realizar el pedido");
           setOpen(true);
           return;
         }
@@ -65,6 +71,7 @@ export default function RealizaPedido(props: any) {
       const action = (
         <React.Fragment>
           <IconButton
+            className="cerrar"
             size="small"
             aria-label="close"
             color="inherit"

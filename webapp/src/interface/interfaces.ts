@@ -5,6 +5,12 @@ export interface Producto {
     cantidad: number;
 }
 
+export interface Miembro{
+    nombre: string;
+    imagen: Object;
+    uo: string;
+}
+
 export interface CartState {
     numeroElems: number;
     total: number;
@@ -14,7 +20,8 @@ export interface CartState {
 export interface UserState{
     isAuthenticated: boolean;
     user: BDUser;
-    info: InfoPod
+    info: InfoPod;
+    userData: UserData
 }
 
 export interface BDUser {
@@ -35,4 +42,15 @@ export interface InfoPod {
     webId: string,
     sessionId: string,
     expirationDate: number,
+}
+
+export interface UserData {
+    email: string,
+    address: string,
+    phone: string,
+    street1: string,
+    city: string,
+    state: string,
+    zip: string,
+    country: string
 }

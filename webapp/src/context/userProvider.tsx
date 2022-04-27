@@ -1,7 +1,7 @@
 import React, { useReducer, useEffect } from "react";
 import { userReducer } from "./userReducer";
 import jwt_decode from "jwt-decode";
-import { BDUser, InfoPod, Token, UserState } from "../interface/interfaces";
+import { BDUser, InfoPod, Token, UserData, UserState } from "../interface/interfaces";
 import { UserContext } from "./userContext";
 
 const defaultUser : BDUser =  {
@@ -16,13 +16,14 @@ const defaultInfo : InfoPod = {
     expirationDate: 0,
     isLoggedIn: false,
     sessionId: '',
-    webId: ''
+    webId: '',
 }
 
 let initialState: UserState = {
     isAuthenticated: false,
     user: defaultUser,
-    info: defaultInfo
+    info: defaultInfo,
+    userData: {email: "", address: "", phone: "", street1: "", city: "", state: "", zip: "", country: ""}
 };
 
 interface UserProviderProps {
@@ -52,6 +53,10 @@ export const UserProvider = ({ children }: UserProviderProps) => {
         dispatch({type: 'setInfo', payload: info})
     }
 
+    const setUserData = (userData: UserData) => {
+        dispatch({type: 'setUserData', payload: userData});
+    }
+
     if (localStorage.jwt && !stateUser.isAuthenticated) {
         const userToken = localStorage.jwt ? localStorage.jwt : "";
         var token_decoded = jwt_decode<Token>(userToken);
@@ -63,7 +68,7 @@ export const UserProvider = ({ children }: UserProviderProps) => {
     }, [stateUser])
 
     return (
-        <UserContext.Provider value={{ stateUser, setCurrentUser, logoutUser, setInfo }}>
+        <UserContext.Provider value={{ stateUser, setCurrentUser, logoutUser, setInfo, setUserData }}>
             {children}
         </UserContext.Provider>
     );

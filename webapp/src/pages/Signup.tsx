@@ -51,6 +51,8 @@ const Signup = () => {
     const user = {username, email, password, repeatPassword};
     if(username === "" || email === "" || password === "" || repeatPassword === ""){
       setError("Rellene los datos solicitados correctamente")
+    }else if(!email.includes('@') || (!email.endsWith('.com') && !email.endsWith('.es'))){
+      setError("Introduzca un email válido")
     }else if(password !== repeatPassword){
       setError("Las contraseñas no coinciden")
     }else if(password.length < 6){
@@ -108,11 +110,11 @@ const Signup = () => {
         ¿Ya tienes una cuenta? <br />
         <a href="/Login">Inicia sesión</a>
       </p>
-      <br></br>
+    
       <Link to = "/InfoPods">
         <Button variant='contained' sx={{color: '#fff', m:1, backgroundColor: '#3e6969'}} endIcon={<InfoOutlinedIcon />}>Pods</Button>
       </Link>
-      <Link to="https://inrupt.net/register">Crea tu pod</Link>
+      <p>¿No tienes un POD? Crea uno <a href="https://signup.pod.inrupt.com/">aquí</a></p>
       </div>
       
     </div>

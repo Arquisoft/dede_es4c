@@ -117,23 +117,24 @@ function Tienda (props:any) {
         <div id='listadoProducto'>
             <main>
                 <h1>Artículos disponibles</h1>
-                <Input placeholder="Buscar" value = {nombre} />
+                <Input placeholder="Buscar" value = {nombre} onChange = {handleInputChange}/>
                 <IconButton aria-label="Buscar" size="large" onClick={handleFilterNombre}>
                     <SearchIcon fontSize="large" />
                 </IconButton>
                     <Button
                         id="basic-button"
+                        className='filterButton'
                         aria-controls={open ? 'basic-menu' : undefined}
                         aria-haspopup="true"
                         aria-expanded={open ? 'true' : undefined}
                         size = "large"
                         onClick={handleClick}
                         sx={{color: '#596886'}}
-                    >
-                        <h2 id = "filtro">Filtros</h2>
+                    >Filtros
                     </Button>
                     <Menu
                         id="basic-menu"
+                        className='filtros'
                         anchorEl={anchorEl}
                         open={open}
                         onClose={handleClose}

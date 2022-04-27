@@ -12,12 +12,17 @@ restapi/coverage
 # production
 webapp/build
 
+# tests
+SOLIDTest
+
 # misc
 .DS_Store
 .env.local
 .env.development.local
 .env.test.local
 .env.production.local
+restapi/.env
+.env
 
 npm-debug.log*
 yarn-debug.log*
