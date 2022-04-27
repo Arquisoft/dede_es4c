@@ -21,7 +21,7 @@ export const signup = async (req: Request, res: Response): Promise<Response> => 
         const existingUser = await User.findOne({ _email: email.toString() });
 
         if (existingUser)
-            return res.status(500).send("Ya existe un usuario con ese email");
+            return res.status(400).send("Ya existe un usuario con ese email");
         const salt = await bcrypt.genSalt();
         const hash = await bcrypt.hash(password, salt);
 
@@ -43,6 +43,8 @@ export const signup = async (req: Request, res: Response): Promise<Response> => 
 export const login = async (req: Request, res: Response): Promise<Response> => {
     try {
         const { email, password } = req.body;
+        console.log(email);
+        console.log(email)
         const user = await User.findOne({ _email: email.toString() });
         
         if (!user)
@@ -61,3 +63,11 @@ export const login = async (req: Request, res: Response): Promise<Response> => {
         return res.status(500).send(error);
     }
 }
+
+export const deleteUser = async (req: Request, res: Response) => {
+
+    await User.findByIdAndDelete(req.params.id)
+  
+    return res.status(200).send({msg:"Usuario eliminado"});
+    
+  }

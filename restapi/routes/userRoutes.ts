@@ -2,7 +2,7 @@ import express, {Router} from 'express';
 const api:Router = express.Router()
 const { check } = require('express-validator')
 
-import {verify, signup, login} from "../controllers/userController";
+import {verify, signup, login, deleteUser} from "../controllers/userController";
 
 api.post("/verify", verify);
 
@@ -14,5 +14,10 @@ api.post("/signup",[
 api.post("/login",[
     check('email').isEmail(),
 ], login);
+
+api.delete(
+    "/user/delete/:id",
+    deleteUser
+  );
 
 module.exports = api;
