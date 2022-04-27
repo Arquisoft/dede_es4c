@@ -7,6 +7,7 @@ import Typography from '@mui/material/Typography';
 function ObjetoPedido(props:any){
 
  var stringProductos = "";
+ var fecha = "";
 
     const setString = () => {
       let a = JSON.stringify(props.pedido._productos)
@@ -16,7 +17,13 @@ function ObjetoPedido(props:any){
         }
     }
 
+    const setFecha = () => {
+      let date = new Date(Date.parse(props.pedido._fecha));
+      fecha = date + "";
+    }
+
     setString();
+    setFecha();
 
     return (
        <div>
@@ -31,6 +38,9 @@ function ObjetoPedido(props:any){
       <Typography display="block">{stringProductos}</Typography>
       <Typography variant='body1'>
         Total: {parseFloat(props.pedido._precio).toFixed(2)} €
+      </Typography>
+      <Typography variant='body1'>
+        Fecha: {fecha} 
       </Typography>
     </CardContent>
     </Card>

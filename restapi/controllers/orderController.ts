@@ -31,13 +31,14 @@ export const getOrdersByClientId = async (req: Request, res: Response): Promise<
 }
 export const addOrder = async (req: Request, res: Response): Promise<Response> => {
   try {
-    const { cliente, direccion, precio, productosCarrito } = req.body;
+    const { cliente, direccion, precio, productosCarrito, fecha } = req.body;
     console.log(req.body);
     const newOrder = new Order({
       _cliente_id: cliente,
       _direccion: direccion,
       _precio: precio,
-      _productos: productosCarrito
+      _productos: productosCarrito,
+      _fecha: fecha
     });
     console.log(newOrder)
     newOrder.save();
