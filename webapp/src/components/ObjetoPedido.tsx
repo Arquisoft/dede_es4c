@@ -1,21 +1,25 @@
-import React from 'react';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemText from '@mui/material/ListItemText';
-import Producto from "./Producto";
+import React, { useState } from 'react';
 import Divider from '@mui/material/Divider';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
-import { Order } from '../shared/shareddtypes';
 
 function ObjetoPedido(props:any){
-    var productosDelPedido = "";
-    var precioFinal = 0;
 
+ var stringProductos = "";
+
+    const setString = () => {
+      let a = JSON.stringify(props.pedido._productos)
+        let json = JSON.parse(a)
+        for(var p in json){
+          stringProductos += p + " " + json[p] + " uds."
+        }
+    }
+
+    setString();
 
     return (
-       
+       <div>
           <Card className='cartItem' sx={{ maxHeight: 430 }}>    
    <CardContent>
       <Typography variant='h4'>
@@ -24,13 +28,14 @@ function ObjetoPedido(props:any){
       <Typography variant='body1'>
         Dirección: {props.pedido._direccion}
       </Typography>
-      <Typography>{JSON.stringify(props.pedido._productos)}</Typography>
+      <Typography display="block">{stringProductos}</Typography>
       <Typography variant='body1'>
-        Total: {props.pedido._precio}
+        Total: {parseFloat(props.pedido._precio).toFixed(2)} €
       </Typography>
     </CardContent>
     </Card>
- 
+    <Divider/>
+    </div>
         
       );
 }
