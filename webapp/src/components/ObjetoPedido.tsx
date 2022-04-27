@@ -1,28 +1,42 @@
-import React from 'react';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemText from '@mui/material/ListItemText';
-import Producto from "./Producto";
+import React, { useState } from 'react';
 import Divider from '@mui/material/Divider';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
 
 function ObjetoPedido(props:any){
-    var productosDelPedido = "";
-    var precioFinal = 0;
-    if(props.productos !== undefined){
-      {props.productos.map((producto: Producto) =>{
-        productosDelPedido += producto.nombre + " - cant: " + producto.cantidad + ", ";
-        precioFinal += producto.precio * producto.cantidad;
+
+ var stringProductos = "";
+
+    const setString = () => {
+      let a = JSON.stringify(props.pedido._productos)
+        let json = JSON.parse(a)
+        for(var p in json){
+          stringProductos += p + " " + json[p] + " uds."
         }
-      )}
     }
-    var titulo = "Pedido número " + props.numero + " (" + precioFinal + "€)"
+
+    setString();
+
     return (
-        <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
-          <ListItem>
-            <ListItemText primary={titulo}  secondary= {productosDelPedido} />
-          </ListItem>
-          <Divider />
-        </List>
+       <div>
+          <Card className='cartItem' sx={{ maxHeight: 430 }}>    
+   <CardContent>
+      <Typography variant='h4'>
+        ID: {props.pedido._id}
+      </Typography>     
+      <Typography variant='body1'>
+        Dirección: {props.pedido._direccion}
+      </Typography>
+      <Typography display="block">{stringProductos}</Typography>
+      <Typography variant='body1'>
+        Total: {parseFloat(props.pedido._precio).toFixed(2)} €
+      </Typography>
+    </CardContent>
+    </Card>
+    <Divider/>
+    </div>
+        
       );
 }
 
