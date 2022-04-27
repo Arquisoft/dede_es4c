@@ -69,6 +69,7 @@ describe('products ', () => {
     });
     it('can be listed',async () => {
         const response:Response = await request(app).get("/api/pinchos/no_vegetariano");
+        console.log(response.body)
         expect(response.statusCode).toBe(200);
     });
     it('can be listed',async () => {
