@@ -22,6 +22,7 @@ export default function RealizaPedido(props: any) {
 
     const handlePedido = () => {
         var direccion = "Avda. Galicia 62";
+        var fecha = Date.now();
         var precio = cartState.total;
         if(precio === 0){
           setMessage("La cesta está vacía, añade los productos y vuelve para finalizar");
@@ -47,7 +48,7 @@ export default function RealizaPedido(props: any) {
         }
     
         axios.post('http://localhost:5000/api/orders/add',{
-          cliente, direccion, precio, productosCarrito
+          cliente, direccion, precio, productosCarrito, fecha
         }).then( res => {
           if(res.status === 200){
             console.log("Pedido realizado")
