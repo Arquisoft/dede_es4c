@@ -11,6 +11,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import IconButton from '@mui/material/IconButton';
 import PaidIcon from '@mui/icons-material/Paid';
 import image from '../images/cajaRegistradora.png';
+import { useNavigate } from "react-router-dom";
 
 export default function RealizaPedido(props: any) {
     const {cartState, addToCart} = useContext(CartContext);
@@ -18,10 +19,17 @@ export default function RealizaPedido(props: any) {
     const {stateUser} = useContext(UserContext);
     const [open, setOpen] = React.useState(false);
     const [message, setMessage] = React.useState("Se ha realizado el pedido")
+    const navigate = useNavigate();
     var precio = cartState.total;
 
     const handlePedido = () => {
-        var direccion = "Avda. Galicia 62";
+      var direccion = {
+        "street1": stateUser.userData.street1,
+        "city": stateUser.userData.city,
+        "state": stateUser.userData.state,
+        "zip": stateUser.userData.zip,
+        "country": stateUser.userData.country
+    };
         var fecha = Date.now();
         var precio = cartState.total;
         if(precio === 0){
@@ -53,6 +61,7 @@ export default function RealizaPedido(props: any) {
           if(res.status === 200){
             console.log("Pedido realizado")
             setOpen(true);
+            navigate("/Pedidos")
           }
         }).catch(error => {
           console.log("Se ha producido un error inesperado")
@@ -94,7 +103,7 @@ export default function RealizaPedido(props: any) {
             </div>
             <Divider />
             <h2>Total a pagar: {precio}€</h2>
-            <Button onClick={handlePedido} endIcon={<PaidIcon />} variant="contained" >Realizar compra</Button>
+            <Button onClick={handlePedido} endIcon={<PaidIcon />} sx={{bgcolor: '#596886', color: '#fff', my: 2}} variant='contained' >Realizar compra</Button>
         </main>
         <aside>
             <img src={image}></img>
