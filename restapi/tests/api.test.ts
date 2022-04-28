@@ -13,7 +13,7 @@ let app:Application;
 let server:http.Server;
 require('dotenv').config();
 const mongoose = require("mongoose");
-const connectionString = 'mongodb+srv://es4c:es4c@cluster0.hcz1f.mongodb.net/bar_pinchos?retryWrites=true&w=majority';
+const connectionString = process.env.MONGO_DB;
 beforeAll(async () => {
     app = express();
     const port: number = 5000;
@@ -105,7 +105,7 @@ describe('products ', () => {
 
 describe('user', () => {
     it('Login an existent user', async () => {
-        let user = {"email": "dani@gmail.com", "password":"123456"}
+        let user = {"email": "dani@gmail.com", "password":process.env.PASSWD1}
 
         const response:Response = await request(app).post('/api/login').send(user).set('Accept', 'application/json');
         expect(response.statusCode).toBe(200);
@@ -113,21 +113,21 @@ describe('user', () => {
     })
 
     it('Login an user that not exists', async () => {
-        let user = {"email": "e@e.com", "password":"123456"}
+        let user = {"email": "e@e.com", "password":process.env.PASSWD1}
 
         const response:Response = await request(app).post('/api/login').send(user).set('Accept', 'application/json');
         expect(response.statusCode).toBe(400);
     })
 
     it('Login an user that exists with wrong credential', async () => {
-        let user = {"email": "dani@gmail.com", "password":"12dasf3456"}
+        let user = {"email": "dani@gmail.com", "password":process.env.PASSWD2}
 
         const response:Response = await request(app).post('/api/login').send(user).set('Accept', 'application/json');
         expect(response.statusCode).toBe(400);
     })
 
     it('Signup a new user', async () => {
-        let user = {"email": "g@g.com", "username": "g", "password":"123456"}
+        let user = {"email": "g@g.com", "username": "g", "password":process.env.PASSWD1}
 
         const response:Response = await request(app).post('/api/signup').send(user).set('Accept', 'application/json');
         expect(response.statusCode).toBe(200);
@@ -135,14 +135,14 @@ describe('user', () => {
     })
 
     it('Signup an existent user', async () => {
-        let user = {"email": "dani@gmail.com", "password":"123456"}
+        let user = {"email": "dani@gmail.com", "password":process.env.PASSWD1}
 
         const response:Response = await request(app).post('/api/signup').send(user).set('Accept', 'application/json');
         expect(response.statusCode).toBe(400);
     })
 
     it('Delete an existent user', async () => {
-        let user = {"email": "g@g.com", "password":"123456"};
+        let user = {"email": "g@g.com", "password":process.env.PASSWD1};
 
         const response:Response = await request(app).post('/api/login').send(user).set('Accept', 'application/json');
         var token_decoded = jwt.decode(response.body.token);
