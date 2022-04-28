@@ -105,8 +105,7 @@ useEffect(() => {
     <Box
       sx={{ width: 400 }}
       role="presentation"
-      onClick={toggleDrawer(anchor, false)}
-      onKeyDown={toggleDrawer(anchor, false)}
+      
     >
       <Typography textAlign="center">Carrito</Typography>
       <Divider/>
@@ -146,7 +145,7 @@ useEffect(() => {
   return (
     <div>
         <React.Fragment key={'right'}>
-        <IconButton size="large" onClick={toggleDrawer('right', true)} className='buttonCart'>
+        <IconButton id='botonCarrito' size="large" onClick={toggleDrawer('right', true)} className='buttonCart'>
           <AddShoppingCartIcon fontSize="inherit" sx={{ color: "#fff" }} />
           </IconButton>
           <Drawer
