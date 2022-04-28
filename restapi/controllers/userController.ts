@@ -2,18 +2,7 @@ import { Request, Response } from 'express';
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const User = require('../model/userModel');
-
-export const verify = async (req: Request, res: Response): Promise<Response> => {
-    try{
-        let token = req.body.token;
-        let decoded = jwt.verify(token, 'secretkey');
-
-        return res.status(200).json(decoded);
-    }catch (error) {
-        return res.status(401).json(error);
-    }
-
-};
+require("dotenv").config();
 
 export const signup = async (req: Request, res: Response): Promise<Response> => {
     try {
@@ -21,7 +10,7 @@ export const signup = async (req: Request, res: Response): Promise<Response> => 
         const existingUser = await User.findOne({ _email: email.toString() });
 
         if (existingUser)
-            return res.status(500).send("Ya existe un usuario con ese email");
+            return res.status(400).send("Ya existe un usuario con ese email");
         const salt = await bcrypt.genSalt();
         const hash = await bcrypt.hash(password, salt);
 
@@ -31,7 +20,7 @@ export const signup = async (req: Request, res: Response): Promise<Response> => 
             _password: hash
         });
         const savedUser = await newUser.save();
-        const token = jwt.sign({ user: savedUser }, 'secretkey');
+        const token = jwt.sign({ user: savedUser }, process.env.SECRET);
         return res.status(200).json({
             token
         });
@@ -52,12 +41,21 @@ export const login = async (req: Request, res: Response): Promise<Response> => {
         
         if (!success)
             return res.status(400).send("Credenciales inválidas");
-        const token = jwt.sign({ user }, 'secretkey');
+        const token = jwt.sign({ user }, process.env.SECRET);
         return res.status(200).json({
             token
         });
 
     } catch (error) {
+        console.log(error)
         return res.status(500).send(error);
     }
 }
+
+export const deleteUser = async (req: Request, res: Response) => {
+
+    await User.findByIdAndDelete(req.params.id)
+  
+    return res.status(200).send({msg:"Usuario eliminado"});
+    
+  }

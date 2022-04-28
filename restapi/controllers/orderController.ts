@@ -32,14 +32,15 @@ export const getOrdersByClientId = async (req: Request, res: Response): Promise<
 }
 export const addOrder = async (req: Request, res: Response): Promise<Response> => {
   try {
-    const { cliente, direccion, precio, productosCarrito } = req.body;
-    console.log(req.body);
+    const { cliente, direccion, precio, productosCarrito, fecha } = req.body;
     const newOrder = new Order({
       _cliente_id: cliente,
       _direccion: direccion,
       _precio: precio,
-      _productos: productosCarrito
+      _productos: productosCarrito,
+      _fecha: fecha
     });
+
     newOrder._precio=(parseFloat(newOrder._precio) +await shippo.calculaCostes(newOrder._direccion)).toString()
     //console.log(newOrder)
     newOrder.save();
@@ -48,3 +49,10 @@ export const addOrder = async (req: Request, res: Response): Promise<Response> =
     return res.status(500).send(error);
   }
 }
+
+export const deleteOrder = async (req: Request, res: Response) => {
+  await Order.findByIdAndDelete(req.params.id)
+  return res.status(200).send({msg:"El pedido ha sido eliminado"});
+  
+}
+

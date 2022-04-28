@@ -13,6 +13,7 @@ export type Pincho ={
     _ingredientes: Array<String>;
 };
 export type Order= {
+  _id:string,
   _cliente_id:string;
   _direccion:string;
   _precio:Record<string, string>;

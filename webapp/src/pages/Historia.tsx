@@ -5,9 +5,14 @@ import dani from '../images/avatares/Dani.jpg';
 import marcos from '../images/avatares/Marcos.jpg';
 import sergio from '../images/avatares/Sergio.jpeg';
 //import damir from '../images/avatares/Damir.jpeg';
-import Avatar from '@mui/material/Avatar';
+import MiembroAvatar from '../components/MiembroAvatar';
+import { Miembro } from "../interface/interfaces";
 
 const Historia = () => {
+    var miembros: Miembro[] = [ {nombre:"Daniel Ferreira Gómez", imagen: dani, uo:"UO277603"},
+                                {nombre:"Damir Abdrafikov", imagen: new Object(), uo:"UO277306"},
+                                {nombre:"Sergio Castillo", imagen: sergio, uo:"UO276436"},
+                                {nombre:"Hugo Gutiérrez Tomás", imagen: hugo, uo:"UO277891"}];
     return (
         <div>
         <div id='historia'>
@@ -21,16 +26,9 @@ const Historia = () => {
         </div>
         <section id = 'desarrolladores'>
             <h2>Desarrolladores de la tienda:</h2>
-                <p id="dani">Daniel Ferreira Gómez - UO277603</p>
-                <Avatar alt="Foto de Daniel Ferreira Gómez" src = {dani} sx={{ width: 56, height: 56 }}/>
-                <p>Damir Abdrafikov - UO277306</p>
-                <Avatar alt="Foto de Damir Abdrafikov" src = "ponerFoto" sx={{ width: 56, height: 56 }}/>
-                <p>Sergio Castillo - UO276436</p>
-                <Avatar alt="Foto de Sergio Castillo" src = {sergio} sx={{ width: 56, height: 56 }}/>
-                <p>Marcos Caraduje - UO270285</p>
-                <Avatar alt="Foto de Marcos Caraduje" src = {marcos} sx={{ width: 56, height: 56 }}/>
-                <p>Hugo Gutiérrez Tomás - UO277891</p>
-                <Avatar alt="Foto de Hugo Gutiérrez Tomás" src = {hugo} sx={{ width: 56, height: 56 }}/>
+                {miembros.map((member) =>(
+                    <MiembroAvatar miembro={member}/>
+                ))}
             </section>
         </div>
         

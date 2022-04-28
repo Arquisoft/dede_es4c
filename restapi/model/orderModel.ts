@@ -19,6 +19,10 @@ const orderSchema = new Schema({
         type: Map,
         of: String,
         default: {}
+    },
+    _fecha: {
+        type: Date,
+        required: true
     }
 });
 
