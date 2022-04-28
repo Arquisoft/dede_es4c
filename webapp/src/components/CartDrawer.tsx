@@ -61,7 +61,13 @@ useEffect(() => {
       setOpen(true);
       return;
     }
-    var direccion = "Avda. Galicia 62";
+    var direccion = {//CARGAR AQUI DIRECCIÓN DEL POD
+      "street1": "Albemarle Terrace",
+      "city": "Boston",
+      "state": "MA",
+      "zip": "02115",
+      "country": "US"
+  };
     var precio = cartState.total;
     if(precio === 0){
       setMessage("No se ha podido realizar el pedido");
