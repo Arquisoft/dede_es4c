@@ -2,18 +2,7 @@ import { Request, Response } from 'express';
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const User = require('../model/userModel');
-
-export const verify = async (req: Request, res: Response): Promise<Response> => {
-    try{
-        let token = req.body.token;
-        let decoded = jwt.verify(token, process.env.SECRET);
-
-        return res.status(200).json(decoded);
-    }catch (error) {
-        return res.status(401).json(error);
-    }
-
-};
+require("dotenv").config();
 
 export const signup = async (req: Request, res: Response): Promise<Response> => {
     try {
@@ -43,8 +32,6 @@ export const signup = async (req: Request, res: Response): Promise<Response> => 
 export const login = async (req: Request, res: Response): Promise<Response> => {
     try {
         const { email, password } = req.body;
-        console.log(email);
-        console.log(email)
         const user = await User.findOne({ _email: email.toString() });
         
         if (!user)
@@ -60,6 +47,7 @@ export const login = async (req: Request, res: Response): Promise<Response> => {
         });
 
     } catch (error) {
+        console.log(error)
         return res.status(500).send(error);
     }
 }

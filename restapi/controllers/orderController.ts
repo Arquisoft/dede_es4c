@@ -46,3 +46,9 @@ export const addOrder = async (req: Request, res: Response): Promise<Response> =
   }
 }
 
+export const deleteOrder = async (req: Request, res: Response) => {
+  await Order.findByIdAndDelete(req.params.id)
+  return res.status(200).send({msg:"El pedido ha sido eliminado"});
+  
+}
+
