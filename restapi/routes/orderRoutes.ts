@@ -3,7 +3,7 @@ import express, {Router} from 'express';
 const { validateFields } = require('../middlewares/validateFields')
 const api:Router = express.Router()
 
-import {getOrders, getOrderById, getOrdersByClientId, addOrder} from "../controllers/orderController";
+import {getOrders, getOrderById, getOrdersByClientId, addOrder, deleteOrder} from "../controllers/orderController";
 const {isNotEmpty} = require("../middlewares/validateOrders");
 
   api.get(
@@ -30,6 +30,12 @@ const {isNotEmpty} = require("../middlewares/validateOrders");
       isNotEmpty
     ],addOrder
   );
+
+  api.delete(
+    "/orders/delete/:id",
+    deleteOrder
+  )
+
 
   module.exports = api;
 

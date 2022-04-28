@@ -32,7 +32,6 @@ export const getOrdersByClientId = async (req: Request, res: Response): Promise<
 export const addOrder = async (req: Request, res: Response): Promise<Response> => {
   try {
     const { cliente, direccion, precio, productosCarrito, fecha } = req.body;
-    console.log(req.body);
     const newOrder = new Order({
       _cliente_id: cliente,
       _direccion: direccion,
@@ -40,10 +39,16 @@ export const addOrder = async (req: Request, res: Response): Promise<Response> =
       _productos: productosCarrito,
       _fecha: fecha
     });
-    console.log(newOrder)
     newOrder.save();
     return res.status(200).json(newOrder);
   } catch (error) {
     return res.status(500).send(error);
   }
 }
+
+export const deleteOrder = async (req: Request, res: Response) => {
+  await Order.findByIdAndDelete(req.params.id)
+  return res.status(200).send({msg:"El pedido ha sido eliminado"});
+  
+}
+
