@@ -77,67 +77,60 @@ describe('products ', () => {
 
     it('All food can be listed', async () => {
         const response:Response = await request(app).get('/api/pinchos/comida')
-        expect(response.text).not.toEqual('[]')
-        expect(response.body[0]._tipo).toBe('pincho');
-        expect(response.statusCode).toBe(200);
+       checkProductList(response, 'pincho');
     });
     
     it('All drinks can be listed', async () => {
         const response:Response = await request(app).get('/api/pinchos/bebida')
-        expect(response.text).not.toEqual('[]')
-        expect(response.body[0]._tipo).toBe('bebida');
-        expect(response.statusCode).toBe(200);
+        checkProductList(response, 'bebida');
     });
     
     it('All desserts can be listed', async () => {
         const response:Response = await request(app).get('/api/pinchos/postre')
-        expect(response.text).not.toEqual('[]')
-        expect(response.body[0]._tipo).toBe('postre');
-        expect(response.statusCode).toBe(200);
-    });
-    
-    it('Random url returns 404', async () => {
-        const response:Response = await request(app).get('/api/pinchos/nadanadanadada')
-        expect(response.statusCode).toBe(404);
+        checkProductList(response, 'postre');
     });
     
 });
 
+function checkProductList(response:Response, tipo:string){
+    expect(response.text).not.toEqual('[]')
+    expect(response.body[0]._tipo).toBe(tipo);
+    expect(response.statusCode).toBe(200);
+}
+
 describe('user', () => {
-    it('Login an existent user', async () => {
+    it('Login ', async () => {
+
+        // Login an existent user
         let user = {"email": "dani@gmail.com", "password":process.env.PASSWD1}
 
-        const response:Response = await request(app).post('/api/login').send(user).set('Accept', 'application/json');
+        var response:Response = await request(app).post('/api/login').send(user).set('Accept', 'application/json');
         expect(response.statusCode).toBe(200);
         expect(response.body.token).toBeDefined();
-    })
 
-    it('Login an user that not exists', async () => {
-        let user = {"email": "e@e.com", "password":process.env.PASSWD1}
+        // Login an unexistent user
+        user = {"email": "e@e.com", "password":process.env.PASSWD1}
 
-        const response:Response = await request(app).post('/api/login').send(user).set('Accept', 'application/json');
+        response = await request(app).post('/api/login').send(user).set('Accept', 'application/json');
+        expect(response.statusCode).toBe(400);
+
+        // Login a user with wrong credentials
+        user = {"email": "dani@gmail.com", "password":process.env.PASSWD2}
+
+        response = await request(app).post('/api/login').send(user).set('Accept', 'application/json');
         expect(response.statusCode).toBe(400);
     })
 
-    it('Login an user that exists with wrong credential', async () => {
-        let user = {"email": "dani@gmail.com", "password":process.env.PASSWD2}
-
-        const response:Response = await request(app).post('/api/login').send(user).set('Accept', 'application/json');
-        expect(response.statusCode).toBe(400);
-    })
-
-    it('Signup a new user', async () => {
+    it('Signup', async () => {
         let user = {"email": "g@g.com", "username": "g", "password":process.env.PASSWD1}
 
-        const response:Response = await request(app).post('/api/signup').send(user).set('Accept', 'application/json');
+        var response:Response = await request(app).post('/api/signup').send(user).set('Accept', 'application/json');
         expect(response.statusCode).toBe(200);
         expect(response.body.token).toBeDefined();
-    })
 
-    it('Signup an existent user', async () => {
-        let user = {"email": "dani@gmail.com", "password":process.env.PASSWD1}
+        user = {"email": "dani@gmail.com", "username": "dani", "password":process.env.PASSWD1}
 
-        const response:Response = await request(app).post('/api/signup').send(user).set('Accept', 'application/json');
+        response = await request(app).post('/api/signup').send(user).set('Accept', 'application/json');
         expect(response.statusCode).toBe(400);
     })
 
