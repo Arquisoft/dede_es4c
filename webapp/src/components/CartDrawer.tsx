@@ -115,7 +115,7 @@ useEffect(() => {
         ))}
         <Box textAlign="center">
         <Typography >{'Total del importe: ' + cartState.total.toFixed(2) + " €"}</Typography>
-        <Link href={"/RealizaPedido"} sx={{ my: 2, color: '#fff', display: 'block'}} underline='none'><Button variant="contained" sx={{bgcolor: '#596886'}}>Pasar por caja</Button></Link>
+        <Link href={"/RealizaPedido"} sx={{ my: 2, color: '#fff', display: 'block'}} underline='none'><Button value = "Pasar por caja" variant="contained" sx={{bgcolor: '#596886'}}>Pasar por caja</Button></Link>
         </Box>
      
     </Box>

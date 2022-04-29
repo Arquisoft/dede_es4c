@@ -67,7 +67,7 @@ const Signup = () => {
       
         <div id='form'>
         <h1>Sign Up</h1>
-      <form>
+      <form name="Signup">
         <TextField
             className='textfield'
           name="username"
