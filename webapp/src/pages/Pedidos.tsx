@@ -6,6 +6,7 @@ import { UserContext } from '../context/userContext';
 import {Order} from '../shared/shareddtypes';
 import List from '@mui/material/List';
 import { Typography } from '@mui/material';
+import './styles/pedidos.css';
 
 var listaPedidos: Order[] = [];
 
@@ -29,8 +30,7 @@ const Pedidos = () => {
                 <div>
                 <h1>Tus pedidos:</h1>
                 <List sx={{
-                        width: '100%',
-                        maxWidth: 900,
+                        
                         bgcolor: 'background.paper',
                         position: 'relative',
                         overflow: 'auto',
