@@ -154,13 +154,21 @@ describe('order', () => {
     });
 
     it('Get an order by id', async () => {
-        const response:Response = await request(app).get('/api/orders/search/624bf262c08e3fe695b2ee99');
+        const response:Response = await request(app).get('/api/orders/search/6267dddeb3f9321636008a12');
         let order = {
-            "_id": "624bf262c08e3fe695b2ee99",
-            "_cliente_id": "55",
-            "_direccion": "Avda. Galicia 62",
-            "_precio": "0",
-            "_productos": {},
+            "_id": "6267dddeb3f9321636008a12",
+            "_cliente_id": "6267d1b146eb782a750f0c64",
+            "_direccion": {
+                "street1":"Albemarle Terrace",
+                "city":"Boston",
+                "state":"MA",
+                "zip":"02115",
+                "country":"US"
+            },
+            "_precio": "1.15",
+            "_productos": {
+                "jamon": "1"
+            },
             "__v": 0
         };
         expect(response.body[0]).toEqual(order);
@@ -177,7 +185,13 @@ describe('order', () => {
     it('Create an order', async () => {
         const newOrder = {
             cliente: "62435238812b311f8dea8715",
-            direccion: "prueba",
+            direccion: {
+                "street1": "Albemarle Terrace",
+                "city": "Boston",
+                "state": "MA",
+                "zip": "02115",
+                "country": "US"
+            },
             precio: "4",
             productosCarrito: {"especial": "1"},
             fecha: "2022-04-27T18:03:18.327+00:00"
