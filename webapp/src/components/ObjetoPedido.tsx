@@ -30,7 +30,7 @@ function ObjetoPedido(props:any){
        <div>
           <Card className='cartItem' sx={{ maxHeight: 430 }}>    
    <CardContent>
-      <Typography variant='h4'>
+      <Typography variant='body1'>
         ID: {props.pedido._id}
       </Typography>     
       

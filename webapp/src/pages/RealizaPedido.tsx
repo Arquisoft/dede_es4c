@@ -14,7 +14,7 @@ import image from '../images/cajaRegistradora.png';
 import { useNavigate } from "react-router-dom";
 
 export default function RealizaPedido(props: any) {
-    const {cartState, addToCart} = useContext(CartContext);
+    const {cartState, resetCart} = useContext(CartContext);
     const {productos} = useCart();
     const {stateUser} = useContext(UserContext);
     const [open, setOpen] = React.useState(false);
@@ -59,7 +59,7 @@ export default function RealizaPedido(props: any) {
           cliente, direccion, precio, productosCarrito, fecha
         }).then( res => {
           if(res.status === 200){
-            console.log("Pedido realizado")
+            resetCart();
             setOpen(true);
             navigate("/Pedidos")
           }
