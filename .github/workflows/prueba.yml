@@ -82,9 +82,9 @@ jobs:
       - name: Deploy over SSH
         uses: fifsky/ssh-action@master
         with:
-          host: ${{ secrets.DEPLOY_HOST }}
-          user: ${{ secrets.DEPLOY_USER }}
-          pass: ${{ secrets.DEPLOY_PASSWORD }}
+          host: ${{ secrets.DEPLOY_HOST2 }}
+          user: ${{ secrets.DEPLOY_USER2 }}
+          key: ${{ secrets.DEPLOY_KEY }}
           command: |
             wget https://raw.githubusercontent.com/arquisoft/dede_es4c/develop/docker-compose-deploy.yml -O docker-compose.yml
             docker-compose stop
