@@ -20,7 +20,7 @@ export const signup = async (req: Request, res: Response): Promise<Response> => 
             _password: hash
         });
         const savedUser = await newUser.save();
-        const token = jwt.sign({ user: savedUser }, process.env.SECRET);
+        const token = jwt.sign({ user: savedUser }, "secretkey");
         return res.status(200).json({
             token
         });
@@ -42,7 +42,7 @@ export const login = async (req: Request, res: Response): Promise<Response> => {
         
         if (!success)
             return res.status(400).send("Credenciales inválidas");
-        const token = jwt.sign({ user }, process.env.SECRET);
+        const token = jwt.sign({ user }, "secretkey");
         return res.status(200).json({
             token
         });
