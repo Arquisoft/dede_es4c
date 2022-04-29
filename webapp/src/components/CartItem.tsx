@@ -18,11 +18,11 @@ function Producto(props: any) {
   }
 
   return (
-   <Card className='cartItem' sx={{ maxHeight: 430 }}>    
+   <Card className='cartItem' sx={{ maxHeight: 500 }}>    
    <CardMedia
         component="img"
-        height="5"
-        width="5"
+        height="3"
+        width="3"
         image={"pinchos/"+props.producto.nombre+".jpg"}
         alt="producto"
       />
@@ -38,7 +38,7 @@ function Producto(props: any) {
       </Typography>
     </CardContent>
     <CardActions>
-    <Button className={'deleteItem' + props.producto.id} variant="contained"  sx={{color: '#fff', m:1}} onClick={() => handleRemoveToCart(props.producto.id)}>Eliminar</Button>
+    <Button className={'deleteItem' + props.producto.id} variant="contained"  sx={{bgcolor: '#596886', color: '#fff', m:1}} onClick={() => handleRemoveToCart(props.producto.id)}>Eliminar</Button>
     </CardActions>
     </Card>
   );

@@ -39,12 +39,16 @@ export const CartProvider = ({children}: CartProviderProps) => {
         dispatch({type: 'increase', payload: producto})
     }
 
+    const resetCart = () => {
+        dispatch({type: 'resetCart'});
+    }
+
     useEffect(() => {
         localStorage.setItem('cart', JSON.stringify(cartState))
     }, [cartState]);
 
     return(
-        <CartContext.Provider value={{cartState,addToCart, removeToCart, increase }}>
+        <CartContext.Provider value={{cartState,addToCart, removeToCart, increase, resetCart }}>
             {children}
         </CartContext.Provider>
     );

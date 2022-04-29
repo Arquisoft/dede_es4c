@@ -1,4 +1,4 @@
-import React, {useEffect, useContext} from 'react';
+import React, { useEffect, useContext } from 'react';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 
@@ -9,15 +9,14 @@ import IconButton from '@mui/material/IconButton';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import Typography from '@mui/material/Typography';
 import CartItem from './CartItem';
-import {Producto} from "../interface/interfaces";
+import { Producto } from "../interface/interfaces";
 import { useCart } from '../hooks/useCart';
 import { CartContext } from '../context/cartContext';
 import { Button } from '@mui/material';
 import { UserContext } from "../context/userContext";
-import axios from 'axios'
 import Snackbar from '@mui/material/Snackbar';
 import CloseIcon from '@mui/icons-material/Close';
-import Link from '@mui/material/Link';
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -25,27 +24,28 @@ type Anchor = 'top' | 'left' | 'bottom' | 'right';
 
 export default function TemporaryDrawer(props: any) {
 
-  const {cartState, addToCart} = useContext(CartContext);
-  const {productos} = useCart();
+  const { cartState, addToCart } = useContext(CartContext);
+  const { productos } = useCart();
 
-  const {stateUser} = useContext(UserContext);
+  const { stateUser } = useContext(UserContext);
   const [open, setOpen] = React.useState(false);
   const [message, setMessage] = React.useState("Se ha realizado el pedido")
-  
+  const navigate = useNavigate();
 
-useEffect(() => {
-  if(props.products.length > 0){
-    props.products.map((producto: Producto) => {
-      console.log(producto)
-      addToCart({
-        id: producto.id,
-        nombre: producto.nombre,
-        precio: producto.precio,
-        cantidad: 1
+
+  useEffect(() => {
+    if (props.products.length > 0) {
+      props.products.map((producto: Producto) => {
+        console.log(producto)
+        addToCart({
+          id: producto.id,
+          nombre: producto.nombre,
+          precio: producto.precio,
+          cantidad: 1
+        });
       });
-    });
-  }
-}, []);
+    }
+  }, []);
 
   const [state, setState] = React.useState({
     top: false,
@@ -54,77 +54,53 @@ useEffect(() => {
     right: false,
   });
 
-  const handlePedido = () => {
-    var cliente = stateUser.user._id;
-    if(cliente === ''){
-      setMessage("Debes iniciar sesión para realizar el pedido");
-      setOpen(true);
-      return;
-    }
-    var direccion = {//CARGAR AQUI DIRECCIÓN DEL POD
-      "street1": "Albemarle Terrace",
-      "city": "Boston",
-      "state": "MA",
-      "zip": "02115",
-      "country": "US"
-  };
-    var precio = cartState.total;
-    if(precio === 0){
-      setMessage("No se ha podido realizar el pedido");
-      setOpen(true);
-      return;
-    }
-
-    var productosCarrito: Record<string, string> = {};
-    for(let i = 0; i < cartState.productos.length; i++){
-      productosCarrito[cartState.productos[i].id] = cartState.productos[i].cantidad + "";
-    }
-
-    axios.post('http://localhost:5000/api/orders/add',{
-      cliente, direccion, precio, productosCarrito
-    }).then( res => {
-      if(res.status === 200){
-        console.log("Pedido realizado")
-        setOpen(true);
-      }
-    }).catch(error => {
-      console.log(error);
-    })
-  };
-
   const toggleDrawer =
     (anchor: Anchor, open: boolean) =>
-    (event: React.KeyboardEvent | React.MouseEvent) => {
-      if (
-        event.type === 'keydown' &&
-        ((event as React.KeyboardEvent).key === 'Tab' ||
-          (event as React.KeyboardEvent).key === 'Shift')
-      ) {
-        return;
-      }
+      (event: React.KeyboardEvent | React.MouseEvent) => {
+        if (
+          event.type === 'keydown' &&
+          ((event as React.KeyboardEvent).key === 'Tab' ||
+            (event as React.KeyboardEvent).key === 'Shift')
+        ) {
+          return;
+        }
 
-      setState({ ...state, [anchor]: open });
-    };
+        setState({ ...state, [anchor]: open });
+      };
+
+  const handleRealizaPedido = () => {
+    if (!stateUser.isAuthenticated) {
+      setMessage("Debe iniciar sesión");
+      setOpen(true);
+    } else if (!stateUser.info.isLoggedIn) {
+      setMessage("Debe vincular su pod");
+      setOpen(true);
+    } else if (stateUser.userData.email === '') {
+      setMessage("Debe rellenar los datos de su pod");
+      setOpen(true);
+    } else {
+      setState({ ...state, ['right']: false });
+      navigate("/RealizaPedido");
+    }
+  }
 
   const list = (anchor: Anchor) => (
-    
+
     <Box
       sx={{ width: 400 }}
       role="presentation"
-      onClick={toggleDrawer(anchor, false)}
-      onKeyDown={toggleDrawer(anchor, false)}
     >
       <Typography textAlign="center">Carrito</Typography>
-      <Divider/>
+      <Divider />
       <Typography textAlign="center">{productos.length === 0 ? "La cesta está vacía" : ''}</Typography>
-     {productos.map((product) =>(
-           <CartItem producto={product}/>
-        ))}
-        <Box textAlign="center">
+      {productos.map((product) => (
+        <CartItem producto={product} />
+      ))}
+      <Box textAlign="center">
         <Typography >{'Total del importe: ' + cartState.total.toFixed(2) + " €"}</Typography>
-        <Link href={"/RealizaPedido"} sx={{ my: 2, color: '#fff', display: 'block'}} underline='none'><Button variant="contained" sx={{bgcolor: '#596886'}}>Pasar por caja</Button></Link>
-        </Box>
-     
+        <Button onClick={handleRealizaPedido} sx={{ bgcolor: '#596886', color: '#fff', my: 2 }} variant='contained'>Pasar por caja</Button>
+      </Box>
+
     </Box>
   );
 
@@ -151,26 +127,26 @@ useEffect(() => {
 
   return (
     <div>
-        <React.Fragment key={'right'}>
+      <React.Fragment key={'right'}>
         <IconButton size="large" onClick={toggleDrawer('right', true)} className='buttonCart'>
           <AddShoppingCartIcon fontSize="inherit" sx={{ color: "#fff" }} />
-          </IconButton>
-          <Drawer
-            anchor={'right'}
-            open={state['right']}
-            onClose={toggleDrawer('right', false)}
-            variant='temporary'
-          >
-            {list('right')}
-          </Drawer>
-          <Snackbar
-                    open={open}
-                    autoHideDuration={6000}
-                    onClose={handleClose}
-                    message={message}
-                    action={action}
-                  />
-        </React.Fragment>
+        </IconButton>
+        <Drawer
+          anchor={'right'}
+          open={state['right']}
+          onClose={toggleDrawer('right', false)}
+          variant='temporary'
+        >
+          {list('right')}
+        </Drawer>
+        <Snackbar
+          open={open}
+          autoHideDuration={6000}
+          onClose={handleClose}
+          message={message}
+          action={action}
+        />
+      </React.Fragment>
     </div>
   );
 }
