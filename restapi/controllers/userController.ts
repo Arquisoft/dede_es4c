@@ -9,8 +9,9 @@ export const signup = async (req: Request, res: Response): Promise<Response> => 
         const { username, email, password } = req.body;
         const existingUser = await User.findOne({ _email: email.toString() });
 
-        if (existingUser)
+        if (existingUser) {
             return res.status(400).send("Ya existe un usuario con ese email");
+        }
         const salt = await bcrypt.genSalt();
         const hash = await bcrypt.hash(password, salt);
 
@@ -33,14 +34,16 @@ export const login = async (req: Request, res: Response): Promise<Response> => {
     try {
         const { email, password } = req.body;
         const user = await User.findOne({ _email: email.toString() });
-        
-        if (!user)
+
+        if (!user) {
             return res.status(400).send("No existe una cuenta con ese email");
+        }
 
         const success = await bcrypt.compare(password, user._password);
-        
-        if (!success)
+
+        if (!success) {
             return res.status(400).send("Credenciales inválidas");
+        }
         const token = jwt.sign({ user }, process.env.SECRET);
         return res.status(200).json({
             token
@@ -53,9 +56,7 @@ export const login = async (req: Request, res: Response): Promise<Response> => {
 }
 
 export const deleteUser = async (req: Request, res: Response) => {
-
     await User.findByIdAndDelete(req.params.id)
-  
-    return res.status(200).send({msg:"Usuario eliminado"});
-    
-  }
+
+    return res.status(200).send({ msg: "Usuario eliminado" });
+}
