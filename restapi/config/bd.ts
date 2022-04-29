@@ -29,4 +29,4 @@ const disconnectTestBD = async () => {
 }
 
 
-module.exports = connectBD, connectTestBD, disconnectBD, disconnectTestBD;
+module.exports = { connectBD, connectTestBD, disconnectBD, disconnectTestBD };
