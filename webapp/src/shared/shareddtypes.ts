@@ -26,3 +26,9 @@ export type CartItem = {
   price:string;
 }
 
+export type Member = {
+  id:string;
+  uo:string;
+  name:string;
+}
+
