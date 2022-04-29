@@ -10,5 +10,4 @@ test('check that the Shop page is rendered correctly', async () => {
     fireEvent.click(buttonUser, {});
     expect(queryByText('Signup')).toBeInTheDocument();
     expect(queryByText("Login")).toBeInTheDocument();
-    expect(queryByText("Pedidos")).toBeInTheDocument();
 });
