@@ -103,6 +103,9 @@ describe('user', () => {
         // Login an existent user
         let user = { "email": "dani@gmail.com", "password": process.env.PASSWD1 }
 
+        console.log("PASSWORD1: " + process.env.PASSWD1);
+        console.log("PASSWORD2: " + process.env.PASSWD2);
+
         var response: Response = await request(app).post('/api/login').send(user).set('Accept', 'application/json');
         expect(response.statusCode).toBe(200);
         expect(response.body.token).toBeDefined();
