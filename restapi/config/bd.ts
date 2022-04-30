@@ -9,7 +9,7 @@ const connectBD = async () => {
         console.log("Database connected");
     }).catch((error: Error) => {
         console.error("Error en connection bd.ts: " + error.message);
-    })
+    });
 }
 
 const connectTestBD = async () => {
@@ -17,7 +17,7 @@ const connectTestBD = async () => {
         console.log("Test Database connected");
     }).catch(() => {
         console.error("Error en test connection bd.ts");
-    })
+    });
 }
 
 const disconnectBD = async () => {
