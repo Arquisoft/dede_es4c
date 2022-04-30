@@ -71,7 +71,7 @@ export default function TemporaryDrawer(props: any) {
 
     <Box
       sx={{ width: 400 }}
-      role="presentation"
+      role="presentation">
       <Typography textAlign="center">Carrito</Typography>
       <Divider />
       <Typography textAlign="center">{productos.length === 0 ? "La cesta está vacía" : ''}</Typography>
