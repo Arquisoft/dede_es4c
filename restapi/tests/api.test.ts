@@ -12,7 +12,7 @@ let app: Application;
 let server: http.Server;
 require('dotenv').config();
 
-const bd = require('../config/bd');
+const { connectTestBd, disconnectTestBd } = require('../config/bd');
 
 beforeAll(async () => {
     app = express();
@@ -34,12 +34,12 @@ beforeAll(async () => {
         console.error('Error occured: ' + error.message);
     });
 
-    bd.connectTestBd();
+    connectTestBd();
 });
 
 afterAll(async () => {
     server.close(); //close the server
-    bd.disconnectTestBd();
+    disconnectTestBd();
 });
 
 describe('products ', () => {

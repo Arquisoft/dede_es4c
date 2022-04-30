@@ -6,8 +6,8 @@ const productRoutes = require('./routes/productRoutes');
 const userRoutes = require('./routes/userRoutes');
 const orderRoutes = require('./routes/orderRoutes');
 
-const bd = require('./config/bd');
-bd.connectBd();
+const { connectBd, disconnectBd } = require('./config/bd');
+connectBd();
 
 const app: Application = express();
 const port: number = 5000;
@@ -38,7 +38,7 @@ app.listen(port, (): void => {
 process.stdin.resume();
 
 function exitHandler() {
-  bd.disconnectBd();
+  disconnectBd();
   console.log("App stopped");
 }
 
