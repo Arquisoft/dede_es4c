@@ -25,7 +25,9 @@ export const signup = async (req: Request, res: Response): Promise<Response> => 
         const token = jwt.sign({ user: savedUser }, process.env.SECRET);
 
         return res.status(200).json({ token });
+
     } catch (error) {
+        console.log(error)
         return res.status(500).send(error);
     }
 }

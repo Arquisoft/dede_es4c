@@ -31,7 +31,6 @@ export default function TemporaryDrawer(props: any) {
   useEffect(() => {
     if (props.products.length > 0) {
       props.products.map((producto: Producto) => {
-        console.log(producto)
         addToCart({
           id: producto.id,
           nombre: producto.nombre,

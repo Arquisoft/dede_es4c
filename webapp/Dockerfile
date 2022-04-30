@@ -12,4 +12,5 @@ ENV REACT_APP_API_URI=$API_URI
 RUN npm run build
 
 #Ver como podemos llamar npm run prod aquí
-CMD [ "npm", "run", "prod" ]
+#CMD [ "npm", "run", "prod" ]
+CMD ["npm", "start"]

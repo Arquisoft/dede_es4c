@@ -12,7 +12,10 @@ let app: Application;
 let server: http.Server;
 require('dotenv').config();
 
+const mongoose = require("mongoose");
+
 const bd = require('../config/bd');
+
 
 beforeAll(async () => {
     app = express();
@@ -101,6 +104,7 @@ function checkProductList(response: Response, tipo: string) {
 describe('user', () => {
     it('Login ', async () => {
         // Login an existent user
+
         let user = { "email": "dani@gmail.com", "password": process.env.PASSWD1 }
 
         let response: Response = await request(app).post('/api/login').send(user).set('Accept', 'application/json');
@@ -108,12 +112,15 @@ describe('user', () => {
         expect(response.body.token).toBeDefined();
 
         // Login an unexistent user
+
         user = { "email": "e@e.com", "password": process.env.PASSWD1 }
+
 
         response = await request(app).post('/api/login').send(user).set('Accept', 'application/json');
         expect(response.statusCode).toBe(400);
 
         // Login a user with wrong credentials
+
         user = { "email": "dani@gmail.com", "password": process.env.PASSWD2 }
 
         response = await request(app).post('/api/login').send(user).set('Accept', 'application/json');
@@ -121,20 +128,26 @@ describe('user', () => {
     });
 
     it('Signup', async () => {
+
         let user = { "email": "g@g.com", "username": "g", "password": process.env.PASSWD1 }
+
 
         let response: Response = await request(app).post('/api/signup').send(user).set('Accept', 'application/json');
         expect(response.statusCode).toBe(200);
         expect(response.body.token).toBeDefined();
 
+
         user = { "email": "dani@gmail.com", "username": "dani", "password": process.env.PASSWD1 }
+
 
         response = await request(app).post('/api/signup').send(user).set('Accept', 'application/json');
         expect(response.statusCode).toBe(400);
     });
 
     it('Delete an existent user', async () => {
+
         let user = { "email": "g@g.com", "password": process.env.PASSWD1 };
+
 
         const response: Response = await request(app).post('/api/login').send(user).set('Accept', 'application/json');
         let token_decoded = jwt.decode(response.body.token);
