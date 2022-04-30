@@ -2,6 +2,7 @@ import { render, fireEvent } from "@testing-library/react";
 import React from "react";
 import ObjetoPedido from '../components/ObjetoPedido';
 import { Producto } from "../interface/interfaces";
+import Pedidos from "../pages/Pedidos";
 
 
 test('check with two products', async () => {
