@@ -83,7 +83,7 @@ const Login = () => {
         value={password}
       />
       <br />
-      <Button onClick={submit} variant='contained'>Enviar</Button>
+      <Button onClick={submit} variant="contained"  sx={{bgcolor: '#596886', color: '#fff'}}>Enviar</Button>
       {error ? <Alert severity="error">{error}</Alert> : null }
     </form>
     <p>

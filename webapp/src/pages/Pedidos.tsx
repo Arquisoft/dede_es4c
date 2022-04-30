@@ -5,6 +5,8 @@ import { getOrderByClientId } from '../api/api';
 import { UserContext } from '../context/userContext';
 import {Order} from '../shared/shareddtypes';
 import List from '@mui/material/List';
+import { Typography } from '@mui/material';
+import './styles/pedidos.css';
 
 var listaPedidos: Order[] = [];
 
@@ -23,10 +25,12 @@ const Pedidos = () => {
     return (
         <div id='pedidos'>
             <main>
+                
+                {pedidos.length != 0 &&
+                <div>
                 <h1>Tus pedidos:</h1>
                 <List sx={{
-                        width: '100%',
-                        maxWidth: 900,
+                        
                         bgcolor: 'background.paper',
                         position: 'relative',
                         overflow: 'auto',
@@ -39,6 +43,13 @@ const Pedidos = () => {
                     
                 ))}
                 </List>
+                </div>
+                }
+                {pedidos.length == 0 &&
+                    <Typography variant='h2'>
+                        Todavía no has realizado ningún pedido
+                    </Typography>
+                }
             </main>
         </div>
         
