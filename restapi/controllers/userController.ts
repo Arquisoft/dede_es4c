@@ -33,8 +33,6 @@ export const signup = async (req: Request, res: Response): Promise<Response> => 
 export const login = async (req: Request, res: Response): Promise<Response> => {
     try {
         const { email, password } = req.body;
-        console.log("Email: " + email, "Traseña: " + password);
-
         const user = await User.findOne({ _email: email.toString() });
 
         if (!user) {
@@ -46,6 +44,7 @@ export const login = async (req: Request, res: Response): Promise<Response> => {
         if (!success) {
             return res.status(400).send("Credenciales inválidas");
         }
+
         const token = jwt.sign({ user }, process.env.SECRET);
         return res.status(200).json({
             token
