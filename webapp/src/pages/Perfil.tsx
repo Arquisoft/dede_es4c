@@ -44,7 +44,6 @@ const Perfil = () => {
       restorePreviousSession: true,
     }).then((info) => {
       console.log("iniciado sesion as " + info?.webId);
-      console.log(stateUser)
       setInfo(info as InfoPod);
       const getUserData = async () => {
         let data = await getUserInfo(session, info?.webId!);

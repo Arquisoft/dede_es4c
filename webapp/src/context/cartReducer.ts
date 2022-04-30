@@ -2,22 +2,29 @@
 import { CartState, Producto } from "../interface/interfaces";
 
 type CartAction =
-    | {type: 'addToCart', payload: Producto}
-    | {type: 'removeToCart', payload: {id: string}}
-    | {type: 'increase', payload: Producto}
+    | { type: 'addToCart', payload: Producto }
+    | { type: 'removeToCart', payload: { id: string } }
+    | { type: 'increase', payload: Producto }
+    | { type: 'resetCart' }
+
+const INITIAL_STATE: CartState = {
+    numeroElems: 0,
+    total: 0,
+    productos: []
+}
 
 
-export const cartReducer = (state:CartState, action:CartAction): CartState => {
-    switch (action.type){
+export const cartReducer = (state: CartState, action: CartAction): CartState => {
+    switch (action.type) {
         case 'addToCart':
-            if(!state.productos.find(item => item.id === action.payload.id)){
+            if (!state.productos.find(item => item.id === action.payload.id)) {
                 state.total += action.payload.precio;
                 state.numeroElems += 1;
                 localStorage.setItem('cart', JSON.stringify(state));
             }
             return {
                 ...state,
-                productos: [ ...state.productos, action.payload ]
+                productos: [...state.productos, action.payload]
             }
         case 'removeToCart':
             state.productos = state.productos.filter(
@@ -37,6 +44,12 @@ export const cartReducer = (state:CartState, action:CartAction): CartState => {
             state.total = state.productos.reduce(
                 (previos, current) => previos + (current.precio * current.cantidad), initial2
             );
+            return {
+                ...state
+            }
+        case 'resetCart':
+            localStorage.removeItem('cart');
+            state = INITIAL_STATE;
             return {
                 ...state
             }

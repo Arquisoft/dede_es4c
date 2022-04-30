@@ -16,7 +16,7 @@ export type Order= {
   _id:string,
   _cliente_id:string;
   _direccion:string;
-  _precio:string;
+  _precio:Record<string, string>;
   _productos:Record<string, string>;
 }
 
