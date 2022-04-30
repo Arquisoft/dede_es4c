@@ -6,7 +6,8 @@ const productRoutes = require('./routes/productRoutes');
 const userRoutes = require('./routes/userRoutes');
 const orderRoutes = require('./routes/orderRoutes');
 
-const { connectBd, disconnectBd } = require('./config/bd');
+const connectBd = require('./config/bd');
+const disconnectBd = require('./config/bd');
 connectBd();
 
 const app: Application = express();

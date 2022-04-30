@@ -12,7 +12,9 @@ let app: Application;
 let server: http.Server;
 require('dotenv').config();
 
-const { connectTestBd, disconnectTestBd } = require('../config/bd');
+const connectTestBd = require('../config/bd');
+const disconnectTestBd = require('../config/bd');
+
 
 beforeAll(async () => {
     app = express();
