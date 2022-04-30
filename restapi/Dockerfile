@@ -4,4 +4,5 @@ COPY . /app
 WORKDIR /app
 #Install the dependencies
 RUN npm install
+
 CMD [ "npm", "start" ]

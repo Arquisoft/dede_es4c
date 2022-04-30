@@ -1,13 +1,13 @@
-import { model, Schema} from 'mongoose'
-
+import { model, Schema } from 'mongoose'
 
 const orderSchema = new Schema({
-   _cliente_id: {
+    _cliente_id: {
         type: String,
         required: true
     },
     _direccion: {
-        type: String,
+        type: Map,
+        of: String,
         required: true
     },
     _precio: {
@@ -18,6 +18,10 @@ const orderSchema = new Schema({
         type: Map,
         of: String,
         default: {}
+    },
+    _fecha: {
+        type: Date,
+        required: true
     }
 });
 

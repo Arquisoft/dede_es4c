@@ -64,7 +64,7 @@ const Login = () => {
       <div id='formLogin'>
       <img src={foto}></img>
       <h1>Login</h1>
-      <form onSubmit={submit}>
+      <form name="login" onSubmit={submit}>
       <TextField
           className='textfield'
         name="email"
@@ -83,16 +83,9 @@ const Login = () => {
         value={password}
       />
       <br />
-      <Button onClick={submit} variant='contained'>Enviar</Button>
+      <Button onClick={submit} variant="contained"  sx={{bgcolor: '#596886', color: '#fff'}}>Enviar</Button>
       {error ? <Alert severity="error">{error}</Alert> : null }
     </form>
-    <LoginButton
-					authOptions={{ clientName: "dede_es4c" }}
-					oidcIssuer={idp}
-					redirectUrl={redirUrl}
-          onError={console.error} >
-            <Button variant="contained" sx={{bgcolor: '#596886'}}>Entra con tu POD</Button> 
-            </LoginButton> 
     <p>
       ¿No tienes uno todavía? <br />
       <a href="/Signup">Crea uno ahora</a>

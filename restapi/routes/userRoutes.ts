@@ -1,12 +1,21 @@
-import express, {Router} from 'express';
-const api:Router = express.Router()
+import express, { Router } from 'express';
+const api: Router = express.Router()
+const { check } = require('express-validator')
 
-import {verify, signup, login} from "../controllers/userController";
+import { signup, login, deleteUser } from "../controllers/userController";
 
-api.post("/verify", verify);
+api.post("/signup", [
+    check('email').isEmail(),
+    check('username').isLength({ min: 1 }).trim().escape(),
+], signup);
 
-api.post("/signup", signup);
+api.post("/login", [
+    check('email').isEmail(),
+], login);
 
-api.post("/login", login);
+api.delete(
+    "/user/delete/:id",
+    deleteUser
+);
 
 module.exports = api;

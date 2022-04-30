@@ -1,0 +1,34 @@
+#pedidos{
+    background-image: url("../../images/pedido.jpg");
+    background-repeat: no-repeat;
+    background-position: right;
+  }
+  
+  #pedidos main{
+    max-width: 50%;
+    padding: 2em;
+    margin: 1.5em;
+    font-size: 1.5em;
+  }
+  
+  #pedidos main p{
+    font-size: 0.7em;
+  }
+  
+  #pedidos main span{
+    font-size: 1em;
+  }
+
+@media (max-width: 1400px) { 
+
+    #pedidos{
+        background-image:none;
+    }
+
+    #pedidos main{
+        max-width: 100%;
+        padding: 2em;
+        margin: 1.5em;
+        font-size: 1.5em;
+    }
+}

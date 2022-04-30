@@ -6,6 +6,7 @@ export type CartContextProps = {
     addToCart: (producto: Producto) => void;
     removeToCart: (id: string) => void;
     increase: (producto: Producto) => void;
+    resetCart: () => void;
 }
 
 export const CartContext = createContext<CartContextProps>({} as CartContextProps);

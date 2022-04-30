@@ -62,6 +62,14 @@
   font-size: 1.6em;
 }
 
+#desarrolladores span{
+  font-size: 1em;
+}
+
+#desarrolladores p{
+  font-size: 0.75em;
+}
+
 #signupView{
   background-image: url("images/fondoComida.jpg");
   background-repeat: no-repeat;
@@ -156,11 +164,48 @@ footer{
 
 .cartItem{
   box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.4);
-  padding: 1em;
-  margin: 1em;
-  font-size: 2em;
 }
 
 img #detalles{
   float: center;
+}
+
+#pedFin{
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+  align-items: center;
+}
+
+#pedFin main{
+  max-width: 100%;
+  padding: 2em;
+  margin: 2em;
+  font-size: 1.7em;
+}
+
+#pedFin main h1{
+  margin: -1em;
+}
+
+#pedFin main h2{
+  font-size: 1.1em;
+  color: #023b7e;
+}
+
+#pedFin main #prods{
+  margin: 2em;
+}
+
+#pedFin span{
+  font-size: 1em;
+}
+
+#pedFin p{
+  font-size: 0.8em;
+}
+
+#pedFin aside{
+  margin-top: 5em;
+  margin-left: 10em;
 }
