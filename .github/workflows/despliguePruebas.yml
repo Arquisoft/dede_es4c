@@ -26,7 +26,9 @@ jobs:
   unit-test-restapi:
     runs-on: ubuntu-latest
     env:
-      MONGO_DB_URL: ${{ secrets.MONGO_DB_URL }}
+      MONGO_DB: ${{ secrets.MONGO_DB_URL }}
+      PASSWD1: ${{ secrets.DB_TEST_USER_PASSWORD_1 }}
+      PASSWD2: ${{ secrets.DB_TEST_USER_PASSWORD_2 }}
     defaults:
       run:
         working-directory: restapi

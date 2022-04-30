@@ -100,7 +100,6 @@ function checkProductList(response: Response, tipo: string) {
 
 describe('user', () => {
     it('Login ', async () => {
-
         // Login an existent user
         let user = { "email": "dani@gmail.com", "password": process.env.PASSWD1 }
 
