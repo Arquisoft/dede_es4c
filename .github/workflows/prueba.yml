@@ -47,20 +47,21 @@ jobs:
   docker-push-webapp:
     name: Push webapp Docker Image to GitHub Packages
     runs-on: ubuntu-latest
-    needs: [unit-test-webapp, unit-test-restapi]
+    #needs: [unit-test-webapp, unit-test-restapi]
     # needs: [e2e-tests]
-    env:
-      API_URI: http://${{ secrets.DEPLOY_HOST }}:5000/api
     steps:
     - uses: actions/checkout@v2
     - name: Publish to Registry
       uses: elgohr/Publish-Docker-Github-Action@3.04
+      env:
+        API_URI: http://${{ secrets.DEPLOY_HOST }}:5000/api
       with:
           name: arquisoft/dede_es4c/webapp
           username: ${{ github.actor }}
           password: ${{ secrets.DOCKER_PUSH_TOKEN }}
           registry: ghcr.io
           workdir: webapp
+          buildargs: API_URI
   docker-push-restapi:
     name: Push restapi Docker Image to GitHub Packages
     runs-on: ubuntu-latest
