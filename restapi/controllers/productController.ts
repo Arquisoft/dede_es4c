@@ -1,7 +1,5 @@
 import { Request, Response } from 'express';
-const asyncHandler = require('express-async-handler')
 const Product = require('../model/productModel');
-
 
 const getProducts = async (req: Request, res: Response): Promise<Response> => {
   try {

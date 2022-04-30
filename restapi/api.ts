@@ -1,5 +1,4 @@
-import express, { Request, Response, Router } from 'express';
-import { check } from 'express-validator';
+import express, { Router } from 'express';
 
 const connectionString = process.env.MONGO_DB;
 

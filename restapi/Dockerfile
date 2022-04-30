@@ -5,6 +5,4 @@ WORKDIR /app
 #Install the dependencies
 RUN npm install
 
-ENV RESTAPI_DB_URI=$MONGO_DB_URL
-
 CMD [ "npm", "start" ]

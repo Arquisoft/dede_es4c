@@ -1,41 +1,40 @@
 const { check } = require('express-validator')
-import express, {Router} from 'express';
+import express, { Router } from 'express';
 const { validateFields } = require('../middlewares/validateFields')
-const api:Router = express.Router()
+const api: Router = express.Router()
 
-import {getOrders, getOrderById, getOrdersByClientId, addOrder, deleteOrder} from "../controllers/orderController";
-const {isNotEmpty} = require("../middlewares/validateOrders");
+import { getOrders, getOrderById, getOrdersByClientId, addOrder, deleteOrder } from "../controllers/orderController";
+const { isNotEmpty } = require("../middlewares/validateOrders");
 
-  api.get(
-    "/orders",
-    getOrders
-  );
-
-  api.get(
-      "/orders/search/:id",
-      getOrderById
-  );
-  
-  api.get(
-    "/orders/client/:id",
-    getOrdersByClientId
+api.get(
+  "/orders",
+  getOrders
 );
 
-  api.post(
-    "/orders/add",[
-      check('cliente').not().isEmpty(),
-      check('direccion').not().isEmpty(),
-      check('precio').not().isEmpty(),
-      validateFields,
-      isNotEmpty
-    ],addOrder
-  );
+api.get(
+  "/orders/search/:id",
+  getOrderById
+);
 
-  api.delete(
-    "/orders/delete/:id",
-    deleteOrder
-  )
+api.get(
+  "/orders/client/:id",
+  getOrdersByClientId
+);
 
+api.post(
+  "/orders/add", [
+  check('cliente').not().isEmpty(),
+  check('direccion').not().isEmpty(),
+  check('precio').not().isEmpty(),
+  validateFields,
+  isNotEmpty
+], addOrder
+);
 
-  module.exports = api;
+api.delete(
+  "/orders/delete/:id",
+  deleteOrder
+)
+
+module.exports = api;
 

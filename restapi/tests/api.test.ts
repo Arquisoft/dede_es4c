@@ -12,8 +12,7 @@ let app: Application;
 let server: http.Server;
 require('dotenv').config();
 
-const connectTestBd = require('../config/bd');
-const disconnectTestBd = require('../config/bd');
+const bd = require('../config/bd');
 
 beforeAll(async () => {
     app = express();
@@ -35,12 +34,12 @@ beforeAll(async () => {
         console.error('Error occured: ' + error.message);
     });
 
-    connectTestBd();
+    bd.connectTestBD();
 });
 
 afterAll(async () => {
     server.close(); //close the server
-    disconnectTestBd();
+    bd.disconnectTestBD();
 });
 
 describe('products ', () => {
@@ -101,11 +100,10 @@ function checkProductList(response: Response, tipo: string) {
 
 describe('user', () => {
     it('Login ', async () => {
-
         // Login an existent user
         let user = { "email": "dani@gmail.com", "password": process.env.PASSWD1 }
 
-        var response: Response = await request(app).post('/api/login').send(user).set('Accept', 'application/json');
+        let response: Response = await request(app).post('/api/login').send(user).set('Accept', 'application/json');
         expect(response.statusCode).toBe(200);
         expect(response.body.token).toBeDefined();
 
@@ -125,7 +123,7 @@ describe('user', () => {
     it('Signup', async () => {
         let user = { "email": "g@g.com", "username": "g", "password": process.env.PASSWD1 }
 
-        var response: Response = await request(app).post('/api/signup').send(user).set('Accept', 'application/json');
+        let response: Response = await request(app).post('/api/signup').send(user).set('Accept', 'application/json');
         expect(response.statusCode).toBe(200);
         expect(response.body.token).toBeDefined();
 
@@ -139,7 +137,7 @@ describe('user', () => {
         let user = { "email": "g@g.com", "password": process.env.PASSWD1 };
 
         const response: Response = await request(app).post('/api/login').send(user).set('Accept', 'application/json');
-        var token_decoded = jwt.decode(response.body.token);
+        let token_decoded = jwt.decode(response.body.token);
         const deleteResponse: Response = await request(app).delete('/api/user/delete/' + token_decoded.user._id).set('Accept', 'application/json');
         expect(deleteResponse.statusCode).toBe(200);
     });
