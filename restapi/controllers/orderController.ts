@@ -1,6 +1,4 @@
 import { Request, Response } from 'express';
-import { type } from 'os';
-const asyncHandler = require('express-async-handler')
 const shippo = require('../shippo/shippo')
 const Order = require('../model/orderModel');
 
