@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const connectionString = process.env.MONGO_DB || process.env.MONGO_DB_URL;
 const connectionTestString = process.env.MONGO_DB || process.env.MONGO_DB_URL;
 
-module.exports.connectBD = async () => {
+const connectBD = async () => {
     console.log("String de conexion: " + connectionString);
     console.log("env.MONGO_DB: " + process.env.MONGO_DB);
     console.log("env.MONGO_DB_URL: " + process.env.MONGO_DB_URL);
@@ -15,8 +15,7 @@ module.exports.connectBD = async () => {
     })
 }
 
-
-module.exports.connectTestBD = async () => {
+const connectTestBD = async () => {
     mongoose.connect(connectionTestString).then(() => {
         console.log("Test Database connected");
     }).catch(() => {
@@ -24,10 +23,17 @@ module.exports.connectTestBD = async () => {
     })
 }
 
-module.exports.disconnectBD = async () => {
+const disconnectBD = async () => {
     mongoose.connection.close();
 }
 
-module.exports.disconnectTestBD = async () => {
+const disconnectTestBD = async () => {
     mongoose.connection.close();
 }
+
+module.exports = {
+    connectBD: connectBD,
+    connectTestBD: connectTestBD,
+    disconnectBD: disconnectBD,
+    disconnectTestBD: disconnectTestBD
+};
