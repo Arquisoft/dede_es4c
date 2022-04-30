@@ -1,12 +1,9 @@
 import React, { useEffect, useContext } from 'react';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
-
-import List from '@mui/material/List';
 import Divider from '@mui/material/Divider';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import IconButton from '@mui/material/IconButton';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import Typography from '@mui/material/Typography';
 import CartItem from './CartItem';
 import { Producto } from "../interface/interfaces";
@@ -31,8 +28,6 @@ export default function TemporaryDrawer(props: any) {
   const [open, setOpen] = React.useState(false);
   const [message, setMessage] = React.useState("Se ha realizado el pedido")
   const navigate = useNavigate();
-
-
   useEffect(() => {
     if (props.products.length > 0) {
       props.products.map((producto: Producto) => {
@@ -68,28 +63,16 @@ export default function TemporaryDrawer(props: any) {
         setState({ ...state, [anchor]: open });
       };
 
-  const handleRealizaPedido = () => {
-    if (!stateUser.isAuthenticated) {
-      setMessage("Debe iniciar sesión");
-      setOpen(true);
-    } else if (!stateUser.info.isLoggedIn) {
-      setMessage("Debe vincular su pod");
-      setOpen(true);
-    } else if (stateUser.userData.email === '') {
-      setMessage("Debe rellenar los datos de su pod");
-      setOpen(true);
-    } else {
-      setState({ ...state, ['right']: false });
-      navigate("/RealizaPedido");
+    const handleRealizaPedido = () => {
+        setState({ ...state, ['right']: false });
+        navigate("/RealizaPedido");
     }
-  }
 
   const list = (anchor: Anchor) => (
 
     <Box
       sx={{ width: 400 }}
       role="presentation"
-    >
       <Typography textAlign="center">Carrito</Typography>
       <Divider />
       <Typography textAlign="center">{productos.length === 0 ? "La cesta está vacía" : ''}</Typography>
@@ -100,7 +83,6 @@ export default function TemporaryDrawer(props: any) {
         <Typography >{'Total del importe: ' + cartState.total.toFixed(2) + " €"}</Typography>
         <Button onClick={handleRealizaPedido} sx={{ bgcolor: '#596886', color: '#fff', my: 2 }} variant='contained'>Pasar por caja</Button>
       </Box>
-
     </Box>
   );
 
@@ -127,8 +109,8 @@ export default function TemporaryDrawer(props: any) {
 
   return (
     <div>
-      <React.Fragment key={'right'}>
-        <IconButton size="large" onClick={toggleDrawer('right', true)} className='buttonCart'>
+        <React.Fragment key={'right'}>
+        <IconButton id='botonCarrito' size="large" onClick={toggleDrawer('right', true)} className='buttonCart'>
           <AddShoppingCartIcon fontSize="inherit" sx={{ color: "#fff" }} />
         </IconButton>
         <Drawer

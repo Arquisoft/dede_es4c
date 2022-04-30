@@ -49,6 +49,16 @@ export default function RealizaPedido(props: any) {
           setOpen(true);
           return;
         }
+        if (!stateUser.isAuthenticated) {
+          setMessage("Debe iniciar sesión");
+          setOpen(true);
+        } else if (!stateUser.info.isLoggedIn) {
+          setMessage("Debe vincular su pod");
+          setOpen(true);
+        } else if (stateUser.userData.email === '') {
+          setMessage("Debe rellenar los datos de su pod");
+          setOpen(true);
+        }
     
         var productosCarrito: Record<string, string> = {};
         for(let i = 0; i < cartState.productos.length; i++){
