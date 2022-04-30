@@ -5,6 +5,9 @@ const connectionString = process.env.MONGO_DB || process.env.RESTAPI_DB_URI;
 const connectionTestString = process.env.MONGO_DB || process.env.RESTAPI_DB_URI;
 
 const connectBD = async () => {
+    console.log("String de conexion: " + connectionString);
+    console.log("env.MONGO_DB: " + process.env.MONGO_DB);
+    console.log("env.RESTAPI_DB_URI: " + process.env.RESTAPI_DB_URI);
     mongoose.connect(connectionString).then(() => {
         console.log("Database connected");
     }).catch((error: Error) => {
