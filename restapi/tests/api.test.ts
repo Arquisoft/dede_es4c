@@ -103,8 +103,13 @@ describe('user', () => {
         // Login an existent user
         let user = { "email": "dani@gmail.com", "password": process.env.PASSWD1 }
 
-        console.log("PASSWORD1: " + process.env.PASSWD1?.toString());
-        console.log("PASSWORD2: " + process.env.PASSWD2?.toString());
+        if(process.env.PASSWD1 === undefined){
+            console.log("Password 1 undefined");
+        }
+
+        if(process.env.PASSWD2 === undefined){
+            console.log("Password 2 undefined");
+        }
 
         var response: Response = await request(app).post('/api/login').send(user).set('Accept', 'application/json');
         expect(response.statusCode).toBe(200);
