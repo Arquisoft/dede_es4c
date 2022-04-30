@@ -22,14 +22,17 @@ defineFeature(feature, test => {
   });
 
   test('Register a user in the app', ({given,when,then}) => {
+    jest.setTimeout(100000);
     let username:string;
     let email:string;
     let password:string;
     let pwconfirm:string;
-
+    let emailUser:string;
+    //Generamos un email aleatorio ya que si no la página nos dice que el email ya lo tenemos.
+    emailUser = Math.random().toString(36).substring(0,20);
     given('A unregistered user', () => {
       username = "Hugo"
-      email = "hugo@gmail.com"
+      email = emailUser + "@gmail.com"
       password = "123456"
       pwconfirm = "123456"
     });
@@ -45,7 +48,7 @@ defineFeature(feature, test => {
       await expect(page).toClick('button', { text: 'Enviar' })
     });
 
-    then('Profile page with username and not POD vinculation should be shown in the screen', async () => {
+    then('Profile page without POD vinculation should be shown in the screen', async () => {
       await expect(page).toMatch('Hugo')
       await expect(page).toMatch('Por favor, conéctate con tu POD para que podamos utilizar tus datos')
     });

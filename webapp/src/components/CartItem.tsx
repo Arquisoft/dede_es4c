@@ -38,7 +38,7 @@ function Producto(props: any) {
       </Typography>
     </CardContent>
     <CardActions>
-    <Button className={'deleteItem' + props.producto.id} variant="contained"  sx={{color: '#fff', m:1}} onClick={() => handleRemoveToCart(props.producto.id)}>Eliminar</Button>
+    <Button id ={'deleteItem' + props.producto.id} className={'deleteItem' + props.producto.id} variant="contained"  sx={{color: '#fff', m:1}} onClick={() => handleRemoveToCart(props.producto.id)}>Eliminar</Button>
     </CardActions>
     </Card>
   );

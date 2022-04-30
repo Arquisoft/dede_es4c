@@ -15,24 +15,43 @@ defineFeature(feature, test => {
     page = await browser.newPage();
 
     await page
-      .goto("http://localhost:3000/Tienda", {
+      .goto("http://localhost:3000/Login", {
         waitUntil: "networkidle0",
       })
       .catch(() => {});
   });
 
   test('The user adds produts to the cart and go to the buy page', ({given,when,then}) => {
+    jest.setTimeout(100000);
+    let email:string;
+    let password:string;
     
-    given('Nothing', () => {   
+    given('Nothing', () => { 
+      email = "dani@gmail.com"
+      password = "123456"  
     });
 
     when('Buy some products and go to the buy view', async () => {
+      await expect(page).toFillForm('form[name="login"]', {
+        email: email,
+        password: password,
+      })
+      await expect(page).toClick('button', { text: 'Enviar' })
+
+      page = await browser.newPage();
+
+      await page
+      .goto("http://localhost:3000/Tienda", {
+        waitUntil: "networkidle0",
+      })
+      .catch(() => {});
       await expect(page).toMatch('Artículos disponibles')
       await expect(page).toClick('button', { text: 'Añadir al carrito' })
       await expect(page).toClick('button', { text: 'Añadir más' }) // Hacer click de nuevo en el anterior producto
       await expect(page).toClick('button', { text: 'Añadir al carrito' })
       await expect(page).toClick('button', { text: 'Añadir al carrito' })
       await expect(page).toClick('#botonCarrito')
+      await expect(page).toMatch('Pasar por caja')
       await expect(page).toClick('button', { text: 'Pasar por caja' })
     });
 
@@ -44,7 +63,7 @@ defineFeature(feature, test => {
       await expect(page).toMatch('Total: 2.4€')
       await expect(page).toMatch('jamon(1 uds.)')
       await expect(page).toMatch('Total: 2.4€')
-      await expect(page).toMatch('Total a pagar: 5.05 €')
+      await expect(page).toMatch('Total a pagar: 5.05€')
     });
   })
 

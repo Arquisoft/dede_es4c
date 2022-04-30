@@ -22,6 +22,7 @@ defineFeature(feature, test => {
   });
 
   test('The user is registered in the site', ({given,when,then}) => {
+    jest.setTimeout(100000);
     
     let email:string;
     let password:string;

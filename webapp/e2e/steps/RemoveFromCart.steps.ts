@@ -34,11 +34,8 @@ defineFeature(feature, test => {
     when('I press de delete button', async () => {
       
       await expect(page).toClick('#botonCarrito')
-      await page.evaluate(() => {
-        debugger;
-      });
       await expect(page).toMatch('Carrito')
-      await expect(page).toClick('button', {text: 'Eliminar'});
+      await expect(page).toClick('#deleteItempollo')
     });
 
     then('The cart should be empty', async () => {
