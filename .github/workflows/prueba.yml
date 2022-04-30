@@ -50,9 +50,9 @@ jobs:
     needs: [unit-test-webapp, unit-test-restapi]
     # needs: [e2e-tests]
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
     - name: Publish to Registry
-      uses: elgohr/Publish-Docker-Github-Action@3.04
+      uses: elgohr/Publish-Docker-Github-Action@v4
       env:
         API_URI: http://${{ secrets.DEPLOY_HOST }}:5000/api
       with:
