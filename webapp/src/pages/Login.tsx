@@ -64,7 +64,7 @@ const Login = () => {
       <div id='formLogin'>
       <img src={foto}></img>
       <h1>Login</h1>
-      <form onSubmit={submit}>
+      <form name="login" onSubmit={submit}>
       <TextField
           className='textfield'
         name="email"

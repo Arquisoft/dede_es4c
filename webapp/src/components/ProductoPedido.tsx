@@ -27,7 +27,7 @@ function Producto(props: any) {
     <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
     <ListItem>
         <ListItemAvatar>
-            <Avatar src = {imgAlt} sx={{ width: 50, height: 50 }}/>
+            <Avatar src = {image} sx={{ width: 50, height: 50 }}/>
         </ListItemAvatar>
         <ListItemText primary={titulo} secondary={precioFinal} />
     </ListItem>

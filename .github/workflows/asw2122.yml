@@ -25,6 +25,11 @@ jobs:
       - uses: codecov/codecov-action@v3
   unit-test-restapi:
     runs-on: ubuntu-latest
+    env:
+      MONGO_DB: ${{ secrets.MONGO_DB_URL }}
+      SECRET: ${{ secrets.JWT_SECRET }}
+      PASSWD1: ${{ secrets.DB_TEST_USER_PASSWORD_1 }}
+      PASSWD2: ${{ secrets.DB_TEST_USER_PASSWORD_2 }}
     defaults:
       run:
         working-directory: restapi

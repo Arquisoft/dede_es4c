@@ -6,4 +6,5 @@ export default {
     collectCoverage: true,
     collectCoverageFrom:["**/*Controller.ts"],
     testTimeout:15000
+
 }
