@@ -54,7 +54,7 @@ jobs:
     - name: Publish to Registry
       uses: elgohr/Publish-Docker-Github-Action@3.04
       with:
-          name: arquisoft/dede_es4b/webapp
+          name: arquisoft/dede_es4c/webapp
           username: ${{ github.actor }}
           password: ${{ secrets.DOCKER_PUSH_TOKEN }}
           registry: ghcr.io
