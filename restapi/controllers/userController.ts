@@ -12,19 +12,19 @@ export const signup = async (req: Request, res: Response): Promise<Response> => 
         if (existingUser) {
             return res.status(400).send("Ya existe un usuario con ese email");
         }
+
         const salt = await bcrypt.genSalt();
         const hash = await bcrypt.hash(password, salt);
-
         const newUser = new User({
             _username: username,
             _email: email,
             _password: hash
         });
+
         const savedUser = await newUser.save();
         const token = jwt.sign({ user: savedUser }, process.env.SECRET);
-        return res.status(200).json({
-            token
-        });
+
+        return res.status(200).json({ token });
     } catch (error) {
         return res.status(500).send(error);
     }
@@ -50,7 +50,7 @@ export const login = async (req: Request, res: Response): Promise<Response> => {
         });
 
     } catch (error) {
-        console.log(error)
+        console.error(error)
         return res.status(500).send(error);
     }
 }

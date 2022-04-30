@@ -5,11 +5,11 @@ const connectionString = process.env.MONGO_DB || process.env.MONGO_DB_URL;
 const connectionTestString = process.env.MONGO_DB || process.env.MONGO_DB_URL;
 
 const connectBD = async () => {
-    console.log("String de conexion: " + connectionString);
-    console.log("env.MONGO_DB: " + process.env.MONGO_DB);
-    console.log("env.MONGO_DB_URL: " + process.env.MONGO_DB_URL);
     mongoose.connect(connectionString).then(() => {
         console.log("Database connected");
+        console.log("String de conexion: " + connectionString);
+        console.log("env.MONGO_DB: " + process.env.MONGO_DB);
+        console.log("env.MONGO_DB_URL: " + process.env.MONGO_DB_URL);
     }).catch((error: Error) => {
         console.error("Error en connection bd.ts: " + error.message);
     })

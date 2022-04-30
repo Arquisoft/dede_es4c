@@ -22,6 +22,7 @@ export const getOrderById = async (req: Request, res: Response): Promise<Respons
     return res.status(500).send(error);
   }
 }
+
 export const getOrdersByClientId = async (req: Request, res: Response): Promise<Response> => {
   try {
     var result = await Order.find({ _cliente_id: req.params.id }).exec();
@@ -30,6 +31,7 @@ export const getOrdersByClientId = async (req: Request, res: Response): Promise<
     return res.status(500).send(error);
   }
 }
+
 export const addOrder = async (req: Request, res: Response): Promise<Response> => {
   try {
     const { cliente, direccion, precio, productosCarrito, fecha } = req.body;
@@ -40,9 +42,7 @@ export const addOrder = async (req: Request, res: Response): Promise<Response> =
       _productos: productosCarrito,
       _fecha: fecha
     });
-    console.log(direccion)
-    newOrder._precio=(parseFloat(newOrder._precio) +await shippo.calculaCostes(newOrder._direccion)).toString()
-    //console.log(newOrder)
+    newOrder._precio = (parseFloat(newOrder._precio) + await shippo.calculaCostes(newOrder._direccion)).toString()
     newOrder.save();
     return res.status(200).json(newOrder);
   } catch (error) {
@@ -52,7 +52,5 @@ export const addOrder = async (req: Request, res: Response): Promise<Response> =
 
 export const deleteOrder = async (req: Request, res: Response) => {
   await Order.findByIdAndDelete(req.params.id)
-  return res.status(200).send({msg:"El pedido ha sido eliminado"});
-  
+  return res.status(200).send({ msg: "El pedido ha sido eliminado" });
 }
-
