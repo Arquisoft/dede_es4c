@@ -4,7 +4,7 @@ export default {
         "^.+\\.tsx?$": "ts-jest"
     },
     collectCoverage: true,
-    collectCoverageFrom:["**/components/*.tsx"],
+    collectCoverageFrom:["/components/*.tsx"],
     testTimeout:15000
 
 }
