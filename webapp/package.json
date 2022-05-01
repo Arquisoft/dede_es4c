@@ -1,7 +1,7 @@
 {
 	"name": "webapp",
   "jest":{
-    "collectCoverageFrom":["**/components/**"]
+    "collectCoverageFrom":["**/components/*.tsx", "**/pages/*.tsx"]
   },
 	"version": "0.1.0",
 	"dependencies": {
