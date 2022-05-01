@@ -1,55 +1,58 @@
-import React, { useEffect } from 'react';
-import {useReducer} from 'react';
-import { CartState, Producto } from '../interface/interfaces';
+import React, { useEffect } from "react";
+import { useReducer } from "react";
+import { CartState, Producto } from "../interface/interfaces";
 import { CartContext } from "./cartContext";
-import { cartReducer } from './cartReducer';
+import { cartReducer } from "./cartReducer";
 
-const INITIAL_STATE: CartState ={
-    numeroElems: 0,
-    total: 0,
-    productos: []
+const INITIAL_STATE: CartState = {
+	numeroElems: 0,
+	total: 0,
+	productos: [],
+};
+
+interface CartProviderProps {
+	children: JSX.Element | JSX.Element[];
 }
 
-interface CartProviderProps{
-    children: JSX.Element | JSX.Element[];
-}
+export const CartProvider = ({ children }: CartProviderProps) => {
+	const [cartState, dispatch] = useReducer(cartReducer, INITIAL_STATE, () => {
+		const localData = localStorage.getItem("cart");
+		return localData ? JSON.parse(localData) : INITIAL_STATE;
+	});
 
+	const addToCart = (producto: Producto) => {
+		dispatch({
+			type: "addToCart",
+			payload: {
+				id: producto.id,
+				nombre: producto.nombre,
+				precio: producto.precio,
+				cantidad: 1,
+			},
+		});
+	};
 
-export const CartProvider = ({children}: CartProviderProps) => {
+	const removeToCart = (id: string) => {
+		dispatch({ type: "removeToCart", payload: { id } });
+	};
 
-    const [cartState, dispatch] = useReducer(cartReducer, INITIAL_STATE, () => {
-        const localData = localStorage.getItem('cart')
-        return localData ? JSON.parse(localData) : INITIAL_STATE
-    });
+	const increase = (producto: Producto) => {
+		dispatch({ type: "increase", payload: producto });
+	};
 
-    const addToCart = (producto: Producto) => {
-        dispatch({type: 'addToCart', payload: {
-            id: producto.id,
-            nombre: producto.nombre,
-            precio: producto.precio,
-            cantidad: 1
-        } })
-    }
+	const resetCart = () => {
+		dispatch({ type: "resetCart" });
+	};
 
-    const removeToCart = (id: string) => {
-        dispatch({type: 'removeToCart', payload: {id}})
-    }
+	useEffect(() => {
+		localStorage.setItem("cart", JSON.stringify(cartState));
+	}, [cartState]);
 
-    const increase = (producto: Producto) => {
-        dispatch({type: 'increase', payload: producto})
-    }
-
-    const resetCart = () => {
-        dispatch({type: 'resetCart'});
-    }
-
-    useEffect(() => {
-        localStorage.setItem('cart', JSON.stringify(cartState))
-    }, [cartState]);
-
-    return(
-        <CartContext.Provider value={{cartState,addToCart, removeToCart, increase, resetCart }}>
-            {children}
-        </CartContext.Provider>
-    );
-}
+	return (
+		<CartContext.Provider
+			value={{ cartState, addToCart, removeToCart, increase, resetCart }}
+		>
+			{children}
+		</CartContext.Provider>
+	);
+};

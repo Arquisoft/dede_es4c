@@ -1,211 +1,210 @@
 * {
-  font-family: 'Sora', sans-serif;
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+	font-family: "Sora", sans-serif;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
 }
 
-#home{
-  display: flex;
-  flex-direction: row;
-  gap: 1em;
-  align-items: center;
+#home {
+	display: flex;
+	flex-direction: row;
+	gap: 1em;
+	align-items: center;
 }
 
-#home main{
-  max-width: 50%;
-  padding: 2em;
-  margin: 2em;
-  font-size: 2em;
+#home main {
+	max-width: 50%;
+	padding: 2em;
+	margin: 2em;
+	font-size: 2em;
 }
 
-#home main p{
-  padding-top: 2em;
-  padding-bottom: 2em;
-  font-size: 0.7em;
+#home main p {
+	padding-top: 2em;
+	padding-bottom: 2em;
+	font-size: 0.7em;
 }
 
-#home aside{
-  margin-top: 5em;
+#home aside {
+	margin-top: 5em;
 }
 
-#historia{
-  display: flex;
-  flex-direction: row;
-  gap: 1em;
-  align-items: center;
+#historia {
+	display: flex;
+	flex-direction: row;
+	gap: 1em;
+	align-items: center;
 }
 
-#historia main{
-  max-width: 50%;
-  padding-left: 1em;
-  margin: 1em;
-  font-size: 2em;
+#historia main {
+	max-width: 50%;
+	padding-left: 1em;
+	margin: 1em;
+	font-size: 2em;
 }
 
-#historia main p{
-  padding: 1em;
-  font-size: 0.7em;
+#historia main p {
+	padding: 1em;
+	font-size: 0.7em;
 }
 
-#historia aside{
-  margin-top: 0.5em;
+#historia aside {
+	margin-top: 0.5em;
 }
 
-#desarrolladores{
-  margin-left: 3.5em;
-  font-size: 1.5em;
+#desarrolladores {
+	margin-left: 3.5em;
+	font-size: 1.5em;
 }
 
-#desarrolladores h2{
-  color: rgb(40, 69, 122);
-  font-size: 1.6em;
+#desarrolladores h2 {
+	color: rgb(40, 69, 122);
+	font-size: 1.6em;
 }
 
-#desarrolladores span{
-  font-size: 1em;
+#desarrolladores span {
+	font-size: 1em;
 }
 
-#desarrolladores p{
-  font-size: 0.75em;
+#desarrolladores p {
+	font-size: 0.75em;
 }
 
-#signupView{
-  background-image: url("images/fondoComida.jpg");
-  background-repeat: no-repeat;
-  background-position: center;
+#signupView {
+	background-image: url("images/fondoComida.jpg");
+	background-repeat: no-repeat;
+	background-position: center;
 }
 
 /*Listado Productos */
 
-#listadoProducto{
-  flex-direction: row;
-  gap: 1em;
-  background-image: url("images/pincho.png");
-  background-repeat: no-repeat;
-  background-position: center;
+#listadoProducto {
+	flex-direction: row;
+	gap: 1em;
+	background-image: url("images/pincho.png");
+	background-repeat: no-repeat;
+	background-position: center;
 }
 
-
-#listadoProducto main{
-  padding: 0.5em;
-  margin: 0.5em;
-  font-size: 2em;
+#listadoProducto main {
+	padding: 0.5em;
+	margin: 0.5em;
+	font-size: 2em;
 }
 
-#listadoProducto #basic-button{
-  font-size: 1em;
-  margin-left: 80%;
-  margin-top: -20%;
+#listadoProducto #basic-button {
+	font-size: 1em;
+	margin-left: 80%;
+	margin-top: -20%;
 }
 
-#listadoProducto #comida{
-  padding: 0.5em;
-  margin: 0.5em;
-  font-size: 10em;
-  margin-left: 33%;
-  margin-top: -10%;
+#listadoProducto #comida {
+	padding: 0.5em;
+	margin: 0.5em;
+	font-size: 10em;
+	margin-left: 33%;
+	margin-top: -10%;
 }
 
-#listadoProducto p#comida{
-  font-size: 2em;
+#listadoProducto p#comida {
+	font-size: 2em;
 }
 
-#listadoProducto p#bebida{
-  font-size: 10em;
+#listadoProducto p#bebida {
+	font-size: 10em;
 }
 
-#productos{
-  grid-row-start: 2;
-  padding: 1em;
-  margin: 1em;
-  font-size: 2em;
+#productos {
+	grid-row-start: 2;
+	padding: 1em;
+	margin: 1em;
+	font-size: 2em;
 }
 
-#paginacion{
-  font-size: 2.3em;
-  margin-left: 35%;
-  margin-right: 5%;
+#paginacion {
+	font-size: 2.3em;
+	margin-left: 35%;
+	margin-right: 5%;
 }
 
-#filtros{
-  font-size: 1.5em;
+#filtros {
+	font-size: 1.5em;
 }
 
-#paginacion button{
-  font-size: 0.26em;
+#paginacion button {
+	font-size: 0.26em;
 }
 
-#listadoProducto h2{
-  padding-top: 0.2em;
-  padding-bottom: 0.2em;
-  font-size: 1em;
+#listadoProducto h2 {
+	padding-top: 0.2em;
+	padding-bottom: 0.2em;
+	font-size: 1em;
 }
 
-#listadoProducto p{
-  padding-top: 0.2em;
-  padding-bottom: 0.2em;
-  font-size: 0.6em;
+#listadoProducto p {
+	padding-top: 0.2em;
+	padding-bottom: 0.2em;
+	font-size: 0.6em;
 }
 
-#listadoProducto button{
-  padding: 0.5em;
-  margin: 0.5em;
-  font-size: 0.5em;
-}
-  
-footer{
-  text-align: center;
-  
-  bottom:0;
-  width:100%;
-  height:60px;   /* Height of the footer */
+#listadoProducto button {
+	padding: 0.5em;
+	margin: 0.5em;
+	font-size: 0.5em;
 }
 
-.cartItem{
-  box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.4);
+footer {
+	text-align: center;
+
+	bottom: 0;
+	width: 100%;
+	height: 60px; /* Height of the footer */
 }
 
-img #detalles{
-  float: center;
+.cartItem {
+	box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.4);
 }
 
-#pedFin{
-  display: flex;
-  flex-direction: row;
-  gap: 1em;
-  align-items: center;
+img #detalles {
+	float: center;
 }
 
-#pedFin main{
-  max-width: 100%;
-  padding: 2em;
-  margin: 2em;
-  font-size: 1.7em;
+#pedFin {
+	display: flex;
+	flex-direction: row;
+	gap: 1em;
+	align-items: center;
 }
 
-#pedFin main h1{
-  margin: -1em;
+#pedFin main {
+	max-width: 100%;
+	padding: 2em;
+	margin: 2em;
+	font-size: 1.7em;
 }
 
-#pedFin main h2{
-  font-size: 1.1em;
-  color: #023b7e;
+#pedFin main h1 {
+	margin: -1em;
 }
 
-#pedFin main #prods{
-  margin: 2em;
+#pedFin main h2 {
+	font-size: 1.1em;
+	color: #023b7e;
 }
 
-#pedFin span{
-  font-size: 1em;
+#pedFin main #prods {
+	margin: 2em;
 }
 
-#pedFin p{
-  font-size: 0.8em;
+#pedFin span {
+	font-size: 1em;
 }
 
-#pedFin aside{
-  margin-top: 5em;
-  margin-left: 10em;
+#pedFin p {
+	font-size: 0.8em;
+}
+
+#pedFin aside {
+	margin-top: 5em;
+	margin-left: 10em;
 }
