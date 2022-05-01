@@ -19,7 +19,7 @@ function Producto(props: any) {
     else{
       image = "pinchos/" + props.producto.nombre + ".jpg"
       titulo = props.producto.nombre + "(" + props.producto.cantidad + " uds.)"
-      precioFinal = "Total: " + props.producto.cantidad * props.producto.precio + "€"
+      precioFinal = "Total: " + (props.producto.cantidad * props.producto.precio).toFixed(2) + "€"
       imgAlt = props.producto.nombre;
     }
 

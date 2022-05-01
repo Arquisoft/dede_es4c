@@ -20,7 +20,7 @@ export default function RealizaPedido(props: any) {
     const [open, setOpen] = React.useState(false);
     const [message, setMessage] = React.useState("Se ha realizado el pedido")
     const navigate = useNavigate();
-    var precio = cartState.total;
+    var precio = cartState.total.toFixed(2);
 
     const handlePedido = () => {
       var direccion = {
@@ -52,12 +52,15 @@ export default function RealizaPedido(props: any) {
         if (!stateUser.isAuthenticated) {
           setMessage("Debe iniciar sesión");
           setOpen(true);
+          return;
         } else if (!stateUser.info.isLoggedIn) {
           setMessage("Debe vincular su pod");
           setOpen(true);
+          return;
         } else if (stateUser.userData.email === '') {
           setMessage("Debe rellenar los datos de su pod");
           setOpen(true);
+          return;
         }
     
         var productosCarrito: Record<string, string> = {};
