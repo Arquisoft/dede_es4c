@@ -37,6 +37,8 @@ const Perfil = () => {
   const [zip, setZip] = useState("");
   const [country, setCountry] = useState("");
 
+  const [currentUrl, setCurrentUrl] = useState("https://localhost:3000/Perfil");
+
   const idp = "https://broker.pod.inrupt.com";
   
 
@@ -51,11 +53,10 @@ const Perfil = () => {
         setUserData(data);
       }
       getUserData();
+      setCurrentUrl(window.location.href);
     });
 
   }, [isEditing]);
-
-  console.log(process.env.WEBAPP)
 
   async function getName() {
     const value = await getUsername(session, webId!);
@@ -241,7 +242,7 @@ const Perfil = () => {
         <LoginButton
           authOptions={{ clientName: "dede_es4c" }}
           oidcIssuer={idp}
-          redirectUrl={redirUrl + "/Perfil"}
+          redirectUrl={currentUrl}
           onError={console.error} >
           <Button variant="contained" sx={{ bgcolor: '#596886', m: 3 }}>Entra con tu POD</Button>
         </LoginButton>
