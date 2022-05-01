@@ -1,8 +1,7 @@
 export default {
-    rootDir: './../',
     transform: {
         "^.+\\.tsx?$": "ts-jest"
     },
     collectCoverage: true,
-    collectCoverageFrom:["components/*.tsx"]
+    collectCoverageFrom:["/src/components/*.tsx"]
 }
