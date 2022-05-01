@@ -42,6 +42,7 @@ export default function RealizaPedido(props: any) {
 			return;
 		}
 
+
 		if (!stateUser.isAuthenticated) {
 			setMessage("Debes iniciar sesión para realizar el pedido");
 			setOpen(true);

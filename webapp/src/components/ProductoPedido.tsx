@@ -25,6 +25,7 @@ function Producto(props: any) {
 		imgAlt = props.producto.nombre;
 	}
 
+
 	return (
 		<List sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}>
 			<ListItem>
