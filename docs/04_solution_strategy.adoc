@@ -10,7 +10,8 @@
 ** Node JS como entorno de ejecución.
 ** Typescript como lenguaje de programación: MERN exige trabajar con JavaScript, pero Typescript añade una capa extra de tipado estático, que vendrá bien para prevenir errores.
 * SOLID para preservar la privacidad de los datos del usuario.
-* Github para el control de versiones
+* Github para el control de versiones.
+* Azure para el despliegue de la aplicación.
 
 === Decisiones acerca de la descomposición a alto nivel
 Utilizaremos el Modelo-Vista-Controlador (MVC) como patrón principal, lo que nos permitirá separar la lógica de la presentación.
