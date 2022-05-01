@@ -30,8 +30,10 @@ export default function RealizaPedido(props: any) {
 			zip: stateUser.userData.zip,
 			country: stateUser.userData.country,
 		};
+		
 		var fecha = Date.now();
 		var precio = cartState.total;
+
 		if (precio === 0) {
 			setMessage(
 				"La cesta está vacía, añade los productos y vuelve para finalizar",
@@ -45,21 +47,27 @@ export default function RealizaPedido(props: any) {
 			setOpen(true);
 			return;
 		}
+
 		var cliente = stateUser.user._id;
+
 		if (cliente === "") {
 			setMessage("Debes iniciar sesión para realizar el pedido");
 			setOpen(true);
 			return;
 		}
+
 		if (!stateUser.isAuthenticated) {
 			setMessage("Debe iniciar sesión");
 			setOpen(true);
+			return;
 		} else if (!stateUser.info.isLoggedIn) {
 			setMessage("Debe vincular su pod");
 			setOpen(true);
+			return;
 		} else if (stateUser.userData.email === "") {
 			setMessage("Debe rellenar los datos de su pod");
 			setOpen(true);
+			return;
 		}
 
 		var productosCarrito: Record<string, string> = {};
