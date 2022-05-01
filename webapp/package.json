@@ -33,7 +33,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --coverage && jest --config ./src/tests/jest.config.ts",
+    "test": "react-scripts test --coverage && cd src/tests && jest --runInBand",
     "test:e2e": "cd e2e && jest",
     "eject": "react-scripts eject",
     "prod": "ts-node-dev ./server.ts"
