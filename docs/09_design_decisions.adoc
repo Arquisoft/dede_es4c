@@ -8,4 +8,8 @@
 | MongoDB | Todos lo relativo a los datos y a su gestión depende de esta decisión | Un mal uso de la base de datos temprano puede traer consigo cambios muy grandes en el futuro | Es más fácil de utilizar junto al resto de tecnologías seleccionadas que el resto de las bases de datos
 | Temática de la tienda | La aplicación ha de girar en torno a esta temática | Si hubiera que cambiar la temática, habría que tocar diseños, clases, base de datos… | Nos pareció una temática adecuada.
 | Uso de Azure | El despliegue de la aplicación es efectuado en una máquina virtual hosteada en un servidor Azure | No sería complicado desplegarlo en otro servidor, como por ejemplo AWS | Azure es un entorno ideal para lo que necesitamos y cuenta con un crédito inicial gratuito para estudiantes.
+| Uso de Mongoose | Solo afecta a unos pocos métodos que hacen llamadas a la base de datos | Si no la quisieramos utilizar solo habría que modificar los métodos que acceden a la base de datos | Facilita el uso y tratamiento de los datos de MongoDB
+| Uso de MUI | Afecta a todo el Frontend |  | Facilita en gran medida la creación de interfaces en React.
+| Uso de AXIOS | | | Facilita las peticiones get y post
+| Uso de React Router Dom | | | 
 |===
