@@ -5,7 +5,7 @@ export interface Producto {
     cantidad: number;
 }
 
-export interface Miembro{
+export interface Miembro {
     nombre: string;
     imagen: Object;
     uo: string;
@@ -17,7 +17,7 @@ export interface CartState {
     productos: Producto[];
 }
 
-export interface UserState{
+export interface UserState {
     isAuthenticated: boolean;
     user: BDUser;
     info: InfoPod;
