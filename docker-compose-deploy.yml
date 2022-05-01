@@ -2,11 +2,11 @@
 version: '3.5'
 services:
   restapi:
-    image: ghcr.io/arquisoft/dede_es4c/restapi:pruebaDespliegue
+    image: ghcr.io/arquisoft/dede_es4c/restapi:pruebaDespliegue2
     ports:
       - "5000:5000"
   webapp:
-    image: ghcr.io/arquisoft/dede_es4c/webapp:pruebaDespliegue
+    image: ghcr.io/arquisoft/dede_es4c/webapp:pruebaDespliegue2
     ports:
       - "3000:3000"
     depends_on: 
