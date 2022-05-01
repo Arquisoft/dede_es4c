@@ -37,7 +37,7 @@ const Perfil = () => {
   const [country, setCountry] = useState("");
 
   const idp = "https://broker.pod.inrupt.com";
-  const redirUrl = "http://localhost:3000/Perfil";
+  const redirUrl = process.env.REACT_APP_API_URI || 'http://localhost:3000';
 
   useEffect(() => {
     handleIncomingRedirect({
@@ -238,7 +238,7 @@ const Perfil = () => {
         <LoginButton
           authOptions={{ clientName: "dede_es4c" }}
           oidcIssuer={idp}
-          redirectUrl={redirUrl}
+          redirectUrl={redirUrl + "/Perfil"}
           onError={console.error} >
           <Button variant="contained" sx={{ bgcolor: '#596886', m: 3 }}>Entra con tu POD</Button>
         </LoginButton>
