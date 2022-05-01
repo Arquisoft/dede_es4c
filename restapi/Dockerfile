@@ -7,5 +7,7 @@ RUN npm install
 
 ARG MONGO_DB_URI
 ENV MONGO_DB=$MONGO_DB_URI
+ARG WEBAPP_URI
+ENV WEBAPP=$WEBAPP_URI
 
 CMD [ "npm", "start" ]
