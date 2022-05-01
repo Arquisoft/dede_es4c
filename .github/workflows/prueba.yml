@@ -84,13 +84,14 @@ jobs:
         env:
           MONGO_DB_URI: mongodb+srv://es4c:es4c@cluster0.hcz1f.mongodb.net/bar_pinchos?retryWrites=true&w=majority
           WEBAPP_URI: http://${{ secrets.DEPLOY_HOST2 }}:3000
+          JWT_SECRET: ${{ secrets.JWT_SECRET }}
         with:
           name: arquisoft/dede_es4c/restapi
           username: ${{ github.actor }}
           password: ${{ secrets.DOCKER_PUSH_TOKEN }}
           registry: ghcr.io
           workdir: restapi
-          buildargs: MONGO_DB_URI
+          buildargs: MONGO_DB_URI, WEBAPP_URI, JWT_SECRET
   deploy:
     name: Deploy over SSH
     runs-on: ubuntu-latest

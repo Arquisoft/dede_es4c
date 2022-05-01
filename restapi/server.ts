@@ -12,11 +12,14 @@ bd.connectBD();
 const app: Application = express();
 const port: number = 5000;
 
+const options: cors.CorsOptions = {
+  origin: ['http://localhost:3000', process.env.WEBAPP!]
+};
 
 const metricsMiddleware: RequestHandler = promBundle({ includeMethod: true });
 app.use(metricsMiddleware);
 
-app.use(cors());
+app.use(cors(options));
 app.use(bp.json());
 app.use(bp.urlencoded({ extended: true }));
 
