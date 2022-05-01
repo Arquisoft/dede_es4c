@@ -2,23 +2,7 @@
 == Alcance y Contexto del Sistema
 
 === Contexto de Negocio
-
-[plantuml,"Business Context Diagram",png]
-----
-left to right direction
-skinparam actorStyle awesome
-actor Usuario as g
-package DeDe {
-
-}
-database BBDD
-hexagon POD
-cloud API
-g --> DeDe
-DeDe <--> POD
-DeDe <--> BBDD
-DeDe <--> API
-----
+image:ContextoNegocio.png["Contexto de negocio"]
 
 El sistema permitirá al usuario hacer pedidos de los diferentes productos disponibles, pudiendo también, iniciar sesión con su propia cuenta mediante un proveedor de pods, que seguirá los principios SOLID. Dicho pod es quien se encarga de gestionar la información de los usuarios. Por otro lado, los datos de los productos serán almacenados por la base de datos.
 
