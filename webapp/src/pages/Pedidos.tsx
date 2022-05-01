@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, useCallback } from "react";
 import ObjetoPedido from "../components/ObjetoPedido";
 import { getOrderByClientId } from "../api/api";
 import { UserContext } from "../context/userContext";
@@ -13,13 +13,13 @@ const Pedidos = () => {
 	const { stateUser } = useContext(UserContext);
 	const [pedidos, setPedidos] = useState(listaPedidos);
 
+	const getPedidos = useCallback(async () => {
+		setPedidos(await getOrderByClientId(stateUser.user._id));
+	}, [stateUser]);
+
 	useEffect(() => {
 		getPedidos();
-	}, []);
-
-	const getPedidos = async () => {
-		setPedidos(await getOrderByClientId(stateUser.user._id));
-	};
+	}, [getPedidos]);
 
 	return (
 		<div id="pedidos">

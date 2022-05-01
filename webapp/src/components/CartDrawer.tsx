@@ -23,18 +23,19 @@ export default function TemporaryDrawer(props: any) {
 	const [open, setOpen] = React.useState(false);
 	const [message] = React.useState("Se ha realizado el pedido");
 	const navigate = useNavigate();
+
 	useEffect(() => {
 		if (props.products.length > 0) {
-			props.products.map((producto: Producto) => {
+			props.products.map((producto: Producto) =>
 				addToCart({
 					id: producto.id,
 					nombre: producto.nombre,
 					precio: producto.precio,
 					cantidad: 1,
-				});
-			});
+				}),
+			);
 		}
-	}, []);
+	}, [addToCart, props]);
 
 	const [state, setState] = React.useState({
 		top: false,
@@ -58,7 +59,7 @@ export default function TemporaryDrawer(props: any) {
 		};
 
 	const handleRealizaPedido = () => {
-		setState({ ...state, ["right"]: false });
+		setState({ ...state });
 		navigate("/RealizaPedido");
 	};
 

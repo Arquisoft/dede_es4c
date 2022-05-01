@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Producto from "../pages/Producto";
 import {
 	getPinchoNoVegetariano,
@@ -14,7 +14,7 @@ import { Pincho } from "../shared/shareddtypes";
 function CargaPinchos(tipo: string): Producto[] {
 	const [pinchos, setPinchos] = useState<Pincho[]>([]);
 
-	const refreshPinchosList = async () => {
+	const refreshPinchosList = useCallback(async (tipo: string) => {
 		if (tipo === "comida") setPinchos(await getPinchoComida());
 		else if (tipo === "bebida") setPinchos(await getPinchoBebida());
 		else if (tipo === "todos") setPinchos(await getPinchos());
@@ -22,11 +22,11 @@ function CargaPinchos(tipo: string): Producto[] {
 		else if (tipo === "veg") setPinchos(await getPinchoVegetariano());
 		else if (tipo === "noveg") setPinchos(await getPinchoNoVegetariano());
 		else setPinchos(await getPinchoById(tipo));
-	};
+	}, []);
 
 	useEffect(() => {
-		refreshPinchosList();
-	}, []);
+		refreshPinchosList(tipo);
+	}, [refreshPinchosList, tipo]);
 
 	var productosReales: Producto[] = [];
 
