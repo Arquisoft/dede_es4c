@@ -82,7 +82,7 @@ jobs:
       - name: Publish to Registry
         uses: elgohr/Publish-Docker-Github-Action@v4
         env:
-          MONGO_DB: mongodb+srv://es4c:es4c@cluster0.hcz1f.mongodb.net/bar_pinchos?retryWrites=true&w=majority
+          MONGO_DB_URI: mongodb+srv://es4c:es4c@cluster0.hcz1f.mongodb.net/bar_pinchos?retryWrites=true&w=majority
         with:
           name: arquisoft/dede_es4c/restapi
           username: ${{ github.actor }}

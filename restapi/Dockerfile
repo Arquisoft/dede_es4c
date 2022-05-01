@@ -6,6 +6,6 @@ WORKDIR /app
 RUN npm install
 
 ARG MONGO_DB_URI
-ENV MONGO_DB=$MONGO_URI
+ENV MONGO_DB=$MONGO_DB_URI
 
 CMD [ "npm", "start" ]
