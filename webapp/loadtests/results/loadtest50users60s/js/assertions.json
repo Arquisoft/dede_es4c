@@ -1,0 +1,10 @@
+{
+  "simulation": "profileviewer.loadtest",
+  "simulationId": "loadtest",
+  "start": 1651396684760,
+  "description": "",
+  "scenarios": ["GetUsersList"],
+  "assertions": [
+
+  ]
+}
