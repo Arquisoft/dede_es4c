@@ -34,7 +34,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --coverage",
-    "test:e2e": "start-server-and-test prod 3000 'jest --rootDir=src --config=./src/tests/jest.config.ts'",
+    "test:e2e": "start-server-and-test prod 3000 'jest --config=./src/tests/jest.config.ts'",
     "eject": "react-scripts eject",
     "prod": "ts-node-dev ./server.ts"
   },
