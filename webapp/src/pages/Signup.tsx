@@ -22,8 +22,10 @@ const Signup = () => {
 
   const navigate = useNavigate();
 
-  const userSignup = (user:any) => {
-    axios.post('http://localhost:5000/api/signup', {
+  const apiEndPoint = process.env.REACT_APP_API_URI || 'http://localhost:5000/api';
+
+  const userSignup = () => {
+    axios.post(apiEndPoint + '/signup', {
       username, email, password
     }).then( res => {
       if(res.status === 200){
@@ -48,7 +50,6 @@ const Signup = () => {
 
   const submit = (e: { preventDefault: () => void; }) => {
     e.preventDefault();
-    const user = {username, email, password, repeatPassword};
     if(username === "" || email === "" || password === "" || repeatPassword === ""){
       setError("Rellene los datos solicitados correctamente")
     }else if(!email.includes('@') || (!email.endsWith('.com') && !email.endsWith('.es'))){
@@ -58,7 +59,7 @@ const Signup = () => {
     }else if(password.length < 6){
       setError("La contraseña debe tener al menos 6 caracteres");
     }else{
-      userSignup(user);
+      userSignup();
     }
   }
 

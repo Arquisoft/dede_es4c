@@ -20,12 +20,11 @@ const Login = () => {
 
     const navigate = useNavigate();
 
-    const idp = "https://broker.pod.inrupt.com";
-	 const redirUrl = "http://localhost:3000/Perfil";
+   const apiEndPoint = process.env.REACT_APP_API_URI || 'http://localhost:5000/api';
 
     const userLogin = (user: any) => {
        
-        axios.post('http://localhost:5000/api/login', {
+        axios.post(apiEndPoint + 'login', {
             email, password
         }).then( res => {
           if(res.status === 200){
