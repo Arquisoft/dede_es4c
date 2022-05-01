@@ -16,7 +16,7 @@ import { LoginButton, useSession } from "@inrupt/solid-ui-react";
 
 import { InfoPod } from "../interface/interfaces";
 
-const redirUrl = process.env.WEBAPP || 'http://localhost:3000';
+const redirUrl = "http://dede-es4c.centralus.cloudapp.azure.com:3000";
 
 const Perfil = () => {
 
