@@ -5,7 +5,7 @@ const connectionString = process.env.MONGO_DB;
 const connectionTestString = process.env.MONGO_TEST_DB;
 
 const connectBD = async () => {
-    mongoose.connect("mongodb+srv://es4c:es4c@cluster0.hcz1f.mongodb.net/bar_pinchos?retryWrites=true&w=majority").then(() => {
+    mongoose.connect(connectionString).then(() => {
         console.log("Database connected");
     }).catch((error: Error) => {
         console.log(connectionString);
