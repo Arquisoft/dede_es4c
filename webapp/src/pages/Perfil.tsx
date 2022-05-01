@@ -37,7 +37,7 @@ const Perfil = () => {
   const [country, setCountry] = useState("");
 
   const idp = "https://broker.pod.inrupt.com";
-  const redirUrl = process.env.REACT_APP_API_URI || 'http://localhost:3000';
+  const redirUrl = process.env.WEBAPP || 'http://localhost:3000';
 
   useEffect(() => {
     handleIncomingRedirect({
