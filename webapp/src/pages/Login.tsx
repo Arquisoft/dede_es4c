@@ -24,7 +24,7 @@ const Login = () => {
 
     const userLogin = (user: any) => {
        
-        axios.post(apiEndPoint + 'login', {
+        axios.post(apiEndPoint + '/login', {
             email, password
         }).then( res => {
           if(res.status === 200){
