@@ -16,6 +16,7 @@ import { LoginButton, useSession } from "@inrupt/solid-ui-react";
 
 import { InfoPod } from "../interface/interfaces";
 
+const redirUrl = process.env.WEBAPP || 'http://localhost:3000';
 
 const Perfil = () => {
 
@@ -37,7 +38,7 @@ const Perfil = () => {
   const [country, setCountry] = useState("");
 
   const idp = "https://broker.pod.inrupt.com";
-  const redirUrl = process.env.WEBAPP || 'http://localhost:3000';
+  
 
   useEffect(() => {
     handleIncomingRedirect({
@@ -53,6 +54,8 @@ const Perfil = () => {
     });
 
   }, [isEditing]);
+
+  console.log(process.env.WEBAPP)
 
   async function getName() {
     const value = await getUsername(session, webId!);
