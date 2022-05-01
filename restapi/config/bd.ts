@@ -6,7 +6,6 @@ const connectionTestString = process.env.MONGO_TEST_DB;
 
 const connectBD = async () => {
     mongoose.connect(connectionString).then(() => {
-        console.log(process.env.WEBAPP)
         console.log("Database connected");
     }).catch((error: Error) => {
         console.log(connectionString);
