@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React from "react";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
@@ -27,7 +27,7 @@ function Producto(props: any) {
 		<List sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}>
 			<ListItem>
 				<ListItemAvatar>
-					<Avatar src={image} sx={{ width: 50, height: 50 }} />
+					<Avatar src={image} alt={imgAlt} sx={{ width: 50, height: 50 }} />
 				</ListItemAvatar>
 				<ListItemText primary={titulo} secondary={precioFinal} />
 			</ListItem>

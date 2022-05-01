@@ -60,7 +60,7 @@ const Login = () => {
 	return (
 		<div>
 			<div id="formLogin">
-				<img src={foto}></img>
+				<img src={foto} alt="icono login"></img>
 				<h1>Login</h1>
 				<form name="login" onSubmit={submit}>
 					<TextField

@@ -17,7 +17,7 @@ import logo from "./icons/DeDe.png";
 import CartDrawer from "./CartDrawer";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { UserContext } from "../context/userContext";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSession } from "@inrupt/solid-ui-react";
 import Button from "@mui/material/Button";
@@ -36,13 +36,13 @@ const NavBar = () => {
 	const [anchorUserSettings, setAnchorUserSettings] =
 		React.useState<null | HTMLElement>(null);
 
-	const { stateUser, setInfo, logoutUser } = useContext(UserContext);
+	const { stateUser, logoutUser } = useContext(UserContext);
 
 	const [open, setOpen] = React.useState(false);
 
 	const navigate = useNavigate();
 
-	const { session, logout } = useSession();
+	const { logout } = useSession();
 
 	const handleClose = (
 		event: React.SyntheticEvent | Event,
@@ -98,10 +98,6 @@ const NavBar = () => {
 		setOpen(true);
 	};
 
-	const handlePerfil = () => {
-		navigate("/Perfil");
-	};
-
 	const usuarioAutenticado = () => {
 		if (stateUser !== undefined) return stateUser.isAuthenticated;
 		return false;
@@ -117,7 +113,7 @@ const NavBar = () => {
 						noWrap
 						sx={{ mr: 2, display: { xs: "none", md: "flex" } }}
 					>
-						<img src={logo}></img>
+						<img src={logo} alt="logo"></img>
 					</Link>
 
 					<Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -174,7 +170,7 @@ const NavBar = () => {
 						noWrap
 						sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}
 					>
-						<img src={logo}></img>
+						<img src={logo} alt="logo"></img>
 					</Link>
 					<Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
 						{pages.map((page) => (

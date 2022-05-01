@@ -1,12 +1,9 @@
-import React, { useContext } from "react";
+import React from "react";
 import image from "../images/food.png";
 import Button from "@mui/material/Button";
 import Link from "@mui/material/Link";
-import { UserContext } from "../context/userContext";
 
 const Home = () => {
-	const { setInfo } = useContext(UserContext);
-
 	return (
 		<div id="home">
 			<main>
@@ -26,7 +23,7 @@ const Home = () => {
 				</Link>
 			</main>
 			<aside>
-				<img src={image}></img>
+				<img src={image} alt="imagen fondo"></img>
 			</aside>
 		</div>
 	);

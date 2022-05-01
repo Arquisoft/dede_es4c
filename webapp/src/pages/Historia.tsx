@@ -26,7 +26,7 @@ const Historia = () => {
 					</p>
 				</main>
 				<aside>
-					<img src={image}></img>
+					<img src={image} alt="imagen equipo"></img>
 				</aside>
 			</div>
 			<section id="desarrolladores">

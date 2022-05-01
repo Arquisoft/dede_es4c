@@ -10,7 +10,7 @@ import { UserContext } from "../context/userContext";
 import "./styles/profile.css";
 import Button from "@mui/material/Button";
 import { handleIncomingRedirect } from "@inrupt/solid-client-authn-browser";
-import { getUsername, getUserInfo, setUserInfo } from "../utils/solid";
+import { getUserInfo, setUserInfo } from "../utils/solid";
 import TextField from "@mui/material/TextField";
 import { LoginButton, useSession } from "@inrupt/solid-ui-react";
 
@@ -21,12 +21,11 @@ const Perfil = () => {
 
 	const { session } = useSession();
 	const { webId } = session.info;
-	const [name, setName] = useState("");
 	//const [userData, setUserData] = useState({email:"", address:"", phone:""});
 	const [isEditing, setEditing] = useState(false);
 
 	const [email, setEmail] = useState("");
-	const [address, setAddress] = useState("");
+	const [address] = useState("");
 	const [phone, setPhone] = useState("");
 	const [street1, setStreet1] = useState("");
 	const [city, setCity] = useState("");
@@ -51,21 +50,16 @@ const Perfil = () => {
 		});
 	}, [isEditing]);
 
-	async function getName() {
-		const value = await getUsername(session, webId!);
-		setName(value!);
-	}
-
 	async function saveUserInfo() {
 		let data = {
 			name: stateUser.user._username,
-			email: email == "" ? stateUser.userData.email : email,
-			phone: phone == "" ? stateUser.userData.phone : phone,
-			address: address == "" ? stateUser.userData.address : address,
-			street1: street1 == "" ? stateUser.userData.street1 : street1,
-			city: city == "" ? stateUser.userData.city : city,
-			country: country == "" ? stateUser.userData.country : country,
-			zip: zip == "" ? stateUser.userData.zip : zip,
+			email: email === "" ? stateUser.userData.email : email,
+			phone: phone === "" ? stateUser.userData.phone : phone,
+			address: address === "" ? stateUser.userData.address : address,
+			street1: street1 === "" ? stateUser.userData.street1 : street1,
+			city: city === "" ? stateUser.userData.city : city,
+			country: country === "" ? stateUser.userData.country : country,
+			zip: zip === "" ? stateUser.userData.zip : zip,
 		};
 		await setUserInfo(data, session, webId!);
 		setEditing(false);

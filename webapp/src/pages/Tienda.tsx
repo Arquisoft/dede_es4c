@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 
 import Input from "@mui/material/Input";
 import IconButton from "@mui/material/IconButton";
@@ -13,15 +13,12 @@ import actualizaPinchos from "../components/CargaPinchos";
 import CakeIcon from "@mui/icons-material/Cake";
 import GrassIcon from "@mui/icons-material/Grass";
 import FlutterDashIcon from "@mui/icons-material/FlutterDash";
-import { UserContext } from "../context/userContext";
 
 var listaTodos: Producto[] = [];
 var listaComida: Producto[] = [];
 var listaBebida: Producto[] = [];
 var listaVeg: Producto[] = [];
 var listaNoVeg: Producto[] = [];
-var filtrado: string = "";
-var soloComida: boolean = false;
 
 export const listaPorDefecto: Producto[] = [];
 
@@ -35,8 +32,6 @@ function Tienda(props: any) {
 	listaTodos = actualizaPinchos(filtro);
 	listaComida = actualizaPinchos("comida");
 	listaBebida = actualizaPinchos("bebida");
-
-	const { stateUser, setInfo } = useContext(UserContext);
 
 	listaVeg = actualizaPinchos("veg");
 	listaNoVeg = actualizaPinchos("noveg");
@@ -55,23 +50,23 @@ function Tienda(props: any) {
 	};
 
 	const isComida = () => {
-		return filtro.localeCompare("comida") == 0;
+		return filtro.localeCompare("comida") === 0;
 	};
 
 	const isBebida = () => {
-		return filtro.localeCompare("bebida") == 0;
+		return filtro.localeCompare("bebida") === 0;
 	};
 
 	const isVeg = () => {
-		return filtro.localeCompare("veg") == 0;
+		return filtro.localeCompare("veg") === 0;
 	};
 
 	const isNoVeg = () => {
-		return filtro.localeCompare("noveg") == 0;
+		return filtro.localeCompare("noveg") === 0;
 	};
 
 	const isNombre = () => {
-		return filtro.localeCompare(nombre) == 0;
+		return filtro.localeCompare(nombre) === 0;
 	};
 
 	const handleFilterComida = () => {

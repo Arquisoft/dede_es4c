@@ -40,7 +40,7 @@ function ProductoLista(props: any) {
 
 	const isInCart = (producto: Producto) => {
 		let id = producto.id;
-		if (productos.find((item) => item.id === id) != undefined) {
+		if (productos.find((item) => item.id === id) !== undefined) {
 			return true;
 		}
 		return false;

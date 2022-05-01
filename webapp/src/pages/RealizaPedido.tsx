@@ -136,7 +136,7 @@ export default function RealizaPedido(props: any) {
 				</Button>
 			</main>
 			<aside>
-				<img src={image}></img>
+				<img src={image} alt="caja registradora"></img>
 			</aside>
 			<Snackbar
 				open={open}

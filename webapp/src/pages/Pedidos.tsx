@@ -24,7 +24,7 @@ const Pedidos = () => {
 	return (
 		<div id="pedidos">
 			<main>
-				{pedidos.length != 0 && (
+				{pedidos.length !== 0 && (
 					<div>
 						<h1>Tus pedidos:</h1>
 						<List
@@ -42,7 +42,7 @@ const Pedidos = () => {
 						</List>
 					</div>
 				)}
-				{pedidos.length == 0 && (
+				{pedidos.length === 0 && (
 					<Typography variant="h2">
 						Todavía no has realizado ningún pedido
 					</Typography>

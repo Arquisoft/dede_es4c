@@ -10,7 +10,6 @@ import { Producto } from "../interface/interfaces";
 import { useCart } from "../hooks/useCart";
 import { CartContext } from "../context/cartContext";
 import { Button } from "@mui/material";
-import { UserContext } from "../context/userContext";
 import Snackbar from "@mui/material/Snackbar";
 import CloseIcon from "@mui/icons-material/Close";
 import { useNavigate } from "react-router-dom";
@@ -21,9 +20,8 @@ export default function TemporaryDrawer(props: any) {
 	const { cartState, addToCart } = useContext(CartContext);
 	const { productos } = useCart();
 
-	const { stateUser } = useContext(UserContext);
 	const [open, setOpen] = React.useState(false);
-	const [message, setMessage] = React.useState("Se ha realizado el pedido");
+	const [message] = React.useState("Se ha realizado el pedido");
 	const navigate = useNavigate();
 	useEffect(() => {
 		if (props.products.length > 0) {

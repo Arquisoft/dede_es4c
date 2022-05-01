@@ -6,15 +6,10 @@ import {
     Url,
     getFile,
 } from "@inrupt/solid-client";
-
 import {
     fetch,
 } from "@inrupt/solid-client-authn-browser";
-
-
 import { FOAF } from "@inrupt/lit-generated-vocab-common";
-
-const STORAGE_PREDICATE = "http://www.w3.org/ns/pim/space#storage";
 
 export async function getUsername(session: { fetch: any; }, webId: string | Url) {
 
@@ -58,7 +53,7 @@ export async function setUserInfo(userData: any, session: { fetch: any; }, webId
     const username = getStringNoLocale(profile!, FOAF.name.iri.value)
     let file = new Blob([JSON.stringify(userData)], { type: 'text/json' });
     try {
-        const savedFile = await overwriteFile(
+        overwriteFile(
             "https://pod.inrupt.com/" + username + "/dede/Datos.json", // URL for the file.
             file, // File
             { contentType: file.type, fetch: fetch }, // mimetype if known, fetch from the authenticated session

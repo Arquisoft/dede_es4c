@@ -12,7 +12,7 @@ import { Token } from "../interface/interfaces";
 import { Link } from "react-router-dom";
 
 const Signup = () => {
-	const { setCurrentUser, logoutUser, stateUser } = useContext(UserContext);
+	const { setCurrentUser, logoutUser } = useContext(UserContext);
 	const [username, setUsername] = useState("");
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");

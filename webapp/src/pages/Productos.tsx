@@ -16,7 +16,7 @@ function Productos(props: any) {
 	var lista: Producto[] = [];
 	var numPages: number;
 	lista = props.products;
-	if (lista == undefined) lista = actualizaPinchos(props.filtro);
+	if (lista === undefined) lista = actualizaPinchos(props.filtro);
 	if (lista.length < numElements) numPages = 1;
 	else numPages = Math.round(lista.length / numElements) + 1;
 

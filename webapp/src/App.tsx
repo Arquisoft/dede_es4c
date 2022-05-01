@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -12,16 +12,10 @@ import "./App.css";
 import Perfil from "./pages/Perfil";
 import InfoPods from "./pages/InfoPods";
 import RealizaPedido from "./pages/RealizaPedido";
-import { useSession } from "@inrupt/solid-ui-react";
 
 import "./App.css";
-import { UserContext } from "./context/userContext";
 
 function App(): JSX.Element {
-	const { stateUser, setInfo } = useContext(UserContext);
-
-	const { session } = useSession();
-
 	return (
 		<div className="App">
 			<Router>

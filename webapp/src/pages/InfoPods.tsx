@@ -35,7 +35,7 @@ const InfoPods = () => {
 				</Link>
 			</main>
 			<aside>
-				<img src={image}></img>
+				<img src={image} alt="solid"></img>
 			</aside>
 		</div>
 	);

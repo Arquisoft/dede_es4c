@@ -38,7 +38,7 @@ function Detalles(props: any) {
 			onClick={toggleDrawer(anchor, false)}
 			onKeyDown={toggleDrawer(anchor, false)}
 		>
-			<img id="detalles" src={cabecera} />
+			<img id="detalles" src={cabecera} alt="imagen detalles producto" />
 			<Typography textAlign="center" gutterBottom variant="h2" component="div">
 				{props.product.nombre}
 			</Typography>
