@@ -23,8 +23,6 @@ const Perfil = () => {
 
   const { session } = useSession();
   const { webId } = session.info;
-  const [name, setName] = useState("");
-  //const [userData, setUserData] = useState({email:"", address:"", phone:""});
   const [isEditing, setEditing] = useState(false);
 
   const [email, setEmail] = useState("");
@@ -32,7 +30,6 @@ const Perfil = () => {
   const [phone, setPhone] = useState("");
   const [street1, setStreet1] = useState("");
   const [city, setCity] = useState("");
-  //const [state, setState] = useState("");
   const [zip, setZip] = useState("");
   const [country, setCountry] = useState("");
 
@@ -55,11 +52,6 @@ const Perfil = () => {
     });
 
   }, [isEditing]);
-
-  async function getName() {
-    const value = await getUsername(session, webId!);
-    setName(value!);
-  }
 
   async function saveUserInfo() {
     let data = {
@@ -240,7 +232,7 @@ const Perfil = () => {
         <LoginButton
           authOptions={{ clientName: "dede_es4c" }}
           oidcIssuer={idp}
-          redirectUrl={redirUrl}
+          redirectUrl={redirUrl + "/Perfil"}
           onError={console.error} >
           <Button variant="contained" sx={{ bgcolor: '#596886', m: 3 }}>Entra con tu POD</Button>
         </LoginButton>
