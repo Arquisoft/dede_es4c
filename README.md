@@ -1,5 +1,5 @@
 # dede_es4c
-[![Develop Deployment](https://github.com/Arquisoft/dede_es4c/actions/workflows/asw2122.yml/badge.svg)](https://github.com/Arquisoft/dede_es4c/actions/workflows/asw2122.yml)
+[![Master Deployment](https://github.com/Arquisoft/dede_es4c/actions/workflows/release.yml/badge.svg)](https://github.com/Arquisoft/dede_es4c/actions/workflows/release.yml)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Arquisoft_dede_es4c&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=Arquisoft_dede_es4c)
 [![codecov](https://codecov.io/gh/Arquisoft/dede_es4c/branch/master/graph/badge.svg?token=VN4XG9NTRO)](https://codecov.io/gh/Arquisoft/dede_es4c)
 
