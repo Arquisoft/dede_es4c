@@ -2,10 +2,10 @@ import { useContext } from "react";
 import { CartContext } from "../context/cartContext"
 
 export const useCart = () => {
-    const {cartState, addToCart} = useContext(CartContext);
-    const {productos} = cartState;
+    const { cartState, addToCart } = useContext(CartContext);
+    const { productos } = cartState;
 
-    return{
+    return {
         productos: productos,
         addToCart
     }

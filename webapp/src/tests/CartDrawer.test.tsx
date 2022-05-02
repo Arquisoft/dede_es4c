@@ -4,9 +4,10 @@ import CartDrawer from '../components/CartDrawer';
 import { CartProvider } from "../context/cartProvider";
 import CartItem from '../components/CartItem';
 import { Producto } from "../interface/interfaces";
+import { BrowserRouter as Router} from "react-router-dom";
 
 test('check that the Cart is empty', async () => {
-    const { container, getByText } = render(<CartProvider><CartDrawer products={[]} /></CartProvider>);
+    const { container, getByText } = render(<CartProvider><Router><CartDrawer products={[]} /></Router></CartProvider>);
     const buttonCart = container.querySelector('.buttonCart')!;
     fireEvent.click(buttonCart, {});
     expect(getByText('Carrito')).toBeInTheDocument();
@@ -23,7 +24,7 @@ test('check that the product was deleted', async () => {
         }
     ]
 
-    const { container, getByText, queryByText } = render(<CartProvider><CartDrawer products={initialState} /></CartProvider>);
+    const { container, getByText, queryByText } = render(<CartProvider><Router><CartDrawer products={initialState} /></Router></CartProvider>);
 
     const buttonCart = container.querySelector('.buttonCart')!;
     fireEvent.click(buttonCart, {});
@@ -49,7 +50,7 @@ test('check that the products are rendered', async () => {
         }
     ]
 
-    const { container, getByText } = render(<CartProvider><CartDrawer products={initialState} /></CartProvider>);
+    const { container, getByText } = render(<CartProvider><Router><CartDrawer products={initialState} /></Router></CartProvider>);
 
     const buttonCart = container.querySelector('.buttonCart')!;
     fireEvent.click(buttonCart, {});

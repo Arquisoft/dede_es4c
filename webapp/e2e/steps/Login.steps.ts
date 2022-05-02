@@ -1,7 +1,7 @@
 import { defineFeature, loadFeature } from 'jest-cucumber';
 import puppeteer from "puppeteer";
 
-const feature = loadFeature('./features/register-form.feature');
+const feature = loadFeature('./features/Login.feature');
 
 let page: puppeteer.Page;
 let browser: puppeteer.Browser;
@@ -15,33 +15,34 @@ defineFeature(feature, test => {
     page = await browser.newPage();
 
     await page
-      .goto("http://localhost:3000", {
+      .goto("http://localhost:3000/Login", {
         waitUntil: "networkidle0",
       })
       .catch(() => {});
   });
 
-  test('The user is not registered in the site', ({given,when,then}) => {
+  test('The user is registered in the site', ({given,when,then}) => {
+    jest.setTimeout(100000);
     
     let email:string;
-    let username:string;
+    let password:string;
 
-    given('An unregistered user', () => {
-      email = "newuser@test.com"
-      username = "newuser"
+    given('A registered user', () => {
+      email = "dani@gmail.com"
+      password = "123456"
     });
 
     when('I fill the data in the form and press submit', async () => {
-      await expect(page).toMatch('Hi, ASW students')
-      await expect(page).toFillForm('form[name="register"]', {
-        username: username,
+      await expect(page).toMatch('Login')
+      await expect(page).toFillForm('form[name="login"]', {
         email: email,
+        password: password,
       })
-      await expect(page).toClick('button', { text: 'Accept' })
+      await expect(page).toClick('button', { text: 'Enviar' })
     });
 
-    then('A confirmation message should be shown in the screen', async () => {
-      await expect(page).toMatch('You have been registered in the system!')
+    then('Profile page with username should be shown in the screen', async () => {
+      await expect(page).toMatch('dani')
     });
   })
 

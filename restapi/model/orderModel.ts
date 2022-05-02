@@ -1,8 +1,7 @@
-import { model, Schema} from 'mongoose'
-
+import { model, Schema } from 'mongoose'
 
 const orderSchema = new Schema({
-   _cliente_id: {
+    _cliente_id: {
         type: String,
         required: true
     },

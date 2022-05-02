@@ -4,5 +4,7 @@ export default {
         "^.+\\.tsx?$": "ts-jest"
     },
     collectCoverage: true,
-    collectCoverageFrom:["**/*Controller.ts"]
+    collectCoverageFrom:["**/*Controller.ts"],
+    testTimeout:15000
+
 }
