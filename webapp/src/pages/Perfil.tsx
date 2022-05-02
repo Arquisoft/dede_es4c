@@ -32,7 +32,7 @@ const Perfil = () => {
   const [phone, setPhone] = useState("");
   const [street1, setStreet1] = useState("");
   const [city, setCity] = useState("");
-  //const [state, setState] = useState("");
+  const [state, setState] = useState("");
   const [zip, setZip] = useState("");
   const [country, setCountry] = useState("");
 
@@ -53,11 +53,6 @@ const Perfil = () => {
     });
 
   }, [isEditing]);
-
-  async function getName() {
-    const value = await getUsername(session, webId!);
-    setName(value!);
-  }
 
   async function saveUserInfo() {
     let data = {
