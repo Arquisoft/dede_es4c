@@ -3,7 +3,7 @@ name: CI de prueba
 on:
   push:
     branches:
-      - pruebaDespliegue
+      - arregloTestWebapp
 
 jobs:
   unit-test-webapp:
