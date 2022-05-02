@@ -17,7 +17,7 @@ function Detalles(props: any) {
 		right: false,
 	});
 
-	const toggleDrawer =
+	let toggleDrawer =
 		(anchor: Anchor, open: boolean) =>
 		(event: React.KeyboardEvent | React.MouseEvent) => {
 			if (
@@ -31,7 +31,7 @@ function Detalles(props: any) {
 			setState({ ...state, [anchor]: open });
 		};
 
-	const list = (anchor: Anchor) => (
+	let dropdown = (anchor: Anchor) => (
 		<Box
 			sx={{ width: anchor === "top" || anchor === "bottom" ? "auto" : 250 }}
 			role="presentation"
@@ -99,7 +99,7 @@ function Detalles(props: any) {
 					onClose={toggleDrawer("top", false)}
 					variant="temporary"
 				>
-					{list("top")}
+					{dropdown("top")}
 				</Drawer>
 			</React.Fragment>
 		</div>

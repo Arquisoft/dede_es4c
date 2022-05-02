@@ -64,7 +64,7 @@ export default function TemporaryDrawer(props: any) {
 	};
 
 	const list = (anchor: Anchor) => (
-		<Box sx={{ width: 400 }} role="presentation">
+		<Box key="listaProductos" sx={{ width: 400 }} role="presentation">
 			<Typography textAlign="center">Carrito</Typography>
 			<Divider />
 			<Typography textAlign="center">

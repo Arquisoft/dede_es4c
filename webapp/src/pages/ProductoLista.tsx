@@ -114,7 +114,7 @@ function ProductoLista(props: any) {
 							Añadir más
 						</Button>
 					)}
-					<Detalles product={props.product}></Detalles>
+					<Detalles key={props.product.nombre} product={props.product}></Detalles>
 				</CardActions>
 			</Card>
 		</Grid>

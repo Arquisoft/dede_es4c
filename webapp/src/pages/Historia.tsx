@@ -39,7 +39,7 @@ const Historia = () => {
 			<section id="desarrolladores">
 				<h2>Desarrolladores de la tienda:</h2>
 				{miembros.map((member) => (
-					<MiembroAvatar miembro={member} />
+					<MiembroAvatar key={member.uo} miembro={member} />
 				))}
 			</section>
 		</div>
