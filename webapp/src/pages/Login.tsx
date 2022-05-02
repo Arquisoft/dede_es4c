@@ -18,9 +18,11 @@ const Login = () => {
 
 	const navigate = useNavigate();
 
-	const userLogin = (user: any) => {
+	const apiEndPoint = process.env.REACT_APP_API_URI || 'http://localhost:5000/api';
+
+	const userLogin = () => {
 		axios
-			.post("http://localhost:5000/api/login", {
+			.post(apiEndPoint + '/login', {
 				email,
 				password,
 			})
@@ -48,12 +50,11 @@ const Login = () => {
 
 	const submit = (e: { preventDefault: () => void }) => {
 		e.preventDefault();
-		const user = { email, password };
 
 		if (email === "" || password === "") {
 			setError("Rellene los datos solicitados correctamente");
 		} else {
-			userLogin(user);
+			userLogin();
 		}
 	};
 
