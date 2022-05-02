@@ -1,9 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
 import image from "../images/Equipo_02.png";
-import hugo from "../images/avatares/Hugo.jpeg";
-import dani from "../images/avatares/Dani.jpg";
-import damir from "../images/avatares/Damir.jpg";
-import sergio from "../images/avatares/Sergio.jpeg";
 import MiembroAvatar from "../components/MiembroAvatar";
 import { Miembro } from "../interface/interfaces";
 import { getMiembros } from "../api/api";
@@ -20,7 +16,7 @@ const Historia = () => {
 	useEffect(() => {
 		getMiembrosBd();
 		console.log(miembros)
-	}, []);
+	}, []); // eslint-disable-line react-hooks/exhaustive-deps
 	return (
 		<div>
 			<div id="historia">
