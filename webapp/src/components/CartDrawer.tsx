@@ -35,7 +35,7 @@ export default function TemporaryDrawer(props: any) {
 				}),
 			);
 		}
-	}, [addToCart, props]);
+	}, []);
 
 	const [state, setState] = React.useState({
 		top: false,
