@@ -16,7 +16,6 @@ import { LoginButton, useSession } from "@inrupt/solid-ui-react";
 
 import { InfoPod } from "../interface/interfaces";
 
-const redirUrl = "http://dede-es4c.centralus.cloudapp.azure.com:3000";
 
 const Perfil = () => {
 
@@ -37,7 +36,7 @@ const Perfil = () => {
   const [zip, setZip] = useState("");
   const [country, setCountry] = useState("");
 
-  const [currentUrl, setCurrentUrl] = useState("https://localhost:3000/Perfil");
+  const redirUrl = process.env.WEBAPP || 'http://localhost:3000';
 
   const idp = "https://broker.pod.inrupt.com";
   
@@ -53,7 +52,6 @@ const Perfil = () => {
         setUserData(data);
       }
       getUserData();
-      setCurrentUrl(window.location.href);
     });
 
   }, [isEditing]);
@@ -242,7 +240,7 @@ const Perfil = () => {
         <LoginButton
           authOptions={{ clientName: "dede_es4c" }}
           oidcIssuer={idp}
-          redirectUrl={"http://dede-es4c.centralus.cloudapp.azure.com:3000/Tienda"}
+          redirectUrl={redirUrl}
           onError={console.error} >
           <Button variant="contained" sx={{ bgcolor: '#596886', m: 3 }}>Entra con tu POD</Button>
         </LoginButton>
