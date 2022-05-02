@@ -1,7 +1,8 @@
 {
 	"name": "webapp",
   "jest":{
-    "collectCoverageFrom":["**/components/*.tsx", "**/pages/*.tsx"]
+    "collectCoverageFrom":["**/components/*.tsx", "**/pages/*.tsx"],
+	"detectOpenHandles": true
   },
 	"version": "0.1.0",
 	"dependencies": {
