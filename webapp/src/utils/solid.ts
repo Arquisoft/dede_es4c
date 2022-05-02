@@ -30,23 +30,29 @@ export async function getUsername(session: { fetch: any; }, webId: string | Url)
 
 export async function getUserInfo(session: { fetch: any; }, webId: string | Url){
     console.log("pasando")
-    try{
-    const dataset = await getSolidDataset(webId)
+    if(webId != undefined){
+        try{
+        const dataset = await getSolidDataset(webId)
 
-    const profile = getThing(dataset, webId);
+        const profile = getThing(dataset, webId);
 
-     const username = getStringNoLocale(profile!, FOAF.name)
-    
-    const file = await getFile(
-        "https://pod.inrupt.com/" + username + "/dede/Datos.json",
-        { fetch: fetch},
-    );
-    const json = JSON.parse(await file.text());
-    return json;
-    }catch (error){
-        console.log("Se ha producido un error al recuperar los datos")
-        console.log(error)
-        return {email: "", address: "", phone: ""}
+        const username = getStringNoLocale(profile!, FOAF.name)
+        
+        const file = await getFile(
+            "https://pod.inrupt.com/" + username + "/dede/Datos.json",
+            { fetch: fetch},
+        );
+        const json = JSON.parse(await file.text());
+        return json;
+        }catch (error){
+            console.log("Se ha producido un error al recuperar los datos")
+            console.log(error)
+            return {email: "", address: "", phone: ""}
+        }
+    }
+    else{
+        console.log("nuevo")
+        return "Test";
     }
 }
 

@@ -7,6 +7,6 @@ import Pedidos from "../pages/Pedidos";
 
 
 test('check that the page is rendering with one order', async () => {
-    const { getByText } = render(<UserProvider><Pedidos/></UserProvider>);
+    const { getByText } = render(<UserProvider><Pedidos/></UserProvider>); 
     expect(getByText('Todavía no has realizado ningún pedido')).toBeInTheDocument();
 })
