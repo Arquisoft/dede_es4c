@@ -46,8 +46,8 @@ const Perfil = () => {
       console.log("iniciado sesion as " + info?.webId);
       setInfo(info as InfoPod);
       const getUserData = async () => {
-        let data = await getUserInfo(session, info?.webId!);
-        setUserData(data);
+          let data = await getUserInfo(session, info?.webId!);
+          setUserData(data);
       }
       getUserData();
     });

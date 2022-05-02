@@ -5,8 +5,8 @@ import { UserProvider } from "../context/userProvider";
 import Perfil from "../pages/Perfil";
 
 test('check the profile page', async () => {
-    const { getByText } = render(<SessionProvider><UserProvider><Perfil/></UserProvider></SessionProvider>);
-    expect(getByText('POD no vinculado')).toBeInTheDocument();
+    const { getByText } = render(<UserProvider><SessionProvider><Perfil/></SessionProvider></UserProvider>);
+    expect(getByText('POD no vinculado')).toBeInTheDocument(); 
     expect(getByText('Por favor, conéctate con tu POD para que podamos utilizar tus datos')).toBeInTheDocument();
-    expect(getByText('Entra con tu POD')).toBeInTheDocument(); 
+    expect(getByText('Entra con tu POD')).toBeInTheDocument();
 })
