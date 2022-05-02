@@ -2,11 +2,11 @@
 version: '3.5'
 services:
   restapi:
-    image: ghcr.io/arquisoft/dede_es4c/restapi:latest
+    image: ghcr.io/arquisoft/dede_es4c/restapi:develop
     ports:
       - "5000:5000"
   webapp:
-    image: ghcr.io/arquisoft/dede_es4c/webapp:latest
+    image: ghcr.io/arquisoft/dede_es4c/webapp:develop
     ports:
       - "3000:3000"
     depends_on: 
