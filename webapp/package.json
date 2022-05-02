@@ -1,7 +1,6 @@
 {
 	"name": "webapp",
   "jest":{
-	"testTimeout": 30000,
     "collectCoverageFrom":["**/components/*.tsx", "**/pages/*.tsx"]
   },
 	"version": "0.1.0",
@@ -36,7 +35,7 @@
 	"scripts": {
 		"start": "react-scripts start",
 		"build": "react-scripts build",
-		"test": "react-scripts test --coverage",
+		"test": "react-scripts test --coverage && jest --force-exit --detectOpenHandles",
 		"test:e2e": "cd e2e && jest",
 		"eject": "react-scripts eject",
 		"prod": "ts-node-dev ./server.ts"
