@@ -48,7 +48,7 @@ const Perfil = () => {
 			};
 			getUserData();
 		});
-	}, [session, setInfo, setUserData]);
+	}, [setEditing]);
 
 	async function saveUserInfo() {
 		let data = {
