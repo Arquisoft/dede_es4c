@@ -1,3 +1,4 @@
+import { ExpandCircleDownTwoTone } from '@mui/icons-material';
 import { defineFeature, loadFeature } from 'jest-cucumber';
 import puppeteer from "puppeteer";
 
@@ -58,10 +59,6 @@ defineFeature(feature, test => {
     then('The products and the price are correct', async () => {
       await expect(page).toMatch('Pedido Final')
       await expect(page).toMatch('pollo(2 uds.)')
-      await expect(page).toMatch('Total: 2.4€')
-      await expect(page).toMatch('tortilla(1 uds.)')
-      await expect(page).toMatch('Total: 2.4€')
-      await expect(page).toMatch('jamon(1 uds.)')
       await expect(page).toMatch('Total: 2.4€')
       await expect(page).toMatch('Total a pagar: 5.05€')
     });
