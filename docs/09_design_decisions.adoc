@@ -12,4 +12,5 @@
 | Uso de MUI | Afecta a todo el Frontend | Habría que reacer todo el frontend si quisieramos dejar de usar MUI | Facilita en gran medida la creación de interfaces en React.
 | Uso de AXIOS | Solo afecta a tres métodos | Si quisiereamos usar otra librería no daría mucho trabajo | Facilita las peticiones post
 | Uso de React Router Dom | Afecta la barra de navegación y a casi todos los test | Si quisieramos dejar de utilizarla, habría que buscar otra librería de enrutamiento y cambiar muchas clases | Facilita el enrutamiento para dibujar págioas y navegar entre ellas
+| Uso de Node-Geocoder| Afecta al calculo de los costes | Si quisieramos dejar de utilizarla, solo habría que borrar su parte y todo seguiría funcionando | Si la Api para calcular los costes falla, Noe-Geocoder se encargará de calcular el coste por su cuenta
 |===
