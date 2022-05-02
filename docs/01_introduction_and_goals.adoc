@@ -16,10 +16,8 @@ Los requisitos son los siguientes:
 * El sistema debe poder ir calculando el coste total de los productos elegidos por el cliente.
 * El sistema tiene que poder procesar compras de los usuarios una vez estén registrados.
 * El sistema debe poder mostrar a un cliente registrado un historial con los pedidos que haya realizado.
-*	El sistema debe, una vez terminado el pedido y antes de procesarlo, calcular el sobrecoste que puede tener el envío del producto dependiendo de donde se encuentre el domicilio del usuario.
-*	El sistema debe mostrar los productos que hay disponibles y, como mínimo, separar productos de comida de los de bebida.
-*	Se deben poder añadir nuevos productos.
-*	Solo los administradores del bar podrán crear o eliminar (entre más operaciones) los productos, mientras que los clientes podrán interactuar con la aplicación para comprar los productos.
+* El sistema debe, una vez terminado el pedido y antes de procesarlo, calcular el sobrecoste que puede tener el envío del producto dependiendo de donde se encuentre el domicilio del usuario.
+* El sistema debe mostrar los productos que hay disponibles y, como mínimo, separar productos de comida de los de bebida.
 
 
 === Metas de Calidad
@@ -50,6 +48,5 @@ Los requisitos son los siguientes:
 |Desarrolladores|Tener una documentación bien desarrollada y entender la arquitectura de manera correcta para poder aplicarla correctamente en la práctica.
 |Profesores|Sentirse orgullosos de que sabemos aplicar todo lo proporcionado en las clases de practicas y teoría y crear con ello una buena arquitectura.
 |Clientes|Poder entender y utilizar la aplicación correctamente de una manera sencilla y eficaz.
-|Administradores|Estar al tanto del bar y poder actualizarlo en caso de tener nuevos productos o algunos estén obsoletos.
 |===
 
