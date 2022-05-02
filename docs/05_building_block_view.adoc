@@ -5,25 +5,8 @@
 
 === Sistema General de Caja Blanca
 
-El siguiente diagrama representa la estrucutra general del sistema y de qué servicios depende.
-
-[plantuml,"DiagramaCajaBlanca",png]
-----
-left to right direction
-skinparam actorStyle awesome
-package DeDe{
-    [Vista]
-    [Controlador]
-    [Modelo]
-}
-actor Usuario as g
-database POD
-database BBDD
-g --> Vista : interactua
-BBDD --> Modelo : envía datos
-Modelo --> BBDD : almacena datos
-Modelo --> POD : obtiene información
-----
+El siguiente diagrama representa la estructura general del sistema y de qué servicios depende.
+image:Nivel1.png["Nivel 1"]
 
 La aplicación, en una primera instancia, tendrá un solo actor interactuando, el usuario. Este realizará peticiones al sistema através de la vista.
 El sistema, a su vez, utilizará el sistema SOLID de pods y la base de datos para acceder a los datos que compondrán a la aplicación.
@@ -35,8 +18,29 @@ La caja negra del diagrama representa las distintas capas del Modelo Vista Contr
 .Caja negra 1
 |===
 |Nombre|Responsabilidad
-| Modelo | Capa donde se gestionan los datos con los cuales opera el sistema, gestionando también los accesos y actualizaciones de los mismos
-| Vista | Contiene código que compondrá la interfaz de usuario de la aplicación, tratando con los datos pero no accediendo directamente a éstos
-| Controlador | La esencia del controlador es enlazar la vista con el modelo. Contiene la lógica que interpreta y le da sentido a las instrucciones realizadas por el usuario
+| Interfaz Usuario (WebApp) | Esta capa será la encargada de interaccionar con el usuario y utilizar los servicios que proporcione la interfaz de negocio.
+| Interfaz Negocio (RestApi) | Capa que procesará las acciones que solicite el usuario con los demás servicios de la aplicación (Base de Datos, POD's).
+| SOLID (POD) | Proporcionará los datos del cliente a través de un proveedor de PODS.
+| MongoDB | Base de datos necesaria para poder almacenar cierto contexto de la aplicación (Productos, usuarios, pedidos entre más cosas). Recibe peticiones y devuelve datos.
 |===
 
+=== Sistema Epecífico de Caja Blanca
+
+El siguiente diagrama representa la estructura interna de los servicios mostrados en el apartado anterior.
+image:Nivel2.png["Nivel 2"]
+
+==== Caja Negra 2
+
+[cols="1,2"]
+.Caja negra 2
+|===
+|Nombre|Responsabilidad
+| React | Framework que permite construir interfaces de usuario de forma sencilla.
+| Axios | Cliente de HTTP que permite realizar peticiones (GET, POST...).
+| MUI | Proporciona una gran variedad de componentes compatibles con React.
+| React-Router-DOM | Librería que nos permite crear rutas de forma sencilla con React.
+| Express | Framework que nos proporciona un conjunto de funciones para desarrollar con Node.js.
+| Node | Entorno de ejecución que trabaja junto con JavaScript y crea aplicaciones muy escalables.
+| Inrupt.com | Librería que proporciona acceso a SOLID.
+| Mongoose | Librería con la cual el acceso a una base de datos MongoDB de forma sencilla, automatizando ciertos pasos.
+|===

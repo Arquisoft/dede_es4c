@@ -23,5 +23,5 @@ Para la implementación del proyecto se utilizarán tecnologías como REACT, par
 | TypeScript | Lenguaje de programación libre y de código abierto desarrollado y mantenido por Microsoft. Es un superconjunto de JavaScript
 | SOLID | Proyecto descentralizado cuyo principal objetivo es que el usuario tenga el control de su privacidad.
 | MongoDB | Base de datos NoSQL open source que ofrece un modelo de datos flexible para organizar y almacenar todo tipo de datos
-| Moongoose | Librería para Node.js que permite crear esquemas con configuraciones de forma sencilla. Además automatiza bastantes tareas de MongoDB.
+| Mongoose | Librería para Node.js que permite crear esquemas con configuraciones de forma sencilla. Además automatiza bastantes tareas de MongoDB.
 |===

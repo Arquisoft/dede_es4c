@@ -1,29 +1,7 @@
 [[section-deployment-view]]
 
 == Vista de Despliegue
-
-[plantuml,"Vista de Despliegue",png]
-----
-skinparam linetype ortho
-agent "User Browser" as UB
-package WebApp as WA {
-    collections ReactComponents
-}
-package RESTAPI as RA {
-    database MongoDB
-    component ExpressJS
-}
-package "SOLID Pods Host" as SH {
-    card "User Pod"
-}
-
-UB -d->> WA
-WA -u->> UB
-WA -d->> RA
-RA -u->> WA
-RA -d->> SH
-SH -u->> RA
-----
+image:VistaDespliegue.png["Vista de Despliegue"]
 
 [role="arc42help"]
 ****
