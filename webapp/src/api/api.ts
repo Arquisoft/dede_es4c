@@ -1,6 +1,7 @@
 import { User } from '../shared/shareddtypes';
 import { Pincho } from '../shared/shareddtypes';
 import { Order } from '../shared/shareddtypes';
+import { Member } from '../shared/shareddtypes';
 
 const apiEndPoint = process.env.REACT_APP_API_URI || 'http://localhost:5000/api';
 
@@ -81,6 +82,10 @@ export async function addOrder(order: Order): Promise<boolean> {
 
   if (response.status === 200) {
     return true;
-  }
+ }
   return false;
+}
+export async function getMiembros(): Promise<Pincho[]> {
+  let response = await fetch(apiEndPoint + '/miembros');
+  return response.json()
 }
