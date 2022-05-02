@@ -31,10 +31,14 @@ export async function calculaCostes(addressTo: Map<string, string>) {
     }).then((shipment: any, err: any) => {
         if (err != null) {
             console.log("Ha ocurrido un error al calcular los gastos de envio: " + err);
+            if(res[0]==undefined)
+                return 5;
             return getCosteEnvio(res[0].latitude, res[0].longitude);
         }
         if (shipment?.rates === undefined) {
             console.log("Ha ocurrido un error al calcular los gastos de envio: Se aplicará una tarifa estandar");
+            if(res[0]==undefined)
+                return 5;
             return getCosteEnvio(res[0].latitude, res[0].longitude);
         }
         var costes = shipment?.rates[0].amount
@@ -58,32 +62,35 @@ function getCosteEnvio(lat1: number, lon1: number) {
         neighbourhood: 'Manhattan Community Board 1',
         provider: 'openstreetmap'
     }
+    try{
+        // https://www.geeksforgeeks.org/program-distance-two-points-earth/#:~:text=For%20this%20divide%20the%20values,is%20the%20radius%20of%20Earth.
+        // The math module contains a function
+        // named toRadians which converts from
+        // degrees to radians.
+        lon1 = lon1 * Math.PI / 180;
+        direccionBase.longitude = direccionBase.longitude * Math.PI / 180;
+        lat1 = lat1 * Math.PI / 180;
+        direccionBase.latitude = direccionBase.latitude * Math.PI / 180;
 
-    // https://www.geeksforgeeks.org/program-distance-two-points-earth/#:~:text=For%20this%20divide%20the%20values,is%20the%20radius%20of%20Earth.
-    // The math module contains a function
-    // named toRadians which converts from
-    // degrees to radians.
-    lon1 = lon1 * Math.PI / 180;
-    direccionBase.longitude = direccionBase.longitude * Math.PI / 180;
-    lat1 = lat1 * Math.PI / 180;
-    direccionBase.latitude = direccionBase.latitude * Math.PI / 180;
+        // Haversine formula
+        let dlon = direccionBase.longitude - lon1;
+        let dlat = direccionBase.latitude - lat1;
+        let a = Math.pow(Math.sin(dlat / 2), 2)
+            + Math.cos(lat1) * Math.cos(direccionBase.latitude)
+            * Math.pow(Math.sin(dlon / 2), 2);
 
-    // Haversine formula
-    let dlon = direccionBase.longitude - lon1;
-    let dlat = direccionBase.latitude - lat1;
-    let a = Math.pow(Math.sin(dlat / 2), 2)
-        + Math.cos(lat1) * Math.cos(direccionBase.latitude)
-        * Math.pow(Math.sin(dlon / 2), 2);
+        let c = 2 * Math.asin(Math.sqrt(a));
 
-    let c = 2 * Math.asin(Math.sqrt(a));
+        // Radius of earth in kilometers. Use 3956
+        // for miles
+        let r = 6371;
 
-    // Radius of earth in kilometers. Use 3956
-    // for miles
-    let r = 6371;
-
-    // calculate the result
-    var kilometers = c * r;
-    var result = kilometers * 0.2; // 0,20€/km precio medio de kilometraje en España
-    console.log("Calculado el envío mediante la distancia: " + result + " €");
-    return result;
+        // calculate the result
+        var kilometers = c * r;
+        var result = kilometers * 0.2; // 0,20€/km precio medio de kilometraje en España
+        console.log("Calculado el envío mediante la distancia: " + result + " €");
+        return result;
+    }catch{
+        return 5;
+    }
 }

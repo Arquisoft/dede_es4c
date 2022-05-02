@@ -45,6 +45,7 @@ export const addOrder = async (req: Request, res: Response): Promise<Response> =
     newOrder.save();
     return res.status(200).json(newOrder);
   } catch (error) {
+    console.log(error.message);
     return res.status(500).send(error);
   }
 }

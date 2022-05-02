@@ -6,6 +6,7 @@ import cors from 'cors';
 const productRoutes = require('../routes/productRoutes');
 const userRoutes = require('../routes/userRoutes');
 const orderRoutes = require('../routes/orderRoutes');
+const memberRoutes = require('../routes/memberRoutes');
 const jwt = require("jsonwebtoken");
 
 let app: Application;
@@ -30,6 +31,7 @@ beforeAll(async () => {
     app.use('/api', userRoutes);
     app.use('/api', orderRoutes);
     app.use('/api', productRoutes);
+    app.use('/api', memberRoutes);
 
     server = app.listen(port, (): void => {
         console.log('Restapi server for testing listening on ' + port);
@@ -110,7 +112,6 @@ function checkProductList(response: Response, tipo: string) {
     expect(response.statusCode).toBe(200);
 }
 function checkIfVegetarianList(response: Response) {
-    console.log(response.body);
     expect(response.text).not.toEqual('[]')
     expect(response.body[0]._vegetariano).toBe(true);
     expect(response.statusCode).toBe(200);
@@ -237,5 +238,13 @@ describe('order', () => {
     it('Delete an order', async () => {
         const response: Response = await request(app).delete('/api/orders/delete/' + orderId);
         expect(response.statusCode).toBe(200);
+    });
+});
+describe('members ', () => {
+    it('All products can be listed', async () => {
+        const response: Response = await request(app).get("/api/miembros");
+        expect(response.text).not.toEqual('[]')
+        expect(response.statusCode).toBe(200);
+        expect(response.body.length).toBe(4);
     });
 });
