@@ -24,17 +24,17 @@ defineFeature(feature, test => {
   test('The user adds produts to the cart and go to the buy page', ({given,when,then}) => {
     jest.setTimeout(100000);
     let email:string;
-    let password:string;
+    let value:string;
     
     given('Nothing', () => { 
       email = "dani@gmail.com"
-      password = "123456"  
+      value = "123456"  
     });
 
     when('Buy some products and go to the buy view', async () => {
       await expect(page).toFillForm('form[name="login"]', {
         email: email,
-        password: password,
+        password: value,
       })
       await expect(page).toClick('button', { text: 'Enviar' })
 
