@@ -30,7 +30,6 @@ export async function getUsername(session: { fetch: any; }, webId: string | Url)
 
 export async function getUserInfo(session: { fetch: any; }, webId: string | Url){
     console.log("pasando")
-    if(webId != undefined){
         try{
         const dataset = await getSolidDataset(webId)
 
@@ -49,11 +48,6 @@ export async function getUserInfo(session: { fetch: any; }, webId: string | Url)
             console.log(error)
             return {email: "", address: "", phone: ""}
         }
-    }
-    else{
-        console.log("nuevo")
-        return "Test";
-    }
 }
 
 export async function setUserInfo(userData: any, session: { fetch: any; }, webId: string | Url){

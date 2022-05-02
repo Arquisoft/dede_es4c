@@ -9,7 +9,7 @@ import Tooltip from '@mui/material/Tooltip';
 import { UserContext } from "../context/userContext";
 import './styles/profile.css';
 import Button from '@mui/material/Button';
-import { handleIncomingRedirect, Session } from '@inrupt/solid-client-authn-browser'
+import { handleIncomingRedirect } from '@inrupt/solid-client-authn-browser'
 import { getUsername, getUserInfo, setUserInfo } from "../utils/solid";
 import TextField from '@mui/material/TextField';
 import { LoginButton, useSession } from "@inrupt/solid-ui-react";
@@ -44,12 +44,10 @@ const Perfil = () => {
       restorePreviousSession: true,
     }).then((info) => {
       console.log("iniciado sesion as " + info?.webId);
-      if(info?.webId != undefined)
         setInfo(info as InfoPod);
       const getUserData = async () => {
           let data = await getUserInfo(session, info?.webId!);
-          if(data != "Test")
-            setUserData(data);
+          setUserData(data);
       }
       getUserData();
     });
