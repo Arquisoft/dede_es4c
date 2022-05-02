@@ -2,7 +2,6 @@ import { Miembro } from '../interface/interfaces';
 import { User } from '../shared/shareddtypes';
 import { Pincho } from '../shared/shareddtypes';
 import { Order } from '../shared/shareddtypes';
-import { Member } from '../shared/shareddtypes';
 
 const apiEndPoint = process.env.REACT_APP_API_URI || 'http://localhost:5000/api';
 
