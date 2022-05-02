@@ -11,7 +11,7 @@ test('check with no member', async () => {
 })
 
 test('check with a member', async () => {
-    const miembros: Miembro[] = [ {nombre:"Maria García Iglesias", imagen: new Object(), uo:"UO854256"}];
+    const miembros = [ {_name:"Maria García Iglesias", imagen: new Object(), _uo:"UO854256"}];
     const { getByText } = render(<MiembroAvatar miembro = {miembros[0]}/>);
     expect(getByText('Maria García Iglesias')).toBeInTheDocument();
     expect(getByText('UO854256')).toBeInTheDocument();

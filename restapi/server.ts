@@ -5,6 +5,7 @@ import promBundle from 'express-prom-bundle';
 const productRoutes = require('./routes/productRoutes');
 const userRoutes = require('./routes/userRoutes');
 const orderRoutes = require('./routes/orderRoutes');
+const memberRoutes = require('./routes/memberRoutes');
 
 const bd = require('./config/bd');
 bd.connectBD();
@@ -26,6 +27,7 @@ app.use(bp.urlencoded({ extended: true }));
 app.use('/api', productRoutes);
 app.use('/api', userRoutes);
 app.use('/api', orderRoutes);
+app.use('/api', memberRoutes);
 //app.use("/api", api)
 
 app.listen(port, (): void => {

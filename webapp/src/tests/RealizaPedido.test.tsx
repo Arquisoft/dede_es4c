@@ -17,7 +17,7 @@ test('check that we dont have any product in the cart', async () => {
     expect(queryByText('La cesta está vacía, añade los productos y vuelve para finalizar')).toBeInTheDocument();
 })
 
-test('check with 2 products inn the cart', async () => {
+test('check with 2 products in the cart', async () => {
     const initialState: Producto[] = [
         {
             id: 'pollo',

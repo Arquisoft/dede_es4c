@@ -2,23 +2,7 @@
 == Alcance y Contexto del Sistema
 
 === Contexto de Negocio
-
-[plantuml,"Business Context Diagram",png]
-----
-left to right direction
-skinparam actorStyle awesome
-actor Usuario as g
-package DeDe {
-
-}
-database BBDD
-hexagon POD
-cloud API
-g --> DeDe
-DeDe <--> POD
-DeDe <--> BBDD
-DeDe <--> API
-----
+image:ContextoNegocio.png["Contexto de negocio"]
 
 El sistema permitirá al usuario hacer pedidos de los diferentes productos disponibles, pudiendo también, iniciar sesión con su propia cuenta mediante un proveedor de pods, que seguirá los principios SOLID. Dicho pod es quien se encarga de gestionar la información de los usuarios. Por otro lado, los datos de los productos serán almacenados por la base de datos.
 
@@ -28,6 +12,7 @@ El sistema permitirá al usuario hacer pedidos de los diferentes productos dispo
 * Base de datos: encargada de toda la persistencia de los datos que compondran la aplicación
 
 === Contexto Técnico
+image:ContextoTecnico.png["Contexto Técnico"]
 
 Como se ha mencionado anteriormente, la aplicación hará uso de la tecnología SOLID dirigida por Tim Berners-Lee para realizar un proyecto descentralizado. Esta proporcionará un pod a cada usuario permitiendo almacenar toda la información de cada uno, y se la proveerá a la aplicación.
 Para la implementación del proyecto se utilizarán tecnologías como REACT, para el desarrollo Frontend, y la base de datos MongoDB, para todo lo relativo a la persistencia de datos.
@@ -38,4 +23,5 @@ Para la implementación del proyecto se utilizarán tecnologías como REACT, par
 | TypeScript | Lenguaje de programación libre y de código abierto desarrollado y mantenido por Microsoft. Es un superconjunto de JavaScript
 | SOLID | Proyecto descentralizado cuyo principal objetivo es que el usuario tenga el control de su privacidad.
 | MongoDB | Base de datos NoSQL open source que ofrece un modelo de datos flexible para organizar y almacenar todo tipo de datos
+| Mongoose | Librería para Node.js que permite crear esquemas con configuraciones de forma sencilla. Además automatiza bastantes tareas de MongoDB.
 |===

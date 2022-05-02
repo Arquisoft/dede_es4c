@@ -13,5 +13,5 @@ test('check with a product', async () => {
     var initialState: Producto = {id:"pollo", nombre:"pollo", precio:1.5, cantidad:2};
     const { getByText } = render(<ProductoPedido producto = {initialState}/>);
     expect(getByText('pollo(2 uds.)')).toBeInTheDocument();
-    expect(getByText('Total: 3€')).toBeInTheDocument();
+    expect(getByText('Total: 3.00€')).toBeInTheDocument();
 })
