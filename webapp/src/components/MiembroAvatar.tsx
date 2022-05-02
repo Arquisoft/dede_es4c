@@ -11,10 +11,11 @@ function MiembroAvatar(props: any) {
 	var foto = "";
 	var uo = "UOxxxxxx";
 	if (props.miembro !== undefined) {
-		nombre = props.miembro.nombre;
-		foto = props.miembro.imagen;
-		uo = props.miembro.uo;
+		nombre = props.miembro._name;
+		foto = "avatares/" + nombre + ".jpg";
+		uo = props.miembro._uo;
 	}
+	console.log(foto)
 	return (
 		<List sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}>
 			<ListItem>

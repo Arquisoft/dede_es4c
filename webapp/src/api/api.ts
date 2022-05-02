@@ -1,3 +1,4 @@
+import { Miembro } from '../interface/interfaces';
 import { User } from '../shared/shareddtypes';
 import { Pincho } from '../shared/shareddtypes';
 import { Order } from '../shared/shareddtypes';
@@ -85,7 +86,7 @@ export async function addOrder(order: Order): Promise<boolean> {
  }
   return false;
 }
-export async function getMiembros(): Promise<Pincho[]> {
+export async function getMiembros(): Promise<Miembro[]> {
   let response = await fetch(apiEndPoint + '/miembros');
   return response.json()
 }
