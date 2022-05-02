@@ -35,7 +35,7 @@
 	"scripts": {
 		"start": "react-scripts start",
 		"build": "react-scripts build",
-		"test": "react-scripts test --coverage && jest --force-exit --detectOpenHandles",
+		"test": "jest --watchAll --detectOpenHandles",
 		"test:e2e": "cd e2e && jest",
 		"eject": "react-scripts eject",
 		"prod": "ts-node-dev ./server.ts"
