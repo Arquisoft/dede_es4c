@@ -12,7 +12,7 @@ function MiembroAvatar(props: any) {
 	var uo = "UOxxxxxx";
 	if (props.miembro !== undefined) {
 		nombre = props.miembro.nombre;
-		foto = props.miembro.imagen;
+		foto = props.miembro.imagen.src;
 		uo = props.miembro.uo;
 	}
 	return (
