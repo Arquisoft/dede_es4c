@@ -25,7 +25,7 @@ defineFeature(feature, test => {
     jest.setTimeout(100000);
     let username:string;
     let email:string;
-    let password:string;
+    let value:string;
     let pwconfirm:string;
     let emailUser:string;
     //Generamos un email aleatorio ya que si no la página nos dice que el email ya lo tenemos.
@@ -33,7 +33,7 @@ defineFeature(feature, test => {
     given('A unregistered user', () => {
       username = "Hugo"
       email = emailUser + "@gmail.com"
-      password = "123456"
+      value = "123456"
       pwconfirm = "123456"
     });
 
@@ -42,7 +42,7 @@ defineFeature(feature, test => {
       await expect(page).toFillForm('form[name="Signup"]', {
         username: username,
         email: email,
-        password: password,
+        password: value,
         pwconfirm: pwconfirm
       })
       await expect(page).toClick('button', { text: 'Enviar' })
