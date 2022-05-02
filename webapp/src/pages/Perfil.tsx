@@ -242,7 +242,7 @@ const Perfil = () => {
         <LoginButton
           authOptions={{ clientName: "dede_es4c" }}
           oidcIssuer={idp}
-          
+          redirectUrl={"http://dede-es4c.centralus.cloudapp.azure.com:3000/Tienda"}
           onError={console.error} >
           <Button variant="contained" sx={{ bgcolor: '#596886', m: 3 }}>Entra con tu POD</Button>
         </LoginButton>
