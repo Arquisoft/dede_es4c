@@ -25,18 +25,18 @@ defineFeature(feature, test => {
     jest.setTimeout(100000);
     
     let email:string;
-    let password:string;
+    let value:string;
 
     given('A registered user', () => {
       email = "dani@gmail.com"
-      password = "123456"
+      value = "123456"
     });
 
     when('I fill the data in the form and press submit', async () => {
       await expect(page).toMatch('Login')
       await expect(page).toFillForm('form[name="login"]', {
         email: email,
-        password: password,
+        password: value,
       })
       await expect(page).toClick('button', { text: 'Enviar' })
     });
