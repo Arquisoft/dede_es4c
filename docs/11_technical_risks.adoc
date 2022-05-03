@@ -23,4 +23,7 @@
 | Filtros | El código actual que actualiza la lista de productos según filtros no está bien planificado y, con la llegada de más filtros,
 quedará un código demasiado extenso
 | Clases grandes | Tenemos clases con mucha información, lo que provoca que, en una modificación que les afecte, tendremos dificultades para codificarlos
+| Tests end to end | Actualmente la aplicación consta de dichos tests, pero no están dentro de la integración continua
+| No es portable | La aplicación no es capaz de adaptarse al dispositivo, en concreto a móviles.
+| No es accesible | No hemos tenido en cuenta la accesibilidad a la hora de desarrollar la aplicación. Se deja para futuras versiones.
 |==============

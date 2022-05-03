@@ -10,7 +10,8 @@
 | Uso de Azure | El despliegue de la aplicación es efectuado en una máquina virtual hosteada en un servidor Azure | No sería complicado desplegarlo en otro servidor, como por ejemplo AWS | Azure es un entorno ideal para lo que necesitamos y cuenta con un crédito inicial gratuito para estudiantes.
 | Uso de Mongoose | Solo afecta a unos pocos métodos que hacen llamadas a la base de datos | Si no la quisieramos utilizar solo habría que modificar los métodos que acceden a la base de datos | Facilita el uso y tratamiento de los datos de MongoDB
 | Uso de MUI | Afecta a todo el Frontend | Habría que reacer todo el frontend si quisieramos dejar de usar MUI | Facilita en gran medida la creación de interfaces en React.
-| Uso de AXIOS | Solo afecta a tres métodos | Si quisiereamos usar otra librería no daría mucho trabajo | Facilita las peticiones post
-| Uso de React Router Dom | Afecta la barra de navegación y a casi todos los test | Si quisieramos dejar de utilizarla, habría que buscar otra librería de enrutamiento y cambiar muchas clases | Facilita el enrutamiento para dibujar págioas y navegar entre ellas
+| Uso de AXIOS | Es la forma en la que se envían las peticiones post del Frontend hacia el Backend | Si quisiereamos usar otra librería no daría mucho trabajo | Facilita las peticiones post
+| Uso de React Router Dom | Es necesario gestionar las rutas de la aplicación para que el usuario pueda navegar por la página | Si quisieramos dejar de utilizarla, habría que buscar otra librería de enrutamiento y realizar muchos cambios | Facilita enormemente la implementación de la distintas rutas que componen la aplicación
+| Uso de la API de Shippo | Es necesario calcular los costes de los envíos | Hemos decidido utilizar esta API, pero se podría haber usado cualquier otra que realice los cálculos | Es la opción más viable para calcular los costes entre dos puntos
 | Uso de Node-Geocoder| Afecta al calculo de los costes | Si quisieramos dejar de utilizarla, solo habría que borrar su parte y todo seguiría funcionando | Si la Api para calcular los costes falla, Noe-Geocoder se encargará de calcular el coste por su cuenta
 |===

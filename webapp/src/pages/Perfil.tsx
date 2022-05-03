@@ -48,7 +48,7 @@ const Perfil = () => {
 			};
 			getUserData();
 		});
-	}, [setEditing]);
+	}, [isEditing]); // eslint-disable-line react-hooks/exhaustive-deps
 
 	async function saveUserInfo() {
 		let data = {

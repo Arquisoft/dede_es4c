@@ -11,8 +11,6 @@
 (Atributos de calidad) --> (Usabilidad)
 (Atributos de calidad) --> (Privacidad)
 (Atributos de calidad) --> (Seguridad)
-(Atributos de calidad) --> (Accesibilidad)
-(Atributos de calidad) --> (Portabilidad)
 (Atributos de calidad) --> (Integridad)
 ----
 
@@ -26,7 +24,5 @@
 | 2 | Usabilidad | Ha de ser intuitiva y fácil de usar para personas no técnicas | Medio, Alta
 | 3 | Privacidad | El sistema ha de respetar la privacidad de los usuarios almacenando sus datos en PODs | Alta, Alta
 | 4 | Seguridad | Deberá haber un grado de seguridad para que los usuarios no entren en una cuenta que no les pertenezca | Media, Alta
-| 5 | Accesibilidad | La aplicación deberá se accesible siguiendo las recomendaciones WCAG 2.0 (Level AAA) | Baja, Media
-| 6 | Portabilidad | La aplicación podrá ser ejecutada independientemente del dispositivo en el que se despliegue | Baja, Baja
-| 7 | Integridad | Se deberá mantener en todo momento la integridad y consistencia de los datos que maneje la aplicación | Arlta, Alta
+| 5 | Integridad | Se deberá mantener en todo momento la integridad y consistencia de los datos que maneje la aplicación | Arlta, Alta
 |==============

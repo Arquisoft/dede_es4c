@@ -35,7 +35,7 @@ export default function TemporaryDrawer(props: any) {
 				}),
 			);
 		}
-	}, []);
+	}, []); // eslint-disable-line react-hooks/exhaustive-deps
 
 	const [state, setState] = React.useState({
 		top: false,

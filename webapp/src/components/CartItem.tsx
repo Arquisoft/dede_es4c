@@ -38,7 +38,7 @@ function Producto(props: any) {
 					id={"deleteItem" + props.producto.id}
 					className={"deleteItem" + props.producto.id}
 					variant="contained"
-					sx={{ color: "#fff", m: 1 }}
+					sx={{ bgcolor: "#596886", color: "#fff"}}
 					onClick={() => handleRemoveToCart(props.producto.id)}
 				>
 					Eliminar
