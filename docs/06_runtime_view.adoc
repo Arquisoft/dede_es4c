@@ -46,6 +46,69 @@ Se empezarán a añadir los productos deseados al pedido y una vez se hayan aña
 los productos necesarios, podrás finalizar el pedido y se enviará a la direccion proporcionada
 por el pod.
 
+== Escenario 3.1. Realizar un pedido
+[plantuml,"escenario3.1",png]
+----
+actor Usuario
+participant Tienda
+participant Backend
+participant API_Shippo
+participant BaseDatos
+Usuario -> Tienda: realiza compra
+Tienda-> Backend: envia datos
+Backend-> API_Shippo: calcula costes
+API_Shippo-> Backend: devuelve costes
+Backend-> BaseDatos: añadir pedido
+BaseDatos-> Backend: respuesta peticion
+Backend-> Tienda: respuesta Base datos
+Tienda-> Usuario: pedido realizado
+----
+
+En caso de fallo, se procederá con una segunda API (Node Geocoder).
+
+[plantuml,"escenario3.2",png]
+----
+actor Usuario
+participant Tienda
+participant Backend
+participant API_Shippo
+participant API_NodeGeocoder
+participant BaseDatos
+Usuario -> Tienda: realiza compra
+Tienda-> Backend: envia datos
+Backend-> API_Shippo: calcula costes
+API_Shippo-> Backend: devuelve error
+Backend-> API_NodeGeocoder: calcula costes
+API_NodeGeocoder-> Backend: devuelve costes
+Backend-> BaseDatos: añadir pedido
+BaseDatos-> Backend: respuesta peticion
+Backend-> Tienda: respuesta Base datos
+Tienda-> Usuario: pedido realizado
+----
+
+Si esta úlitma falla, se aplicará una tarifa estándar (5 euros).
+
+[plantuml,"escenario3.3",png]
+----
+actor Usuario
+participant Tienda
+participant Backend
+participant API_Shippo
+participant API_NodeGeocoder
+participant BaseDatos
+Usuario -> Tienda: realiza compra
+Tienda-> Backend: envia datos
+Backend-> API_Shippo: calcula costes
+API_Shippo-> Backend: devuelve error
+Backend-> API_NodeGeocoder: calcula costes
+API_NodeGeocoder-> Backend: devuelve error
+Backend-> Backend: aplica tarifa estandar
+Backend-> BaseDatos: añadir pedido
+BaseDatos-> Backend: respuesta peticion
+Backend-> Tienda: respuesta Base datos
+Tienda-> Usuario: pedido realizado
+----
+
 === Escenario 4. Vista de productos
 Una vez en la vista de tienda, se pueden realizar varias operaciones, como ver detalles, filtrar 
 productos, buscar por nombre y añadir al carrito.
