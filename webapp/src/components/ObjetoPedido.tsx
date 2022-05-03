@@ -13,7 +13,7 @@ function ObjetoPedido(props: any) {
 		let a = JSON.stringify(props.pedido._productos);
 		let json = JSON.parse(a);
 		for (var p in json) {
-			stringProductos += p + " " + json[p] + " uds.";
+			stringProductos += p + " " + json[p] + " uds. ";
 		}
 	};
 
@@ -32,9 +32,7 @@ function ObjetoPedido(props: any) {
 					<Typography variant="body1">ID: {props.pedido._id}</Typography>
 
 					<Typography display="block">{stringProductos}</Typography>
-					<Typography variant="body1">
-						Total: {parseFloat(props.pedido._precio).toFixed(2)} €
-					</Typography>
+					
 					<Typography variant="body1">Dirección:</Typography>
 					<Box sx={{ textAlign: "right" }}>
 						<Typography variant="body1">
@@ -51,6 +49,12 @@ function ObjetoPedido(props: any) {
 						</Typography>
 					</Box>
 					<Typography variant="body1">Fecha: {fecha}</Typography>
+					<Typography variant="body1">
+						Coste de envío: {parseFloat(props.pedido._costeEnvio).toFixed(2)} €
+					</Typography>
+					<Typography variant="body1">
+						Total: {parseFloat(props.pedido._precio).toFixed(2)} €
+					</Typography>
 				</CardContent>
 			</Card>
 			<Divider />

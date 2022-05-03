@@ -38,10 +38,12 @@ export const addOrder = async (req: Request, res: Response): Promise<Response> =
       _direccion: direccion,
       _precio: precio,
       _productos: productosCarrito,
+      _costeEnvio: 0,
       _fecha: fecha
     });
-    console.log(direccion);
-    newOrder._precio = (parseFloat(newOrder._precio) + await shippo.calculaCostes(newOrder._direccion)).toString()
+    var envio = shippo.calculaCostes(newOrder._direccion);
+    newOrder._precio = (parseFloat(newOrder._precio) + await envio).toString()
+    newOrder._costeEnvio = await envio;
     newOrder.save();
     return res.status(200).json(newOrder);
   } catch (error) {
