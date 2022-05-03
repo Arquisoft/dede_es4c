@@ -22,7 +22,7 @@ test('check with two products', async () => {
         _fecha: "29/04/2022"
     };
     const { getByText } = render(<ObjetoPedido numero = {5} pedido = {pedido}/>);
-    expect(getByText('arroz con leche 3 uds.agua 1 uds.')).toBeInTheDocument();
+    expect(getByText('arroz con leche 3 uds. agua 1 uds.')).toBeInTheDocument();
     expect(getByText('País: España')).toBeInTheDocument();
     expect(getByText('Ciudad: Oviedo')).toBeInTheDocument();
     expect(getByText('Calle: Avda. Galicia')).toBeInTheDocument();
