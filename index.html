@@ -473,6 +473,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#section-building-block-view">5. Vista de Bloques</a>
 <ul class="sectlevel2">
 <li><a href="#_sistema_general_de_caja_blanca">5.1. Sistema General de Caja Blanca</a></li>
+<li><a href="#_sistema_epecífico_de_caja_blanca">5.2. Sistema Epecífico de Caja Blanca</a></li>
 </ul>
 </li>
 <li><a href="#section-runtime-view">6. Runtime View</a>
@@ -484,7 +485,11 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_escenario_5_información_sobre_pods">6.5. Escenario 5. Información sobre pods</a></li>
 </ul>
 </li>
-<li><a href="#section-deployment-view">7. Vista de Despliegue</a></li>
+<li><a href="#section-deployment-view">7. Vista de Despliegue</a>
+<ul class="sectlevel2">
+<li><a href="#_componentes">7.1. Componentes</a></li>
+</ul>
+</li>
 <li><a href="#section-concepts">8. Conceptos transversales</a>
 <ul class="sectlevel2">
 <li><a href="#_modelo_de_dominio_de_la_aplicación">8.1. Modelo de dominio de la aplicación</a></li>
@@ -581,12 +586,6 @@ For documentation of your own system you use better the <em>plain</em> version.<
 </li>
 <li>
 <p>El sistema debe mostrar los productos que hay disponibles y, como mínimo, separar productos de comida de los de bebida.</p>
-</li>
-<li>
-<p>Se deben poder añadir nuevos productos.</p>
-</li>
-<li>
-<p>Solo los administradores del bar podrán crear o eliminar (entre más operaciones) los productos, mientras que los clientes podrán interactuar con la aplicación para comprar los productos.</p>
 </li>
 </ul>
 </div>
@@ -691,10 +690,6 @@ For documentation of your own system you use better the <em>plain</em> version.<
 <td class="tableblock halign-left valign-top"><p class="tableblock">Clientes</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Poder entender y utilizar la aplicación correctamente de una manera sencilla y eficaz.</p></td>
 </tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Administradores</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Estar al tanto del bar y poder actualizarlo en caso de tener nuevos productos o algunos estén obsoletos.</p></td>
-</tr>
 </tbody>
 </table>
 <div style="page-break-after: always;"></div>
@@ -797,10 +792,8 @@ For documentation of your own system you use better the <em>plain</em> version.<
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="_contexto_de_negocio">3.1. Contexto de Negocio</h3>
-<div class="imageblock">
-<div class="content">
-<img src="./images/Business%20Context%20Diagram.png" alt="Business Context Diagram" width="337" height="214">
-</div>
+<div class="paragraph">
+<p><span class="image"><img src="./images/ContextoNegocio.png" alt="Contexto de negocio"></span></p>
 </div>
 <div class="paragraph">
 <p>El sistema permitirá al usuario hacer pedidos de los diferentes productos disponibles, pudiendo también, iniciar sesión con su propia cuenta mediante un proveedor de pods, que seguirá los principios SOLID. Dicho pod es quien se encarga de gestionar la información de los usuarios. Por otro lado, los datos de los productos serán almacenados por la base de datos.</p>
@@ -824,6 +817,9 @@ For documentation of your own system you use better the <em>plain</em> version.<
 </div>
 <div class="sect2">
 <h3 id="_contexto_técnico_2">3.2. Contexto Técnico</h3>
+<div class="paragraph">
+<p><span class="image"><img src="./images/ContextoTecnico.png" alt="Contexto Técnico"></span></p>
+</div>
 <div class="paragraph">
 <p>Como se ha mencionado anteriormente, la aplicación hará uso de la tecnología SOLID dirigida por Tim Berners-Lee para realizar un proyecto descentralizado. Esta proporcionará un pod a cada usuario permitiendo almacenar toda la información de cada uno, y se la proveerá a la aplicación.
 Para la implementación del proyecto se utilizarán tecnologías como REACT, para el desarrollo Frontend, y la base de datos MongoDB, para todo lo relativo a la persistencia de datos.</p>
@@ -853,6 +849,10 @@ Para la implementación del proyecto se utilizarán tecnologías como REACT, par
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">MongoDB</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Base de datos NoSQL open source que ofrece un modelo de datos flexible para organizar y almacenar todo tipo de datos</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Mongoose</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Librería para Node.js que permite crear esquemas con configuraciones de forma sencilla. Además automatiza bastantes tareas de MongoDB.</p></td>
 </tr>
 </tbody>
 </table>
@@ -897,10 +897,23 @@ Para la implementación del proyecto se utilizarán tecnologías como REACT, par
 </div>
 </li>
 <li>
-<p>SOLID para preservar la privacidad de los datos del usuario.</p>
+<p>Github para el control de versiones.</p>
 </li>
 <li>
-<p>Github para el control de versiones</p>
+<p>Azure para el despliegue de la aplicación.</p>
+</li>
+<li>
+<p>APIs para calcular el coste del envío</p>
+<div class="ulist">
+<ul>
+<li>
+<p>API de SHIPPO</p>
+</li>
+<li>
+<p>Node Geocoder</p>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
@@ -937,12 +950,8 @@ Disponemos de 3 Kanbans, uno para cosas generales y los otros dos para tareas de
 <div class="sect2">
 <h3 id="_sistema_general_de_caja_blanca">5.1. Sistema General de Caja Blanca</h3>
 <div class="paragraph">
-<p>El siguiente diagrama representa la estrucutra general del sistema y de qué servicios depende.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="./images/DiagramaCajaBlanca.png" alt="DiagramaCajaBlanca" width="567" height="278">
-</div>
+<p>El siguiente diagrama representa la estructura general del sistema y de qué servicios depende.
+<span class="image"><img src="./images/Nivel1.png" alt="Nivel 1"></span></p>
 </div>
 <div class="paragraph">
 <p>La aplicación, en una primera instancia, tendrá un solo actor interactuando, el usuario. Este realizará peticiones al sistema através de la vista.
@@ -963,16 +972,75 @@ La caja negra del diagrama representa las distintas capas del Modelo Vista Contr
 <td class="tableblock halign-left valign-top"><p class="tableblock">Responsabilidad</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Modelo</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Capa donde se gestionan los datos con los cuales opera el sistema, gestionando también los accesos y actualizaciones de los mismos</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Interfaz Usuario (WebApp)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Esta capa será la encargada de interaccionar con el usuario y utilizar los servicios que proporcione la interfaz de negocio.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Vista</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Contiene código que compondrá la interfaz de usuario de la aplicación, tratando con los datos pero no accediendo directamente a éstos</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Interfaz Negocio (RestApi)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Capa que procesará las acciones que solicite el usuario con los demás servicios de la aplicación (Base de Datos, POD&#8217;s).</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Controlador</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">La esencia del controlador es enlazar la vista con el modelo. Contiene la lógica que interpreta y le da sentido a las instrucciones realizadas por el usuario</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SOLID (POD)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Proporcionará los datos del cliente a través de un proveedor de PODS.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MongoDB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Base de datos necesaria para poder almacenar cierto contexto de la aplicación (Productos, usuarios, pedidos entre más cosas). Recibe peticiones y devuelve datos.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_sistema_epecífico_de_caja_blanca">5.2. Sistema Epecífico de Caja Blanca</h3>
+<div class="paragraph">
+<p>El siguiente diagrama representa la estructura interna de los servicios mostrados en el apartado anterior.
+<span class="image"><img src="./images/Nivel2.png" alt="Nivel 2"></span></p>
+</div>
+<div class="sect3">
+<h4 id="_caja_negra_2">5.2.1. Caja Negra 2</h4>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 2. Caja negra 2</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 66.6667%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Nombre</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Responsabilidad</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">React</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Framework que permite construir interfaces de usuario de forma sencilla.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Axios</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cliente de HTTP que permite realizar peticiones (GET, POST&#8230;&#8203;).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MUI</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Proporciona una gran variedad de componentes compatibles con React.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">React-Router-DOM</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Librería que nos permite crear rutas de forma sencilla con React.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Express</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Framework que nos proporciona un conjunto de funciones para desarrollar con Node.js.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Node</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Entorno de ejecución que trabaja junto con JavaScript y crea aplicaciones muy escalables.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Inrupt.com</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Librería que proporciona acceso a SOLID.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Mongoose</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Librería con la cual el acceso a una base de datos MongoDB de forma sencilla, automatizando ciertos pasos.</p></td>
 </tr>
 </tbody>
 </table>
@@ -1014,6 +1082,27 @@ la base de datos solo los datos necesarios. El resto de datos personales serán 
 los productos necesarios, podrás finalizar el pedido y se enviará a la direccion proporcionada
 por el pod.</p>
 </div>
+<div class="imageblock">
+<div class="content">
+<img src="./images/escenario3.1.png" alt="escenario3" width="567" height="435">
+</div>
+</div>
+<div class="paragraph">
+<p>En caso de fallo, se procederá con una segunda API (Node Geocoder).</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./images/escenario3.2.png" alt="escenario3" width="713" height="495">
+</div>
+</div>
+<div class="paragraph">
+<p>Si esta úlitma falla, se aplicará una tarifa estándar (5 euros).</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./images/escenario3.3.png" alt="escenario3" width="739" height="539">
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_escenario_4_vista_de_productos">6.4. Escenario 4. Vista de productos</h3>
@@ -1045,66 +1134,29 @@ los pods que se utilizan en la aplicación.</p>
 <div class="sect1">
 <h2 id="section-deployment-view">7. Vista de Despliegue</h2>
 <div class="sectionbody">
-<div class="imageblock">
-<div class="content">
-<img src="./images/Vista%20de%20Despliegue.png" alt="Vista de Despliegue" width="357" height="469">
-</div>
-</div>
-<div class="sidebarblock arc42help">
-<div class="content">
 <div class="paragraph">
-<div class="title">Contenido</div>
-<p>La vista de despliegue describe:</p>
+<p><span class="image"><img src="./images/VistaDespliegue.png" alt="Vista de Despliegue"></span></p>
 </div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>La infraestructura técnica usada para ejecutar el sistema, con elementos de infraestructura como locaciones geográficas,
-ambientes, computadoras, procesadores, canales y topologías de red así como otros elementos de infraestructura.</p>
-</li>
-<li>
-<p>El mapeo de los bloques de construcción (software) en dichos elementos de infraestructura.</p>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p>Comúnmente los sistemas son ejecutados en diferentes ambientes, por ejemplo, ambiente de desarrollo, de pruebas, de producción. En dichos casos deberían documentarse todos los ambientes relevantes.</p>
-</div>
-<div class="paragraph">
-<p>Deberá documentarse la vista de despliegue de manera especial cuando el software se ejecute como un sistema distribuido
-con mas de una computadora, procesador, servidor o contenedor o cuando se diseñen los procesadores y chips de hardware propios.</p>
-</div>
-<div class="paragraph">
-<p>Desde una perspectiva de software es suficiente con capturar los elementos de la infraestructura necesarios para mostrar
-el despliegue de los bloques de construcción. Los arquitectos de hardware pueden ir más alla y describir la infraestructura
-a cualquier nivel de detalle que requieran.</p>
-</div>
-<div class="paragraph">
-<div class="title">Motivación</div>
-<p>El software no corre sin haardware.
-El hardware subyacente puede influenciar el sistema o algunos conceptos entrecruzados. Por ende, es necesario conocer
-la infraestructura.</p>
-</div>
-<div class="paragraph">
-<div class="title">Forma</div>
-<p>Quizá el más alto nivel de diagrama de despliegue esté contenido en la sección 3.2. como contexto técnico con la
-propia infraestructura como UNA caja negra. En esta sección se deberá realizar un acercamiento a ésta caja negra
-utilizando diagramas de despliegue adicionales:</p>
-</div>
+<div class="sect2">
+<h3 id="_componentes">7.1. Componentes</h3>
 <div class="ulist">
 <ul>
 <li>
-<p>UML provee diagramas de despliegue para expresar la vista. Uselos, probablemente con diagramas anidados.</p>
+<p>Azure: proveedor de la máquina virtual donde se hospeda la aplicación</p>
 </li>
 <li>
-<p>Cuando las partes relacionadas de Hardware prefieran otro tipo de diagramas además de los diagramas de despliegue,
-permítales usar cualquier tipo que permita mostrar los nodos y canales de la infraestructura.</p>
+<p>Base de Datos MongoDB: base de datos donde se aloja toda la información necesaria para la aplicación</p>
+</li>
+<li>
+<p>API Cálculo costes: servicio que utilizamos para calcular los costes de los envíos</p>
+</li>
+<li>
+<p>Proveedor de POD: servidor donde se almacena el pod del cliente donde se almacena sus datos personales</p>
 </li>
 </ul>
 </div>
-</div>
-</div>
 <div style="page-break-after: always;"></div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -1116,7 +1168,7 @@ permítales usar cualquier tipo que permita mostrar los nodos y canales de la in
 <p><span class="image"><img src="./images/ModeloDominio.png" alt="Modelo de dominio"></span></p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 2. Table</caption>
+<caption class="title">Table 3. Table</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 66.6667%;">
@@ -1218,10 +1270,46 @@ permítales usar cualquier tipo que permita mostrar los nodos y canales de la in
 <td class="tableblock halign-left valign-top"><p class="tableblock">Nos pareció una temática adecuada.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Uso de SOLID</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Los datos del usuario serán tratados a través de pods, donde se guardará información del usuario, manteniendo así su privacidad.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Si quisiéramos quitar SOLID, tendríamos que rehacer todo lo relacionado con la obtención de los datos del usuario</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Es una buena forma de preservar la privacidad del usuario y sus datos.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Uso de Azure</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">El despliegue de la aplicación es efectuado en una máquina virtual hosteada en un servidor Azure</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No sería complicado desplegarlo en otro servidor, como por ejemplo AWS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Azure es un entorno ideal para lo que necesitamos y cuenta con un crédito inicial gratuito para estudiantes.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Uso de Mongoose</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Solo afecta a unos pocos métodos que hacen llamadas a la base de datos</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Si no la quisieramos utilizar solo habría que modificar los métodos que acceden a la base de datos</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Facilita el uso y tratamiento de los datos de MongoDB</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Uso de MUI</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Afecta a todo el Frontend</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Habría que reacer todo el frontend si quisieramos dejar de usar MUI</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Facilita en gran medida la creación de interfaces en React.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Uso de AXIOS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Es la forma en la que se envían las peticiones post del Frontend hacia el Backend</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Si quisiereamos usar otra librería no daría mucho trabajo</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Facilita las peticiones post</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Uso de React Router Dom</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Es necesario gestionar las rutas de la aplicación para que el usuario pueda navegar por la página</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Si quisieramos dejar de utilizarla, habría que buscar otra librería de enrutamiento y realizar muchos cambios</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Facilita enormemente la implementación de la distintas rutas que componen la aplicación</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Uso de la API de Shippo</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Es necesario calcular los costes de los envíos</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Hemos decidido utilizar esta API, pero se podría haber usado cualquier otra que realice los cálculos</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Es la opción más viable para calcular los costes entre dos puntos</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Uso de Node-Geocoder</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Afecta al calculo de los costes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Si quisieramos dejar de utilizarla, solo habría que borrar su parte y todo seguiría funcionando</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Si la Api para calcular los costes falla, Noe-Geocoder se encargará de calcular el coste por su cuenta</p></td>
 </tr>
 </tbody>
 </table>
@@ -1235,14 +1323,14 @@ permítales usar cualquier tipo que permita mostrar los nodos y canales de la in
 <h3 id="_árbol_de_calidad">10.1. Árbol de Calidad</h3>
 <div class="imageblock">
 <div class="content">
-<img src="./images/qualityTree2.png" alt="qualityTree2" width="1066" height="148">
+<img src="./images/qualityTree2.png" alt="qualityTree2" width="729" height="147">
 </div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_escenarios_de_calidad">10.2. Escenarios de calidad</h3>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 3. Atributos de Calidad</caption>
+<caption class="title">Table 4. Atributos de Calidad</caption>
 <colgroup>
 <col style="width: 14.2857%;">
 <col style="width: 14.2857%;">
@@ -1282,18 +1370,6 @@ permítales usar cualquier tipo que permita mostrar los nodos y canales de la in
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Accesibilidad</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">La aplicación deberá se accesible siguiendo las recomendaciones WCAG 2.0 (Level AAA)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Baja, Media</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">6</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Portabilidad</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">La aplicación podrá ser ejecutada independientemente del dispositivo en el que se despliegue</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Baja, Baja</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">7</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Integridad</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Se deberá mantener en todo momento la integridad y consistencia de los datos que maneje la aplicación</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Arlta, Alta</p></td>
@@ -1308,7 +1384,7 @@ permítales usar cualquier tipo que permita mostrar los nodos y canales de la in
 <h2 id="section-technical-risks">11. Riesgos y deuda técnica</h2>
 <div class="sectionbody">
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 4. Riesgos</caption>
+<caption class="title">Table 5. Riesgos</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -1349,7 +1425,7 @@ permítales usar cualquier tipo que permita mostrar los nodos y canales de la in
 </tbody>
 </table>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 5. Deudas técnicas</caption>
+<caption class="title">Table 6. Deudas técnicas</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -1373,12 +1449,16 @@ quedará un código demasiado extenso</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Tenemos clases con mucha información, lo que provoca que, en una modificación que les afecte, tendremos dificultades para codificarlos</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Dependencias que no se usan</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Actualmente tenemos instaladas dependencias que no usamos. Esto puede provocar más vulnerabilidades en la aplicación que nos podríamos ahorrar</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tests end to end</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Actualmente la aplicación consta de dichos tests, pero no están dentro de la integración continua</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Duplicidad de código</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Hay clases con código repetido que podría refactorizar</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No es portable</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">La aplicación no es capaz de adaptarse al dispositivo, en concreto a móviles.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No es accesible</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No hemos tenido en cuenta la accesibilidad a la hora de desarrollar la aplicación. Se deja para futuras versiones.</p></td>
 </tr>
 </tbody>
 </table>
@@ -1491,7 +1571,7 @@ Created by Dr. Peter Hruschka &amp; Dr. Gernot Starke.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-03-25 20:23:24 +0100
+Last updated 2022-04-04 20:32:23 +0200
 </div>
 </div>
 </body>
