@@ -19,6 +19,10 @@ const orderSchema = new Schema({
         of: String,
         default: {}
     },
+    _costeEnvio: {
+        type: String,
+        required: true
+    },
     _fecha: {
         type: Date,
         required: true
