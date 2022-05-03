@@ -3,36 +3,10 @@
 == Vista de Despliegue
 image:VistaDespliegue.png["Vista de Despliegue"]
 
-[role="arc42help"]
-****
-.Contenido
-La vista de despliegue describe:
+=== Componentes
 
-. La infraestructura técnica usada para ejecutar el sistema, con elementos de infraestructura como locaciones geográficas,
-ambientes, computadoras, procesadores, canales y topologías de red así como otros elementos de infraestructura.
-. El mapeo de los bloques de construcción (software) en dichos elementos de infraestructura.
-
-Comúnmente los sistemas son ejecutados en diferentes ambientes, por ejemplo, ambiente de desarrollo, de pruebas, de producción. En dichos casos deberían documentarse todos los ambientes relevantes.
-
-Deberá documentarse la vista de despliegue de manera especial cuando el software se ejecute como un sistema distribuido
-con mas de una computadora, procesador, servidor o contenedor o cuando se diseñen los procesadores y chips de hardware propios.
-
-Desde una perspectiva de software es suficiente con capturar los elementos de la infraestructura necesarios para mostrar
-el despliegue de los bloques de construcción. Los arquitectos de hardware pueden ir más alla y describir la infraestructura
-a cualquier nivel de detalle que requieran.
-
-.Motivación
-El software no corre sin haardware.
-El hardware subyacente puede influenciar el sistema o algunos conceptos entrecruzados. Por ende, es necesario conocer
-la infraestructura.
-
-.Forma
-Quizá el más alto nivel de diagrama de despliegue esté contenido en la sección 3.2. como contexto técnico con la 
-propia infraestructura como UNA caja negra. En esta sección se deberá realizar un acercamiento a ésta caja negra 
-utilizando diagramas de despliegue adicionales:
-
-* UML provee diagramas de despliegue para expresar la vista. Uselos, probablemente con diagramas anidados.
-* Cuando las partes relacionadas de Hardware prefieran otro tipo de diagramas además de los diagramas de despliegue,
-permítales usar cualquier tipo que permita mostrar los nodos y canales de la infraestructura.
-****
+* Azure: proveedor de la máquina virtual donde se hospeda la aplicación
+* Base de Datos MongoDB: base de datos donde se aloja toda la información necesaria para la aplicación
+* API Cálculo costes: servicio que utilizamos para calcular los costes de los envíos
+* Proveedor de POD: servidor donde se almacena el pod del cliente donde se almacena sus datos personales
 

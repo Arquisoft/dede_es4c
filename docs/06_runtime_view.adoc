@@ -46,7 +46,6 @@ Se empezarán a añadir los productos deseados al pedido y una vez se hayan aña
 los productos necesarios, podrás finalizar el pedido y se enviará a la direccion proporcionada
 por el pod.
 
-== Escenario 3.1. Realizar un pedido
 [plantuml,"escenario3.1",png]
 ----
 actor Usuario
