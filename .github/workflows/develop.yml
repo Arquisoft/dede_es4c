@@ -64,8 +64,8 @@ jobs:
     - name: Publish to Registry
       uses: elgohr/Publish-Docker-Github-Action@v4
       env:
-        API_URI: http://${{ secrets.DEPLOY_HOST2 }}:5000/api
-        WEBAPP_URI: http://${{ secrets.DEPLOY_HOST2 }}:3000
+        API_URI: http://${{ secrets.DEPLOY_HOST }}:5000/api
+        WEBAPP_URI: http://${{ secrets.DEPLOY_HOST }}:3000
       with:
           name: arquisoft/dede_es4c/webapp
           username: ${{ github.actor }}
@@ -106,9 +106,9 @@ jobs:
       - name: Deploy over SSH
         uses: fifsky/ssh-action@master
         with:
-          host: ${{ secrets.DEPLOY_HOST2 }}
-          user: ${{ secrets.DEPLOY_USER2 }}
-          key: ${{ secrets.DEPLOY_KEY }}
+          host: ${{ secrets.DEPLOY_HOST }}
+          user: ${{ secrets.DEPLOY_USER }}
+          password: ${{ secrets.DEPLOY_PASSWORD }}
           command: |
             wget https://raw.githubusercontent.com/arquisoft/dede_es4c/develop/docker-compose-deploy.yml -O docker-compose.yml
             docker-compose stop
