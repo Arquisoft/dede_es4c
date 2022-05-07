@@ -12,7 +12,7 @@ on:
 jobs:
 
   deploy-webapp:
-    needs: [unit-test-webapp]
+    #needs: [unit-test-webapp]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -27,7 +27,7 @@ jobs:
           branch: "deployHeroku"
 
   deploy-restapi:
-    needs: [unit-test-restapi]
+    #needs: [unit-test-restapi]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
