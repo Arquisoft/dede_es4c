@@ -25,6 +25,12 @@ jobs:
           dontuseforce: true
           appdir: "webapp"
           branch: "deployHeroku"
+          docker_build_args: |
+            API_URI
+            WEBAPP_URI
+        env:
+          API_URI: http://${{ secrets.DEPLOY_HOST2 }}:5000/api
+          WEBAPP_URI: http://${{ secrets.DEPLOY_HOST2 }}:3000
 
   deploy-restapi:
     #needs: [unit-test-restapi]
@@ -39,3 +45,9 @@ jobs:
           usedocker: true
           appdir: "restapi"
           branch: "deployHeroku"
+          docker_build_args: |
+            MONGO_DB_URI
+            JWT_SECRET
+        env:
+          MONGO_DB_URI: mongodb+srv://es4c:es4c@cluster0.hcz1f.mongodb.net/bar_pinchos?retryWrites=true&w=majority
+          JWT_SECRET: ${{ secrets.JWT_SECRET }}

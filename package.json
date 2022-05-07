@@ -1,4 +1,8 @@
 {
+  "scripts": {
+    "heroku-postbuild": "cd webapp && npm install --only prod && npm install --only dev && REACT_APP_API_URI=https://dede-es4c.herokuapp.com/api npm run build && cd ../restapi && npm install --only prod && npm install --only dev && npm run build",
+    "start": "cd restapi && npm run start"
+  },
   "dependencies": {
     "@emotion/react": "^11.8.2",
     "@emotion/styled": "^11.8.1",
