@@ -34,7 +34,7 @@ const Perfil = () => {
 	const [country, setCountry] = useState("");
 
 	const idp = "https://broker.pod.inrupt.com";
-	const redirUrl = "http://localhost:3000/Perfil";
+	const redirUrl = "https://dede-es4c.centralus.cloudapp.azure.com:3000//Perfil";
 
 	useEffect(() => {
 		handleIncomingRedirect({

@@ -36,7 +36,7 @@
 		"web-vitals": "^2.1.2"
 	},
 	"scripts": {
-		"start": "cross-env GENERATE_SOURCEMAP=false  react-scripts start",
+		"start": "cross-env GENERATE_SOURCEMAP=false HTTPS=true SSL_CRT_FILE=cert/cert-20220507-140239.crt SSL_KEY_FILE=cert/key-20220507-140239.pem react-scripts start",
 		"build": "react-scripts build",
 		"test": "react-scripts test --coverage",
 		"test:e2e": "cd e2e && jest",

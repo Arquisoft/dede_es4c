@@ -1,0 +1,117 @@
+name: Develop Deployment
+
+# on:
+#   release:
+#     types: [published]
+
+on:
+  push:
+    branches:
+      - deployHeroku
+
+jobs:
+  unit-test-webapp:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: webapp
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - run: npm ci
+      - run: npm test
+      - uses: codecov/codecov-action@v3
+  unit-test-restapi:
+    runs-on: ubuntu-latest
+    env:
+      MONGO_DB: ${{ secrets.MONGO_DB_URL }}
+      MONGO_TEST_DB: ${{ secrets.MONGO_TEST_DB_URL }}
+      SECRET: ${{ secrets.JWT_SECRET }}
+      PASSWD1: ${{ secrets.DB_TEST_USER_PASSWORD_1 }}
+      PASSWD2: ${{ secrets.DB_TEST_USER_PASSWORD_2 }}
+    defaults:
+      run:
+        working-directory: restapi
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - run: npm ci
+      - run: npm test
+      - uses: codecov/codecov-action@v3
+  # e2e-tests:
+  #   needs: [unit-test-webapp, unit-test-restapi]
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #   - uses: actions/checkout@v3
+  #   - uses: actions/setup-node@v3
+  #     with:
+  #       node-version: 16
+  #   - run: npm --prefix webapp install
+  #   - run: npm --prefix restapi install
+  #   - run: npm --prefix webapp run build
+  #   - run: npm --prefix webapp run test:e2e
+  docker-push-webapp:
+    name: Push webapp Docker Image to GitHub Packages
+    runs-on: ubuntu-latest
+    needs: [unit-test-webapp]
+    # needs: [e2e-tests]
+    steps:
+    - uses: actions/checkout@v2
+    - name: Publish to Registry
+      uses: elgohr/Publish-Docker-Github-Action@v4
+      env:
+        API_URI: http://${{ secrets.DEPLOY_HOST2 }}:5000/api
+        WEBAPP_URI: http://${{ secrets.DEPLOY_HOST2 }}:3000
+      with:
+          name: arquisoft/dede_es4c/webapp
+          username: ${{ github.actor }}
+          password: ${{ secrets.DOCKER_PUSH_TOKEN }}
+          registry: ghcr.io
+          workdir: webapp
+          buildargs: API_URI, WEBAPP_URI
+  docker-push-restapi:
+    name: Push restapi Docker Image to GitHub Packages
+    runs-on: ubuntu-latest
+    # needs: [e2e-tests]
+    needs: [unit-test-restapi]
+    steps:
+      - uses: actions/checkout@v3
+      - name: Publish to Registry
+        uses: elgohr/Publish-Docker-Github-Action@v4
+        env:
+          MONGO_DB_URI: mongodb+srv://es4c:es4c@cluster0.hcz1f.mongodb.net/bar_pinchos?retryWrites=true&w=majority
+          JWT_SECRET: ${{ secrets.JWT_SECRET }}
+        with:
+          name: arquisoft/dede_es4c/restapi
+          username: ${{ github.actor }}
+          password: ${{ secrets.DOCKER_PUSH_TOKEN }}
+          registry: ghcr.io
+          workdir: restapi
+          buildargs: MONGO_DB_URI, JWT_SECRET
+  deploy:
+    name: Deploy over SSH
+    runs-on: ubuntu-latest
+    needs: [docker-push-restapi, docker-push-webapp]
+    steps:
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.DOCKER_PUSH_TOKEN }}
+      - name: Deploy over SSH
+        uses: fifsky/ssh-action@master
+        with:
+          host: ${{ secrets.DEPLOY_HOST2 }}
+          user: ${{ secrets.DEPLOY_USER2 }}
+          key: ${{ secrets.DEPLOY_KEY }}
+          command: |
+            wget https://raw.githubusercontent.com/arquisoft/dede_es4c/deployHeroku/docker-compose-deploy.yml -O docker-compose.yml
+            docker-compose stop
+            docker-compose rm -f
+            docker-compose pull   
+            docker-compose up -d
