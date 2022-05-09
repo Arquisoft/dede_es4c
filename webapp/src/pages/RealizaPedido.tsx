@@ -22,6 +22,8 @@ export default function RealizaPedido(props: any) {
 	const navigate = useNavigate();
 	var precio = cartState.total;
 
+	const apiEndPoint = process.env.REACT_APP_API_URI || 'https://localhost:5000/api';
+
 	const handlePedido = () => {
 		var direccion = {
 			street1: stateUser.userData.street1,
@@ -78,7 +80,7 @@ export default function RealizaPedido(props: any) {
 		}
 
 		axios
-			.post("http://localhost:5000/api/orders/add", {
+			.post(apiEndPoint + "/orders/add", {
 				cliente,
 				direccion,
 				precio,
