@@ -3,7 +3,7 @@ import { User } from '../shared/shareddtypes';
 import { Pincho } from '../shared/shareddtypes';
 import { Order } from '../shared/shareddtypes';
 
-const apiEndPoint = process.env.REACT_APP_API_URI || 'http://localhost:5000/api';
+const apiEndPoint = process.env.REACT_APP_API_URI || 'https://localhost:5000/api';
 
 export async function addUser(user: User): Promise<boolean> {
   let response = await fetch(apiEndPoint + '/users/add', {

@@ -1,14 +1,18 @@
 import express, { Application } from 'express';
+import https from "https";
 //for using an import here we need to configure the tsconfig.json
 //setting the option module to commonjs
 
 var app: Application = express()
 const port: number = 3000;
 
+let credentials = {key: process.env.HTTPS_PRIVATEKEY, cert: process.env.HTTPS_CERTIFICATE};
+let httpsServer = https.createServer(credentials, app);
+
 app.use(express.static('build'))
 app.use(express.static('public'));
 
-app.listen(port, (): void => {
+httpsServer.listen(port, (): void => {
     console.log('Webapp started on port ' + port);
 }).on("error", (error: Error) => {
     console.error('Error occured: ' + error.message);

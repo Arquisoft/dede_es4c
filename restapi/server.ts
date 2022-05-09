@@ -6,6 +6,7 @@ const productRoutes = require('./routes/productRoutes');
 const userRoutes = require('./routes/userRoutes');
 const orderRoutes = require('./routes/orderRoutes');
 const memberRoutes = require('./routes/memberRoutes');
+import https from "https";
 
 const bd = require('./config/bd');
 bd.connectBD();
@@ -26,7 +27,11 @@ app.use('/api', orderRoutes);
 app.use('/api', memberRoutes);
 //app.use("/api", api)
 
-app.listen(port, (): void => {
+let credentials = {key: process.env.HTTPS_KEY, cert: process.env.HTTPS_CERTIFICATE}
+
+let httpsServer = https.createServer(credentials, app);
+
+httpsServer.listen(port, (): void => {
   console.log('Restapi listening on ' + port);
 }).on("error", (error: Error) => {
   console.error('Error occured: ' + error.message);

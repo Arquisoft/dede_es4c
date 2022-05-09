@@ -11,6 +11,11 @@ ENV REACT_APP_API_URI=$API_URI
 ARG WEBAPP_URI="http://dede-es4c.centralus.cloudapp.azure.com:3000"
 ENV WEBAPP=$WEBAPP_URI
 
+ARG PRIVATE_KEY
+ENV HTTPS_KEY=$PRIVATE_KEY
+ARG CERTIFICATE
+ENV HTTPS_CERTIFICATE=$CERTIFICATE
+
 #Create an optimized version of the webapp
 RUN npm run build
 
