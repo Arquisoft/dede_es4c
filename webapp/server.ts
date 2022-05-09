@@ -8,8 +8,8 @@ require('dotenv').config();
 var app: Application = express()
 const port: number = 3000;
 
-let credentials = {key: process.env.HTTPS_KEY, cert: process.env.HTTPS_CERTIFICATE};
-let httpsServer = https.createServer(credentials, app);
+let options = {key: process.env.HTTPS_KEY, cert: process.env.HTTPS_CERTIFICATE};
+let httpsServer = https.createServer(options, app);
 
 app.use(express.static('build'))
 app.use(express.static('public'));

@@ -6,7 +6,7 @@ WORKDIR /app
 #Install the dependencies
 RUN npm install
 
-ARG API_URI="http://localhost:5000/api"
+ARG API_URI="https://localhost:5000/api"
 ENV REACT_APP_API_URI=$API_URI
 ARG WEBAPP_URI="https://dede-es4c.centralus.cloudapp.azure.com:3000"
 ENV WEBAPP=$WEBAPP_URI

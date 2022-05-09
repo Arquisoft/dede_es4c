@@ -21,7 +21,7 @@ const Signup = () => {
 
 	const navigate = useNavigate();
 
-	const apiEndPoint = process.env.REACT_APP_API_URI || 'http://localhost:5000/api';
+	const apiEndPoint = process.env.REACT_APP_API_URI || 'https://localhost:5000/api';
 
 	const userSignup = () => {
 		axios

@@ -17,7 +17,11 @@ const port: number = 5000;
 const metricsMiddleware: RequestHandler = promBundle({ includeMethod: true });
 app.use(metricsMiddleware);
 
-app.use(cors());
+const options: cors.CorsOptions = {
+  origin: [/\/\/localhost(:\d+)?$/, /\/\/dede-es4c\.centralus\.cloudapp\.azure\.com(:\d+)?$/]
+};
+
+app.use(cors(options));
 app.use(bp.json());
 app.use(bp.urlencoded({ extended: true }));
 
