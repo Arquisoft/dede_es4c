@@ -1,5 +1,6 @@
 import express, { Application } from 'express';
 import https from "https";
+require('dotenv').config();
 //for using an import here we need to configure the tsconfig.json
 //setting the option module to commonjs
 
