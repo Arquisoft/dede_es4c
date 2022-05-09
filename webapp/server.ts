@@ -8,7 +8,7 @@ require('dotenv').config();
 var app: Application = express()
 const port: number = 3000;
 
-let credentials = {key: process.env.HTTPS_PRIVATEKEY, cert: process.env.HTTPS_CERTIFICATE};
+let credentials = {key: process.env.HTTPS_KEY, cert: process.env.HTTPS_CERTIFICATE};
 let httpsServer = https.createServer(credentials, app);
 
 app.use(express.static('build'))
